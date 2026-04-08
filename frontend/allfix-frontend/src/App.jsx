@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import { AuthProvider, ROLES } from './contexts/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import LoginRedirect from './components/LoginRedirect'
+import LandingRedirect from './components/LandingRedirect'
 
 // Landing & Public Pages
 import LandingPage from './pages/landingpage/LandingPage'
@@ -27,8 +28,12 @@ function App() {
   return (
     <AuthProvider>
       <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<LandingPage />} />
+        {/* Public Routes - Landing page redirects authenticated users to their dashboard */}
+        <Route path="/" element={
+          <LandingRedirect>
+            <LandingPage />
+          </LandingRedirect>
+        } />
 
         {/* Customer Auth Routes */}
         <Route path="/login" element={
