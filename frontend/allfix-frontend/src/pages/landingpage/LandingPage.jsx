@@ -7,25 +7,49 @@ const LandingPage = () => {
       {/* Header */}
       <Box
         sx={{
-          bgcolor: 'white',
+          bgcolor: '#0f2744',
           py: 2,
-          px: 3,
+          px: { xs: 2, md: 5 },
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          boxShadow: 1,
+          boxShadow: 3,
+          position: 'sticky',
+          top: 0,
+          zIndex: 1100,
         }}
       >
-        <Typography variant="h5" fontWeight="bold" color="primary">
-          Allfix
-        </Typography>
-        <Box sx={{ display: 'flex', gap: 2 }}>
-          <Button component={Link} to="/login" variant="outlined">
-            Customer Login
-          </Button>
-          <Button component={Link} to="/signup" variant="contained">
-            Sign Up
-          </Button>
+        {/* Logo Section */}
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box sx={{ width: 45, height: 45, bgcolor: 'grey.500', borderRadius: '50%', mr: 1.5 }} />
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Typography variant="h5" fontWeight="bold" color="white" sx={{ lineHeight: 1, mb: 0.5 }}>
+              AllFix.ph
+            </Typography>
+            <Typography variant="overline" color="white" sx={{ lineHeight: 1, fontSize: '0.65rem', letterSpacing: 0.5 }}>
+              PROPERTY CARE EXPERTS
+            </Typography>
+          </Box>
+        </Box>
+
+        {/* Navigation Links */}
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4.5, alignItems: 'center' }}>
+          {['Services', 'How It Works', 'Why AllFix', 'Testimonials', 'Become Our Partner'].map((text) => (
+            <Typography
+              key={text}
+              component={Link}
+              to="#"
+              sx={{
+                color: 'white',
+                textDecoration: 'none',
+                fontWeight: 600,
+                fontSize: '0.95rem',
+                '&:hover': { color: 'grey.300' }
+              }}
+            >
+              {text}
+            </Typography>
+          ))}
         </Box>
       </Box>
 

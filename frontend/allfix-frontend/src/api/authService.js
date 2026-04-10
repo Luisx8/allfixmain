@@ -9,6 +9,7 @@ import {
   confirmResetPassword,
   resendSignUpCode,
   fetchUserAttributes,
+  autoSignIn,
 } from 'aws-amplify/auth';
 
 /**
@@ -203,4 +204,22 @@ export async function getUserGroups() {
   const session = await getAuthSession();
   if (!session.success) return [];
   return session.data.groups;
+}
+
+/**
+ * Automatically sign in the user after confirming sign-up
+ * @returns {Promise} Auto sign in result with user data and groups
+ */
+export async function completeAutoSignIn() {
+  try {
+    const result = await autoSignIn();
+    
+    // Fetch groups immediately after auto sign in, same as regular signIn
+    const session = await fetchAuthSession();
+    const groups = session.tokens?.accessToken?.payload['cognito:groups'] || [];
+    
+    return { success: true, data: { ...result, groups } };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
 }

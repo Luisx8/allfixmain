@@ -10,7 +10,7 @@ import {
   Alert,
   CircularProgress,
 } from '@mui/material';
-import { confirmUserSignUp, resendVerificationCode } from '../../api/authService';
+import { confirmUserSignUp, resendVerificationCode, completeAutoSignIn } from '../../api/authService';
 import { useAuth } from '../../contexts/AuthContext';
 
 const ConfirmSignup = () => {
@@ -32,8 +32,27 @@ const ConfirmSignup = () => {
     const result = await confirmUserSignUp(email, code);
 
     if (result.success) {
-      await refreshAuth();
-      navigate('/user');
+      // Sync user to backend: Adds 'customer' group in Cognito & adds to Supabase DB
+      try {
+        await fetch('http://localhost:8080/api/auth/sync-customer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+      } catch (err) {
+        console.error('Failed to sync user with backend:', err);
+      }
+
+      // Automatically sign in the user
+      const signInResult = await completeAutoSignIn();
+
+      if (signInResult.success) {
+        await refreshAuth();
+        navigate('/user');
+      } else {
+        // Fallback to login screen
+        navigate('/login', { state: { message: 'Account verified successfully. Please log in.' } });
+      }
     } else {
       setError(result.error);
     }

@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import { CssBaseline } from '@mui/material'
 import { AuthProvider, ROLES } from './contexts/AuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import LoginRedirect from './components/LoginRedirect'
@@ -27,6 +28,7 @@ import UserPage from './pages/userpage/UserPage'
 function App() {
   return (
     <AuthProvider>
+      <CssBaseline />
       <Routes>
         {/* Public Routes - Landing page redirects authenticated users to their dashboard */}
         <Route path="/" element={
