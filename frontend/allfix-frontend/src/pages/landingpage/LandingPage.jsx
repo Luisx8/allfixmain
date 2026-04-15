@@ -3,34 +3,10 @@ import { Box, Typography, Button, Container, Grid } from '@mui/material';
 
 const LandingPage = () => {
   return (
-    <Box sx={{ minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
-      {/* Background Gradient */}
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)',
-        }}
-      />
-      
-      {/* Dot Pattern Overlay */}
-      <Box
-        sx={{
-          position: 'absolute',
-          inset: 0,
-          opacity: 0.04,
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          backgroundRepeat: 'repeat',
-          pointerEvents: 'none',
-        }}
-      />
-      
+    <Box sx={{ minHeight: '100vh', bgcolor: 'grey.50' }}>
       {/* Header */}
       <Box
         sx={{
-          position: 'relative',
-          zIndex: 1100,
           bgcolor: '#0f2744',
           py: 2,
           px: { xs: 2, md: 5 },
@@ -78,8 +54,116 @@ const LandingPage = () => {
       </Box>
 
       {/* Hero Section */}
-      <Container maxWidth="lg" sx={{ py: 8, position: 'relative', zIndex: 10 }}>
-        {/* Content goes here */}
+      <Container maxWidth="lg" sx={{ py: 8 }}>
+        <Box textAlign="center" mb={6}>
+          <Typography variant="h2" component="h1" gutterBottom fontWeight="bold">
+            Book Home Services with Ease
+          </Typography>
+          <Typography variant="h5" color="text.secondary" mb={4}>
+            Connect with trusted professionals for aircon cleaning, plumbing, repairs, and more.
+          </Typography>
+          <Button
+            component={Link}
+            to="/signup"
+            variant="contained"
+            size="large"
+            sx={{ mr: 2 }}
+          >
+            Get Started
+          </Button>
+          <Button
+            component={Link}
+            to="/vendor-apply"
+            variant="outlined"
+            size="large"
+            color="success"
+          >
+            Become a Vendor
+          </Button>
+        </Box>
+
+        {/* Portal Links */}
+        <Typography variant="h5" textAlign="center" mb={3} color="text.secondary">
+          Login Portals
+        </Typography>
+        <Grid container spacing={3} justifyContent="center">
+          <Grid item xs={12} sm={6} md={3}>
+            <Box
+              component={Link}
+              to="/login"
+              sx={{
+                display: 'block',
+                p: 3,
+                textAlign: 'center',
+                bgcolor: '#1976d2',
+                color: 'white',
+                borderRadius: 2,
+                textDecoration: 'none',
+                '&:hover': { bgcolor: '#1565c0' },
+              }}
+            >
+              <Typography variant="h6">Customer</Typography>
+              <Typography variant="body2">Book services</Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Box
+              component={Link}
+              to="/vendor-login"
+              sx={{
+                display: 'block',
+                p: 3,
+                textAlign: 'center',
+                bgcolor: '#2e7d32',
+                color: 'white',
+                borderRadius: 2,
+                textDecoration: 'none',
+                '&:hover': { bgcolor: '#1b5e20' },
+              }}
+            >
+              <Typography variant="h6">Vendor</Typography>
+              <Typography variant="body2">Manage services</Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Box
+              component={Link}
+              to="/personnel-login"
+              sx={{
+                display: 'block',
+                p: 3,
+                textAlign: 'center',
+                bgcolor: '#ed6c02',
+                color: 'white',
+                borderRadius: 2,
+                textDecoration: 'none',
+                '&:hover': { bgcolor: '#e65100' },
+              }}
+            >
+              <Typography variant="h6">Personnel</Typography>
+              <Typography variant="body2">View tasks</Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Box
+              component={Link}
+              to="/admin-login"
+              sx={{
+                display: 'block',
+                p: 3,
+                textAlign: 'center',
+                bgcolor: '#9c27b0',
+                color: 'white',
+                borderRadius: 2,
+                textDecoration: 'none',
+                '&:hover': { bgcolor: '#7b1fa2' },
+              }}
+            >
+              <Typography variant="h6">Admin</Typography>
+              <Typography variant="body2">Platform management</Typography>
+            </Box>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );
