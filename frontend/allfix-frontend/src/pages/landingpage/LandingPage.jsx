@@ -1,12 +1,177 @@
-import { Link } from 'react-router-dom';
-import { Box, Typography, Button, Container, Grid, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemButton, TextField, MenuItem } from '@mui/material';
-import { useState, useEffect } from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import StarIcon from '@mui/icons-material/Star';
-import SecurityIcon from '@mui/icons-material/Security';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
+
+// ...existing code...
+
+const ServiceCard = ({ service, onServiceClick }) => {
+  const [hovered, setHovered] = useState(false);
+  const Icon = service.icon;
+
+  return (
+    <div
+      style={{
+        position: 'relative',
+        borderRadius: '16px',
+        overflow: 'hidden',
+        border: '1px solid #e5e5e5',
+        boxShadow: hovered ? '0 25px 50px rgba(0,0,0,0.15)' : '0 1px 3px rgba(0,0,0,0.1)',
+        transition: 'all 0.3s ease',
+        transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
+        cursor: 'pointer',
+        backgroundColor: '#fff',
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={() => onServiceClick(service)}
+    >
+      {/* Image showcase */}
+      <div style={{ position: 'relative', height: '150px', overflow: 'hidden', backgroundColor: '#f5f5f5' }}>
+        <img
+          src={service.image}
+          alt={service.brand}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: hovered ? 0.3 : 1,
+            transition: 'opacity 0.5s ease',
+          }}
+        />
+        {/* Color overlay on hover */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: service.accent,
+            opacity: hovered ? 0.6 : 0,
+            transition: 'opacity 0.3s ease',
+          }}
+        />
+        {/* Logo pops in middle on hover */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all 0.3s ease',
+            transform: hovered ? 'scale(1)' : 'scale(0)',
+            opacity: hovered ? 1 : 0,
+          }}
+        >
+          <div
+            style={{
+              width: '80px',
+              height: '80px',
+              borderRadius: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: service.accent,
+              boxShadow: `0 0 30px ${service.accent}80, 0 0 60px ${service.accent}40, 0 12px 24px rgba(0,0,0,0.4)`,
+            }}
+          >
+            <Icon style={{ width: '40px', height: '40px', color: '#fff' }} />
+          </div>
+        </div>
+      </div>
+
+      {/* Header */}
+      <div
+        style={{
+          position: 'relative',
+          padding: '16px',
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'space-between',
+          background: `linear-gradient(135deg, ${service.headerBg} 0%, ${service.headerBgLight} 100%)`,
+        }}
+      >
+        <div
+          style={{
+            fontSize: '0.75rem',
+            fontWeight: 900,
+            letterSpacing: '0.05em',
+            textTransform: 'uppercase',
+            padding: '6px 10px',
+            borderRadius: '9999px',
+            backgroundColor: 'rgba(255,255,255,0.15)',
+            color: '#fff',
+          }}
+        >
+          {service.brand}
+        </div>
+        <div
+          style={{
+            width: '48px',
+            height: '48px',
+            borderRadius: '12px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+            backgroundColor: service.accent,
+          }}
+        >
+          <Icon style={{ width: '24px', height: '24px', color: '#fff' }} />
+        </div>
+      </div>
+
+      {/* Body */}
+      <div style={{ padding: '16px', minHeight: '340px', display: 'flex', flexDirection: 'column' }}>
+        <h3 style={{ fontWeight: 900, fontSize: '1rem', color: '#000', marginBottom: '4px' }}>
+          {service.brand}
+        </h3>
+        <p style={{ fontSize: '0.75rem', fontWeight: 600, color: service.accent, marginBottom: '16px' }}>
+          {service.tagline}
+        </p>
+        <p style={{ fontSize: '0.875rem', color: '#666', lineHeight: 1.6, marginBottom: '16px', flex: 1 }}>
+          {service.description}
+        </p>
+
+        {/* Checklist */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 12px', marginBottom: '24px' }}>
+          {service.services.map((tag) => (
+            <div key={tag} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <CheckCircleIcon style={{ width: '14px', height: '14px', color: service.accent, flexShrink: 0 }} />
+              <span style={{ fontSize: '0.75rem', fontWeight: 500, color: service.pillText }}>
+                {tag}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '6px',
+            fontSize: '0.875rem',
+            fontWeight: 700,
+            color: hovered ? service.accentDark : service.accent,
+            transition: 'color 0.2s ease',
+          }}
+        >
+          Book {service.brand}
+          <ArrowForwardIcon style={{ width: '16px', height: '16px', transition: 'transform 0.2s ease', transform: hovered ? 'translateX(4px)' : 'translateX(0)' }} />
+        </div>
+      </div>
+
+      {/* Bottom accent bar */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          height: '2px',
+          backgroundColor: service.accent,
+          width: hovered ? '100%' : '0%',
+          transition: 'width 0.3s ease',
+        }}
+      />
+    </div>
+  );
+};
 
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -76,15 +241,15 @@ const LandingPage = () => {
           borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.2)' : 'none',
         }}
       >
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, md: 5 } }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, sm: 3, md: 5, lg: 8 } }}>
           {/* Logo */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, ml: { xs: 12, md: 16 } }}>
-            <Box sx={{ width: 48, height: 48, bgcolor: 'grey.400', borderRadius: '50%' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, ml: { xs: 2, sm: 4, md: 8, lg: 12 } }}>
+            <Box sx={{ width: { xs: 36, sm: 40, md: 48 }, height: { xs: 36, sm: 40, md: 48 }, bgcolor: 'grey.400', borderRadius: '50%' }} />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant="h5" fontWeight="bold" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, mb: 0.5, transition: 'color 0.3s ease' }}>
+              <Typography variant="h5" fontWeight="bold" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, mb: 0.5, fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.5rem' }, transition: 'color 0.3s ease' }}>
                 AllFix.ph
               </Typography>
-              <Typography variant="overline" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, fontSize: '0.65rem', letterSpacing: 0.5, transition: 'color 0.3s ease' }}>
+              <Typography variant="overline" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, fontSize: { xs: '0.55rem', sm: '0.6rem', md: '0.65rem' }, letterSpacing: 0.5, transition: 'color 0.3s ease' }}>
                 PROPERTY CARE EXPERTS
               </Typography>
             </Box>
@@ -199,7 +364,7 @@ const LandingPage = () => {
         />
 
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 10, pb: 8 }}>
-          <Grid container spacing={6} alignItems="flex-start" sx={{ width: '100%', minHeight: '100vh' }}>
+          <Grid container spacing={{ xs: 0, sm: 2, md: 4 }} alignItems="center" justifyContent="center" sx={{ mt: { xs: 6, sm: 8, md: 10 }, mb: { xs: 2, sm: 4, md: 6 } }}>
             {/* Left Column - Hero Content */}
             <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: 3, pt: { xs: -20, md: -32 } }}>
               {/* Badge */}
@@ -242,11 +407,13 @@ const LandingPage = () => {
               {/* Main Heading */}
               <Typography
                 sx={{
-                  fontSize: { xs: '2.25rem', sm: '2.75rem', md: '3.5rem', lg: '4rem' },
+                  fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem', lg: '4rem' },
                   fontWeight: 900,
                   color: 'white',
-                  mb: 3,
+                  mb: { xs: 2, sm: 3 },
                   lineHeight: 1.1,
+                  wordBreak: 'break-word',
+                  maxWidth: { xs: '95vw', sm: '90vw', md: '100%' },
                 }}
               >
                 Hassle-Free <br /> Property Care, <br /> Done Right.
@@ -266,80 +433,46 @@ const LandingPage = () => {
               </Typography>
 
               {/* Stats */}
-              <Box sx={{ display: 'flex', flexDirection: 'row', gap: { xs: 4, md: 6 }, flexWrap: 'wrap', mt: -4 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'row', gap: 0, mt: { xs: -4, sm: -6, md: -8 }, ml: { xs: 0, sm: -2, md: -4 }, borderRadius: '12px', p: { xs: '10px 8px', sm: '16px 16px', md: '20px 24px' }, alignItems: 'center', justifyContent: 'flex-start', width: '100%', maxWidth: { xs: '98vw', sm: '90vw', md: '550px' }, flexWrap: 'nowrap', overflowX: 'auto' }}>
                 {/* Stat 1 */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <CheckCircleIcon
-                    sx={{
-                      width: 24,
-                      height: 24,
-                      color: '#4ade80',
-                      flexShrink: 0,
-                    }}
-                  />
-                  <Box sx={{ textAlign: 'left' }}>
-                    <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem' }}>
-                      5,000+
-                    </Typography>
-                    <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.875rem' }}>
-                      Verified Pros
-                    </Typography>
-                  </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, minWidth: '180px', justifyContent: 'center' }}>
+                  <CheckCircleOutlineIcon sx={{ width: 28, height: 28, color: '#22c55e', strokeWidth: 2 }} />
+                  <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem', whiteSpace: 'nowrap', lineHeight: 1, letterSpacing: 0.2 }}>
+                    5,000+ Verified Pros
+                  </Typography>
                 </Box>
-
+                {/* Divider */}
+                <Box sx={{ width: '1px', height: 32, bgcolor: 'rgba(255,255,255,0.25)', mx: 2, alignSelf: 'center' }} />
                 {/* Stat 2 */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <StarIcon
-                    sx={{
-                      width: 24,
-                      height: 24,
-                      color: '#facc15',
-                      flexShrink: 0,
-                      fill: '#facc15',
-                    }}
-                  />
-                  <Box sx={{ textAlign: 'left' }}>
-                    <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem' }}>
-                      4.9★
-                    </Typography>
-                    <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.875rem' }}>
-                      Average Rating
-                    </Typography>
-                  </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, minWidth: '180px', justifyContent: 'center' }}>
+                  <StarOutlineIcon sx={{ width: 28, height: 28, color: '#22c55e', strokeWidth: 2 }} />
+                  <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem', whiteSpace: 'nowrap', lineHeight: 1, letterSpacing: 0.2 }}>
+                    4.9★ Average Rating
+                  </Typography>
                 </Box>
-
+                {/* Divider */}
+                <Box sx={{ width: '1px', height: 32, bgcolor: 'rgba(255,255,255,0.25)', mx: 2, alignSelf: 'center' }} />
                 {/* Stat 3 */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <SecurityIcon
-                    sx={{
-                      width: 24,
-                      height: 24,
-                      color: '#60a5fa',
-                      flexShrink: 0,
-                    }}
-                  />
-                  <Box sx={{ textAlign: 'left' }}>
-                    <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem' }}>
-                      Insured &
-                    </Typography>
-                    <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.875rem' }}>
-                      Accredited
-                    </Typography>
-                  </Box>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, minWidth: '180px', justifyContent: 'center' }}>
+                  <ShieldOutlinedIcon sx={{ width: 28, height: 28, color: '#22c55e', strokeWidth: 2 }} />
+                  <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem', whiteSpace: 'nowrap', lineHeight: 1, letterSpacing: 0.2 }}>
+                    Insured & Accredited
+                  </Typography>
                 </Box>
               </Box>
             </Grid>
 
             {/* Right Column - Registration Widget */}
-            <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-end', pt: { xs: 8, md: 4 }, transform: { xs: 'translateX(0)', md: 'translateX(80px)' } }}>
+            <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: { xs: 'flex-start', md: 'flex-start' }, justifyContent: { xs: 'center', md: 'flex-end' }, pt: { xs: 4, sm: 6, md: 4 }, transform: { xs: 'translateX(0)', md: 'translateX(80px)' }, width: '100%' }}>
               <Box
                 sx={{
                   bgcolor: 'white',
                   borderRadius: '20px',
-                  p: { xs: 1.5, md: 2 },
+                  p: { xs: 1, sm: 1.5, md: 2 },
                   boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2)',
                   width: '100%',
-                  maxWidth: '550px',
+                  maxWidth: { xs: '98vw', sm: '90vw', md: '550px' },
+                  minWidth: { xs: '90vw', sm: '350px', md: '350px' },
                 }}
               >
                 {/* Badge */}
@@ -557,7 +690,7 @@ const LandingPage = () => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            mt: -28,
+            mt: -32,
           }}
         >
           <Typography
@@ -612,18 +745,16 @@ const LandingPage = () => {
           position: 'relative',
           zIndex: 10,
           bgcolor: '#ffffff',
-          minHeight: '100vh',
-          py: 12,
+          py: 4,
           px: { xs: 2, md: 5 },
           display: 'flex',
-          alignItems: 'flex-start',
+          alignItems: 'center',
           justifyContent: 'center',
-          pt: { xs: 4, md: 5 },
         }}
       >
         <Container maxWidth="lg">
           {/* Section Header */}
-          <Box sx={{ textAlign: 'center', mb: 8, ml: -6 }}>
+          <Box sx={{ textAlign: 'center', mb: 3 }}>
             {/* Badge */}
             <Box
               sx={{
@@ -671,6 +802,20 @@ const LandingPage = () => {
               Each AllFix brand specializes in a distinct service area, staffed by trained, background-checked professionals with industry certifications.
             </Typography>
           </Box>
+
+          {/* Services Grid */}
+          <Grid container spacing={2} sx={{ mt: 2 }}>
+            {services.map((service, index) => (
+              <Grid item xs={12} md={6} lg={3} key={index} sx={{ display: 'flex' }}>
+                <Box sx={{ width: '100%', maxWidth: '260px' }}>
+                  <ServiceCard
+                    service={service}
+                    onServiceClick={(svc) => console.log('Service clicked:', svc)}
+                  />
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
         </Container>
       </Box>
     </Box>
