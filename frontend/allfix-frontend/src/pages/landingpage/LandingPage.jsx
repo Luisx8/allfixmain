@@ -1,5 +1,120 @@
+import { Link } from 'react-router-dom';
+import { Box, Typography, Button, Container, Grid, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemButton, TextField, MenuItem } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import StarIcon from '@mui/icons-material/Star';
+import SecurityIcon from '@mui/icons-material/Security';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
-// ...existing code...
+const services = [
+  {
+    icon: SecurityIcon,
+    brand: 'CoolFix',
+    tagline: 'Air-con & HVAC Specialists',
+    description: 'Cleaning, installation, repair, and preventive maintenance for all aircon brands and HVAC systems.',
+    image: 'https://via.placeholder.com/350x200?text=CoolFix',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['AC Cleaning', 'Installation', 'Gas Recharge', 'Emergency Repair'],
+  },
+  {
+    icon: SecurityIcon,
+    brand: 'ElectroFix',
+    tagline: 'Electrical & Lighting Experts',
+    description: 'Safe and reliable electrical services including repairs, installations, and emergency electrical support.',
+    image: 'https://via.placeholder.com/350x200?text=ElectroFix',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['Wiring', 'Installation', 'Troubleshooting', 'Safety Inspection'],
+  },
+  {
+    icon: SecurityIcon,
+    brand: 'CleanFix',
+    tagline: 'Deep Cleaning & Sanitization',
+    description: 'Comprehensive cleaning solutions for homes and offices with eco-friendly products and professional techniques.',
+    image: 'https://via.placeholder.com/350x200?text=CleanFix',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['Deep Cleaning', 'Sanitization', 'Carpet Care', 'Regular Maintenance'],
+  },
+  {
+    icon: SecurityIcon,
+    brand: 'PlumbFix',
+    tagline: 'Professional Plumbing Solutions',
+    description: 'Expert plumbing services including repairs, installations, and maintenance for residential and commercial properties.',
+    image: 'https://via.placeholder.com/350x200?text=PlumbFix',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['Pipe Repair', 'Installation', 'Leak Detection', 'Drain Cleaning'],
+  },
+  {
+    icon: SecurityIcon,
+    brand: 'LaundryFix',
+    tagline: 'Professional Laundry Services',
+    description: 'Complete laundry and dry cleaning solutions with premium care for all fabric types and special garments.',
+    image: 'https://via.placeholder.com/350x200?text=LaundryFix',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['Dry Cleaning', 'Laundry Service', 'Stain Removal', 'Alterations'],
+  },
+  {
+    icon: SecurityIcon,
+    brand: 'CareFix',
+    tagline: 'Home Care & Maintenance',
+    description: 'Comprehensive home care services including renovations, maintenance, and handyman solutions for comfort.',
+    image: 'https://via.placeholder.com/350x200?text=CareFix',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['Repairs', 'Maintenance', 'Renovations', 'Inspections'],
+  },
+  {
+    icon: SecurityIcon,
+    brand: 'MoveFix',
+    tagline: 'Professional Moving Solutions',
+    description: 'Safe and reliable moving services with professional packing, transport, and setup for residential and office relocations.',
+    image: 'https://via.placeholder.com/350x200?text=MoveFix',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['Packing', 'Loading', 'Transport', 'Unpacking'],
+  },
+  {
+    icon: SecurityIcon,
+    brand: 'PetFix',
+    tagline: 'Pet Care & Grooming',
+    description: 'Professional pet grooming, boarding, and veterinary care services for your beloved pets with love and expertise.',
+    image: 'https://via.placeholder.com/350x200?text=PetFix',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['Grooming', 'Boarding', 'Bathing', 'Nail Trimming'],
+  },
+];
 
 const ServiceCard = ({ service, onServiceClick }) => {
   const [hovered, setHovered] = useState(false);
@@ -241,15 +356,15 @@ const LandingPage = () => {
           borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.2)' : 'none',
         }}
       >
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, sm: 3, md: 5, lg: 8 } }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, md: 5 } }}>
           {/* Logo */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, ml: { xs: 2, sm: 4, md: 8, lg: 12 } }}>
-            <Box sx={{ width: { xs: 36, sm: 40, md: 48 }, height: { xs: 36, sm: 40, md: 48 }, bgcolor: 'grey.400', borderRadius: '50%' }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, ml: { xs: 12, md: 16 } }}>
+            <Box sx={{ width: 48, height: 48, bgcolor: 'grey.400', borderRadius: '50%' }} />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant="h5" fontWeight="bold" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, mb: 0.5, fontSize: { xs: '1.1rem', sm: '1.3rem', md: '1.5rem' }, transition: 'color 0.3s ease' }}>
+              <Typography variant="h5" fontWeight="bold" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, mb: 0.5, transition: 'color 0.3s ease' }}>
                 AllFix.ph
               </Typography>
-              <Typography variant="overline" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, fontSize: { xs: '0.55rem', sm: '0.6rem', md: '0.65rem' }, letterSpacing: 0.5, transition: 'color 0.3s ease' }}>
+              <Typography variant="overline" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, fontSize: '0.65rem', letterSpacing: 0.5, transition: 'color 0.3s ease' }}>
                 PROPERTY CARE EXPERTS
               </Typography>
             </Box>
@@ -364,7 +479,7 @@ const LandingPage = () => {
         />
 
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 10, pb: 8 }}>
-          <Grid container spacing={{ xs: 0, sm: 2, md: 4 }} alignItems="center" justifyContent="center" sx={{ mt: { xs: 6, sm: 8, md: 10 }, mb: { xs: 2, sm: 4, md: 6 } }}>
+          <Grid container spacing={6} alignItems="flex-start" sx={{ width: '100%', minHeight: '100vh' }}>
             {/* Left Column - Hero Content */}
             <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: 3, pt: { xs: -20, md: -32 } }}>
               {/* Badge */}
@@ -407,13 +522,11 @@ const LandingPage = () => {
               {/* Main Heading */}
               <Typography
                 sx={{
-                  fontSize: { xs: '2rem', sm: '2.5rem', md: '3.5rem', lg: '4rem' },
+                  fontSize: { xs: '2.25rem', sm: '2.75rem', md: '3.5rem', lg: '4rem' },
                   fontWeight: 900,
                   color: 'white',
-                  mb: { xs: 2, sm: 3 },
+                  mb: 3,
                   lineHeight: 1.1,
-                  wordBreak: 'break-word',
-                  maxWidth: { xs: '95vw', sm: '90vw', md: '100%' },
                 }}
               >
                 Hassle-Free <br /> Property Care, <br /> Done Right.
@@ -433,46 +546,80 @@ const LandingPage = () => {
               </Typography>
 
               {/* Stats */}
-              <Box sx={{ display: 'flex', flexDirection: 'row', gap: 0, mt: { xs: -4, sm: -6, md: -8 }, ml: { xs: 0, sm: -2, md: -4 }, borderRadius: '12px', p: { xs: '10px 8px', sm: '16px 16px', md: '20px 24px' }, alignItems: 'center', justifyContent: 'flex-start', width: '100%', maxWidth: { xs: '98vw', sm: '90vw', md: '550px' }, flexWrap: 'nowrap', overflowX: 'auto' }}>
+              <Box sx={{ display: 'flex', flexDirection: 'row', gap: { xs: 4, md: 6 }, flexWrap: 'wrap', mt: -4 }}>
                 {/* Stat 1 */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, minWidth: '180px', justifyContent: 'center' }}>
-                  <CheckCircleOutlineIcon sx={{ width: 28, height: 28, color: '#22c55e', strokeWidth: 2 }} />
-                  <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem', whiteSpace: 'nowrap', lineHeight: 1, letterSpacing: 0.2 }}>
-                    5,000+ Verified Pros
-                  </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <CheckCircleIcon
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      color: '#4ade80',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <Box sx={{ textAlign: 'left' }}>
+                    <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem' }}>
+                      5,000+
+                    </Typography>
+                    <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.875rem' }}>
+                      Verified Pros
+                    </Typography>
+                  </Box>
                 </Box>
-                {/* Divider */}
-                <Box sx={{ width: '1px', height: 32, bgcolor: 'rgba(255,255,255,0.25)', mx: 2, alignSelf: 'center' }} />
+
                 {/* Stat 2 */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, minWidth: '180px', justifyContent: 'center' }}>
-                  <StarOutlineIcon sx={{ width: 28, height: 28, color: '#22c55e', strokeWidth: 2 }} />
-                  <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem', whiteSpace: 'nowrap', lineHeight: 1, letterSpacing: 0.2 }}>
-                    4.9★ Average Rating
-                  </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <StarIcon
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      color: '#facc15',
+                      flexShrink: 0,
+                      fill: '#facc15',
+                    }}
+                  />
+                  <Box sx={{ textAlign: 'left' }}>
+                    <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem' }}>
+                      4.9★
+                    </Typography>
+                    <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.875rem' }}>
+                      Average Rating
+                    </Typography>
+                  </Box>
                 </Box>
-                {/* Divider */}
-                <Box sx={{ width: '1px', height: 32, bgcolor: 'rgba(255,255,255,0.25)', mx: 2, alignSelf: 'center' }} />
+
                 {/* Stat 3 */}
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, minWidth: '180px', justifyContent: 'center' }}>
-                  <ShieldOutlinedIcon sx={{ width: 28, height: 28, color: '#22c55e', strokeWidth: 2 }} />
-                  <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem', whiteSpace: 'nowrap', lineHeight: 1, letterSpacing: 0.2 }}>
-                    Insured & Accredited
-                  </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <SecurityIcon
+                    sx={{
+                      width: 24,
+                      height: 24,
+                      color: '#60a5fa',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <Box sx={{ textAlign: 'left' }}>
+                    <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1rem' }}>
+                      Insured &
+                    </Typography>
+                    <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.875rem' }}>
+                      Accredited
+                    </Typography>
+                  </Box>
                 </Box>
               </Box>
             </Grid>
 
             {/* Right Column - Registration Widget */}
-            <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: { xs: 'flex-start', md: 'flex-start' }, justifyContent: { xs: 'center', md: 'flex-end' }, pt: { xs: 4, sm: 6, md: 4 }, transform: { xs: 'translateX(0)', md: 'translateX(80px)' }, width: '100%' }}>
+            <Grid item xs={12} md={6} sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-end', pt: { xs: 8, md: 4 }, transform: { xs: 'translateX(0)', md: 'translateX(80px)' } }}>
               <Box
                 sx={{
                   bgcolor: 'white',
                   borderRadius: '20px',
-                  p: { xs: 1, sm: 1.5, md: 2 },
+                  p: { xs: 1.5, md: 2 },
                   boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2)',
                   width: '100%',
-                  maxWidth: { xs: '98vw', sm: '90vw', md: '550px' },
-                  minWidth: { xs: '90vw', sm: '350px', md: '350px' },
+                  maxWidth: '550px',
                 }}
               >
                 {/* Badge */}
@@ -690,7 +837,7 @@ const LandingPage = () => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            mt: -32,
+            mt: -28,
           }}
         >
           <Typography
