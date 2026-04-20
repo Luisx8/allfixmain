@@ -17,6 +17,7 @@ import VendorApplicationSubmitted from './pages/landingpage/VendorApplicationSub
 import PersonnelLogin from './pages/landingpage/PersonnelLogin'
 import AdminLogin from './pages/landingpage/AdminLogin'
 import ForgotPassword from './pages/landingpage/ForgotPassword'
+import PmsTrustedBridge from './pages/landingpage/PmsTrustedBridge'
 
 // Protected Pages
 import AdminPage from './pages/adminpage/AdminPage'
@@ -44,6 +45,16 @@ function App() {
         <Route path="/signup" element={<CustomerSignup />} />
         <Route path="/confirm-signup" element={<ConfirmSignup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+
+        {/* OIDC callback route for Hosted UI code+PKCE flow */}
+        <Route path="/auth/callback" element={
+          <LandingRedirect>
+            <LandingPage />
+          </LandingRedirect>
+        } />
+
+        {/* PMS trusted handoff bridge (no Hosted UI) */}
+        <Route path="/auth/pms-trusted" element={<PmsTrustedBridge />} />
 
         {/* Vendor Auth Routes */}
         <Route path="/vendor-login" element={

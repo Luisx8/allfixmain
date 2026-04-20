@@ -2,8 +2,14 @@ package ph.allfix.rework;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackages = {
+    "ph.allfix.rework.config",
+    "ph.allfix.rework.controller",
+    "ph.allfix.rework.service"
+})
 public class ReworkApplication {
 
 	public static void main(String[] args) {

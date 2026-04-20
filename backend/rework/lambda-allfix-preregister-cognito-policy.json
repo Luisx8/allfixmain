@@ -1,0 +1,16 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCognitoAdminForAllfixPreregister",
+      "Effect": "Allow",
+      "Action": [
+        "cognito-idp:ListUsers",
+        "cognito-idp:AdminCreateUser",
+        "cognito-idp:AdminUpdateUserAttributes",
+        "cognito-idp:AdminAddUserToGroup"
+      ],
+      "Resource": "arn:aws:cognito-idp:ap-southeast-2:606363620461:userpool/ap-southeast-2_p7mounHZf"
+    }
+  ]
+}

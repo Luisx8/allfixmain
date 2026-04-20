@@ -1,4 +1,6 @@
 spring:
+  config:
+    import: optional:file:.env.local[.properties]
   application:
     name: rework
 
@@ -26,9 +28,9 @@ spring:
             jwk-set-uri: https://cognito-idp.${cognito.region}.amazonaws.com/${cognito.user-pool-id}/.well-known/jwks.json
 
   redis:
-    host: ${redis.host:localhost}
-    port: ${redis.port:6379}
-    password: ${redis.password:}
+    host: ${REDIS_HOST:${redis.host:localhost}}
+    port: ${REDIS_PORT:${redis.port:6379}}
+    password: ${REDIS_PASSWORD:${redis.password:}}
     timeout: 2000ms
     jedis:
       pool:
@@ -61,7 +63,7 @@ cognito:
   user-pool-id: ${COGNITO_USER_POOL_ID:ap-southeast-2_p7mounHZf}
   client-id: ${COGNITO_CLIENT_ID:61106lhm2fgpp3aqo2ighth8hd}
   scope: ${COGNITO_SCOPE:openid,email}
-  client-secret: ${COGNITO_CLIENT_SECRET}
+  client-secret: ${COGNITO_CLIENT_SECRET:local-dev-secret}
   domain: ${COGNITO_DOMAIN:ap-southeast-2p7mounhzf.auth.ap-southeast-2.amazoncognito.com}
   pms-custom-attribute-name: ${COGNITO_PMS_CUSTOM_ATTRIBUTE_NAME:}
   dummy-email-domain: ${COGNITO_DUMMY_EMAIL_DOMAIN:allfix.internal}
@@ -70,7 +72,7 @@ cognito:
 app:
   backend-url: ${BACKEND_URL:http://localhost:8080}
   frontend-url: ${FRONTEND_URL:http://localhost:5173}
-  cognito-redirect-uri: ${BACKEND_URL:http://localhost:8080}/login/oauth2/code/cognito
+  cognito-redirect-uri: ${COGNITO_REDIRECT_URI:${BACKEND_URL:http://localhost:8080}/login/oauth2/code/cognito}
 
 # PMS Integration
 pms:
@@ -78,6 +80,15 @@ pms:
   trusted-sso-secret: ${PMS_TRUSTED_SSO_SECRET:38486ced33de7619ae549021035fc9ce3e86df5606ffeca01739f14716b6f254}
   state-token-ttl: 300
   auto-verify-email: ${PMS_AUTO_VERIFY_EMAIL:true}
+
+# Auth Provisioning Strategy
+auth:
+  # When provided, this Lambda is invoked before Cognito provisioning.
+  lambda-auth-arn: ${LAMBDA_AUTH_ARN:}
+  # If true, backend trusts Lambda as provisioning source of truth and skips direct Cognito admin writes.
+  lambda-only-provisioning: ${AUTH_LAMBDA_ONLY_PROVISIONING:false}
+  # Enforce Cognito provisioning as the source of truth before any session cache write.
+  strict-cognito-provisioning: ${STRICT_COGNITO_PROVISIONING:true}
 
 # Server
 server:
