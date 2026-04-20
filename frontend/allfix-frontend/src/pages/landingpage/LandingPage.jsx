@@ -1,6 +1,58 @@
 import { Link } from 'react-router-dom';
 import { Box, Typography, Button, Container, Grid, AppBar, Toolbar, IconButton, Drawer, List, ListItem, ListItemButton, TextField, MenuItem } from '@mui/material';
 import React, { useState, useEffect } from 'react';
+
+// --- Testimonial Data ---
+const testimonials = [
+  {
+    initials: 'MS',
+    name: 'Maria Santos',
+    role: 'Homeowner, Makati City',
+    highlight: 'CoolFix – AC Cleaning',
+    highlightColor: '#eaf2fc',
+    highlightText: '#23406e',
+    avatarBg: '#eaf2fc',
+    avatarText: '#23406e',
+    text: '"Napakaayos ng trabaho! The CoolFix technician arrived exactly on time, wore PPE, and cleaned our 3 aircon units thoroughly. The apartment feels so much cooler now. Highly recommend!"',
+    mini: 'Napakaayos ng trabaho! The CoolFix technician arrived exactly on time, wore PPE...'
+  },
+  {
+    initials: 'RC',
+    name: 'Engr. Roberto Cruz',
+    role: 'Property Manager, Pasig',
+    highlight: 'SaniFix – Deep Cleaning',
+    highlightColor: '#eaf2fc',
+    highlightText: '#23406e',
+    avatarBg: '#eaf2fc',
+    avatarText: '#23406e',
+    text: '"We\'ve been managing commercial properties for 10 years, and AllFix SaniFix is the most reliable, professional team we\'ve worked with. Highly recommended for offices!"',
+    mini: "We've been managing commercial properties for 10 years, and AllFix SaniFix is the most..."
+  },
+  {
+    initials: 'AR',
+    name: 'Anna Reyes',
+    role: 'IT Manager, Mandaluyong',
+    highlight: 'TechFix – IT Support',
+    highlightColor: '#e1d5fa',
+    highlightText: '#6c3fcf',
+    avatarBg: '#e1d5fa',
+    avatarText: '#6c3fcf',
+    text: '"TechFix set up our entire CCTV and network infrastructure in one day. The technician was knowledgeable and courteous. Will book again!"',
+    mini: 'TechFix set up our entire CCTV and network infrastructure in one day. The technicia...'
+  },
+  {
+    initials: 'MG',
+    name: 'Mark Gonzales',
+    role: 'Homeowner, Quezon City',
+    highlight: 'HomeFix – Renovation',
+    highlightColor: '#ffe082',
+    highlightText: '#23406e',
+    avatarBg: '#ffe082',
+    avatarText: '#23406e',
+    text: '"HomeFix transformed our bathroom in just 4 days. The tiling was perfect, no leaks, and the team cleaned up after. Excellent work!"',
+    mini: 'HomeFix transformed our bathroom in just 4 days. The tiling was perfect, no leaks, and...'
+  },
+];
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -9,6 +61,7 @@ import SecurityIcon from '@mui/icons-material/Security';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import DescriptionIcon from '@mui/icons-material/Description';
+
 
 const services = [
   {
@@ -303,6 +356,9 @@ const ServiceCard = ({ service, onServiceClick }) => {
 };
 
 const LandingPage = () => {
+  const [testimonialIdx, setTestimonialIdx] = useState(0);
+  const handlePrev = () => setTestimonialIdx((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  const handleNext = () => setTestimonialIdx((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -1364,7 +1420,7 @@ const LandingPage = () => {
                 display: 'flex',
                 alignItems: 'center',
                 px: { xs: 2, md: 4 },
-                py: { xs: 2.5, md: 3 }, // Increased vertical padding
+                py: { xs: 2.5, md: 3 },
                 boxShadow: '0 2px 12px rgba(16,53,95,0.10)',
                 gap: 2,
                 minHeight: 110,
@@ -1419,6 +1475,194 @@ const LandingPage = () => {
                     VIEW CREDENTIALS
                   </Button>
                 </Box>
+              </Box>
+              {/* Testimonials Section */}
+              <Box id="testimonials" sx={{
+                position: 'relative',
+                left: '50%',
+                right: '50%',
+                ml: '-50vw',
+                mr: '-50vw',
+                width: '100vw',
+                bgcolor: '#10355f',
+                py: { xs: 10, md: 14 },
+                mt: { xs: 8, md: 10 },
+                mb: { xs: 8, md: 10 },
+                px: 0,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'column',
+                minHeight: '480px',
+                overflow: 'hidden',
+              }}>
+                <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 10 }}>
+                  <Box sx={{ textAlign: 'center', mb: 4 }}>
+                    <Box sx={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      backgroundColor: '#23406e',
+                      color: 'white',
+                      borderRadius: '999px',
+                      px: 3,
+                      py: 1.2,
+                      fontSize: '1.1rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.08em',
+                      boxShadow: 1,
+                      textTransform: 'uppercase',
+                      mb: 2,
+                    }}>
+                      CLIENT STORIES
+                    </Box>
+                    <Typography sx={{
+                      fontSize: { xs: '2rem', md: '2.5rem' },
+                      fontWeight: 900,
+                      color: 'white',
+                      mb: 1,
+                      lineHeight: 1.2,
+                    }}>
+                      Trusted by Thousands of Filipino Homeowners
+                    </Typography>
+                    <Typography sx={{
+                      color: 'rgba(191, 219, 254, 1)',
+                      fontSize: { xs: '1rem', md: '1.15rem' },
+                      maxWidth: '700px',
+                      mx: 'auto',
+                      lineHeight: 1.6,
+                    }}>
+                      Real reviews from verified clients across Metro Manila. We let our work do the talking.
+                    </Typography>
+                  </Box>
+
+                  {/* Carousel-like testimonial card */}
+                  <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mb: 5,
+                  }}>
+                    <Box sx={{
+                      bgcolor: 'white',
+                      borderRadius: 4,
+                      boxShadow: '0 8px 32px rgba(16,53,95,0.18)',
+                      p: { xs: 3, md: 5 },
+                      width: { xs: '90vw', md: '800px' },
+                      maxWidth: '800px',
+                      minWidth: { xs: '90vw', md: '800px' },
+                      minHeight: { xs: 260, md: 220 },
+                      height: { xs: 'auto', md: '220px' },
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      mb: 2,
+                      position: 'relative',
+                      transition: 'none',
+                    }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 1 }}>
+                        <Box sx={{
+                          width: 56,
+                          height: 56,
+                          borderRadius: '50%',
+                          background: testimonials[testimonialIdx].avatarBg,
+                          color: testimonials[testimonialIdx].avatarText,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontWeight: 900,
+                          fontSize: '1.3rem',
+                        }}>
+                          {testimonials[testimonialIdx].initials}
+                        </Box>
+                        <Box sx={{ textAlign: 'left' }}>
+                          <Typography sx={{ fontWeight: 900, color: '#10355f', fontSize: '1.1rem', mb: 0 }}>
+                            {testimonials[testimonialIdx].name}
+                          </Typography>
+                          <Typography sx={{ color: '#42526e', fontSize: '0.95rem', fontWeight: 400 }}>
+                            {testimonials[testimonialIdx].role}
+                          </Typography>
+                        </Box>
+                        <Box sx={{ flex: 1 }} />
+                        <Box sx={{
+                          bgcolor: testimonials[testimonialIdx].highlightColor,
+                          color: testimonials[testimonialIdx].highlightText,
+                          borderRadius: '999px',
+                          px: 2,
+                          py: 0.5,
+                          fontWeight: 700,
+                          fontSize: '0.95rem',
+                          ml: 2,
+                        }}>
+                          {testimonials[testimonialIdx].highlight}
+                        </Box>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style={{ position: 'absolute', top: 18, right: 24 }} xmlns="http://www.w3.org/2000/svg">
+                          <text x="0" y="24" fontSize="32" fill="#eaf2fc">“</text>
+                        </svg>
+                      </Box>
+                      <Typography sx={{ color: '#222', fontSize: '1.18rem', fontWeight: 500, mt: 2, mb: 1.5, lineHeight: 1.7 }}>
+                        {testimonials[testimonialIdx].text}
+                      </Typography>
+                    </Box>
+
+                    {/* Carousel dots and arrows */}
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 1 }}>
+                      <Button onClick={handlePrev} sx={{ minWidth: 0, p: 1, borderRadius: '50%', bgcolor: 'rgba(255,255,255,0.12)', color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.22)' } }}>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+                      </Button>
+                      <Box sx={{ display: 'flex', gap: 1 }}>
+                        {testimonials.map((_, idx) => (
+                          <Box key={idx} sx={{ width: 12, height: 12, borderRadius: '50%', bgcolor: 'white', opacity: testimonialIdx === idx ? 0.8 : 0.4 }} />
+                        ))}
+                      </Box>
+                      <Button onClick={handleNext} sx={{ minWidth: 0, p: 1, borderRadius: '50%', bgcolor: 'rgba(255,255,255,0.12)', color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.22)' } }}>
+                        <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                      </Button>
+                    </Box>
+                  </Box>
+
+                  {/* Mini testimonial cards row - 4 in a row, centered, compact, highlight active */}
+                  <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    gap: 3,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    mt: 4,
+                    width: '100%',
+                    maxWidth: '1200px',
+                    mx: 'auto',
+                  }}>
+                    {testimonials.map((t, idx) => (
+                      <Box key={t.initials}
+                        sx={{
+                          bgcolor: 'rgba(255,255,255,0.10)',
+                          borderRadius: 3,
+                          p: 2.2,
+                          minWidth: 260,
+                          maxWidth: 280,
+                          color: 'white',
+                          fontWeight: 700,
+                          boxShadow: '0 2px 8px rgba(16,53,95,0.10)',
+                          border: testimonialIdx === idx ? '2px solid #eaf2fc' : '2px solid transparent',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: 1,
+                          opacity: testimonialIdx === idx ? 1 : 0.7,
+                          transition: 'border 0.2s, opacity 0.2s',
+                        }}
+                      >
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <Box sx={{ width: 36, height: 36, borderRadius: '50%', bgcolor: t.avatarBg, color: t.avatarText, fontWeight: 900, fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{t.initials}</Box>
+                          <Typography sx={{ fontWeight: 700, color: 'white', fontSize: '1rem' }}>{t.name}</Typography>
+                        </Box>
+                        <Typography sx={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.93rem', mt: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          {t.mini}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </Container>
               </Box>
             </Box>
           </Box>
