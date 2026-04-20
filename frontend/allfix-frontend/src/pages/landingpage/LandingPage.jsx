@@ -115,6 +115,19 @@ const services = [
     pillText: '#2E5BA8',
     services: ['Grooming', 'Boarding', 'Bathing', 'Nail Trimming'],
   },
+  {
+    icon: DescriptionIcon,
+    brand: 'TechFix',
+    tagline: 'IT & Gadget Support',
+    description: 'On-demand IT support for computers, WiFi, smart home devices, and gadget troubleshooting for home and office.',
+    image: 'https://via.placeholder.com/350x200?text=TechFix',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['PC Setup', 'WiFi Help', 'Smart Home', 'Device Repair'],
+  },
 ];
 
 const ServiceCard = ({ service, onServiceClick }) => {
@@ -908,20 +921,20 @@ const LandingPage = () => {
               sx={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: 1,
-                backgroundColor: '#E0EFFE',
-                color: '#10355f',
-                borderRadius: '9999px',
-                px: 3,
-                py: 1,
-                fontSize: '0.75rem',
-                fontWeight: 900,
-                letterSpacing: '0.05em',
+                backgroundColor: '#eaf2fc',
+                color: '#23406e',
+                borderRadius: '999px',
+                px: 4,
+                py: 1.2,
+                fontSize: '1.1rem',
+                fontWeight: 700,
+                letterSpacing: '0.08em',
+                boxShadow: 1,
                 textTransform: 'uppercase',
                 mb: 2,
               }}
             >
-              Our Services
+              OUR SERVICES
             </Box>
 
             {/* Heading */}
@@ -951,19 +964,55 @@ const LandingPage = () => {
             </Typography>
           </Box>
 
-          {/* Services Grid */}
-          <Grid container spacing={2} sx={{ mt: 2 }}>
-            {services.map((service, index) => (
-              <Grid item xs={12} md={6} lg={3} key={index} sx={{ display: 'flex' }}>
-                <Box sx={{ width: '100%', maxWidth: '260px' }}>
+          {/* Services Grid - 3 columns on desktop, horizontal scroll on mobile */}
+          <Box
+            sx={{
+              width: '100%',
+              mt: 2,
+              overflowX: { xs: 'auto', md: 'visible' },
+              pb: { xs: 2, md: 0 },
+            }}
+          >
+            <Box
+              sx={{
+                display: { xs: 'flex', md: 'none' },
+                gap: 2,
+                minWidth: 0,
+                overflowX: 'auto',
+                scrollSnapType: 'x mandatory',
+                px: 1,
+              }}
+            >
+              {services.map((service, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    minWidth: '320px',
+                    maxWidth: '90vw',
+                    flex: '0 0 auto',
+                    scrollSnapAlign: 'start',
+                  }}
+                >
                   <ServiceCard
                     service={service}
                     onServiceClick={(svc) => console.log('Service clicked:', svc)}
                   />
                 </Box>
-              </Grid>
-            ))}
-          </Grid>
+              ))}
+            </Box>
+            <Grid container spacing={3} sx={{ display: { xs: 'none', md: 'flex' } }}>
+              {services.map((service, index) => (
+                <Grid item xs={12} md={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Box sx={{ width: '100%', maxWidth: '360px' }}>
+                    <ServiceCard
+                      service={service}
+                      onServiceClick={(svc) => console.log('Service clicked:', svc)}
+                    />
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
         </Container>
       </Box>
         {/* How It Works Section - Redesigned */}
@@ -1218,6 +1267,161 @@ const LandingPage = () => {
               </Button>
             </Box>
           </Container>
+        </Box>
+
+        {/* Why AllFix Section - Fullscreen, white background to match Services section */}
+        <Box sx={{ width: '100vw', position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', bgcolor: '#fff', py: { xs: 8, md: 10 }, px: 0, display: 'flex', justifyContent: 'center' }}>
+          <Box sx={{ width: '100%', maxWidth: 1400, mx: 'auto', px: { xs: 2, md: 6 } }}>
+            <Box id="why-allfix">
+              {/* Section Badge */}
+              <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
+                <Box sx={{ bgcolor: '#eaf2fc', color: '#23406e', fontWeight: 700, fontSize: '1.1rem', px: 4, py: 1.2, borderRadius: '999px', letterSpacing: '0.08em', boxShadow: 1 }}>
+                  WHY ALLFIX
+                </Box>
+              </Box>
+              {/* Main Heading */}
+              <Typography sx={{ fontWeight: 900, fontSize: { xs: '2rem', md: '2.4rem' }, textAlign: 'center', mb: 2, color: '#111', lineHeight: 1.1 }}>
+                The Safest Choice for <span style={{ color: '#23406e' }}>Your Home & Office</span>
+              </Typography>
+              <Typography sx={{ color: '#42526e', textAlign: 'center', fontSize: { xs: '1rem', md: '1.08rem' }, mb: 6, maxWidth: '700px', mx: 'auto', lineHeight: 1.6, fontWeight: 500 }}>
+                We set the standard for professional service delivery in the Philippines — built on trust, safety, and genuine expertise.
+              </Typography>
+
+              {/* Stats Row - Card style, compact */}
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', mb: 4 }}>
+                <Box sx={{ display: 'flex', flex: 1, minWidth: 290, maxWidth: 1150, bgcolor: '#fff', borderRadius: 3, boxShadow: '0 4px 14px rgba(16,53,95,0.10)', overflow: 'hidden', mx: 'auto' }}>
+                  <Box sx={{ flex: 1, p: { xs: 1.8, md: 2.5 }, textAlign: 'center', borderRight: { xs: 'none', md: '1px solid #e5eaf2' } }}>
+                    <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.32rem', md: '1.8rem' }, color: '#23406e', mb: 0.4, letterSpacing: '-0.03em' }}>50K+</Typography>
+                    <Typography sx={{ color: '#42526e', fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.05em' }}>JOBS COMPLETED</Typography>
+                  </Box>
+                  <Box sx={{ flex: 1, p: { xs: 1.8, md: 2.5 }, textAlign: 'center', borderRight: { xs: 'none', md: '1px solid #e5eaf2' } }}>
+                    <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.32rem', md: '1.8rem' }, color: '#23406e', mb: 0.4, letterSpacing: '-0.03em' }}>5,200+</Typography>
+                    <Typography sx={{ color: '#42526e', fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.05em' }}>VERIFIED PROS</Typography>
+                  </Box>
+                  <Box sx={{ flex: 1, p: { xs: 1.8, md: 2.5 }, textAlign: 'center', borderRight: { xs: 'none', md: '1px solid #e5eaf2' } }}>
+                    <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.32rem', md: '1.8rem' }, color: '#23406e', mb: 0.4, letterSpacing: '-0.03em' }}>4.9★</Typography>
+                    <Typography sx={{ color: '#42526e', fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.05em' }}>AVERAGE RATING</Typography>
+                  </Box>
+                  <Box sx={{ flex: 1, p: { xs: 1.8, md: 2.5 }, textAlign: 'center' }}>
+                    <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.32rem', md: '1.8rem' }, color: '#23406e', mb: 0.4, letterSpacing: '-0.03em' }}>98%</Typography>
+                    <Typography sx={{ color: '#42526e', fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.05em' }}>CLIENT SATISFACTION</Typography>
+                  </Box>
+                </Box>
+              </Box>
+
+              {/* Features Grid - Only Verified & Background-Checked */}
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 2, md: 2 }, justifyContent: 'center', maxWidth: 1200, mx: 'auto' }}>
+                <Box sx={{ flex: '1 1 340px', minWidth: 260, maxWidth: 400, minHeight: { xs: 110, md: 130 }, bgcolor: '#fff', borderRadius: 2, p: 2, mb: { xs: 2, md: 2 }, boxShadow: '0 1px 6px rgba(16,53,95,0.07)', display: 'flex', gap: 1.5, alignItems: 'flex-start', border: '1px solid #e5eaf2' }}>
+                  <CheckCircleIcon sx={{ color: '#b6d2f7', fontSize: 26, mt: 0.5 }} />
+                  <Box>
+                    <Typography fontWeight={700} color="#23406e" fontSize="1rem">Verified & Background-Checked</Typography>
+                    <Typography color="#42526e" fontSize="0.93rem">Every professional undergoes NBI clearance, skills assessment, and identity verification before joining the AllFix network.</Typography>
+                  </Box>
+                </Box>
+                <Box sx={{ flex: '1 1 340px', minWidth: 260, maxWidth: 400, minHeight: { xs: 110, md: 130 }, bgcolor: '#fff', borderRadius: 2, p: 2, mb: { xs: 2, md: 2 }, boxShadow: '0 1px 6px rgba(16,53,95,0.07)', display: 'flex', gap: 1.5, alignItems: 'flex-start', border: '1px solid #e5eaf2' }}>
+                  <CheckCircleIcon sx={{ color: '#b6d2f7', fontSize: 26, mt: 0.5 }} />
+                  <Box>
+                    <Typography fontWeight={700} color="#23406e" fontSize="1rem">Insured for Your Protection</Typography>
+                    <Typography color="#42526e" fontSize="0.93rem">All AllFix jobs carry third-party liability insurance. If anything goes wrong, you're fully covered — no questions asked.</Typography>
+                  </Box>
+                </Box>
+                <Box sx={{ flex: '1 1 340px', minWidth: 260, maxWidth: 400, minHeight: { xs: 110, md: 130 }, bgcolor: '#fff', borderRadius: 2, p: 2, mb: { xs: 2, md: 2 }, boxShadow: '0 1px 6px rgba(16,53,95,0.07)', display: 'flex', gap: 1.5, alignItems: 'flex-start', border: '1px solid #e5eaf2' }}>
+                  <CheckCircleIcon sx={{ color: '#b6d2f7', fontSize: 26, mt: 0.5 }} />
+                  <Box>
+                    <Typography fontWeight={700} color="#23406e" fontSize="1rem">On-Time Guarantee</Typography>
+                    <Typography color="#42526e" fontSize="0.93rem">Our pros respect your schedule. If they're late by more than 15 minutes, you get a service discount — automatically.</Typography>
+                  </Box>
+                </Box>
+                <Box sx={{ flex: '1 1 340px', minWidth: 260, maxWidth: 400, minHeight: { xs: 110, md: 130 }, bgcolor: '#fff', borderRadius: 2, p: 2, mb: { xs: 2, md: 2 }, boxShadow: '0 1px 6px rgba(16,53,95,0.07)', display: 'flex', gap: 1.5, alignItems: 'flex-start', border: '1px solid #e5eaf2' }}>
+                  <CheckCircleIcon sx={{ color: '#b6d2f7', fontSize: 26, mt: 0.5 }} />
+                  <Box>
+                    <Typography fontWeight={700} color="#23406e" fontSize="1rem">Transparent, Fixed Pricing</Typography>
+                    <Typography color="#42526e" fontSize="0.93rem">No surprise charges. Receive a detailed quote upfront. You only pay what was agreed — with GCash, card, or cash options.</Typography>
+                  </Box>
+                </Box>
+                <Box sx={{ flex: '1 1 340px', minWidth: 260, maxWidth: 400, minHeight: { xs: 110, md: 130 }, bgcolor: '#fff', borderRadius: 2, p: 2, mb: { xs: 2, md: 2 }, boxShadow: '0 1px 6px rgba(16,53,95,0.07)', display: 'flex', gap: 1.5, alignItems: 'flex-start', border: '1px solid #e5eaf2' }}>
+                  <CheckCircleIcon sx={{ color: '#b6d2f7', fontSize: 26, mt: 0.5 }} />
+                  <Box>
+                    <Typography fontWeight={700} color="#23406e" fontSize="1rem">Satisfaction Warranty</Typography>
+                    <Typography color="#42526e" fontSize="0.93rem">Not happy with the work? We'll send another pro to fix it at no extra cost. Your satisfaction is our commitment.</Typography>
+                  </Box>
+                </Box>
+                <Box sx={{ flex: '1 1 340px', minWidth: 260, maxWidth: 400, minHeight: { xs: 110, md: 130 }, bgcolor: '#fff', borderRadius: 2, p: 2, mb: { xs: 2, md: 2 }, boxShadow: '0 1px 6px rgba(16,53,95,0.07)', display: 'flex', gap: 1.5, alignItems: 'flex-start', border: '1px solid #e5eaf2' }}>
+                  <CheckCircleIcon sx={{ color: '#b6d2f7', fontSize: 26, mt: 0.5 }} />
+                  <Box>
+                    <Typography fontWeight={700} color="#23406e" fontSize="1rem">24/7 Customer Support</Typography>
+                    <Typography color="#42526e" fontSize="0.93rem">Our Manila-based support team is available around the clock via chat, call, or email to resolve any concern instantly.</Typography>
+                  </Box>
+                </Box>
+              </Box>
+              {/* DICT & DTI Accredited Platform Banner */}
+              <Box sx={{
+                mt: 4,
+                mb: 2,
+                width: '100%',
+                bgcolor: '#123865',
+                borderRadius: '24px',
+                display: 'flex',
+                alignItems: 'center',
+                px: { xs: 2, md: 4 },
+                py: { xs: 2.5, md: 3 }, // Increased vertical padding
+                boxShadow: '0 2px 12px rgba(16,53,95,0.10)',
+                gap: 2,
+                minHeight: 110,
+                maxHeight: 140,
+              }}>
+                {/* Left Icon - Star Badge */}
+                <Box sx={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: '50%',
+                  bgcolor: 'rgba(255,255,255,0.10)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  mr: 2,
+                }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke="#fff" strokeWidth="2" fill="none" />
+                    <path d="M12 16.5L8.5 18.5L9.25 14.5L6.5 12L10.25 11.5L12 8L13.75 11.5L17.5 12L14.75 14.5L15.5 18.5L12 16.5Z" stroke="#fff" strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
+                  </svg>
+                </Box>
+                {/* Text Content */}
+                <Box sx={{ flex: 1, minWidth: 0 }}>
+                  <Typography sx={{ color: 'white', fontWeight: 700, fontSize: { xs: '1rem', md: '1.18rem' }, mb: 0.2 }}>
+                    DICT & DTI Accredited Platform
+                  </Typography>
+                  <Typography sx={{ color: 'rgba(255,255,255,0.85)', fontSize: { xs: '0.92rem', md: '1rem' }, fontWeight: 400, lineHeight: 1.3 }}>
+                    AllFix.ph is officially registered with the Philippine Department of Trade & Industry and compliant with all local labor laws.
+                  </Typography>
+                </Box>
+                {/* Button */}
+                <Box sx={{ ml: 2 }}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      bgcolor: 'white',
+                      color: '#123865',
+                      fontWeight: 700,
+                      fontSize: '0.92rem',
+                      borderRadius: '18px',
+                      px: 2.2,
+                      py: 0.7,
+                      boxShadow: 'none',
+                      minWidth: 120,
+                      '&:hover': {
+                        bgcolor: '#eaf2fc',
+                        color: '#123865',
+                        boxShadow: 'none',
+                      },
+                    }}
+                  >
+                    VIEW CREDENTIALS
+                  </Button>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
         </Box>
     </Box>
   );
