@@ -1662,6 +1662,75 @@ const LandingPage = () => {
                       </Box>
                     ))}
                   </Box>
+
+                  {/* Call to Action Section (below mini widgets) */}
+                  <Box sx={{
+                    position: 'relative',
+                    left: '50%',
+                    right: '50%',
+                    ml: '-50vw',
+                    mr: '-50vw',
+                    width: '100vw',
+                    bgcolor: 'white',
+                    py: { xs: 3, md: 4 },
+                    px: { xs: 2, md: 6 },
+                    mt: { xs: 6, md: 7 },
+                    display: 'flex',
+                    flexDirection: { xs: 'column', md: 'row' },
+                    alignItems: { xs: 'flex-start', md: 'center' },
+                    justifyContent: 'space-between',
+                    boxShadow: '0 2px 16px rgba(16,53,95,0.07)',
+                    borderRadius: 0,
+                  }}>
+                    <Box sx={{ flex: 1, minWidth: 0 }}>
+                      <Typography sx={{ fontWeight: 900, fontSize: { xs: '2rem', md: '2.5rem' }, color: '#10355f', mb: 1 }}>
+                        Ready to Fix Something?
+                      </Typography>
+                      <Typography sx={{ color: '#23406e', fontSize: { xs: '1.1rem', md: '1.25rem' }, mb: { xs: 3, md: 0 } }}>
+                        Get a free quote in 30 minutes. Available across Metro Manila.
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', gap: 2.5, mt: { xs: 2, md: 0 } }}>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          bgcolor: '#10355f',
+                          color: 'white',
+                          fontWeight: 900,
+                          fontSize: '1.15rem',
+                          px: 5,
+                          py: 2,
+                          borderRadius: '18px',
+                          boxShadow: 'none',
+                          '&:hover': { bgcolor: '#0d264a' },
+                        }}
+                      >
+                        Book a Fix Now
+                      </Button>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          bgcolor: '#123865',
+                          color: 'white',
+                          fontWeight: 900,
+                          fontSize: '1.15rem',
+                          px: 5,
+                          py: 2,
+                          borderRadius: '18px',
+                          boxShadow: 'none',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 1.2,
+                          '&:hover': { bgcolor: '#23406e' },
+                        }}
+                        startIcon={
+                          <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.05.37 2.07.71 3.06a2 2 0 0 1-.45 2.11l-.27.27a16 16 0 0 0 6.29 6.29l.27-.27a2 2 0 0 1 2.11-.45c.99.34 2.01.58 3.06.71A2 2 0 0 1 22 16.92z"/></svg>
+                        }
+                      >
+                        Call Us
+                      </Button>
+                    </Box>
+                  </Box>
                 </Container>
               </Box>
             </Box>
