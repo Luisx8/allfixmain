@@ -8,6 +8,7 @@ import StarIcon from '@mui/icons-material/Star';
 import SecurityIcon from '@mui/icons-material/Security';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import DescriptionIcon from '@mui/icons-material/Description';
 
 const services = [
   {
@@ -965,6 +966,259 @@ const LandingPage = () => {
           </Grid>
         </Container>
       </Box>
+        {/* How It Works Section - Redesigned */}
+        <Box
+          id="how-it-works"
+          sx={{
+            position: 'relative',
+            zIndex: 10,
+            bgcolor: '#eef4fd',
+            py: 8,
+            px: { xs: 2, md: 5 },
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Container maxWidth="lg">
+            <Box sx={{ textAlign: 'center', mb: 5 }}>
+              <Box
+                sx={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  backgroundColor: 'white',
+                  color: '#10355f',
+                  borderRadius: '9999px',
+                  px: 3,
+                  py: 1,
+                  fontSize: '0.95rem',
+                  fontWeight: 900,
+                  letterSpacing: '0.05em',
+                  textTransform: 'uppercase',
+                  mb: 2,
+                  boxShadow: '0 2px 8px rgba(16,53,95,0.07)',
+                }}
+              >
+                Simple Process
+              </Box>
+              <Typography
+                sx={{
+                  fontSize: { xs: '2rem', md: '2.5rem' },
+                  fontWeight: 900,
+                  mb: 2,
+                  lineHeight: 1.2,
+                  color: 'black',
+                }}
+              >
+                Fixed in <span style={{ color: '#10355f' }}>3 Easy Steps</span>
+              </Typography>
+              <Typography
+                sx={{
+                  color: '#42526e',
+                  fontSize: { xs: '1rem', md: '1.1rem' },
+                  maxWidth: '600px',
+                  mx: 'auto',
+                  lineHeight: 1.6,
+                  mb: 4,
+                }}
+              >
+                We designed the booking process to be as frictionless as possible so you can get back to what matters.
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                alignItems: 'flex-start',
+                justifyContent: 'center',
+                gap: { xs: 6, md: 2 },
+                position: 'relative',
+                mb: 4,
+              }}
+            >
+              {/* Connecting line for desktop */}
+              <Box
+                sx={{
+                  display: { xs: 'none', md: 'block' },
+                  position: 'absolute',
+                  top: 56,
+                  left: '12%',
+                  width: '76%',
+                  height: 0,
+                  borderTop: '2px solid #c7d2fe',
+                  zIndex: 1,
+                }}
+              />
+
+              {/* Step 1 */}
+              <Box sx={{ flex: 1, zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Box sx={{ position: 'relative', mb: 2 }}>
+                  <Box
+                    sx={{
+                      width: 90,
+                      height: 90,
+                      borderRadius: '50%',
+                      bgcolor: 'white',
+                      boxShadow: '0 2px 12px rgba(16,53,95,0.10)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 44,
+                      color: '#10355f',
+                    }}
+                  >
+                    <CheckCircleIcon sx={{ fontSize: 44 }} />
+                  </Box>
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      right: -10,
+                      bgcolor: '#10355f',
+                      color: 'white',
+                      width: 28,
+                      height: 28,
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 700,
+                      fontSize: '1rem',
+                      border: '3px solid #eef4fd',
+                    }}
+                  >
+                    1
+                  </Box>
+                </Box>
+                <Typography sx={{ fontWeight: 900, fontSize: '1.35rem', mb: 1, color: '#10355f' }}>
+                  Choose a Service
+                </Typography>
+                <Typography sx={{ color: '#42526e', fontSize: '1rem', mb: 0, textAlign: 'center', maxWidth: 280 }}>
+                  Select the type of work you need from our 9 specialized brands. Browse by category or search directly.
+                </Typography>
+              </Box>
+
+              {/* Step 2 */}
+              <Box sx={{ flex: 1, zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Box sx={{ position: 'relative', mb: 2 }}>
+                  <Box
+                    sx={{
+                      width: 90,
+                      height: 90,
+                      borderRadius: '50%',
+                      bgcolor: 'white',
+                      boxShadow: '0 2px 12px rgba(16,53,95,0.10)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 44,
+                      color: '#10355f',
+                    }}
+                  >
+                    <DescriptionIcon sx={{ fontSize: 44 }} />
+                  </Box>
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      right: -10,
+                      bgcolor: '#10355f',
+                      color: 'white',
+                      width: 28,
+                      height: 28,
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 700,
+                      fontSize: '1rem',
+                      border: '3px solid #eef4fd',
+                    }}
+                  >
+                    2
+                  </Box>
+                </Box>
+                <Typography sx={{ fontWeight: 900, fontSize: '1.35rem', mb: 1, color: '#10355f' }}>
+                  Book a Service
+                </Typography>
+                <Typography sx={{ color: '#42526e', fontSize: '1rem', mb: 0, textAlign: 'center', maxWidth: 280 }}>
+                  Schedule your service instantly with just a few clicks. Fast, easy, and convenient.
+                </Typography>
+              </Box>
+
+              {/* Step 3 */}
+              <Box sx={{ flex: 1, zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <Box sx={{ position: 'relative', mb: 2 }}>
+                  <Box
+                    sx={{
+                      width: 90,
+                      height: 90,
+                      borderRadius: '50%',
+                      bgcolor: 'white',
+                      boxShadow: '0 2px 12px rgba(16,53,95,0.10)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 44,
+                      color: '#10355f',
+                    }}
+                  >
+                    <CheckCircleIcon sx={{ fontSize: 44 }} />
+                  </Box>
+                  <Box
+                    sx={{
+                      position: 'absolute',
+                      top: 0,
+                      right: -10,
+                      bgcolor: '#10355f',
+                      color: 'white',
+                      width: 28,
+                      height: 28,
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontWeight: 700,
+                      fontSize: '1rem',
+                      border: '3px solid #eef4fd',
+                    }}
+                  >
+                    3
+                  </Box>
+                </Box>
+                <Typography sx={{ fontWeight: 900, fontSize: '1.35rem', mb: 1, color: '#10355f' }}>
+                  Sit Back, It's Done
+                </Typography>
+                <Typography sx={{ color: '#42526e', fontSize: '1rem', mb: 0, textAlign: 'center', maxWidth: 280 }}>
+                  A background-checked AllFix pro arrives on schedule, completes the job, and you pay only when satisfied.
+                </Typography>
+              </Box>
+            </Box>
+            <Box sx={{ textAlign: 'center', mt: 4 }}>
+              <Button
+                variant="contained"
+                sx={{
+                  bgcolor: '#10355f',
+                  color: 'white',
+                  fontWeight: 900,
+                  fontSize: '1.1rem',
+                  px: 4,
+                  py: 1.5,
+                  borderRadius: '16px',
+                  textTransform: 'none',
+                  boxShadow: '0 4px 16px rgba(16,53,95,0.10)',
+                  '&:hover': {
+                    bgcolor: '#0d264a',
+                  },
+                }}
+                href="#services"
+                endIcon={<ArrowForwardIcon />}
+              >
+                Start Booking Now
+              </Button>
+            </Box>
+          </Container>
+        </Box>
     </Box>
   );
 };
