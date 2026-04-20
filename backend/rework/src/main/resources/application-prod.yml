@@ -1,0 +1,20 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+
+cognito:
+  user-pool-id: ${COGNITO_USER_POOL_ID}
+
+auth:
+  lambda-auth-arn: ${LAMBDA_AUTH_ARN:}
+  lambda-only-provisioning: ${AUTH_LAMBDA_ONLY_PROVISIONING:false}
+  strict-cognito-provisioning: true
+
+app:
+  redis:
+    allow-in-memory-fallback: false

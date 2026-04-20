@@ -43,11 +43,21 @@ export function AuthProvider({ children }) {
         setGroups(sessionResult.data.groups);
       }
 
-      // Fetch user attributes
-      const attributesResult = await getUserAttributes();
-      if (attributesResult.success) {
-        setUserAttributes(attributesResult.data);
-      }
+      // Mark auth as resolved once principal + groups are available.
+      // User attributes are non-blocking metadata and can load in the background.
+      setIsLoading(false);
+
+      void getUserAttributes()
+        .then((attributesResult) => {
+          if (attributesResult.success) {
+            setUserAttributes(attributesResult.data);
+          }
+        })
+        .catch((attributesError) => {
+          console.warn('User attributes fetch failed:', attributesError);
+        });
+
+      return;
     } catch (error) {
       console.error('Auth check failed:', error);
       setUser(null);
@@ -65,12 +75,10 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     const result = await signOutUser();
-    if (result.success) {
-      setUser(null);
-      setUserAttributes(null);
-      setGroups([]);
-      setIsAuthenticated(false);
-    }
+    setUser(null);
+    setUserAttributes(null);
+    setGroups([]);
+    setIsAuthenticated(false);
     return result;
   };
 

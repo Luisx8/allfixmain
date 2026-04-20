@@ -223,3 +223,81 @@ export async function completeAutoSignIn() {
     return { success: false, error: error.message };
   }
 }
+
+/**
+ * Persist bridge-issued Cognito tokens in localStorage using Cognito JS key format.
+ * This lets Amplify pick up the authenticated session without interactive login.
+ */
+export function persistBridgeTokens({ accessToken, idToken, refreshToken }) {
+  if (!accessToken || !idToken) {
+    throw new Error('Missing Cognito bridge tokens');
+  }
+
+  const clientId = import.meta.env.VITE_COGNITO_CLIENT_ID || '61106lhm2fgpp3aqo2ighth8hd';
+  const accessPayload = decodeJwtPayload(accessToken);
+  const idPayload = decodeJwtPayload(idToken);
+  const usernameCandidates = uniqueNonBlank([
+    accessPayload.username,
+    accessPayload['cognito:username'],
+    accessPayload.sub,
+    idPayload['cognito:username'],
+    idPayload.username,
+    idPayload.email,
+    idPayload.sub,
+  ]);
+  const username = usernameCandidates[0];
+
+  if (!username) {
+    throw new Error('Unable to resolve username from Cognito tokens');
+  }
+
+  const prefix = `CognitoIdentityServiceProvider.${clientId}`;
+  const iat = Number(accessPayload.iat || 0);
+  const clockDrift = iat > 0 ? String(iat * 1000 - Date.now()) : '0';
+
+  localStorage.setItem(`${prefix}.LastAuthUser`, username);
+  usernameCandidates.forEach((candidate) => {
+    const userPrefix = `${prefix}.${candidate}`;
+    localStorage.setItem(`${userPrefix}.accessToken`, accessToken);
+    localStorage.setItem(`${userPrefix}.idToken`, idToken);
+    localStorage.setItem(`${userPrefix}.clockDrift`, clockDrift);
+    if (refreshToken) {
+      localStorage.setItem(`${userPrefix}.refreshToken`, refreshToken);
+    }
+  });
+
+  return {
+    username,
+    groups: Array.isArray(idPayload['cognito:groups']) ? idPayload['cognito:groups'] : [],
+  };
+}
+
+function uniqueNonBlank(values) {
+  const seen = new Set();
+  const result = [];
+
+  values.forEach((value) => {
+    const normalized = String(value || '').trim();
+    if (!normalized || seen.has(normalized)) {
+      return;
+    }
+
+    seen.add(normalized);
+    result.push(normalized);
+  });
+
+  return result;
+}
+
+function decodeJwtPayload(token) {
+  const parts = String(token || '').split('.');
+  if (parts.length < 2) {
+    throw new Error('Invalid JWT token format');
+  }
+
+  const base64Url = parts[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const pad = '='.repeat((4 - (base64.length % 4)) % 4);
+  const json = atob(base64 + pad);
+  return JSON.parse(json);
+}
