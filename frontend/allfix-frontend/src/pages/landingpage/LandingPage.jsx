@@ -205,57 +205,67 @@ const ServiceCard = ({ service, onServiceClick }) => {
       onClick={() => onServiceClick(service)}
     >
       {/* Image showcase */}
-      <div style={{ position: 'relative', height: '150px', overflow: 'hidden', backgroundColor: '#f5f5f5' }}>
-        <img
-          src={service.image}
-          alt={service.brand}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            opacity: hovered ? 0.3 : 1,
-            transition: 'opacity 0.5s ease',
-          }}
-        />
-        {/* Color overlay on hover */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: service.accent,
-            opacity: hovered ? 0.6 : 0,
-            transition: 'opacity 0.3s ease',
-          }}
-        />
-        {/* Logo pops in middle on hover */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all 0.3s ease',
-            transform: hovered ? 'scale(1)' : 'scale(0)',
-            opacity: hovered ? 1 : 0,
-          }}
-        >
+        <div style={{ position: 'relative', height: '150px', overflow: 'hidden', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <img
+            src={service.image}
+            alt={service.brand}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              opacity: hovered ? 0.3 : 1,
+              transition: 'opacity 0.5s ease',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+            }}
+          />
+          {/* Color overlay on hover */}
           <div
             style={{
-              width: '80px',
-              height: '80px',
-              borderRadius: '24px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backgroundColor: service.accent,
-              boxShadow: `0 0 30px ${service.accent}80, 0 0 60px ${service.accent}40, 0 12px 24px rgba(0,0,0,0.4)`,
+              position: 'absolute',
+              inset: 0,
+              background: service.accent,
+              opacity: hovered ? 0.6 : 0,
+              transition: 'opacity 0.3s ease',
             }}
-          >
-            <Icon style={{ width: '40px', height: '40px', color: '#fff' }} />
-          </div>
+          />
+          {/* Logo pops in middle on hover */}
+          {hovered && (
+            <div
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                zIndex: 2,
+                pointerEvents: 'none',
+                transition: 'opacity 0.3s, transform 0.3s',
+                opacity: hovered ? 1 : 0,
+                transform: hovered ? 'scale(1)' : 'scale(0.8)',
+              }}
+            >
+              <div
+                style={{
+                  width: '80px',
+                  height: '80px',
+                  borderRadius: '24px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: service.accent,
+                  boxShadow: `0 0 30px ${service.accent}80, 0 0 60px ${service.accent}40, 0 12px 24px rgba(0,0,0,0.4)`,
+                }}
+              >
+                <Icon style={{ width: '40px', height: '40px', color: '#fff' }} />
+              </div>
+            </div>
+          )}
         </div>
-      </div>
 
       {/* Header */}
       <div
@@ -263,7 +273,7 @@ const ServiceCard = ({ service, onServiceClick }) => {
           position: 'relative',
           padding: '16px',
           display: 'flex',
-          alignItems: 'flex-start',
+          alignItems: 'center',
           justifyContent: 'space-between',
           background: `linear-gradient(135deg, ${service.headerBg} 0%, ${service.headerBgLight} 100%)`,
         }}
@@ -292,12 +302,13 @@ const ServiceCard = ({ service, onServiceClick }) => {
             justifyContent: 'center',
             boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
             backgroundColor: service.accent,
+            position: 'relative',
+            zIndex: 2,
           }}
         >
           <Icon style={{ width: '24px', height: '24px', color: '#fff' }} />
         </div>
       </div>
-
       {/* Body */}
       <div style={{ padding: '16px', minHeight: '340px', display: 'flex', flexDirection: 'column' }}>
         <h3 style={{ fontWeight: 900, fontSize: '1rem', color: '#000', marginBottom: '4px' }}>
@@ -389,7 +400,13 @@ const LandingPage = () => {
   };
 
   return (
-    <Box sx={{ minHeight: '100vh', position: 'relative', overflow: 'hidden' }}>
+    <Box sx={{ minHeight: '100vh', position: 'relative', overflow: 'hidden',
+      // 125% zoom for desktop, 100% for mobile
+      transform: { xs: 'none', md: 'scale(1.25)' },
+      transformOrigin: { xs: 'initial', md: 'top center' },
+      width: { xs: '100%', md: '80%' }, // prevent horizontal scroll
+      mx: { md: 'auto' },
+    }}>
       {/* Background Gradient */}
       <Box
         sx={{
@@ -428,13 +445,31 @@ const LandingPage = () => {
       >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, md: 5 } }}>
           {/* Logo */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, ml: { xs: 12, md: 16 } }}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1.5,
+              ml: { xs: 0, md: 16 },
+              justifyContent: { xs: 'flex-start', md: 'flex-start' },
+              flex: { xs: '1 1 auto', md: 'none' },
+            }}
+          >
             <Box sx={{ width: 48, height: 48, bgcolor: 'grey.400', borderRadius: '50%' }} />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant="h5" fontWeight="bold" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, mb: 0.5, transition: 'color 0.3s ease' }}>
+              <Typography
+                variant="h5"
+                fontWeight="bold"
+                color={isScrolled ? '#10355f' : 'white'}
+                sx={{ lineHeight: 1, mb: 0.5, transition: 'color 0.3s ease', fontSize: { xs: '1.25rem', md: '1.5rem' } }}
+              >
                 AllFix.ph
               </Typography>
-              <Typography variant="overline" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, fontSize: '0.65rem', letterSpacing: 0.5, transition: 'color 0.3s ease' }}>
+              <Typography
+                variant="overline"
+                color={isScrolled ? '#10355f' : 'white'}
+                sx={{ lineHeight: 1, fontSize: { xs: '0.7rem', md: '0.65rem' }, letterSpacing: 0.5, transition: 'color 0.3s ease' }}
+              >
                 PROPERTY CARE EXPERTS
               </Typography>
             </Box>
@@ -517,7 +552,7 @@ const LandingPage = () => {
       </AppBar>
 
       {/* Hero Section */}
-      <Box sx={{ position: 'relative', zIndex: 10, minHeight: '100vh', mt: 8, display: 'flex', flexDirection: 'column', justifyContent: 'center', overflow: 'hidden' }}>
+      <Box sx={{ position: 'relative', zIndex: 10, mt: 8, minHeight: '75vh', display: 'block', overflow: 'hidden', pb: 0 }}>
         {/* Animated Gradient Blobs */}
         <Box
           sx={{
@@ -548,8 +583,8 @@ const LandingPage = () => {
           }}
         />
 
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 10, pb: 8 }}>
-          <Grid container spacing={6} alignItems="flex-start" sx={{ width: '100%', minHeight: '100vh' }}>
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 10, pb: 4 }}>
+          <Grid container spacing={6} alignItems="flex-start" sx={{ width: '100%' }}>
             {/* Left Column - Hero Content */}
             <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: 3, pt: { xs: -20, md: -32 } }}>
               {/* Badge */}
@@ -563,7 +598,8 @@ const LandingPage = () => {
                   borderRadius: '9999px',
                   px: 3,
                   py: 1.5,
-                  mb: 4,
+                  mt: 4,
+                  mb: 0.5,
                   backdropFilter: 'blur(10px)',
                   width: 'fit-content',
                 }}
@@ -614,6 +650,8 @@ const LandingPage = () => {
               >
                 From aircon cleaning to plumbing, repairs to IT support — AllFix connects you with trusted, verified professionals across Metro Manila.
               </Typography>
+
+
 
               {/* Stats */}
               <Box sx={{ display: 'flex', flexDirection: 'row', gap: { xs: 4, md: 6 }, flexWrap: 'wrap', mt: -4 }}>
@@ -686,41 +724,25 @@ const LandingPage = () => {
                 sx={{
                   bgcolor: 'white',
                   borderRadius: '20px',
-                  p: { xs: 1.5, md: 2 },
+                  p: { xs: 3, md: 4 },
                   boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2)',
                   width: '100%',
-                  maxWidth: '550px',
+                  maxWidth: { xs: '98vw', sm: '420px', md: '550px' },
+                  minWidth: { xs: '0', md: '350px' },
+                  mx: 'auto',
                 }}
               >
-                {/* Badge */}
-                <Box
-                  sx={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: 1,
-                    backgroundColor: '#E8F1FF',
-                    color: '#10355f',
-                    borderRadius: '8px',
-                    px: 2,
-                    py: 0.5,
-                    fontSize: '0.7rem',
-                    fontWeight: 900,
-                    letterSpacing: '0.05em',
-                    textTransform: 'uppercase',
-                    mb: 2,
-                  }}
-                >
-                  ✓ ACCOUNT REGISTRATION
-                </Box>
+
 
                 {/* Heading */}
                 <Typography
                   sx={{
-                    fontSize: '1.5rem',
+                    fontSize: { xs: '1.25rem', sm: '1.5rem' },
                     fontWeight: 900,
                     color: '#10355f',
                     mb: 0.5,
                     lineHeight: 1.2,
+                    textAlign: 'center',
                   }}
                 >
                   Create Your Account
@@ -729,17 +751,18 @@ const LandingPage = () => {
                 {/* Description */}
                 <Typography
                   sx={{
-                    fontSize: '0.8rem',
+                    fontSize: { xs: '0.95rem', sm: '1rem' },
                     color: '#666',
-                    mb: 1.5,
+                    mb: 2,
                     lineHeight: 1.3,
+                    textAlign: 'center',
                   }}
                 >
                   Fill in the details below to create your AllFix account.
                 </Typography>
 
                 {/* Name Row - First & Last Name */}
-                <Grid container spacing={1.5} sx={{ mb: 1.5 }}>
+                <Grid container spacing={2} sx={{ mb: 2 }}>
                   <Grid item xs={12} md={6}>
                     <Typography sx={{ fontSize: '0.8rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>
                       Firstname <span style={{ color: '#e74c3c' }}>*</span>
@@ -783,7 +806,7 @@ const LandingPage = () => {
                 </Grid>
 
                 {/* Email Row - Full Width */}
-                <Box sx={{ mb: 1.5 }}>
+                <Box sx={{ mb: 2 }}>
                   <Typography sx={{ fontSize: '0.8rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>
                     Email address
                   </Typography>
@@ -810,7 +833,7 @@ const LandingPage = () => {
                 </Box>
 
                 {/* City & Birthdate Row */}
-                <Grid container spacing={1.5} sx={{ mb: 1.5 }}>
+                <Grid container spacing={2} sx={{ mb: 2 }}>
                   <Grid item xs={12} md={6}>
                     <Typography sx={{ fontSize: '0.8rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>
                       City of residence <span style={{ color: '#e74c3c' }}>*</span>
@@ -868,11 +891,13 @@ const LandingPage = () => {
                     bgcolor: '#10355f',
                     color: 'white',
                     fontWeight: 900,
-                    fontSize: '0.85rem',
-                    py: 1,
+                    fontSize: { xs: '1.05rem', sm: '1rem' },
+                    py: 1.3,
                     borderRadius: '50px',
                     textTransform: 'none',
-                    mb: 1.5,
+                    mb: 2,
+                    mt: 1,
+                    boxShadow: '0 2px 8px rgba(16,53,95,0.10)',
                     '&:hover': {
                       bgcolor: '#0d264a',
                     },
@@ -881,78 +906,45 @@ const LandingPage = () => {
                   Create Account
                 </Button>
 
-                {/* Security Message */}
-                <Typography
-                  sx={{
-                    fontSize: '0.75rem',
-                    color: '#999',
-                    textAlign: 'center',
-                  }}
-                >
-                  Your credentials are securely protected.
-                </Typography>
+
+
+                {/* Login Option */}
+                <Box sx={{ mt: 2, textAlign: 'center' }}>
+                  <Typography sx={{ fontSize: '1rem', color: '#10355f', mb: 1, fontWeight: 700 }}>
+                    Already have an account?
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    fullWidth
+                    sx={{
+                      bgcolor: '#fff',
+                      color: '#10355f',
+                      border: '2px solid #10355f',
+                      borderRadius: '50px',
+                      fontWeight: 900,
+                      fontSize: { xs: '1.05rem', sm: '1rem' },
+                      py: 1.1,
+                      mt: 1,
+                      mb: 0.5,
+                      boxShadow: '0 2px 8px rgba(16,53,95,0.10)',
+                      textTransform: 'none',
+                      '&:hover': {
+                        bgcolor: '#10355f',
+                        color: '#fff',
+                        borderColor: '#0d264a',
+                      },
+                    }}
+                    href="/login"
+                  >
+                    Login
+                  </Button>
+                </Box>
               </Box>
             </Grid>
           </Grid>
         </Container>
 
-        {/* Explore Services Section */}
-        <Box
-          sx={{
-            position: 'relative',
-            zIndex: 10,
-            width: '100%',
-            py: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            mt: -28,
-          }}
-        >
-          <Typography
-            sx={{
-              fontSize: '0.75rem',
-              fontWeight: 900,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: 'rgba(148, 163, 184, 1)',
-              mb: 3,
-            }}
-          >
-            Explore Services
-          </Typography>
-          <Box
-            sx={{
-              width: 6,
-              height: 32,
-              border: '2px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              '&:hover': {
-                borderColor: 'rgba(255, 255, 255, 0.4)',
-              },
-              transition: 'border-color 0.3s ease',
-            }}
-          >
-            <Box
-              sx={{
-                width: '2px',
-                height: '8px',
-                bgcolor: 'rgba(255, 255, 255, 0.5)',
-                borderRadius: '1px',
-                animation: 'bounce 2s infinite',
-                '@keyframes bounce': {
-                  '0%, 100%': { transform: 'translateY(0)' },
-                  '50%': { transform: 'translateY(8px)' },
-                },
-              }}
-            />
-          </Box>
-        </Box>
+
       </Box>
 
       {/* Services Section */}
@@ -1029,32 +1021,108 @@ const LandingPage = () => {
               pb: { xs: 2, md: 0 },
             }}
           >
-            <Box
-              sx={{
-                display: { xs: 'flex', md: 'none' },
-                gap: 2,
-                minWidth: 0,
-                overflowX: 'auto',
-                scrollSnapType: 'x mandatory',
-                px: 1,
-              }}
-            >
-              {services.map((service, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    minWidth: '320px',
-                    maxWidth: '90vw',
-                    flex: '0 0 auto',
-                    scrollSnapAlign: 'start',
+            <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', width: '100%', flexDirection: 'column' }}>
+              <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
+                <Button
+                  aria-label="Scroll left"
+                  sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', mr: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }}
+                  onClick={() => {
+                    const el = document.getElementById('services-scroll-row');
+                    if (el) el.scrollBy({ left: -320, behavior: 'smooth' });
                   }}
                 >
-                  <ServiceCard
-                    service={service}
-                    onServiceClick={(svc) => console.log('Service clicked:', svc)}
-                  />
+                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+                </Button>
+                <Box
+                  id="services-scroll-row"
+                  sx={{
+                    display: 'flex',
+                    gap: 2,
+                    minWidth: 0,
+                    overflowX: 'auto',
+                    scrollSnapType: 'x mandatory',
+                    px: 1,
+                    flex: 1,
+                    scrollBehavior: 'smooth',
+                    '&::-webkit-scrollbar': { display: 'none' },
+                  }}
+                >
+                  {services.map((service, index) => (
+                    <Box
+                      key={index}
+                      sx={{
+                        minWidth: '320px',
+                        maxWidth: '90vw',
+                        flex: '0 0 auto',
+                        scrollSnapAlign: 'start',
+                      }}
+                    >
+                      <ServiceCard
+                        service={service}
+                        onServiceClick={(svc) => console.log('Service clicked:', svc)}
+                      />
+                    </Box>
+                  ))}
                 </Box>
-              ))}
+                <Button
+                  aria-label="Scroll right"
+                  sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', ml: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }}
+                  onClick={() => {
+                    const el = document.getElementById('services-scroll-row');
+                    if (el) el.scrollBy({ left: 320, behavior: 'smooth' });
+                  }}
+                >
+                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                </Button>
+              </Box>
+              {/* Minimalist grid navbar for services (4 columns, 2 rows) */}
+              <Box id="services-scroll-navbar" sx={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: 1,
+                width: '100%',
+                mt: 1,
+                mb: 1,
+                px: 1,
+              }}>
+                {services.map((svc, idx) => (
+                  <Button
+                    key={svc.brand}
+                    size="small"
+                    sx={{
+                      minWidth: 0,
+                      px: 0.5,
+                      py: 0.8,
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      borderRadius: '10px',
+                      color: '#23406e',
+                      bgcolor: '#eaf2fc',
+                      whiteSpace: 'nowrap',
+                      boxShadow: 'none',
+                      border: '1.5px solid transparent',
+                      transition: 'all 0.2s',
+                      '&.active': {
+                        bgcolor: '#23406e',
+                        color: '#fff',
+                        borderColor: '#23406e',
+                      },
+                      '&:hover': {
+                        bgcolor: '#dbeafe',
+                        color: '#23406e',
+                      },
+                    }}
+                    onClick={() => {
+                      const el = document.getElementById('services-scroll-row');
+                      if (el) el.scrollTo({ left: idx * 320, behavior: 'smooth' });
+                    }}
+                    className={`service-navbar-btn-${idx}`}
+                  >
+                    {svc.brand}
+                  </Button>
+                ))}
+              </Box>
+
             </Box>
             <Grid container spacing={3} sx={{ display: { xs: 'none', md: 'flex' } }}>
               {services.map((service, index) => (
