@@ -920,7 +920,7 @@ const LandingPage = () => {
               mb: 3,
             }}
           >
-            Explore Services
+           
           </Typography>
           <Box
             sx={{
@@ -1672,32 +1672,32 @@ const LandingPage = () => {
                     mr: '-50vw',
                     width: '100vw',
                     bgcolor: 'white',
-                    py: { xs: 3, md: 4 },
+                    py: { xs: 2, md: 2.5 }, 
                     px: { xs: 2, md: 6 },
-                    mt: { xs: 6, md: 7 },
+                    mt: { xs: 4, md: 5 },
                     display: 'flex',
                     flexDirection: { xs: 'column', md: 'row' },
                     alignItems: { xs: 'flex-start', md: 'center' },
                     justifyContent: 'space-between',
-                    boxShadow: '0 2px 16px rgba(16,53,95,0.07)',
+                    boxShadow: '0 2px 16px rgba(16,53,95,0.05)',
                     borderRadius: 0,
                   }}>
                     <Box sx={{ flex: 1, minWidth: 0 }}>
-                      <Typography sx={{ fontWeight: 900, fontSize: { xs: '2rem', md: '2.5rem' }, color: '#10355f', mb: 1 }}>
+                      <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.25rem', md: '1.5rem' }, color: '#10355f', mb: 1 }}>
                         Ready to Fix Something?
                       </Typography>
-                      <Typography sx={{ color: '#23406e', fontSize: { xs: '1.1rem', md: '1.25rem' }, mb: { xs: 3, md: 0 } }}>
+                      <Typography sx={{ color: '#23406e', fontSize: { xs: '0.85rem', md: '0.95rem' }, mb: { xs: 3, md: 0 } }}>
                         Get a free quote in 30 minutes. Available across Metro Manila.
                       </Typography>
                     </Box>
-                    <Box sx={{ display: 'flex', gap: 2.5, mt: { xs: 2, md: 0 } }}>
+                    <Box sx={{ display: 'flex', gap: 1.5, mt: { xs: 1, md: 0 } }}>
                       <Button
                         variant="contained"
                         sx={{
                           bgcolor: '#10355f',
                           color: 'white',
-                          fontWeight: 900,
-                          fontSize: '1.15rem',
+                          fontWeight: 800,
+                          fontSize: '0.85rem',
                           px: 5,
                           py: 2,
                           borderRadius: '18px',
@@ -1712,10 +1712,10 @@ const LandingPage = () => {
                         sx={{
                           bgcolor: '#123865',
                           color: 'white',
-                          fontWeight: 900,
-                          fontSize: '1.15rem',
-                          px: 5,
-                          py: 2,
+                          fontWeight: 800,
+                          fontSize: '0.85rem',
+                          px: 3,
+                          py: 1,
                           borderRadius: '18px',
                           boxShadow: 'none',
                           display: 'flex',
@@ -1728,6 +1728,7 @@ const LandingPage = () => {
                         }
                       >
                         Call Us
+                        
                       </Button>
                     </Box>
                   </Box>
@@ -1736,6 +1737,7 @@ const LandingPage = () => {
             </Box>
           </Box>
         </Box>
+      {/* Removed excess white space below the call-to-action section */}
     </Box>
   );
 };
