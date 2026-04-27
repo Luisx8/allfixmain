@@ -922,36 +922,6 @@ const LandingPage = () => {
           >
            
           </Typography>
-          <Box
-            sx={{
-              width: 6,
-              height: 32,
-              border: '2px solid rgba(255, 255, 255, 0.2)',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              '&:hover': {
-                borderColor: 'rgba(255, 255, 255, 0.4)',
-              },
-              transition: 'border-color 0.3s ease',
-            }}
-          >
-            <Box
-              sx={{
-                width: '2px',
-                height: '8px',
-                bgcolor: 'rgba(255, 255, 255, 0.5)',
-                borderRadius: '1px',
-                animation: 'bounce 2s infinite',
-                '@keyframes bounce': {
-                  '0%, 100%': { transform: 'translateY(0)' },
-                  '50%': { transform: 'translateY(8px)' },
-                },
-              }}
-            />
-          </Box>
         </Box>
       </Box>
 
