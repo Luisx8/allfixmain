@@ -17,8 +17,12 @@ import {
   CardContent,
   CardActions,
   TextField,
-  Tabs,
-  Tab,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  Stepper,
+  Step,
+  StepLabel,
 } from '@mui/material';
 import {
   Build,
@@ -37,6 +41,15 @@ import {
 } from '@mui/icons-material';
 import { useAuth } from '../../contexts/AuthContext';
 
+const steps = [
+  'Service',
+  'Booking Details',
+  'Schedule & Location',
+  'Billing',
+  'Completed',
+  'Canceled',
+];
+
 const UserPage = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
@@ -44,17 +57,45 @@ const UserPage = () => {
 
   const [activeSection, setActiveSection] = useState('services');
   const [selectedService, setSelectedService] = useState(null);
-  const [tabIndex, setTabIndex] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+  const [selectedWork, setSelectedWork] = useState('');
 
   const services = [
-    { id: 'cool', name: 'CoolFix', desc: 'Air-con & HVAC Specialists', icon: <AcUnit fontSize="large" />, subs: ['AC Cleaning', 'Emergency Repair'] },
-    { id: 'sani', name: 'SaniFix', desc: 'Plumbing & Sanitation Experts', icon: <CleanHands fontSize="large" />, subs: ['Deep Cleaning', 'Car Sanitation'] },
-    { id: 'home', name: 'HomeFix', desc: 'General Home Repairs', icon: <HomeRepairService fontSize="large" />, subs: ['Carpentry', 'Electrical', 'Painting', 'Plumbing'] },
-    { id: 'tech', name: 'TechFix', desc: 'IT & Electronics Support', icon: <Computer fontSize="large" />, subs: ['Printer/Scanner Repair', 'Computer Repair', 'Software Installation'] },
-    { id: 'move', name: 'MoveFix', desc: 'Moving & Storage Services', icon: <LocalShipping fontSize="large" />, subs: [] },
-    { id: 'health', name: 'HealthFix', desc: 'Medical & Home Care', icon: <MonitorHeart fontSize="large" />, subs: [] },
-    { id: 'green', name: 'GreenFix', desc: 'Eco & Sustainability', icon: <Grass fontSize="large" />, subs: [] },
-    { id: 'space', name: 'SpaceFix', desc: 'Space Planning & Organization', icon: <SquareFoot fontSize="large" />, subs: [] },
+    { id: 'cool', name: 'CoolFix', desc: 'Air-con & HVAC Specialists', icon: <AcUnit fontSize="large" />, subs: ['AC Cleaning', 'Emergency Repair'], works: [
+      { task: 'AC Cleaning', rate: 1500 },
+      { task: 'Emergency Repair', rate: 2500 }
+    ] },
+    { id: 'sani', name: 'SaniFix', desc: 'Plumbing & Sanitation Experts', icon: <CleanHands fontSize="large" />, subs: ['Deep Cleaning', 'Car Sanitation'], works: [
+      { task: 'Deep Cleaning', rate: 1200 },
+      { task: 'Car Sanitation', rate: 800 }
+    ] },
+    { id: 'home', name: 'HomeFix', desc: 'General Home Repairs', icon: <HomeRepairService fontSize="large" />, subs: ['Carpentry', 'Electrical', 'Painting', 'Plumbing'], works: [
+      { task: 'Carpentry', rate: 2000 },
+      { task: 'Electrical', rate: 1800 },
+      { task: 'Painting', rate: 1500 },
+      { task: 'Plumbing', rate: 1700 }
+    ] },
+    { id: 'tech', name: 'TechFix', desc: 'IT & Electronics Support', icon: <Computer fontSize="large" />, subs: ['Printer/Scanner Repair', 'Computer Repair', 'Software Installation'], works: [
+      { task: 'Printer/Scanner Repair', rate: 1000 },
+      { task: 'Computer Repair', rate: 2000 },
+      { task: 'Software Installation', rate: 500 }
+    ] },
+    { id: 'move', name: 'MoveFix', desc: 'Moving & Storage Services', icon: <LocalShipping fontSize="large" />, subs: ['Local Move', 'Storage Service'], works: [
+      { task: 'Local Move', rate: 3000 },
+      { task: 'Storage Service', rate: 2500 }
+    ] },
+    { id: 'health', name: 'HealthFix', desc: 'Medical & Home Care', icon: <MonitorHeart fontSize="large" />, subs: ['Home Care Visit', 'Medical Consultation'], works: [
+      { task: 'Home Care Visit', rate: 2000 },
+      { task: 'Medical Consultation', rate: 1500 }
+    ] },
+    { id: 'green', name: 'GreenFix', desc: 'Eco & Sustainability', icon: <Grass fontSize="large" />, subs: ['Garden Maintenance', 'Solar Panel Cleaning'], works: [
+      { task: 'Garden Maintenance', rate: 1200 },
+      { task: 'Solar Panel Cleaning', rate: 1000 }
+    ] },
+    { id: 'space', name: 'SpaceFix', desc: 'Space Planning & Organization', icon: <SquareFoot fontSize="large" />, subs: ['Room Organization', 'Office Layout Planning'], works: [
+      { task: 'Room Organization', rate: 800 },
+      { task: 'Office Layout Planning', rate: 2500 }
+    ] },
   ];
 
   const bookings = [
@@ -70,7 +111,8 @@ const UserPage = () => {
   const handleBookService = (service) => {
     setSelectedService(service);
     setActiveSection('booking');
-    setTabIndex(0);
+    setActiveStep(0);
+    setSelectedWork('');
   };
 
   const openBookingDetails = (bookingId) => {
@@ -85,14 +127,68 @@ const UserPage = () => {
       <Grid container spacing={3}>
         {services.map((service) => (
           <Grid item key={service.id} xs={12} sm={6} md={4} lg={3}>
-            <Card sx={{ width: 350, height: 460, borderRadius: 4, boxShadow: '0 6px 18px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column', mx: 'auto' }}>
+            <Card
+              sx={{
+                width: 350,
+                height: 460,
+                borderRadius: 4,
+                boxShadow: '0 6px 18px rgba(0,0,0,0.08)',
+                display: 'flex',
+                flexDirection: 'column',
+                mx: 'auto',
+                transition: 'transform 0.25s, box-shadow 0.25s',
+                position: 'relative',
+                '&:hover': {
+                  transform: 'translateY(-8px)',
+                  boxShadow: '0 14px 40px rgba(0,0,0,0.12)',
+                },
+                '&:hover::after': {
+                  content: '""',
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '4px',
+                  backgroundColor: themeColor,
+                  borderRadius: '0 0 4px 4px',
+                },
+                '&:hover .serviceNameBox': {
+                  backgroundColor: themeColor,
+                },
+                '&:hover .serviceNameText': {
+                  color: 'white',
+                },
+              }}
+            >
+              {/* Photo container restored */}
               <Box sx={{ height: 200, bgcolor: '#e9eef3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Typography variant="subtitle2" color="text.secondary">Photo Placeholder</Typography>
               </Box>
               <CardContent sx={{ flexGrow: 1 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                <Box
+                  className="serviceNameBox"
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 1.5,
+                    mb: 1,
+                    p: 1,
+                    borderRadius: 1,
+                    transition: 'background-color 0.25s',
+                  }}
+                >
                   {service.icon}
-                  <Typography variant="h6" fontWeight={700} sx={{ color: themeColor }}>{service.name}</Typography>
+                  <Typography
+                    className="serviceNameText"
+                    variant="h6"
+                    fontWeight={700}
+                    sx={{
+                      color: themeColor,
+                      transition: 'color 0.25s',
+                    }}
+                  >
+                    {service.name}
+                  </Typography>
                 </Box>
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>{service.desc}</Typography>
                 <ul style={{ margin: 0, paddingLeft: '20px' }}>
@@ -116,7 +212,11 @@ const UserPage = () => {
       <Typography variant="h4" fontWeight={800} sx={{ mb: 4, color: themeColor }}>Current Booking</Typography>
       <Grid container spacing={3}>
         {bookings.length === 0 ? (
-          <Grid item xs={12}><Card sx={{ p: 3 }}><Typography variant="body1" color="text.secondary">You have no current bookings.</Typography></Card></Grid>
+          <Grid item xs={12}>
+            <Card sx={{ p: 3 }}>
+              <Typography variant="body1" color="text.secondary">You have no current bookings.</Typography>
+            </Card>
+          </Grid>
         ) : (
           bookings.map((b) => (
             <Grid item xs={12} md={6} key={b.id}>
@@ -165,6 +265,7 @@ const UserPage = () => {
       </Card>
     </>
   );
+
   const renderBookingFlow = () => {
     if (!selectedService) return null;
 
@@ -174,56 +275,89 @@ const UserPage = () => {
           {`Booking ${selectedService.name}`}
         </Typography>
 
-        <Tabs
-          value={tabIndex}
-          onChange={(e, newValue) => setTabIndex(newValue)}
-          textColor="primary"
-          indicatorColor="primary"
-          variant="scrollable"
-          scrollButtons="auto"
-        >
-          <Tab label="Service" />
-          <Tab label="Booking Details" />
-          <Tab label="Schedule & Location" />
-          <Tab label="Billing" />
-          <Tab label="Completed" />
-        </Tabs>
+        {/* Stepper with sequential steps */}
+        <Stepper activeStep={activeStep} alternativeLabel>
+          {steps.map((label, index) => (
+            <Step key={label} completed={activeStep > index}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
 
-        {tabIndex === 0 && (
-          <Box sx={{ mt: 2 }}>
-            <Typography variant="body1">Service info and options for {selectedService.name}.</Typography>
-            <Button variant="contained" sx={{ mt: 2 }} onClick={() => setTabIndex(1)}>Next</Button>
+        {/* Step 1: Service selection with rates */}
+        {activeStep === 0 && (
+          <Box sx={{ mt: 3 }}>
+            <Typography variant="h6" sx={{ mb: 2 }}>Select the work you need:</Typography>
+            <RadioGroup value={selectedWork} onChange={(e) => setSelectedWork(e.target.value)}>
+              {selectedService.works.map((work, i) => (
+                <Card key={i} sx={{ mb: 2, p: 2, border: '1px solid #ddd', borderRadius: 2 }}>
+                  <FormControlLabel
+                    value={work.task}
+                    control={<Radio />}
+                    label={
+                      <Box>
+                        <Typography variant="subtitle1" fontWeight={600}>{work.task}</Typography>
+                        <Typography variant="body2" color="text.secondary">{`₱${work.rate.toLocaleString()}`}</Typography>
+                      </Box>
+                    }
+                  />
+                </Card>
+              ))}
+            </RadioGroup>
+            <Box sx={{ mt: 2 }}>
+              <Button variant="contained" disabled={!selectedWork} onClick={() => setActiveStep(1)}>Continue</Button>
+            </Box>
+          </Box>
+        )}
+        {/* Step 2: Booking Details */}
+        {activeStep === 1 && (
+          <Box sx={{ mt: 3 }}>
+            <TextField fullWidth label="Upload Image (Work to fix)" type="file" sx={{ mb: 2 }} InputLabelProps={{ shrink: true }} />
+            <TextField fullWidth label="Description of Work" multiline rows={4} sx={{ mb: 2 }} />
+            <Button variant="contained" onClick={() => setActiveStep(2)}>Next</Button>
           </Box>
         )}
 
-        {tabIndex === 1 && (
-          <Box sx={{ mt: 2 }}>
-            <TextField fullWidth label="Customer Name" sx={{ mb: 2 }} />
-            <TextField fullWidth label="Contact" sx={{ mb: 2 }} />
-            <Button variant="contained" onClick={() => setTabIndex(2)}>Next</Button>
-          </Box>
-        )}
-
-        {tabIndex === 2 && (
-          <Box sx={{ mt: 2 }}>
+        {/* Step 3: Schedule & Location */}
+        {activeStep === 2 && (
+          <Box sx={{ mt: 3 }}>
+            <TextField fullWidth label="Service Location" sx={{ mb: 2 }} />
             <TextField fullWidth label="Date" type="date" sx={{ mb: 2 }} InputLabelProps={{ shrink: true }} />
-            <TextField fullWidth label="Address" sx={{ mb: 2 }} />
-            <Button variant="contained" onClick={() => setTabIndex(3)}>Next</Button>
+            <TextField fullWidth label="Time" type="time" sx={{ mb: 2 }} InputLabelProps={{ shrink: true }} />
+            <Button variant="contained" onClick={() => setActiveStep(3)}>Next</Button>
           </Box>
         )}
 
-        {tabIndex === 3 && (
-          <Box sx={{ mt: 2 }}>
-            <TextField fullWidth label="Billing Info" sx={{ mb: 2 }} />
-            <Button variant="contained" onClick={() => setTabIndex(4)}>Submit Billing</Button>
+        {/* Step 4: Billing */}
+        {activeStep === 3 && (
+          <Box sx={{ mt: 3 }}>
+            <Typography variant="body1" sx={{ mb: 2 }}>Select Payment Method:</Typography>
+            <Button variant="outlined" sx={{ mr: 1 }} onClick={() => setActiveStep(4)}>Bank Transfer</Button>
+            <Button variant="outlined" sx={{ mr: 1 }} onClick={() => setActiveStep(4)}>EWallet</Button>
+            <Button variant="outlined" onClick={() => setActiveStep(4)}>Cash</Button>
           </Box>
         )}
 
-        {tabIndex === 4 && (
-          <Box sx={{ mt: 2 }}>
+        {/* Step 5: Completed */}
+        {activeStep === 4 && (
+          <Box sx={{ mt: 3 }}>
             <Typography variant="h6" color="success.main">Booking Completed!</Typography>
+            <Typography variant="body2" sx={{ mt: 1 }}>
+              Summary of booking: {selectedWork} for {selectedService.name}.
+            </Typography>
             <Button variant="outlined" sx={{ mt: 2 }} onClick={() => setActiveSection('bookings')}>
               Go to Current Bookings
+            </Button>
+          </Box>
+        )}
+
+        {/* Step 6: Canceled */}
+        {activeStep === 5 && (
+          <Box sx={{ mt: 3 }}>
+            <Typography variant="h6" color="error.main">Booking Canceled</Typography>
+            <Typography variant="body2" sx={{ mt: 1 }}>Summary of cancellation will be displayed here.</Typography>
+            <Button variant="outlined" sx={{ mt: 2 }} onClick={() => setActiveSection('history')}>
+              Go to Booking History
             </Button>
           </Box>
         )}
@@ -308,3 +442,4 @@ const UserPage = () => {
 };
 
 export default UserPage;
+
