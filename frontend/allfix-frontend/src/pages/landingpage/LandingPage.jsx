@@ -387,11 +387,17 @@ const LandingPage = () => {
     { label: 'How It Works', href: '#how-it-works' },
     { label: 'Why AllFix', href: '#why-allfix' },
     { label: 'Testimonials', href: '#testimonials' },
-    { label: 'Become Our Partner', href: '#become-partner' },
+    { label: 'Become Our Partner', href: '/vendor-apply' },
   ];
 
   const handleNavClick = (href) => {
     setMobileOpen(false);
+    if (href.startsWith('/')) {
+      // Use react-router navigation for route links
+      window.scrollTo(0, 0);
+      window.location.pathname = href;
+      return;
+    }
     const el = document.querySelector(href);
     if (el) {
       const offsetTop = el.getBoundingClientRect().top + window.scrollY - 60;
@@ -543,9 +549,9 @@ const LandingPage = () => {
         {/* HERO SECTION */}
         <Box sx={{ 
           position: 'relative', 
-          pt: { xs: 10, md: 14 }, 
-          pb: { xs: 6, md: 8 }, 
-          minHeight: '85vh', 
+          pt: { xs: 10, md: 16 }, 
+          pb: { xs: 6, md: 10 }, 
+          minHeight: '100vh', 
           display: 'flex', 
           alignItems: 'center', 
           overflow: 'hidden',
@@ -1148,8 +1154,8 @@ const LandingPage = () => {
             position: 'relative',
             zIndex: 10,
             bgcolor: '#eef4fd',
-            py: { xs: 6, md: 8 },
-            px: { xs: 2, md: 5 },
+            py: { xs: 6, md: 16 },
+            px: { xs: 2, md: 10 },
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -1558,8 +1564,8 @@ const LandingPage = () => {
           ml: '-50vw',
           mr: '-50vw',
           width: '100vw',
-          bgcolor: '#10355f',
-          pt: { xs: 8, md: 12 }, /* CHANGED from py to pt only */
+          bgcolor: '#0d264a',
+          pt: { xs: 8, md: 16 }, /* CHANGED from py to pt only */
           pb: 0,                  /* ADDED to completely remove bottom gap */
           mt: 0,
           mb: 0,
@@ -1572,7 +1578,7 @@ const LandingPage = () => {
           overflow: 'hidden',
         }}>
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 10 }}>
-            <Box sx={{ textAlign: 'center', mb: 3 }}>
+            <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Box sx={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -1595,7 +1601,7 @@ const LandingPage = () => {
                 fontWeight: 900,
                 color: 'white',
                 mb: 1,
-                lineHeight: 1.2,
+                lineHeight: 1.2 ,
               }}>
                 Trusted by Thousands of Filipino Homeowners
               </Typography>
