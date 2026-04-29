@@ -40,7 +40,7 @@ const UserPage = () => {
       accent: themeColor, accentDark: '#0d2a4d',
       headerBg: themeColor, headerBgLight: uniformHeaderBg, pillText: '#333',
       services: ['AC Cleaning','Gas Recharge','Installation','Emergency Repair'],
-      works: [{task:'AC Cleaning',rate:1500},{task:'Gas Recharge',rate:1200},{task:'Installation',rate:3500},{task:'Emergency Repair',rate:2500}]
+      works: [{task:'AC Cleaning',rate:0},{task:'Gas Recharge',rate:0},{task:'Installation',rate:0},{task:'Emergency Repair',rate:0}]
     },
     {
       id: 'electro', brand: 'ElectroFix', tagline: 'Electrical & Lighting Experts',
@@ -49,7 +49,7 @@ const UserPage = () => {
       accent: themeColor, accentDark: '#0d2a4d',
       headerBg: themeColor, headerBgLight: uniformHeaderBg, pillText: '#333',
       services: ['Wiring','Troubleshooting','Installation','Safety Inspection'],
-      works: [{task:'Wiring',rate:2000},{task:'Troubleshooting',rate:1800},{task:'Installation',rate:2500},{task:'Safety Inspection',rate:1500}]
+      works: [{task:'Wiring',rate:0},{task:'Troubleshooting',rate:0},{task:'Installation',rate:0},{task:'Safety Inspection',rate:0}]
     },
     {
       id: 'clean', brand: 'CleanFix', tagline: 'Deep Cleaning & Sanitization',
@@ -58,7 +58,7 @@ const UserPage = () => {
       accent: themeColor, accentDark: '#0d2a4d',
       headerBg: themeColor, headerBgLight: uniformHeaderBg, pillText: '#333',
       services: ['Deep Cleaning','Carpet Care','Sanitization','Maintenance'],
-      works: [{task:'Deep Cleaning',rate:1200},{task:'Carpet Care',rate:1000},{task:'Sanitization',rate:1500},{task:'Regular Maintenance',rate:800}]
+      works: [{task:'Deep Cleaning',rate:0},{task:'Carpet Care',rate:0},{task:'Sanitization',rate:0},{task:'Regular Maintenance',rate:0}]
     },
     {
       id: 'home', brand: 'HomeFix', tagline: 'General Home Repairs',
@@ -67,7 +67,7 @@ const UserPage = () => {
       accent: themeColor, accentDark: '#0d2a4d',
       headerBg: themeColor, headerBgLight: uniformHeaderBg, pillText: '#333',
       services: ['Carpentry','Electrical','Painting','Plumbing'],
-      works: [{task:'Carpentry',rate:2000},{task:'Electrical',rate:1800},{task:'Painting',rate:1500},{task:'Plumbing',rate:1700}]
+      works: [{task:'Carpentry',rate:0},{task:'Electrical',rate:0},{task:'Painting',rate:0},{task:'Plumbing',rate:0}]
     },
     {
       id: 'move', brand: 'MoveFix', tagline: 'Moving & Storage Services',
@@ -76,7 +76,7 @@ const UserPage = () => {
       accent: themeColor, accentDark: '#0d2a4d',
       headerBg: themeColor, headerBgLight: uniformHeaderBg, pillText: '#333',
       services: ['Local Move','Storage Service'],
-      works: [{task:'Local Move',rate:3000},{task:'Storage Service',rate:2500}]
+      works: [{task:'Local Move',rate:0},{task:'Storage Service',rate:0}]
     },
     {
       id: 'health', brand: 'HealthFix', tagline: 'Medical & Home Care',
@@ -85,7 +85,7 @@ const UserPage = () => {
       accent: themeColor, accentDark: '#0d2a4d',
       headerBg: themeColor, headerBgLight: uniformHeaderBg, pillText: '#333',
       services: ['Home Care Visit','Medical Consultation'],
-      works: [{task:'Home Care Visit',rate:2000},{task:'Medical Consultation',rate:1500}]
+      works: [{task:'Home Care Visit',rate:0},{task:'Medical Consultation',rate:0}]
     },
     {
       id: 'green', brand: 'GreenFix', tagline: 'Eco & Sustainability',
@@ -94,7 +94,7 @@ const UserPage = () => {
       accent: themeColor, accentDark: '#0d2a4d',
       headerBg: themeColor, headerBgLight: uniformHeaderBg, pillText: '#333',
       services: ['Garden Maintenance','Solar Panel Cleaning'],
-      works: [{task:'Garden Maintenance',rate:1200},{task:'Solar Panel Cleaning',rate:1000}]
+      works: [{task:'Garden Maintenance',rate:0},{task:'Solar Panel Cleaning',rate:0}]
     },
     {
       id: 'space', brand: 'SpaceFix', tagline: 'Space Planning & Organization',
@@ -103,7 +103,7 @@ const UserPage = () => {
       accent: themeColor, accentDark: '#0d2a4d',
       headerBg: themeColor, headerBgLight: uniformHeaderBg, pillText: '#333',
       services: ['Room Organization','Office Layout Planning'],
-      works: [{task:'Room Organization',rate:800},{task:'Office Layout Planning',rate:2500}]
+      works: [{task:'Room Organization',rate:0},{task:'Office Layout Planning',rate:0}]
     }
   ];
   const ServiceCard = ({ service, onServiceClick }) => {
@@ -383,106 +383,420 @@ const renderBookingFlow = () => {
       </Stepper>
 
       {activeStep === 0 && (
-        <Box sx={{ mt: 3 }}>
-          <Typography variant="h6" sx={{ mb: 2 }}>Select the work you need:</Typography>
-          <RadioGroup value={selectedWork} onChange={(e) => setSelectedWork(e.target.value)}>
-            {selectedService.works.map((work, i) => (
-              <Box key={i} sx={{ mb: 2, p: 2, border: '1px solid #ddd', borderRadius: 2 }}>
-                <FormControlLabel
-                  value={work.task}
-                  control={<Radio />}
-                  label={
-                    <Box>
-                      <Typography variant="subtitle1" fontWeight={600}>{work.task}</Typography>
-                      <Typography variant="body2" color="text.secondary">{`₱${work.rate.toLocaleString()}`}</Typography>
-                    </Box>
-                  }
-                />
-              </Box>
-            ))}
-          </RadioGroup>
-          <Button variant="contained" disabled={!selectedWork} onClick={() => setActiveStep(1)}>Continue</Button>
+  <Box sx={{ mt: 3 }}>
+    <Typography variant="h6" sx={{ mb: 3, fontWeight: 700, color: themeColor }}>
+      Select the work you need:
+    </Typography>
+
+    {selectedService.works.map((work, i) => (
+      <Box
+        key={i}
+        sx={{
+          mb: 2,
+          p: 3,
+          border: selectedWork === work.task ? `2px solid ${themeColor}` : '1px solid #ddd',
+          borderRadius: 3,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          cursor: 'pointer',
+          transition: 'all 0.3s ease',
+          boxShadow: selectedWork === work.task
+            ? '0 6px 12px rgba(0,0,0,0.2)'
+            : '0 2px 6px rgba(0,0,0,0.1)',
+          '&:hover': {
+            bgcolor: '#f5f5f5',
+            transform: 'translateY(-3px)',
+            boxShadow: '0 8px 16px rgba(0,0,0,0.15)'
+          }
+        }}
+        onClick={() => setSelectedWork(work.task)}
+      >
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Typography variant="subtitle1" fontWeight={600}>{work.task}</Typography>
+          {selectedWork === work.task && (
+            <CheckCircleIcon sx={{ color: themeColor, fontSize: 20 }} />
+          )}
         </Box>
-      )}
+        <Typography variant="body1" fontWeight={600} color="text.secondary">
+          ₱{work.rate.toLocaleString()}
+        </Typography>
+      </Box>
+    ))}
+
+    {/* Premium buttons */}
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 4 }}>
+            <Button
+        variant="outlined"
+        onClick={() => {
+          setSelectedService(null);
+          setSelectedWork('');
+          setJobDescription('');
+          setUploadedFile(null);
+          setActiveStep(0);
+          setActiveSection('services'); // <-- ensures it goes back to Dashboard menu "Services"
+        }}
+        sx={{
+          px: 4,
+          py: 1.5,
+          borderRadius: 3,
+          fontWeight: 600,
+          textTransform: 'none',
+          borderColor: themeColor,
+          color: themeColor,
+          '&:hover': {
+            bgcolor: themeColor,
+            color: 'white'
+          }
+        }}
+      >
+        Back
+      </Button>
+      <Button
+        variant="contained"
+        disabled={!selectedWork}
+        onClick={() => setActiveStep(1)}
+        sx={{
+          px: 4,
+          py: 1.5,
+          borderRadius: 3,
+          fontWeight: 600,
+          textTransform: 'none',
+          background: `linear-gradient(90deg, ${themeColor} 0%, #345b8c 100%)`,
+          boxShadow: '0 6px 12px rgba(0,0,0,0.2)',
+          '&:hover': {
+            background: `linear-gradient(90deg, #345b8c 0%, ${themeColor} 100%)`
+          }
+        }}
+      >
+        Continue
+      </Button>
+    </Box>
+  </Box>
+)}
 
                 {/* Step 2: Booking Details */}
                 {activeStep === 1 && (
-          <Box sx={{ mt: 3 }}>
-            <Paper elevation={3} sx={{ p: 3, mb: 3 }}>
-              <Typography variant="h5" fontWeight={700} sx={{ mb: 2, color: themeColor }}>
-                Booking Details
+  <Grid container spacing={5} sx={{ mt: 3 }}>
+    {/* Left side: booking form */}
+    <Grid item xs={12} md={8}>
+      <Paper elevation={3} sx={{ p: 5, borderRadius: 5 }}>
+        <Typography variant="h5" fontWeight={700} sx={{ mb: 4, color: themeColor }}>
+          Booking Details
+        </Typography>
+
+        {/* Upload area */}
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>Upload File / Image</Typography>
+          <Box
+            sx={{
+              border: '2px dashed #cbd5e1',
+              borderRadius: 3,
+              bgcolor: '#f9fafb',
+              p: 4,
+              textAlign: 'center',
+              cursor: 'pointer',
+              '&:hover': { bgcolor: '#f1f5f9' }
+            }}
+          >
+            <TextField
+              fullWidth
+              type="file"
+              InputLabelProps={{ shrink: true }}
+              onChange={(e) => setUploadedFile(e.target.files[0])}
+              sx={{ display: 'none' }}
+              id="upload-file"
+            />
+            <label htmlFor="upload-file" style={{ cursor: 'pointer' }}>
+              <Typography variant="body1" fontWeight={600} color={themeColor}>
+                Click to upload or drag & drop
               </Typography>
-
-              {/* Upload area */}
-              <Box sx={{ mb: 3 }}>
-                <Typography variant="subtitle1" sx={{ mb: 1 }}>Upload File / Image</Typography>
-                <TextField
-                  fullWidth
-                  type="file"
-                  InputLabelProps={{ shrink: true }}
-                  onChange={(e) => setUploadedFile(e.target.files[0])}
-                />
-              </Box>
-
-              {/* Description box */}
-              <Box sx={{ mb: 3 }}>
-                <Typography variant="subtitle1" sx={{ mb: 1 }}>Work Description</Typography>
-                <TextField
-                  fullWidth
-                  multiline
-                  rows={6}
-                  value={jobDescription}
-                  onChange={(e) => setJobDescription(e.target.value)}
-                  placeholder="Describe the work needed in detail..."
-                />
-              </Box>
-
-              {/* Job Order Summary */}
-              <Box sx={{ p: 2, border: '1px solid #ddd', borderRadius: 2, bgcolor: '#f9fafb' }}>
-                <Typography variant="h6" fontWeight={700} sx={{ mb: 1, color: themeColor }}>
-                  Job Order Summary
-                </Typography>
-                <Typography variant="body2" sx={{ mb: 0.5 }}>
-                  Service: {selectedService.brand}
-                </Typography>
-                <Typography variant="body2" sx={{ mb: 0.5 }}>
-                  Task: {selectedWork || 'Not selected'}
-                </Typography>
-                <Typography variant="body2" sx={{ mb: 0.5 }}>
-                  Rate: {selectedService.works.find(w => w.task === selectedWork)?.rate
-                    ? `₱${selectedService.works.find(w => w.task === selectedWork).rate.toLocaleString()}`
-                    : 'N/A'}
-                </Typography>
-                <Typography variant="body2" sx={{ mb: 0.5 }}>
-                  Description: {jobDescription || 'No description yet'}
-                </Typography>
-                <Typography variant="body2">
-                  File: {uploadedFile ? uploadedFile.name : 'No file uploaded'}
-                </Typography>
-              </Box>
-
-              <Button
-                variant="contained"
-                sx={{ mt: 3 }}
-                disabled={!jobDescription}
-                onClick={() => setActiveStep(2)}
-              >
-                Next
-              </Button>
-            </Paper>
+              <Typography variant="caption" color="text.secondary">
+                Supported formats: JPG, PNG, PDF
+              </Typography>
+            </label>
           </Box>
-        )}
+        </Box>
+
+        {/* Description box */}
+        <Box sx={{ mb: 5 }}>
+          <Typography variant="subtitle1" sx={{ mb: 1, fontWeight: 600 }}>Work Description</Typography>
+          <TextField
+            fullWidth
+            rows={6}
+            value={jobDescription}
+            onChange={(e) => setJobDescription(e.target.value)}
+            placeholder="Describe the work needed in detail..."
+            sx={{
+              bgcolor: '#f9fafb',
+              borderRadius: 3,
+              '& .MuiOutlinedInput-root': {
+                p: 2,
+                fontSize: '0.95rem'
+              }
+            }}
+          />
+        </Box>
+
+        {/* Premium buttons */}
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 4 }}>
+                <Button
+          variant="outlined"
+          onClick={() => {
+            setSelectedService(null);
+            setSelectedWork('');
+            setJobDescription('');
+            setUploadedFile(null);
+            setActiveStep(0);
+            setActiveSection('Selectedwork'); // <-- ensures it goes back to previous step "Select the work you need"
+          }}
+          sx={{
+            px: 4,
+            py: 1.5,
+            borderRadius: 3,
+            fontWeight: 600,
+            textTransform: 'none',
+            borderColor: themeColor,
+            color: themeColor,
+            '&:hover': {
+              bgcolor: themeColor,
+              color: 'white'
+            }
+          }}
+        >
+          Back
+        </Button>
+          <Button
+            variant="contained"
+            disabled={!jobDescription}
+            onClick={() => setActiveStep(2)}
+            sx={{
+              px: 4,
+              py: 1.5,
+              borderRadius: 3,
+              fontWeight: 600,
+              textTransform: 'none',
+              background: `linear-gradient(90deg, ${themeColor} 0%, #345b8c 100%)`,
+              boxShadow: '0 6px 12px rgba(0,0,0,0.2)',
+              '&:hover': {
+                background: `linear-gradient(90deg, #345b8c 0%, ${themeColor} 100%)`
+              }
+            }}
+          >
+            Continue
+          </Button>
+        </Box>
+      </Paper>
+    </Grid>
+
+    {/* Right side: premium job order summary */}
+    <Grid item xs={12} md={4}>
+    <Paper
+  elevation={6}
+  sx={{
+    p: 4,
+    borderRadius: 4,
+    bgcolor: '#f9fafb',
+    boxShadow: '0 8px 20px rgba(0,0,0,0.15)'
+  }}
+>
+  <Typography variant="h6" fontWeight={800} sx={{ mb: 3, color: themeColor }}>
+    Job Order Summary
+  </Typography>
+
+  <Grid container spacing={2}>
+    {/* Left column: Service + Task */}
+    <Grid item xs={12} md={6}>
+      <Box sx={{ mb: 3, p: 2, border: '1px solid #e2e8f0', borderRadius: 2, bgcolor: 'white' }}>
+        <Typography variant="subtitle2" fontWeight={700}>Service</Typography>
+        <Typography variant="body2">{selectedService?.brand || 'Not selected'}</Typography>
+      </Box>
+      <Box sx={{ mb: 3, p: 2, border: '1px solid #e2e8f0', borderRadius: 2, bgcolor: 'white' }}>
+        <Typography variant="subtitle2" fontWeight={700}>Task</Typography>
+        <Typography variant="body2">{selectedWork || 'Not selected'}</Typography>
+      </Box>
+    </Grid>
+
+    {/* Right column: Date + Time + Location */}
+    <Grid item xs={12} md={6}>
+      <Box sx={{ mb: 3, p: 2, border: '1px solid #e2e8f0', borderRadius: 2, bgcolor: 'white' }}>
+        <Typography variant="subtitle2" fontWeight={700}>Date</Typography>
+        <Typography variant="body2">{/* bind to selected date state */}</Typography>
+      </Box>
+      <Box sx={{ mb: 3, p: 2, border: '1px solid #e2e8f0', borderRadius: 2, bgcolor: 'white' }}>
+        <Typography variant="subtitle2" fontWeight={700}>Time</Typography>
+        <Typography variant="body2">{/* bind to selected time state */}</Typography>
+      </Box>
+      <Box sx={{ mb: 3, p: 2, border: '1px solid #e2e8f0', borderRadius: 2, bgcolor: 'white' }}>
+        <Typography variant="subtitle2" fontWeight={700}>Location</Typography>
+        <Typography variant="body2">{/* bind to location state */}</Typography>
+      </Box>
+    </Grid>
+  </Grid>
+
+  {/* Bottom: Bill, Subtotal, Total */}
+  <Box sx={{ mt: 3 }}>
+    <Box sx={{ mb: 2, p: 2, border: '1px solid #e2e8f0', borderRadius: 2, bgcolor: 'white' }}>
+      <Typography variant="subtitle2" fontWeight={700}>Bill</Typography>
+      <Typography variant="body2">
+        {selectedService?.works.find(w => w.task === selectedWork)?.rate
+          ? `₱${selectedService.works.find(w => w.task === selectedWork).rate.toLocaleString()}`
+          : 'N/A'}
+      </Typography>
+    </Box>
+    <Box sx={{ mb: 2, p: 2, border: '1px solid #e2e8f0', borderRadius: 2, bgcolor: 'white' }}>
+      <Typography variant="subtitle2" fontWeight={700}>Subtotal</Typography>
+      <Typography variant="body2">{/* backend calculation placeholder */}</Typography>
+    </Box>
+    <Box sx={{ p: 2, border: '2px solid', borderColor: themeColor, borderRadius: 2, bgcolor: 'white' }}>
+      <Typography variant="subtitle1" fontWeight={800} color={themeColor}>Total Amount</Typography>
+      <Typography variant="h6" fontWeight={800} color={themeColor}>
+        {/* backend calculation placeholder */}
+      </Typography>
+    </Box>
+  </Box>
+</Paper>
+
+    </Grid>
+  </Grid>
+)}
 
         {/* Step 3: Schedule & Location */}
         {activeStep === 2 && (
-          <Box sx={{ mt: 3 }}>
-            <TextField fullWidth label="Service Location" sx={{ mb: 2 }} />
-            <TextField fullWidth label="Date" type="date" sx={{ mb: 2 }} InputLabelProps={{ shrink: true }} />
-            <TextField fullWidth label="Time" type="time" sx={{ mb: 2 }} InputLabelProps={{ shrink: true }} />
-            <Button variant="contained" onClick={() => setActiveStep(3)}>Next</Button>
-          </Box>
-        )}
+  <Grid container spacing={4} sx={{ mt: 3 }}>
+    {/* Left side: Schedule & Location form */}
+    <Grid item xs={12} md={8}>
+      <Paper elevation={3} sx={{ p: 5, borderRadius: 5 }}>
+        <Typography variant="h5" fontWeight={700} sx={{ mb: 4, color: themeColor }}>
+          Schedule & Location
+        </Typography>
 
+        {/* Location group */}
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 1 }}>
+            Service Location
+          </Typography>
+          <TextField
+            fullWidth
+            placeholder="Enter full address or location details..."
+            sx={{ bgcolor: '#f9fafb', borderRadius: 2 }}
+          />
+        </Box>
+
+        {/* Date group */}
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 1 }}>
+            Preferred Date
+          </Typography>
+          <TextField
+            fullWidth
+            type="date"
+            InputLabelProps={{ shrink: true }}
+            sx={{ bgcolor: '#f9fafb', borderRadius: 2 }}
+          />
+        </Box>
+
+        {/* Time group */}
+        <Box sx={{ mb: 4 }}>
+          <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 1 }}>
+            Preferred Time
+          </Typography>
+          <TextField
+            fullWidth
+            type="time"
+            InputLabelProps={{ shrink: true }}
+            sx={{ bgcolor: '#f9fafb', borderRadius: 2 }}
+          />
+        </Box>
+
+        {/* Premium buttons */}
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 4 }}>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              setSelectedService(null);
+              setSelectedWork('');
+              setJobDescription('');
+              setUploadedFile(null);
+              setActiveStep(0);
+              setActiveSection('services'); // back to Dashboard menu Services
+            }}
+            sx={{
+              px: 4,
+              py: 1.5,
+              borderRadius: 3,
+              fontWeight: 600,
+              textTransform: 'none',
+              borderColor: themeColor,
+              color: themeColor,
+              '&:hover': { bgcolor: themeColor, color: 'white' }
+            }}
+          >
+            Back
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => setActiveStep(3)}
+            sx={{
+              px: 4,
+              py: 1.5,
+              borderRadius: 3,
+              fontWeight: 600,
+              textTransform: 'none',
+              backgroundColor: themeColor,
+              boxShadow: '0 6px 12px rgba(0,0,0,0.2)',
+              '&:hover': { backgroundColor: '#345b8c' }
+            }}
+          >
+            Continue
+          </Button>
+        </Box>
+      </Paper>
+    </Grid>
+
+    {/* Right side: premium job order summary */}
+    <Grid item xs={12} md={4}>
+      <Paper
+        elevation={10}
+        sx={{
+          p: 4,
+          borderRadius: 3,
+          background: `linear-gradient(135deg, ${themeColor} 0%, #345b8c 100%)`,
+          color: 'white',
+          boxShadow: '0 12px 28px rgba(0,0,0,0.25)'
+        }}
+      >
+        <Typography variant="h6" fontWeight={800} sx={{ mb: 3 }}>
+          Job Order Summary
+        </Typography>
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="body1" fontWeight={600}>Service:</Typography>
+          <Typography variant="body2">{selectedService.brand}</Typography>
+        </Box>
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="body1" fontWeight={600}>Task:</Typography>
+          <Typography variant="body2">{selectedWork || 'Not selected'}</Typography>
+        </Box>
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="body1" fontWeight={600}>Rate:</Typography>
+          <Typography variant="body2">
+            {selectedService.works.find(w => w.task === selectedWork)?.rate
+              ? `₱${selectedService.works.find(w => w.task === selectedWork).rate.toLocaleString()}`
+              : 'N/A'}
+          </Typography>
+        </Box>
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="body1" fontWeight={600}>Description:</Typography>
+          <Typography variant="body2">{jobDescription || 'No description yet'}</Typography>
+        </Box>
+        <Box>
+          <Typography variant="body1" fontWeight={600}>File:</Typography>
+          <Typography variant="body2">{uploadedFile ? uploadedFile.name : 'No file uploaded'}</Typography>
+        </Box>
+      </Paper>
+    </Grid>
+  </Grid>
+)}
         {/* Step 4: Billing */}
         {activeStep === 3 && (
           <Box sx={{ mt: 3 }}>
@@ -548,43 +862,153 @@ const renderBookingFlow = () => {
       {/* Layout */}
       <Box sx={{ display: 'flex', flexGrow: 1 }}>
         {/* Sidebar */}
-        <Box sx={{ width: 260, flexShrink: 0, bgcolor: 'white', borderRight: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', p: 2 }}>
-          <Box>
-            <Typography variant="h5" fontWeight={800} sx={{ color: themeColor, mb: 2 }}>Dashboard Menu</Typography>
-            <List>
-              <ListItem disablePadding>
-                <ListItemButton selected={activeSection === 'services'} onClick={() => setActiveSection('services')}>
-                  <ListItemIcon sx={{ color: themeColor }}><Build /></ListItemIcon>
-                  <ListItemText primary="Services" primaryTypographyProps={{ sx: { color: themeColor } }} />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton selected={activeSection === 'bookings'} onClick={() => setActiveSection('bookings')}>
-                  <ListItemIcon sx={{ color: themeColor }}><BookOnline /></ListItemIcon>
-                  <ListItemText primary="Current Booking" primaryTypographyProps={{ sx: { color: themeColor } }} />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton selected={activeSection === 'history'} onClick={() => setActiveSection('history')}>
-                  <ListItemIcon sx={{ color: themeColor }}><History /></ListItemIcon>
-                  <ListItemText primary="History" primaryTypographyProps={{ sx: { color: themeColor } }} />
-                </ListItemButton>
-              </ListItem>
-              <ListItem disablePadding>
-                <ListItemButton selected={activeSection === 'chat'} onClick={() => setActiveSection('chat')}>
-                  <ListItemIcon sx={{ color: themeColor }}><Chat /></ListItemIcon>
-                  <ListItemText primary="Chat with Vendor" primaryTypographyProps={{ sx: { color: themeColor } }} />
-                </ListItemButton>
-              </ListItem>
-            </List>
-          </Box>
-          <Box>
-            <Divider sx={{ mb: 2 }} />
-            <Button fullWidth variant="contained" startIcon={<Logout />} onClick={handleLogout} sx={{ bgcolor: themeColor, color: 'white', fontWeight: 600 }}>
-              Logout
-            </Button>
-          </Box>
-        </Box>
+<Box
+  sx={{
+    width: 260,
+    flexShrink: 0,
+    bgcolor: 'white',
+    borderRight: '1px solid #e2e8f0',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    p: 2,
+    boxShadow: '0 8px 16px rgba(0,0,0,0.15)',
+    borderRadius: 3
+  }}
+>
+  <Box>
+    <Typography variant="h5" fontWeight={800} sx={{ color: themeColor, mb: 3 }}>
+      Dashboard Menu
+    </Typography>
+
+    <List sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+      <ListItem disablePadding>
+        <Button
+          fullWidth
+          startIcon={<Build sx={{ fontSize: 22, color: activeSection === 'services' ? 'white' : themeColor }} />}
+          onClick={() => setActiveSection('services')}
+          sx={{
+            justifyContent: 'flex-start',
+            px: 3,
+            py: 1.5,
+            borderRadius: 3,
+            fontWeight: 600,
+            textTransform: 'none',
+            background: activeSection === 'services'
+              ? `linear-gradient(90deg, ${themeColor} 0%, #345b8c 100%)`
+              : 'rgba(18,56,101,0.05)',
+            color: activeSection === 'services' ? 'white' : themeColor,
+            boxShadow: activeSection === 'services'
+              ? '0 6px 12px rgba(0,0,0,0.2)'
+              : 'none'
+          }}
+        >
+          Services
+        </Button>
+      </ListItem>
+
+      <ListItem disablePadding>
+        <Button
+          fullWidth
+          startIcon={<BookOnline sx={{ fontSize: 22, color: activeSection === 'bookings' ? 'white' : themeColor }} />}
+          onClick={() => setActiveSection('bookings')}
+          sx={{
+            justifyContent: 'flex-start',
+            px: 3,
+            py: 1.5,
+            borderRadius: 3,
+            fontWeight: 600,
+            textTransform: 'none',
+            background: activeSection === 'bookings'
+              ? `linear-gradient(90deg, ${themeColor} 0%, #345b8c 100%)`
+              : 'rgba(18,56,101,0.05)',
+            color: activeSection === 'bookings' ? 'white' : themeColor,
+            boxShadow: activeSection === 'bookings'
+              ? '0 6px 12px rgba(0,0,0,0.2)'
+              : 'none'
+          }}
+        >
+          Current Booking
+        </Button>
+      </ListItem>
+
+      <ListItem disablePadding>
+        <Button
+          fullWidth
+          startIcon={<History sx={{ fontSize: 22, color: activeSection === 'history' ? 'white' : themeColor }} />}
+          onClick={() => setActiveSection('history')}
+          sx={{
+            justifyContent: 'flex-start',
+            px: 3,
+            py: 1.5,
+            borderRadius: 3,
+            fontWeight: 600,
+            textTransform: 'none',
+            background: activeSection === 'history'
+              ? `linear-gradient(90deg, ${themeColor} 0%, #345b8c 100%)`
+              : 'rgba(18,56,101,0.05)',
+            color: activeSection === 'history' ? 'white' : themeColor,
+            boxShadow: activeSection === 'history'
+              ? '0 6px 12px rgba(0,0,0,0.2)'
+              : 'none'
+          }}
+        >
+          History
+        </Button>
+      </ListItem>
+
+      <ListItem disablePadding>
+        <Button
+          fullWidth
+          startIcon={<Chat sx={{ fontSize: 22, color: activeSection === 'chat' ? 'white' : themeColor }} />}
+          onClick={() => setActiveSection('chat')}
+          sx={{
+            justifyContent: 'flex-start',
+            px: 3,
+            py: 1.5,
+            borderRadius: 3,
+            fontWeight: 600,
+            textTransform: 'none',
+            background: activeSection === 'chat'
+              ? `linear-gradient(90deg, ${themeColor} 0%, #345b8c 100%)`
+              : 'rgba(18,56,101,0.05)',
+            color: activeSection === 'chat' ? 'white' : themeColor,
+            boxShadow: activeSection === 'chat'
+              ? '0 6px 12px rgba(0,0,0,0.2)'
+              : 'none'
+          }}
+        >
+          Chat with Vendor
+        </Button>
+      </ListItem>
+    </List>
+  </Box>
+
+  {/* Bottom buttons */}
+  <Box>
+    <Divider sx={{ mb: 2 }} />
+    <Button
+      fullWidth
+      variant="contained"
+      startIcon={<Logout />}
+      onClick={handleLogout}
+      sx={{
+        px: 3,
+        py: 1.5,
+        borderRadius: 3,
+        fontWeight: 600,
+        textTransform: 'none',
+        background: `linear-gradient(90deg, ${themeColor} 0%, #345b8c 100%)`,
+        boxShadow: '0 6px 12px rgba(0,0,0,0.2)',
+        '&:hover': {
+          background: `linear-gradient(90deg, #345b8c 0%, ${themeColor} 100%)`
+        }
+      }}
+    >
+      Logout
+    </Button>
+  </Box>
+</Box>
 
         {/* Main content */}
         <Box sx={{ flexGrow: 1, p: { xs: 2, md: 4 }, overflowY: 'auto' }}>
