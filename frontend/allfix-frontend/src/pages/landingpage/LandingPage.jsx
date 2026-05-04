@@ -63,7 +63,9 @@
   import LocationOnIcon from '@mui/icons-material/LocationOn';
   import DescriptionIcon from '@mui/icons-material/Description';
 
-  // --- SPECIFIC SERVICE ICONS (Matching your screenshot) ---
+  import ShieldIcon from '@mui/icons-material/Shield';
+
+// --- SPECIFIC SERVICE ICONS (Matching your screenshot) ---
   import AirIcon from '@mui/icons-material/Air'; // CoolFix (Wind)
   import WaterDropIcon from '@mui/icons-material/WaterDrop'; // SaniFix (Water)
   import BuildIcon from '@mui/icons-material/Build'; // HomeFix (Wrench)
@@ -477,7 +479,7 @@
                       </Box>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                      <AirIcon style={{ width: 28, height: 28, color: '#60a5fa', flexShrink: 0 }} />
+                      <ShieldIcon style={{ width: 28, height: 28, color: '#60a5fa', flexShrink: 0 }} />
                       <Box sx={{ textAlign: 'left' }}>
                         <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1.25rem' }}>Insured &</Typography>
                         <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.95rem' }}>Accredited</Typography>
@@ -936,7 +938,23 @@
                 <Grid item xs={6} md={2}>
                   <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                    {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Service Guarantee'].map(link => (<Typography key={link} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>))}
+                    {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Service Guarantee'].map(link => (
+                      <Typography 
+                        key={link}
+                        onClick={() => { 
+                          if (link === 'Privacy Policy') { 
+                            navigate('/privacy'); 
+                            window.scrollTo(0, 0); 
+                          } else if (link === 'Terms of Service') {
+                            navigate('/terms-of-use');
+                            window.scrollTo(0, 0);
+                          }
+                        }}
+                        sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}
+                      >
+                        {link}
+                      </Typography>
+                    ))}
                   </Box>
                 </Grid>
               </Grid>
