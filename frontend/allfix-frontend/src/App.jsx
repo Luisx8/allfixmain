@@ -7,8 +7,8 @@ import LandingRedirect from './components/LandingRedirect'
 
 // Landing & Public Pages
 import LandingPage from './pages/landingpage/LandingPage'
-import PrivacyPage from './pages/privacypage/PrivacyPage';
-import TermsOfUse from './pages/privacypage/TermsOfUse';
+import PrivacyPage from './pages/footerlinks/PrivacyPage';
+import TermsOfUse from './pages/footerlinks/TermsOfUse';
 
 // Auth Pages
 import CustomerLogin from './pages/landingpage/CustomerLogin'
