@@ -591,12 +591,16 @@ const VendorApplication = () => {
         <Box
           component="footer"
           sx={{
+<<<<<<< HEAD
             width: '100vw',
             position: 'relative',
             left: '50%',
             right: '50%',
             ml: '-50vw',
             mr: '-50vw',
+=======
+            width: '100%',
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
             bgcolor: '#0a1e3f', 
             pt: { xs: 8, md: 10 },
             pb: { xs: 4, md: 6 },
@@ -722,7 +726,23 @@ const VendorApplication = () => {
                 <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                   {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Service Guarantee'].map(link => (
+<<<<<<< HEAD
                     <Typography key={link} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>
+=======
+                    <Typography 
+                      key={link} 
+                      onClick={() => {
+                        if (link === 'Privacy Policy') {
+                          navigate('/privacy');
+                        } else if (link === 'Terms of Service') {
+                          navigate('/terms-of-use');
+                        }
+                      }}
+                      sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}
+                    >
+                      {link}
+                    </Typography>
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                   ))}
                 </Box>
               </Grid>

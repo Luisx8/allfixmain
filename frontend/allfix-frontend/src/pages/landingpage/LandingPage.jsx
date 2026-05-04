@@ -54,10 +54,15 @@ const testimonials = [
   },
 ];
 
+<<<<<<< HEAD
+=======
+// --- CORE ICONS ---
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
+<<<<<<< HEAD
 import SecurityIcon from '@mui/icons-material/Security';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -70,6 +75,31 @@ const services = [
     tagline: 'Air-con & HVAC Specialists',
     description: 'Cleaning, installation, repair, and preventive maintenance for all aircon brands and HVAC systems.',
     image: 'https://via.placeholder.com/350x200?text=CoolFix',
+=======
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import DescriptionIcon from '@mui/icons-material/Description';
+import ShieldIcon from '@mui/icons-material/Shield';
+
+// --- SPECIFIC SERVICE ICONS ---
+import AirIcon from '@mui/icons-material/Air';
+import WaterDropIcon from '@mui/icons-material/WaterDrop';
+import BuildIcon from '@mui/icons-material/Build';
+import Inventory2Icon from '@mui/icons-material/Inventory2';
+import SpaIcon from '@mui/icons-material/Spa';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import PetsIcon from '@mui/icons-material/Pets';
+import MemoryIcon from '@mui/icons-material/Memory';
+
+const services = [
+  {
+    icon: AirIcon,
+    brand: 'CoolFix',
+    tagline: 'Air-con & HVAC Specialists',
+    description: 'Cleaning, installation, repair, and preventive maintenance for all aircon brands and HVAC systems.',
+    image: '/images/coolfix.jpg',
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
@@ -78,6 +108,7 @@ const services = [
     services: ['AC Cleaning', 'Installation', 'Gas Recharge', 'Emergency Repair'],
   },
   {
+<<<<<<< HEAD
     icon: SecurityIcon,
     brand: 'ElectroFix',
     tagline: 'Electrical & Lighting Experts',
@@ -96,11 +127,19 @@ const services = [
     tagline: 'Deep Cleaning & Sanitization',
     description: 'Comprehensive cleaning solutions for homes and offices with eco-friendly products and professional techniques.',
     image: 'https://via.placeholder.com/350x200?text=CleanFix',
+=======
+    icon: WaterDropIcon,
+    brand: 'SaniFix',
+    tagline: 'Deep Cleaning & Sanitization',
+    description: 'Professional deep cleaning and sanitization for homes, offices, and facilities. Disinfection, anti-bacterial, and eco-friendly solutions.',
+    image: '/images/sanifix.jpg',
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
     headerBgLight: '#2E5BA8',
     pillText: '#2E5BA8',
+<<<<<<< HEAD
     services: ['Deep Cleaning', 'Sanitization', 'Carpet Care', 'Regular Maintenance'],
   },
   {
@@ -109,11 +148,22 @@ const services = [
     tagline: 'Professional Plumbing Solutions',
     description: 'Expert plumbing services including repairs, installations, and maintenance for residential and commercial properties.',
     image: 'https://via.placeholder.com/350x200?text=PlumbFix',
+=======
+    services: ['Deep Cleaning', 'Sanitization', 'Disinfection', 'Odor Removal'],
+  },
+  {
+    icon: BuildIcon,
+    brand: 'HomeFix',
+    tagline: 'Home Repairs & Renovation',
+    description: 'Renovation, repairs, and handyman services for all areas of your home. Quality work for comfort and safety.',
+    image: '/images/homefix.jpg',
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
     headerBgLight: '#2E5BA8',
     pillText: '#2E5BA8',
+<<<<<<< HEAD
     services: ['Pipe Repair', 'Installation', 'Leak Detection', 'Drain Cleaning'],
   },
   {
@@ -148,6 +198,16 @@ const services = [
     tagline: 'Professional Moving Solutions',
     description: 'Safe and reliable moving services with professional packing, transport, and setup for residential and office relocations.',
     image: 'https://via.placeholder.com/350x200?text=MoveFix',
+=======
+    services: ['Renovation', 'Repairs', 'Handyman', 'Maintenance'],
+  },
+  {
+    icon: Inventory2Icon,
+    brand: 'MoveFix',
+    tagline: 'Professional Moving Solutions',
+    description: 'Safe and reliable moving services with professional packing, transport, and setup for residential and office relocations.',
+    image: '/images/movefix.jpg',
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
@@ -156,11 +216,58 @@ const services = [
     services: ['Packing', 'Loading', 'Transport', 'Unpacking'],
   },
   {
+<<<<<<< HEAD
     icon: SecurityIcon,
     brand: 'PetFix',
     tagline: 'Pet Care & Grooming',
     description: 'Professional pet grooming, boarding, and veterinary care services for your beloved pets with love and expertise.',
     image: 'https://via.placeholder.com/350x200?text=PetFix',
+=======
+    icon: SpaIcon,
+    brand: 'GreenFix',
+    tagline: 'Eco & Sustainability',
+    description: 'Eco-friendly solutions for reducing waste and promoting sustainable practices at home and business.',
+    image: '/images/greenfix.jpg',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['Waste Audit', 'Recycling', 'Composting', 'Eco Consultation'],
+  },
+  {
+    icon: FavoriteBorderIcon,
+    brand: 'HealthFix',
+    tagline: 'Health & Wellness Services',
+    description: 'Home and office health services: air quality, water testing, pest control, and more for a safer environment.',
+    image: '/images/healthfix.jpg',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['Air Quality', 'Water Testing', 'Pest Control', 'Wellness Checks'],
+  },
+  {
+    icon: HomeOutlinedIcon,
+    brand: 'SpaceFix',
+    tagline: 'Space Planning & Interiors',
+    description: 'Interior design, space planning, and organization for homes and offices. Make your space work for you.',
+    image: '/images/spacefix.jpg',
+    accent: '#2E5BA8',
+    accentDark: '#10355f',
+    headerBg: '#10355f',
+    headerBgLight: '#2E5BA8',
+    pillText: '#2E5BA8',
+    services: ['Interior Design', 'Space Planning', 'Organization', 'Furniture Setup'],
+  },
+  {
+    icon: PetsIcon,
+    brand: 'PetFix',
+    tagline: 'Pet Care & Grooming',
+    description: 'Professional pet grooming, boarding, and veterinary care services for your beloved pets with love and expertise.',
+    image: '/images/petfix.jpg',
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
@@ -169,11 +276,19 @@ const services = [
     services: ['Grooming', 'Boarding', 'Bathing', 'Nail Trimming'],
   },
   {
+<<<<<<< HEAD
     icon: DescriptionIcon,
     brand: 'TechFix',
     tagline: 'IT & Gadget Support',
     description: 'On-demand IT support for computers, WiFi, smart home devices, and gadget troubleshooting for home and office.',
     image: 'https://via.placeholder.com/350x200?text=TechFix',
+=======
+    icon: MemoryIcon,
+    brand: 'TechFix',
+    tagline: 'IT & Gadget Support',
+    description: 'On-demand IT support for computers, WiFi, smart home devices, and gadget troubleshooting for home and office.',
+    image: '/images/techfix.jpg',
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
@@ -191,7 +306,11 @@ const ServiceCard = ({ service, onServiceClick }) => {
     <div
       style={{
         position: 'relative',
+<<<<<<< HEAD
         borderRadius: '12px',
+=======
+        borderRadius: '16px',
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
         overflow: 'hidden',
         border: '1px solid #e5e5e5',
         boxShadow: hovered ? '0 25px 50px rgba(0,0,0,0.15)' : '0 1px 3px rgba(0,0,0,0.1)',
@@ -199,13 +318,23 @@ const ServiceCard = ({ service, onServiceClick }) => {
         transform: hovered ? 'translateY(-6px)' : 'translateY(0)',
         cursor: 'pointer',
         backgroundColor: '#fff',
+<<<<<<< HEAD
+=======
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => onServiceClick(service)}
     >
       {/* Image showcase */}
+<<<<<<< HEAD
         <div style={{ position: 'relative', height: '130px', overflow: 'hidden', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+=======
+        <div style={{ position: 'relative', height: '200px', overflow: 'hidden', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
           <img
             src={service.image}
             alt={service.brand}
@@ -213,6 +342,10 @@ const ServiceCard = ({ service, onServiceClick }) => {
               width: '100%',
               height: '100%',
               objectFit: 'cover',
+<<<<<<< HEAD
+=======
+              objectPosition: 'center 10%',
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
               opacity: hovered ? 0.3 : 1,
               transition: 'opacity 0.5s ease',
               position: 'absolute',
@@ -261,6 +394,7 @@ const ServiceCard = ({ service, onServiceClick }) => {
       <div
         style={{
           position: 'relative',
+<<<<<<< HEAD
           padding: '12px 16px',
           display: 'flex',
           alignItems: 'center',
@@ -273,10 +407,25 @@ const ServiceCard = ({ service, onServiceClick }) => {
         </div>
         <div style={{ width: '36px', height: '36px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 4px 8px rgba(0,0,0,0.15)', backgroundColor: service.accent, position: 'relative', zIndex: 2 }}>
           <Icon style={{ width: '20px', height: '20px', color: '#fff' }} />
+=======
+          padding: '32px 24px', 
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          background: `linear-gradient(135deg, ${service.headerBg} 0%, ${service.headerBgLight} 100%)`, 
+        }}
+      >
+        <div style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.05em', textTransform: 'uppercase', padding: '6px 12px', borderRadius: '9999px', backgroundColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>
+          {service.brand}
+        </div>
+        <div style={{ width: '40px', height: '40px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.15)', position: 'relative', zIndex: 2 }}>
+          <Icon style={{ width: '22px', height: '22px', color: '#fff' }} />
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
         </div>
       </div>
       
       {/* Body */}
+<<<<<<< HEAD
       <div style={{ padding: '16px', minHeight: '280px', display: 'flex', flexDirection: 'column' }}>
         <h3 style={{ fontWeight: 900, fontSize: '0.95rem', color: '#000', marginBottom: '2px' }}>{service.brand}</h3>
         <p style={{ fontSize: '0.7rem', fontWeight: 600, color: service.accent, marginBottom: '12px' }}>{service.tagline}</p>
@@ -292,6 +441,24 @@ const ServiceCard = ({ service, onServiceClick }) => {
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', fontWeight: 700, color: hovered ? service.accentDark : service.accent, transition: 'color 0.2s ease' }}>
           Book {service.brand}
           <ArrowForwardIcon style={{ width: '14px', height: '14px', transition: 'transform 0.2s ease', transform: hovered ? 'translateX(4px)' : 'translateX(0)' }} />
+=======
+      <div style={{ padding: '12px 24px 20px 24px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+        <h3 style={{ fontWeight: 900, fontSize: '1.25rem', color: '#000', marginBottom: '2px' }}>{service.brand}</h3>
+        <p style={{ fontSize: '0.85rem', fontWeight: 600, color: service.accent, marginBottom: '12px' }}>{service.tagline}</p>
+        <p style={{ fontSize: '0.9rem', color: '#666', lineHeight: 1.5, marginBottom: '16px', flex: 1 }}>{service.description}</p>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 12px', marginBottom: '16px' }}>
+          {service.services.map((tag) => (
+            <div key={tag} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <CheckCircleIcon style={{ width: '14px', height: '14px', color: service.accent, flexShrink: 0 }} />
+              <span style={{ fontSize: '0.8rem', fontWeight: 500, color: service.pillText }}>{tag}</span>
+            </div>
+          ))}
+        </div>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.9rem', fontWeight: 700, color: hovered ? service.accentDark : service.accent, transition: 'color 0.2s ease', marginTop: 'auto' }}>
+          About {service.brand}
+          <ArrowForwardIcon style={{ width: '16px', height: '16px', transition: 'transform 0.2s ease', transform: hovered ? 'translateX(4px)' : 'translateX(0)' }} />
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
         </div>
       </div>
       <div style={{ position: 'absolute', bottom: 0, left: 0, height: '2px', backgroundColor: service.accent, width: hovered ? '100%' : '0%', transition: 'width 0.3s ease' }} />
@@ -299,7 +466,11 @@ const ServiceCard = ({ service, onServiceClick }) => {
   );
 };
 
+<<<<<<< HEAD
 // Map Topology Data (Built dynamically to match the drawing, with Pateros merged into Taguig)
+=======
+// Map Topology Data
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
 const mapCities = [
   { id: 'Valenzuela', points: '80,60 150,50 180,100 130,130 90,110', lx: 125, ly: 85 },
   { id: 'Caloocan', points: '150,50 240,30 280,80 250,130 180,100', lx: 220, ly: 75 },
@@ -388,7 +559,11 @@ const LandingPage = () => {
         >
           <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, md: 5 }, minHeight: '64px' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, ml: { xs: 0, md: 8, lg: 16 }, flex: { xs: '1 1 auto', md: 'none' } }}>
+<<<<<<< HEAD
               <Box sx={{ width: 40, height: 40, bgcolor: 'grey.400', borderRadius: '50%' }} />
+=======
+              <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix.ph Logo" sx={{ width: { xs: 35, md: 45 }, height: { xs: 35, md: 45 }, objectFit: 'contain' }} />
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Typography variant="h5" fontWeight="bold" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, mb: 0.3, transition: 'color 0.3s ease', fontSize: { xs: '1.1rem', md: '1.3rem' } }}>
                   AllFix.ph
@@ -462,7 +637,11 @@ const LandingPage = () => {
                     </Box>
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+<<<<<<< HEAD
                     <SecurityIcon sx={{ width: 28, height: 28, color: '#60a5fa', flexShrink: 0 }} />
+=======
+                    <ShieldIcon style={{ width: 28, height: 28, color: '#60a5fa', flexShrink: 0 }} />
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                     <Box sx={{ textAlign: 'left' }}>
                       <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1.25rem' }}>Insured &</Typography>
                       <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.95rem' }}>Accredited</Typography>
@@ -479,6 +658,11 @@ const LandingPage = () => {
                   <Typography sx={{ fontSize: '0.85rem', color: '#666', mb: 2, lineHeight: 1.3, textAlign: 'center' }}>
                     Fill in the details below to create your AllFix account.
                   </Typography>
+<<<<<<< HEAD
+=======
+                  
+                  {/* Firstname and Lastname */}
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                   <Grid container spacing={1.5} sx={{ mb: 1.5 }}>
                     <Grid item xs={6}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Firstname <span style={{ color: '#e74c3c' }}>*</span></Typography>
@@ -489,14 +673,28 @@ const LandingPage = () => {
                       <TextField size="small" fullWidth placeholder="Enter your last name" sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
                     </Grid>
                   </Grid>
+<<<<<<< HEAD
+=======
+                  
+                  {/* Email */}
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                   <Box sx={{ mb: 1.5 }}>
                     <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Email address</Typography>
                     <TextField size="small" fullWidth placeholder="name@example.com" InputProps={{ startAdornment: <Typography sx={{ mr: 1, color: '#999', fontSize: '1rem' }}>✉</Typography> }} sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
                   </Box>
+<<<<<<< HEAD
                   <Grid container spacing={1.5} sx={{ mb: 2 }}>
                     <Grid item xs={6}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>City <span style={{ color: '#e74c3c' }}>*</span></Typography>
                       <TextField size="small" select fullWidth defaultValue="default" SelectProps={{ displayEmpty: true }} sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }}>
+=======
+                  
+                  {/* City and Birthdate (Fixed Alignment) */}
+                  <Grid container spacing={1.5} sx={{ mb: 2 }}>
+                    <Grid item xs={6} sx={{ width: '100%' }}>
+                      <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>City <span style={{ color: '#e74c3c' }}>*</span></Typography>
+                      <TextField size="small" select fullWidth defaultValue="default" SelectProps={{ displayEmpty: true }} sx={{ width: '100%', '& .MuiFormControl-root': { width: '100%' }, '& .MuiOutlinedInput-root': { width: '100%', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }}>
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                         <MenuItem value="default" disabled>Select city</MenuItem>
                         <MenuItem value="manila">Manila</MenuItem>
                         <MenuItem value="makati">Makati</MenuItem>
@@ -504,11 +702,21 @@ const LandingPage = () => {
                         <MenuItem value="quezon">Quezon City</MenuItem>
                       </TextField>
                     </Grid>
+<<<<<<< HEAD
                     <Grid item xs={6}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Birthdate <span style={{ color: '#e74c3c' }}>*</span></Typography>
                       <TextField size="small" fullWidth type="date" InputLabelProps={{ shrink: true }} sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
                     </Grid>
                   </Grid>
+=======
+                    <Grid item xs={6} sx={{ width: '100%' }}>
+                      <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Birthdate <span style={{ color: '#e74c3c' }}>*</span></Typography>
+                      <TextField size="small" fullWidth type="date" InputLabelProps={{ shrink: true }} sx={{ width: '100%', '& .MuiFormControl-root': { width: '100%' }, '& .MuiOutlinedInput-root': { width: '100%', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
+                    </Grid>
+                  </Grid>
+                  
+                  {/* Buttons */}
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                   <Button variant="contained" fullWidth sx={{ bgcolor: '#10355f', color: 'white', fontWeight: 900, fontSize: '0.9rem', py: 1, borderRadius: '50px', textTransform: 'none', mb: 1.5, mt: 1, boxShadow: '0 2px 8px rgba(16,53,95,0.10)', '&:hover': { bgcolor: '#0d264a' } }}>
                     Create Account
                   </Button>
@@ -526,11 +734,19 @@ const LandingPage = () => {
 
         {/* Services Section */}
         <Box id="services" sx={{ position: 'relative', zIndex: 10, bgcolor: '#ffffff', py: 4, px: { xs: 2, md: 5 }, minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+<<<<<<< HEAD
           <Container maxWidth="lg">
             <Box sx={{ textAlign: 'center', mb: 3 }}>
               <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#eaf2fc', color: '#23406e', borderRadius: '999px', px: 3, py: 1, fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.08em', boxShadow: 1, textTransform: 'uppercase', mb: 2 }}>OUR SERVICES</Box>
               <Typography sx={{ fontSize: { xs: '1.6rem', md: '2rem' }, fontWeight: 900, mb: 2, lineHeight: 1.2 }}>
                 Eight Expert Brands, <span style={{ color: '#10355f' }}>One Trusted Platform</span>
+=======
+          <Container maxWidth="xl">
+            <Box sx={{ textAlign: 'center', mb: 3 }}>
+              <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#eaf2fc', color: '#23406e', borderRadius: '999px', px: 3, py: 1, fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.08em', boxShadow: 1, textTransform: 'uppercase', mb: 2 }}>OUR SERVICES</Box>
+              <Typography sx={{ fontSize: { xs: '1.6rem', md: '2rem' }, fontWeight: 900, mb: 2, lineHeight: 1.2 }}>
+                Nine Expert Brands, <span style={{ color: '#10355f' }}>One Trusted Platform</span>
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
               </Typography>
               <Typography sx={{ color: '#666', fontSize: { xs: '0.85rem', md: '0.9rem' }, maxWidth: '600px', mx: 'auto', lineHeight: 1.6 }}>
                 Each AllFix brand specializes in a distinct service area, staffed by trained, background-checked professionals with industry certifications.
@@ -540,37 +756,65 @@ const LandingPage = () => {
             <Box sx={{ width: '100%', mt: 2, overflowX: { xs: 'auto', md: 'visible' }, pb: { xs: 2, md: 0 } }}>
               <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', width: '100%', flexDirection: 'column' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
+<<<<<<< HEAD
                   <Button aria-label="Scroll left" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', mr: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: -320, behavior: 'smooth' }); }}>
+=======
+                  <Button aria-label="Scroll left" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', mr: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: -340, behavior: 'smooth' }); }}>
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                     <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
                   </Button>
                   <Box id="services-scroll-row" sx={{ display: 'flex', gap: 2, minWidth: 0, overflowX: 'auto', scrollSnapType: 'x mandatory', px: 1, flex: 1, scrollBehavior: 'smooth', '&::-webkit-scrollbar': { display: 'none' } }}>
                     {services.map((service, index) => (
+<<<<<<< HEAD
                       <Box key={index} sx={{ minWidth: '320px', maxWidth: '90vw', flex: '0 0 auto', scrollSnapAlign: 'start' }}>
+=======
+                      <Box key={index} sx={{ minWidth: '340px', maxWidth: '90vw', flex: '0 0 auto', scrollSnapAlign: 'start' }}>
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                         <ServiceCard service={service} onServiceClick={(svc) => console.log('Service clicked:', svc)} />
                       </Box>
                     ))}
                   </Box>
+<<<<<<< HEAD
                   <Button aria-label="Scroll right" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', ml: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: 320, behavior: 'smooth' }); }}>
+=======
+                  <Button aria-label="Scroll right" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', ml: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: 340, behavior: 'smooth' }); }}>
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                     <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
                   </Button>
                 </Box>
                 <Box id="services-scroll-navbar" sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, width: '100%', mt: 1, mb: 1, px: 1 }}>
                   {services.map((svc, idx) => (
+<<<<<<< HEAD
                     <Button key={svc.brand} size="small" sx={{ minWidth: 0, px: 0.5, py: 0.8, fontSize: '0.75rem', fontWeight: 700, borderRadius: '10px', color: '#23406e', bgcolor: '#eaf2fc', whiteSpace: 'nowrap', boxShadow: 'none', border: '1.5px solid transparent', transition: 'all 0.2s', '&.active': { bgcolor: '#23406e', color: '#fff', borderColor: '#23406e' }, '&:hover': { bgcolor: '#dbeafe', color: '#23406e' } }} onClick={() => document.getElementById('services-scroll-row')?.scrollTo({ left: idx * 320, behavior: 'smooth' })}>
+=======
+                    <Button key={svc.brand} size="small" sx={{ minWidth: 0, px: 0.5, py: 0.8, fontSize: '0.75rem', fontWeight: 700, borderRadius: '10px', color: '#23406e', bgcolor: '#eaf2fc', whiteSpace: 'nowrap', boxShadow: 'none', border: '1.5px solid transparent', transition: 'all 0.2s', '&.active': { bgcolor: '#23406e', color: '#fff', borderColor: '#23406e' }, '&:hover': { bgcolor: '#dbeafe', color: '#23406e' } }} onClick={() => document.getElementById('services-scroll-row')?.scrollTo({ left: idx * 340, behavior: 'smooth' })}>
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                       {svc.brand}
                     </Button>
                   ))}
                 </Box>
               </Box>
+<<<<<<< HEAD
               <Grid container spacing={3} sx={{ display: { xs: 'none', md: 'flex' } }}>
                 {services.map((service, index) => (
                   <Grid item xs={12} md={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box sx={{ width: '100%', maxWidth: '360px' }}>
+=======
+
+              <Grid container spacing={3} sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center', mt: { md: 2 } }}>
+                {services.map((service, index) => (
+                  <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Box sx={{ width: '100%', maxWidth: '420px', display: 'flex' }}>
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                       <ServiceCard service={service} onServiceClick={(svc) => console.log('Service clicked:', svc)} />
                     </Box>
                   </Grid>
                 ))}
               </Grid>
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
             </Box>
           </Container>
         </Box>
@@ -734,7 +978,11 @@ const LandingPage = () => {
                     <polygon 
                       key={idx}
                       points={city.points} 
+<<<<<<< HEAD
                       fill="#2E5BA8" // The unified primary blue brand color
+=======
+                      fill="#10355f" // The unified primary blue brand color
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                       stroke="#ffffff" 
                       strokeWidth="2.5" 
                       strokeLinejoin="round" 
@@ -745,7 +993,11 @@ const LandingPage = () => {
                         e.currentTarget.style.transformOrigin = `${city.lx}px ${city.ly}px`;
                       }}
                       onMouseLeave={(e) => {
+<<<<<<< HEAD
                         e.currentTarget.style.fill = '#2E5BA8';
+=======
+                        e.currentTarget.style.fill = '#10355f';
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                         e.currentTarget.style.transform = 'scale(1)';
                       }}
                     />
@@ -809,7 +1061,11 @@ const LandingPage = () => {
         </Box>
 
         {/* Testimonials */}
+<<<<<<< HEAD
         <Box id="testimonials" sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: '#0d264a', pt: { xs: 8, md: 0 }, pb: 0, mt: 0, mb: 0, px: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', minHeight: '100vh', overflow: 'hidden' }}>
+=======
+        <Box id="testimonials" sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: '#0d264a', pt: { xs: 8, md: 10 }, pb: { xs: 8, md: 10 }, mt: 0, mb: 0, px: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', overflow: 'hidden' }}>
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 10 }}>
             <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#23406e', color: 'white', borderRadius: '999px', px: 2.5, py: 0.8, fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.08em', boxShadow: 1, textTransform: 'uppercase', mb: 1.5 }}>CLIENT STORIES</Box>
@@ -850,6 +1106,7 @@ const LandingPage = () => {
                 </Box>
               ))}
             </Box>
+<<<<<<< HEAD
 
             <Box sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: 'white', py: { xs: 2, md: 2.5 }, px: { xs: 2, md: 6 }, mt: { xs: 5, md: 6 }, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, justifyContent: 'space-between', boxShadow: '0 2px 16px rgba(16,53,95,0.07)', borderRadius: 0 }}>
               <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -860,20 +1117,153 @@ const LandingPage = () => {
                 <Button variant="contained" sx={{ bgcolor: '#10355f', color: 'white', fontWeight: 800, fontSize: '0.85rem', px: 2.5, py: 1, borderRadius: '10px', boxShadow: 'none', '&:hover': { bgcolor: '#0d264a' } }}>Book a Fix Now</Button>
                 <Button variant="contained" sx={{ bgcolor: '#123865', color: 'white', fontWeight: 800, fontSize: '0.85rem', px: 2.5, py: 1, borderRadius: '10px', boxShadow: 'none', display: 'flex', alignItems: 'center', gap: 0.8, '&:hover': { bgcolor: '#23406e' } }} startIcon={<svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.05.37 2.07.71 3.06a2 2 0 0 1-.45 2.11l-.27.27a16 16 0 0 0 6.29 6.29l.27-.27a2 2 0 0 1 2.11-.45c.99.34 2.01.58 3.06.71A2 2 0 0 1 22 16.92z"/></svg>}>Call Us</Button>
               </Box>
+=======
+          </Container>
+        </Box>
+
+       {/* NEW CONTACT SECTION */}
+        <Box id="contact-us" sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: '#f8fafc', py: { xs: 8, md: 0 }, minHeight: { md: '100vh' }, display: 'flex', alignItems: 'center', borderTop: '1px solid #e2e8f0', overflow: 'hidden' }}>
+          
+          {/* Subtle Decorative Background */}
+          <Box sx={{ position: 'absolute', top: 0, right: 0, width: '45%', height: '100%', background: 'linear-gradient(135deg, rgba(46,91,168,0.04) 0%, rgba(16,53,95,0.06) 100%)', borderBottomLeftRadius: '100%', zIndex: 0 }} />
+
+          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+            
+            {/* 
+              By using standard Flexbox here instead of Grid, we FORCE it to stay side-by-side 
+              on desktop (md: 'row') and prevent it from ever dropping below the text.
+            */}
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'center', justifyContent: 'space-between', gap: { xs: 6, md: 4, lg: 8 }, width: '100%' }}>
+              
+              {/* Left Side: Text & Info (Locked to 45% width on desktop) */}
+              <Box sx={{ width: { xs: '100%', md: '45%' } }}>
+                <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#eaf2fc', color: '#23406e', borderRadius: '8px', px: 1.5, py: 0.5, fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', mb: 2 }}>
+                  Reach Out
+                </Box>
+                
+                <Typography sx={{ fontSize: { xs: '2rem', md: '2.5rem', lg: '3.2rem' }, fontWeight: 900, color: '#10355f', mb: 2, lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+                  Let's get in <br/><span style={{ color: '#2e5ba8' }}>touch.</span>
+                </Typography>
+                
+                <Typography sx={{ color: '#64748b', fontSize: '0.9rem', mb: 4, lineHeight: 1.6 }}>
+                  Whether you need help booking a pro, have questions about our services, or want to partner with AllFix, our team is ready to assist you.
+                </Typography>
+                
+                {/* Contact Cards */}
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+                  {/* Email Card */}
+                  <Box sx={{ bgcolor: 'white', p: 1.5, borderRadius: 3, display: 'flex', alignItems: 'center', gap: 2, boxShadow: '0 4px 12px rgba(16,53,95,0.04)', border: '1px solid #e2e8f0', width: '100%', maxWidth: '340px' }}>
+                    <Box sx={{ width: 40, height: 40, borderRadius: '10px', bgcolor: '#eaf2fc', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2e5ba8', flexShrink: 0 }}>
+                      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </Box>
+                    <Box sx={{ overflow: 'hidden' }}>
+                      <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, color: '#64748b', letterSpacing: '0.05em' }}>EMAIL US</Typography>
+                      <Typography sx={{ fontSize: '0.95rem', fontWeight: 800, color: '#10355f', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>inquiry@allfix.ph</Typography>
+                    </Box>
+                  </Box>
+
+                  {/* Phone Card */}
+                  <Box sx={{ bgcolor: 'white', p: 1.5, borderRadius: 3, display: 'flex', alignItems: 'center', gap: 2, boxShadow: '0 4px 12px rgba(16,53,95,0.04)', border: '1px solid #e2e8f0', width: '100%', maxWidth: '340px' }}>
+                    <Box sx={{ width: 40, height: 40, borderRadius: '10px', bgcolor: '#eaf2fc', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2e5ba8', flexShrink: 0 }}>
+                      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    </Box>
+                    <Box>
+                      <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, color: '#64748b', letterSpacing: '0.05em' }}>CALL US</Typography>
+                      <Typography sx={{ fontSize: '0.95rem', fontWeight: 800, color: '#10355f' }}>+63 920 9631 217</Typography>
+                    </Box>
+                  </Box>
+                </Box>
+              </Box>
+
+              {/* Right Side: Form Card (Locked to 50% width on desktop) */}
+              <Box sx={{ width: { xs: '100%', md: '50%' } }}>
+                <Box sx={{ bgcolor: '#ffffff', borderRadius: '20px', p: { xs: 3, md: 4 }, boxShadow: '0 20px 40px rgba(16,53,95,0.08)', border: '1px solid #eaf2fc' }}>
+                  <Typography sx={{ fontSize: { xs: '1.2rem', md: '1.4rem' }, fontWeight: 900, color: '#10355f', mb: 0.5, letterSpacing: '-0.01em' }}>
+                    Send a direct message
+                  </Typography>
+                  <Typography sx={{ fontSize: '0.85rem', color: '#64748b', mb: 3 }}>
+                    Fill out the form below and our support team will respond shortly.
+                  </Typography>
+
+                  <Grid container spacing={2.5}>
+                    
+                    {/* Full Name (Left Half) */}
+                    <Grid item xs={12} sm={6} sx={{ width: '48%' }}>
+                      <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: '#10355f', mb: 0.8 }}>Full Name</Typography>
+                      <TextField size="small" fullWidth placeholder="e.g. Juan Dela Cruz" sx={{ width: '100%', '& .MuiFormControl-root': { width: '100%' }, '& .MuiOutlinedInput-root': { width: '100%', bgcolor: '#f8fafc', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#e2e8f0' }, '&:hover fieldset': { borderColor: '#cbd5e1' }, '&.Mui-focused fieldset': { borderColor: '#2e5ba8', borderWidth: '2px' } } }} />
+                    </Grid>
+                    
+                    {/* Email Address (Right Half) */}
+                    <Grid item xs={12} sm={6} sx={{ width: '48%' }}>
+                      <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: '#10355f', mb: 0.8 }}>Email Address</Typography>
+                      <TextField size="small" fullWidth placeholder="juan@email.com" sx={{ width: '100%', '& .MuiFormControl-root': { width: '100%' }, '& .MuiOutlinedInput-root': { width: '100%', bgcolor: '#f8fafc', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#e2e8f0' }, '&:hover fieldset': { borderColor: '#cbd5e1' }, '&.Mui-focused fieldset': { borderColor: '#2e5ba8', borderWidth: '2px' } } }} />
+                    </Grid>
+                    
+      
+                    {/* ROW 2: Message Box (Full Width) */}
+                  <Grid item xs={12} sx={{ width: '100%' }}>
+                    <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: '#10355f', mb: 0.8 }}>
+                      How can we help?
+                    </Typography>
+                    <TextField 
+                      fullWidth 
+                      multiline 
+                      rows={4} 
+                      placeholder="Tell us about your concern..." 
+                      sx={{ 
+                        width: '100%', /* <-- FORCES outer wrapper to 100% */
+                        '& .MuiFormControl-root': { width: '100%' }, /* <-- FORCES inner control to 100% */
+                        '& .MuiOutlinedInput-root': { 
+                          width: '100%', /* <-- FORCES the actual visible box to 100% */
+                          bgcolor: '#f8fafc', 
+                          borderRadius: '8px', 
+                          fontSize: '0.85rem', 
+                          '& fieldset': { borderColor: '#e2e8f0' }, 
+                          '&:hover fieldset': { borderColor: '#cbd5e1' }, 
+                          '&.Mui-focused fieldset': { borderColor: '#2e5ba8', borderWidth: '2px' } 
+                        } 
+                      }} 
+                    />
+                  </Grid>
+
+                  </Grid>
+
+                  <Button fullWidth variant="contained" endIcon={<ArrowForwardIcon sx={{ ml: 0.5, fontSize: '1.1rem' }} />} sx={{ mt: 3.5, py: 1.2, bgcolor: '#10355f', color: 'white', borderRadius: '8px', fontWeight: 800, fontSize: '0.9rem', textTransform: 'none', boxShadow: '0 4px 12px rgba(16,53,95,0.2)', transition: 'all 0.2s ease', '&:hover': { bgcolor: '#0d264a', transform: 'translateY(-2px)', boxShadow: '0 6px 16px rgba(16,53,95,0.3)' } }}>
+                    Submit Message
+                  </Button>
+                </Box>
+              </Box>
+
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
             </Box>
           </Container>
         </Box>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
         {/* CUSTOM FOOTER */}
         <Box component="footer" sx={{ width: '100vw', position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', bgcolor: '#0a1e3f', pt: { xs: 8, md: 10 }, pb: { xs: 4, md: 6 }, color: 'white' }}>
           <Container maxWidth="xl" sx={{ px: { xs: 3, md: 6 } }}>
             <Grid container spacing={{ xs: 4, md: 10, lg: 12 }}>
               <Grid item xs={12} md={4}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
+<<<<<<< HEAD
                   <Box sx={{ width: 32, height: 32, position: 'relative', display: 'flex', flexWrap: 'wrap', borderRadius: '50%', overflow: 'hidden' }}>
                     <Box sx={{ width: '50%', height: '50%', bgcolor: '#4285F4' }} /><Box sx={{ width: '50%', height: '50%', bgcolor: '#EA4335' }} /><Box sx={{ width: '50%', height: '50%', bgcolor: '#FBBC05' }} /><Box sx={{ width: '50%', height: '50%', bgcolor: '#34A853' }} />
                   </Box>
                   <Typography variant="h5" fontWeight="900" color="white" sx={{ letterSpacing: '-0.02em', fontSize: '1.4rem' }}>AllFix<span style={{ color: '#60a5fa' }}>.ph</span></Typography>
+=======
+                  
+                  <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix.ph Logo" sx={{ width: 40, height: 40, objectFit: 'contain' }} />
+
+                  {/* ALLFIX TEXT */}
+                  <Typography variant="h5" fontWeight="900" color="white" sx={{ letterSpacing: '-0.02em', fontSize: '1.4rem' }}>
+                    All<span style={{ color: '#4ade80' }}>F</span><span style={{ color: '#facc15' }}>i</span><span style={{ color: '#ef4444' }}>x</span>.ph
+                  </Typography>
+
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                 </Box>
                 <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: 1.6, mb: 4, maxWidth: '380px' }}>The Philippines' most trusted property care platform. Connecting homes and offices with verified professionals since 2021.</Typography>
                 <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1.5, mb: 4, width: '100%', maxWidth: '400px' }}>
@@ -915,7 +1305,27 @@ const LandingPage = () => {
               <Grid item xs={6} md={2}>
                 <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+<<<<<<< HEAD
                   {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Service Guarantee'].map(link => (<Typography key={link} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>))}
+=======
+                  {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Service Guarantee'].map(link => (
+                    <Typography 
+                      key={link}
+                      onClick={() => { 
+                        if (link === 'Privacy Policy') { 
+                          navigate('/privacy'); 
+                          window.scrollTo(0, 0); 
+                        } else if (link === 'Terms of Service') {
+                          navigate('/terms-of-use');
+                          window.scrollTo(0, 0);
+                        }
+                      }}
+                      sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}
+                    >
+                      {link}
+                    </Typography>
+                  ))}
+>>>>>>> bf9727fab006797412475169d5f650ff46051b28
                 </Box>
               </Grid>
             </Grid>
