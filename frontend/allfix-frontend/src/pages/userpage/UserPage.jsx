@@ -944,7 +944,7 @@ const UserPage = () => {
             </List>
           </Box>
 
-          {/* Bottom buttons / Logout */}
+          {/*Bottom buttons/ Logout */}
           <Box>
             <Divider sx={{ mb: 2 }} />
             <Button
