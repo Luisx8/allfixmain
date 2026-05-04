@@ -9,6 +9,10 @@ import LandingRedirect from './components/LandingRedirect'
 import LandingPage from './pages/landingpage/LandingPage'
 import PrivacyPage from './pages/footerlinks/PrivacyPage';
 import TermsOfUse from './pages/footerlinks/TermsOfUse';
+<<<<<<< HEAD
+=======
+import AboutUsPage from './pages/footerlinks/AboutUsPage';
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
 
 // Auth Pages
 import CustomerLogin from './pages/landingpage/CustomerLogin'
@@ -39,6 +43,10 @@ function App() {
             <LandingPage />
           </LandingRedirect>
         } />
+<<<<<<< HEAD
+=======
+        <Route path="/about" element={<AboutUsPage />} />
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms-of-use" element={<TermsOfUse />} />
 

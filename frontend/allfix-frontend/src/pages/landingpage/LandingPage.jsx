@@ -55,13 +55,18 @@ const testimonials = [
 ];
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // --- CORE ICONS ---
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+// --- CORE ICONS ---
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import StarIcon from '@mui/icons-material/Star';
+<<<<<<< HEAD
 <<<<<<< HEAD
 import SecurityIcon from '@mui/icons-material/Security';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -76,6 +81,8 @@ const services = [
     description: 'Cleaning, installation, repair, and preventive maintenance for all aircon brands and HVAC systems.',
     image: 'https://via.placeholder.com/350x200?text=CoolFix',
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -99,7 +106,10 @@ const services = [
     tagline: 'Air-con & HVAC Specialists',
     description: 'Cleaning, installation, repair, and preventive maintenance for all aircon brands and HVAC systems.',
     image: '/images/coolfix.jpg',
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
@@ -108,6 +118,7 @@ const services = [
     services: ['AC Cleaning', 'Installation', 'Gas Recharge', 'Emergency Repair'],
   },
   {
+<<<<<<< HEAD
 <<<<<<< HEAD
     icon: SecurityIcon,
     brand: 'ElectroFix',
@@ -128,17 +139,23 @@ const services = [
     description: 'Comprehensive cleaning solutions for homes and offices with eco-friendly products and professional techniques.',
     image: 'https://via.placeholder.com/350x200?text=CleanFix',
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
     icon: WaterDropIcon,
     brand: 'SaniFix',
     tagline: 'Deep Cleaning & Sanitization',
     description: 'Professional deep cleaning and sanitization for homes, offices, and facilities. Disinfection, anti-bacterial, and eco-friendly solutions.',
     image: '/images/sanifix.jpg',
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
     headerBgLight: '#2E5BA8',
     pillText: '#2E5BA8',
+<<<<<<< HEAD
 <<<<<<< HEAD
     services: ['Deep Cleaning', 'Sanitization', 'Carpet Care', 'Regular Maintenance'],
   },
@@ -149,6 +166,8 @@ const services = [
     description: 'Expert plumbing services including repairs, installations, and maintenance for residential and commercial properties.',
     image: 'https://via.placeholder.com/350x200?text=PlumbFix',
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
     services: ['Deep Cleaning', 'Sanitization', 'Disinfection', 'Odor Removal'],
   },
   {
@@ -157,12 +176,16 @@ const services = [
     tagline: 'Home Repairs & Renovation',
     description: 'Renovation, repairs, and handyman services for all areas of your home. Quality work for comfort and safety.',
     image: '/images/homefix.jpg',
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
     headerBgLight: '#2E5BA8',
     pillText: '#2E5BA8',
+<<<<<<< HEAD
 <<<<<<< HEAD
     services: ['Pipe Repair', 'Installation', 'Leak Detection', 'Drain Cleaning'],
   },
@@ -199,6 +222,8 @@ const services = [
     description: 'Safe and reliable moving services with professional packing, transport, and setup for residential and office relocations.',
     image: 'https://via.placeholder.com/350x200?text=MoveFix',
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
     services: ['Renovation', 'Repairs', 'Handyman', 'Maintenance'],
   },
   {
@@ -207,7 +232,10 @@ const services = [
     tagline: 'Professional Moving Solutions',
     description: 'Safe and reliable moving services with professional packing, transport, and setup for residential and office relocations.',
     image: '/images/movefix.jpg',
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
@@ -217,12 +245,15 @@ const services = [
   },
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     icon: SecurityIcon,
     brand: 'PetFix',
     tagline: 'Pet Care & Grooming',
     description: 'Professional pet grooming, boarding, and veterinary care services for your beloved pets with love and expertise.',
     image: 'https://via.placeholder.com/350x200?text=PetFix',
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
     icon: SpaIcon,
     brand: 'GreenFix',
     tagline: 'Eco & Sustainability',
@@ -267,7 +298,10 @@ const services = [
     tagline: 'Pet Care & Grooming',
     description: 'Professional pet grooming, boarding, and veterinary care services for your beloved pets with love and expertise.',
     image: '/images/petfix.jpg',
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
@@ -277,18 +311,24 @@ const services = [
   },
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     icon: DescriptionIcon,
     brand: 'TechFix',
     tagline: 'IT & Gadget Support',
     description: 'On-demand IT support for computers, WiFi, smart home devices, and gadget troubleshooting for home and office.',
     image: 'https://via.placeholder.com/350x200?text=TechFix',
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
     icon: MemoryIcon,
     brand: 'TechFix',
     tagline: 'IT & Gadget Support',
     description: 'On-demand IT support for computers, WiFi, smart home devices, and gadget troubleshooting for home and office.',
     image: '/images/techfix.jpg',
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
     accent: '#2E5BA8',
     accentDark: '#10355f',
     headerBg: '#10355f',
@@ -307,10 +347,14 @@ const ServiceCard = ({ service, onServiceClick }) => {
       style={{
         position: 'relative',
 <<<<<<< HEAD
+<<<<<<< HEAD
         borderRadius: '12px',
 =======
         borderRadius: '16px',
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+        borderRadius: '16px',
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
         overflow: 'hidden',
         border: '1px solid #e5e5e5',
         boxShadow: hovered ? '0 25px 50px rgba(0,0,0,0.15)' : '0 1px 3px rgba(0,0,0,0.1)',
@@ -319,11 +363,17 @@ const ServiceCard = ({ service, onServiceClick }) => {
         cursor: 'pointer',
         backgroundColor: '#fff',
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -331,10 +381,14 @@ const ServiceCard = ({ service, onServiceClick }) => {
     >
       {/* Image showcase */}
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div style={{ position: 'relative', height: '130px', overflow: 'hidden', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 =======
         <div style={{ position: 'relative', height: '200px', overflow: 'hidden', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+        <div style={{ position: 'relative', height: '200px', overflow: 'hidden', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
           <img
             src={service.image}
             alt={service.brand}
@@ -343,9 +397,13 @@ const ServiceCard = ({ service, onServiceClick }) => {
               height: '100%',
               objectFit: 'cover',
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
               objectPosition: 'center 10%',
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+              objectPosition: 'center 10%',
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
               opacity: hovered ? 0.3 : 1,
               transition: 'opacity 0.5s ease',
               position: 'absolute',
@@ -395,6 +453,7 @@ const ServiceCard = ({ service, onServiceClick }) => {
         style={{
           position: 'relative',
 <<<<<<< HEAD
+<<<<<<< HEAD
           padding: '12px 16px',
           display: 'flex',
           alignItems: 'center',
@@ -415,16 +474,29 @@ const ServiceCard = ({ service, onServiceClick }) => {
           background: `linear-gradient(135deg, ${service.headerBg} 0%, ${service.headerBgLight} 100%)`, 
         }}
       >
+=======
+          padding: '32px 24px', 
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          background: `linear-gradient(135deg, ${service.headerBg} 0%, ${service.headerBgLight} 100%)`, 
+        }}
+      >
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
         <div style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.05em', textTransform: 'uppercase', padding: '6px 12px', borderRadius: '9999px', backgroundColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>
           {service.brand}
         </div>
         <div style={{ width: '40px', height: '40px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.15)', position: 'relative', zIndex: 2 }}>
           <Icon style={{ width: '22px', height: '22px', color: '#fff' }} />
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
         </div>
       </div>
       
       {/* Body */}
+<<<<<<< HEAD
 <<<<<<< HEAD
       <div style={{ padding: '16px', minHeight: '280px', display: 'flex', flexDirection: 'column' }}>
         <h3 style={{ fontWeight: 900, fontSize: '0.95rem', color: '#000', marginBottom: '2px' }}>{service.brand}</h3>
@@ -442,6 +514,8 @@ const ServiceCard = ({ service, onServiceClick }) => {
           Book {service.brand}
           <ArrowForwardIcon style={{ width: '14px', height: '14px', transition: 'transform 0.2s ease', transform: hovered ? 'translateX(4px)' : 'translateX(0)' }} />
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
       <div style={{ padding: '12px 24px 20px 24px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
         <h3 style={{ fontWeight: 900, fontSize: '1.25rem', color: '#000', marginBottom: '2px' }}>{service.brand}</h3>
         <p style={{ fontSize: '0.85rem', fontWeight: 600, color: service.accent, marginBottom: '12px' }}>{service.tagline}</p>
@@ -458,7 +532,10 @@ const ServiceCard = ({ service, onServiceClick }) => {
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.9rem', fontWeight: 700, color: hovered ? service.accentDark : service.accent, transition: 'color 0.2s ease', marginTop: 'auto' }}>
           About {service.brand}
           <ArrowForwardIcon style={{ width: '16px', height: '16px', transition: 'transform 0.2s ease', transform: hovered ? 'translateX(4px)' : 'translateX(0)' }} />
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
         </div>
       </div>
       <div style={{ position: 'absolute', bottom: 0, left: 0, height: '2px', backgroundColor: service.accent, width: hovered ? '100%' : '0%', transition: 'width 0.3s ease' }} />
@@ -467,10 +544,14 @@ const ServiceCard = ({ service, onServiceClick }) => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Map Topology Data (Built dynamically to match the drawing, with Pateros merged into Taguig)
 =======
 // Map Topology Data
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+// Map Topology Data
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
 const mapCities = [
   { id: 'Valenzuela', points: '80,60 150,50 180,100 130,130 90,110', lx: 125, ly: 85 },
   { id: 'Caloocan', points: '150,50 240,30 280,80 250,130 180,100', lx: 220, ly: 75 },
@@ -560,10 +641,14 @@ const LandingPage = () => {
           <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, md: 5 }, minHeight: '64px' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, ml: { xs: 0, md: 8, lg: 16 }, flex: { xs: '1 1 auto', md: 'none' } }}>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <Box sx={{ width: 40, height: 40, bgcolor: 'grey.400', borderRadius: '50%' }} />
 =======
               <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix.ph Logo" sx={{ width: { xs: 35, md: 45 }, height: { xs: 35, md: 45 }, objectFit: 'contain' }} />
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+              <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix.ph Logo" sx={{ width: { xs: 35, md: 45 }, height: { xs: 35, md: 45 }, objectFit: 'contain' }} />
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Typography variant="h5" fontWeight="bold" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, mb: 0.3, transition: 'color 0.3s ease', fontSize: { xs: '1.1rem', md: '1.3rem' } }}>
                   AllFix.ph
@@ -638,10 +723,14 @@ const LandingPage = () => {
                   </Box>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <SecurityIcon sx={{ width: 28, height: 28, color: '#60a5fa', flexShrink: 0 }} />
 =======
                     <ShieldIcon style={{ width: 28, height: 28, color: '#60a5fa', flexShrink: 0 }} />
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+                    <ShieldIcon style={{ width: 28, height: 28, color: '#60a5fa', flexShrink: 0 }} />
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                     <Box sx={{ textAlign: 'left' }}>
                       <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1.25rem' }}>Insured &</Typography>
                       <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.95rem' }}>Accredited</Typography>
@@ -659,10 +748,15 @@ const LandingPage = () => {
                     Fill in the details below to create your AllFix account.
                   </Typography>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                   
                   {/* Firstname and Lastname */}
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+                  
+                  {/* Firstname and Lastname */}
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                   <Grid container spacing={1.5} sx={{ mb: 1.5 }}>
                     <Grid item xs={6}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Firstname <span style={{ color: '#e74c3c' }}>*</span></Typography>
@@ -674,27 +768,38 @@ const LandingPage = () => {
                     </Grid>
                   </Grid>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                   
                   {/* Email */}
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+                  
+                  {/* Email */}
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                   <Box sx={{ mb: 1.5 }}>
                     <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Email address</Typography>
                     <TextField size="small" fullWidth placeholder="name@example.com" InputProps={{ startAdornment: <Typography sx={{ mr: 1, color: '#999', fontSize: '1rem' }}>✉</Typography> }} sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
                   </Box>
+<<<<<<< HEAD
 <<<<<<< HEAD
                   <Grid container spacing={1.5} sx={{ mb: 2 }}>
                     <Grid item xs={6}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>City <span style={{ color: '#e74c3c' }}>*</span></Typography>
                       <TextField size="small" select fullWidth defaultValue="default" SelectProps={{ displayEmpty: true }} sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }}>
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                   
                   {/* City and Birthdate (Fixed Alignment) */}
                   <Grid container spacing={1.5} sx={{ mb: 2 }}>
                     <Grid item xs={6} sx={{ width: '100%' }}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>City <span style={{ color: '#e74c3c' }}>*</span></Typography>
                       <TextField size="small" select fullWidth defaultValue="default" SelectProps={{ displayEmpty: true }} sx={{ width: '100%', '& .MuiFormControl-root': { width: '100%' }, '& .MuiOutlinedInput-root': { width: '100%', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }}>
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                         <MenuItem value="default" disabled>Select city</MenuItem>
                         <MenuItem value="manila">Manila</MenuItem>
                         <MenuItem value="makati">Makati</MenuItem>
@@ -703,12 +808,15 @@ const LandingPage = () => {
                       </TextField>
                     </Grid>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <Grid item xs={6}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Birthdate <span style={{ color: '#e74c3c' }}>*</span></Typography>
                       <TextField size="small" fullWidth type="date" InputLabelProps={{ shrink: true }} sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
                     </Grid>
                   </Grid>
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                     <Grid item xs={6} sx={{ width: '100%' }}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Birthdate <span style={{ color: '#e74c3c' }}>*</span></Typography>
                       <TextField size="small" fullWidth type="date" InputLabelProps={{ shrink: true }} sx={{ width: '100%', '& .MuiFormControl-root': { width: '100%' }, '& .MuiOutlinedInput-root': { width: '100%', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
@@ -716,7 +824,10 @@ const LandingPage = () => {
                   </Grid>
                   
                   {/* Buttons */}
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                   <Button variant="contained" fullWidth sx={{ bgcolor: '#10355f', color: 'white', fontWeight: 900, fontSize: '0.9rem', py: 1, borderRadius: '50px', textTransform: 'none', mb: 1.5, mt: 1, boxShadow: '0 2px 8px rgba(16,53,95,0.10)', '&:hover': { bgcolor: '#0d264a' } }}>
                     Create Account
                   </Button>
@@ -735,18 +846,24 @@ const LandingPage = () => {
         {/* Services Section */}
         <Box id="services" sx={{ position: 'relative', zIndex: 10, bgcolor: '#ffffff', py: 4, px: { xs: 2, md: 5 }, minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <Container maxWidth="lg">
             <Box sx={{ textAlign: 'center', mb: 3 }}>
               <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#eaf2fc', color: '#23406e', borderRadius: '999px', px: 3, py: 1, fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.08em', boxShadow: 1, textTransform: 'uppercase', mb: 2 }}>OUR SERVICES</Box>
               <Typography sx={{ fontSize: { xs: '1.6rem', md: '2rem' }, fontWeight: 900, mb: 2, lineHeight: 1.2 }}>
                 Eight Expert Brands, <span style={{ color: '#10355f' }}>One Trusted Platform</span>
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
           <Container maxWidth="xl">
             <Box sx={{ textAlign: 'center', mb: 3 }}>
               <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#eaf2fc', color: '#23406e', borderRadius: '999px', px: 3, py: 1, fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.08em', boxShadow: 1, textTransform: 'uppercase', mb: 2 }}>OUR SERVICES</Box>
               <Typography sx={{ fontSize: { xs: '1.6rem', md: '2rem' }, fontWeight: 900, mb: 2, lineHeight: 1.2 }}>
                 Nine Expert Brands, <span style={{ color: '#10355f' }}>One Trusted Platform</span>
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
               </Typography>
               <Typography sx={{ color: '#666', fontSize: { xs: '0.85rem', md: '0.9rem' }, maxWidth: '600px', mx: 'auto', lineHeight: 1.6 }}>
                 Each AllFix brand specializes in a distinct service area, staffed by trained, background-checked professionals with industry certifications.
@@ -757,64 +874,90 @@ const LandingPage = () => {
               <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', width: '100%', flexDirection: 'column' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <Button aria-label="Scroll left" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', mr: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: -320, behavior: 'smooth' }); }}>
 =======
                   <Button aria-label="Scroll left" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', mr: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: -340, behavior: 'smooth' }); }}>
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+                  <Button aria-label="Scroll left" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', mr: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: -340, behavior: 'smooth' }); }}>
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                     <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
                   </Button>
                   <Box id="services-scroll-row" sx={{ display: 'flex', gap: 2, minWidth: 0, overflowX: 'auto', scrollSnapType: 'x mandatory', px: 1, flex: 1, scrollBehavior: 'smooth', '&::-webkit-scrollbar': { display: 'none' } }}>
                     {services.map((service, index) => (
 <<<<<<< HEAD
+<<<<<<< HEAD
                       <Box key={index} sx={{ minWidth: '320px', maxWidth: '90vw', flex: '0 0 auto', scrollSnapAlign: 'start' }}>
 =======
                       <Box key={index} sx={{ minWidth: '340px', maxWidth: '90vw', flex: '0 0 auto', scrollSnapAlign: 'start' }}>
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+                      <Box key={index} sx={{ minWidth: '340px', maxWidth: '90vw', flex: '0 0 auto', scrollSnapAlign: 'start' }}>
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                         <ServiceCard service={service} onServiceClick={(svc) => console.log('Service clicked:', svc)} />
                       </Box>
                     ))}
                   </Box>
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <Button aria-label="Scroll right" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', ml: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: 320, behavior: 'smooth' }); }}>
 =======
                   <Button aria-label="Scroll right" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', ml: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: 340, behavior: 'smooth' }); }}>
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+                  <Button aria-label="Scroll right" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', ml: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: 340, behavior: 'smooth' }); }}>
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                     <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
                   </Button>
                 </Box>
                 <Box id="services-scroll-navbar" sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, width: '100%', mt: 1, mb: 1, px: 1 }}>
                   {services.map((svc, idx) => (
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <Button key={svc.brand} size="small" sx={{ minWidth: 0, px: 0.5, py: 0.8, fontSize: '0.75rem', fontWeight: 700, borderRadius: '10px', color: '#23406e', bgcolor: '#eaf2fc', whiteSpace: 'nowrap', boxShadow: 'none', border: '1.5px solid transparent', transition: 'all 0.2s', '&.active': { bgcolor: '#23406e', color: '#fff', borderColor: '#23406e' }, '&:hover': { bgcolor: '#dbeafe', color: '#23406e' } }} onClick={() => document.getElementById('services-scroll-row')?.scrollTo({ left: idx * 320, behavior: 'smooth' })}>
 =======
                     <Button key={svc.brand} size="small" sx={{ minWidth: 0, px: 0.5, py: 0.8, fontSize: '0.75rem', fontWeight: 700, borderRadius: '10px', color: '#23406e', bgcolor: '#eaf2fc', whiteSpace: 'nowrap', boxShadow: 'none', border: '1.5px solid transparent', transition: 'all 0.2s', '&.active': { bgcolor: '#23406e', color: '#fff', borderColor: '#23406e' }, '&:hover': { bgcolor: '#dbeafe', color: '#23406e' } }} onClick={() => document.getElementById('services-scroll-row')?.scrollTo({ left: idx * 340, behavior: 'smooth' })}>
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+                    <Button key={svc.brand} size="small" sx={{ minWidth: 0, px: 0.5, py: 0.8, fontSize: '0.75rem', fontWeight: 700, borderRadius: '10px', color: '#23406e', bgcolor: '#eaf2fc', whiteSpace: 'nowrap', boxShadow: 'none', border: '1.5px solid transparent', transition: 'all 0.2s', '&.active': { bgcolor: '#23406e', color: '#fff', borderColor: '#23406e' }, '&:hover': { bgcolor: '#dbeafe', color: '#23406e' } }} onClick={() => document.getElementById('services-scroll-row')?.scrollTo({ left: idx * 340, behavior: 'smooth' })}>
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                       {svc.brand}
                     </Button>
                   ))}
                 </Box>
               </Box>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <Grid container spacing={3} sx={{ display: { xs: 'none', md: 'flex' } }}>
                 {services.map((service, index) => (
                   <Grid item xs={12} md={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box sx={{ width: '100%', maxWidth: '360px' }}>
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
 
               <Grid container spacing={3} sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center', mt: { md: 2 } }}>
                 {services.map((service, index) => (
                   <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box sx={{ width: '100%', maxWidth: '420px', display: 'flex' }}>
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                       <ServiceCard service={service} onServiceClick={(svc) => console.log('Service clicked:', svc)} />
                     </Box>
                   </Grid>
                 ))}
               </Grid>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
             </Box>
           </Container>
         </Box>
@@ -979,10 +1122,14 @@ const LandingPage = () => {
                       key={idx}
                       points={city.points} 
 <<<<<<< HEAD
+<<<<<<< HEAD
                       fill="#2E5BA8" // The unified primary blue brand color
 =======
                       fill="#10355f" // The unified primary blue brand color
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+                      fill="#10355f" // The unified primary blue brand color
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                       stroke="#ffffff" 
                       strokeWidth="2.5" 
                       strokeLinejoin="round" 
@@ -994,10 +1141,14 @@ const LandingPage = () => {
                       }}
                       onMouseLeave={(e) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
                         e.currentTarget.style.fill = '#2E5BA8';
 =======
                         e.currentTarget.style.fill = '#10355f';
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+                        e.currentTarget.style.fill = '#10355f';
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                         e.currentTarget.style.transform = 'scale(1)';
                       }}
                     />
@@ -1062,10 +1213,14 @@ const LandingPage = () => {
 
         {/* Testimonials */}
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Box id="testimonials" sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: '#0d264a', pt: { xs: 8, md: 0 }, pb: 0, mt: 0, mb: 0, px: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', minHeight: '100vh', overflow: 'hidden' }}>
 =======
         <Box id="testimonials" sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: '#0d264a', pt: { xs: 8, md: 10 }, pb: { xs: 8, md: 10 }, mt: 0, mb: 0, px: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', overflow: 'hidden' }}>
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+        <Box id="testimonials" sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: '#0d264a', pt: { xs: 8, md: 10 }, pb: { xs: 8, md: 10 }, mt: 0, mb: 0, px: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', overflow: 'hidden' }}>
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 10 }}>
             <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#23406e', color: 'white', borderRadius: '999px', px: 2.5, py: 0.8, fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.08em', boxShadow: 1, textTransform: 'uppercase', mb: 1.5 }}>CLIENT STORIES</Box>
@@ -1107,6 +1262,7 @@ const LandingPage = () => {
               ))}
             </Box>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
             <Box sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: 'white', py: { xs: 2, md: 2.5 }, px: { xs: 2, md: 6 }, mt: { xs: 5, md: 6 }, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, justifyContent: 'space-between', boxShadow: '0 2px 16px rgba(16,53,95,0.07)', borderRadius: 0 }}>
               <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -1118,6 +1274,8 @@ const LandingPage = () => {
                 <Button variant="contained" sx={{ bgcolor: '#123865', color: 'white', fontWeight: 800, fontSize: '0.85rem', px: 2.5, py: 1, borderRadius: '10px', boxShadow: 'none', display: 'flex', alignItems: 'center', gap: 0.8, '&:hover': { bgcolor: '#23406e' } }} startIcon={<svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.05.37 2.07.71 3.06a2 2 0 0 1-.45 2.11l-.27.27a16 16 0 0 0 6.29 6.29l.27-.27a2 2 0 0 1 2.11-.45c.99.34 2.01.58 3.06.71A2 2 0 0 1 22 16.92z"/></svg>}>Call Us</Button>
               </Box>
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
           </Container>
         </Box>
 
@@ -1234,15 +1392,22 @@ const LandingPage = () => {
                 </Box>
               </Box>
 
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
             </Box>
           </Container>
         </Box>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
         {/* CUSTOM FOOTER */}
         <Box component="footer" sx={{ width: '100vw', position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', bgcolor: '#0a1e3f', pt: { xs: 8, md: 10 }, pb: { xs: 4, md: 6 }, color: 'white' }}>
           <Container maxWidth="xl" sx={{ px: { xs: 3, md: 6 } }}>
@@ -1250,11 +1415,14 @@ const LandingPage = () => {
               <Grid item xs={12} md={4}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <Box sx={{ width: 32, height: 32, position: 'relative', display: 'flex', flexWrap: 'wrap', borderRadius: '50%', overflow: 'hidden' }}>
                     <Box sx={{ width: '50%', height: '50%', bgcolor: '#4285F4' }} /><Box sx={{ width: '50%', height: '50%', bgcolor: '#EA4335' }} /><Box sx={{ width: '50%', height: '50%', bgcolor: '#FBBC05' }} /><Box sx={{ width: '50%', height: '50%', bgcolor: '#34A853' }} />
                   </Box>
                   <Typography variant="h5" fontWeight="900" color="white" sx={{ letterSpacing: '-0.02em', fontSize: '1.4rem' }}>AllFix<span style={{ color: '#60a5fa' }}>.ph</span></Typography>
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                   
                   <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix.ph Logo" sx={{ width: 40, height: 40, objectFit: 'contain' }} />
 
@@ -1263,7 +1431,10 @@ const LandingPage = () => {
                     All<span style={{ color: '#4ade80' }}>F</span><span style={{ color: '#facc15' }}>i</span><span style={{ color: '#ef4444' }}>x</span>.ph
                   </Typography>
 
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                 </Box>
                 <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: 1.6, mb: 4, maxWidth: '380px' }}>The Philippines' most trusted property care platform. Connecting homes and offices with verified professionals since 2021.</Typography>
                 <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1.5, mb: 4, width: '100%', maxWidth: '400px' }}>
@@ -1284,7 +1455,15 @@ const LandingPage = () => {
               <Grid item xs={6} md={2}>
                 <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>COMPANY</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+<<<<<<< HEAD
                   {['About AllFix', 'Careers', 'Press & Media', 'Investor Relations'].map(link => (<Typography key={link} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>))}
+=======
+                  {['About AllFix', 'Careers', 'Press & Media', 'Investor Relations'].map(link => (<Typography key={link} onClick={() => {
+                    if (link === 'About AllFix') {
+                      navigate('/about');
+                    }
+                  }} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>))}
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                 </Box>
               </Grid>
 
@@ -1306,8 +1485,11 @@ const LandingPage = () => {
                 <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                   {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Service Guarantee'].map(link => (<Typography key={link} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>))}
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                   {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Service Guarantee'].map(link => (
                     <Typography 
                       key={link}
@@ -1325,7 +1507,10 @@ const LandingPage = () => {
                       {link}
                     </Typography>
                   ))}
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                 </Box>
               </Grid>
             </Grid>

@@ -592,6 +592,7 @@ const VendorApplication = () => {
           component="footer"
           sx={{
 <<<<<<< HEAD
+<<<<<<< HEAD
             width: '100vw',
             position: 'relative',
             left: '50%',
@@ -601,6 +602,9 @@ const VendorApplication = () => {
 =======
             width: '100%',
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+            width: '100%',
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
             bgcolor: '#0a1e3f', 
             pt: { xs: 8, md: 10 },
             pb: { xs: 4, md: 6 },
@@ -727,8 +731,11 @@ const VendorApplication = () => {
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                   {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Service Guarantee'].map(link => (
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <Typography key={link} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>
 =======
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                     <Typography 
                       key={link} 
                       onClick={() => {
@@ -742,7 +749,10 @@ const VendorApplication = () => {
                     >
                       {link}
                     </Typography>
+<<<<<<< HEAD
 >>>>>>> bf9727fab006797412475169d5f650ff46051b28
+=======
+>>>>>>> a8af8719b4261b3a7a4c82864c2601d38a8109b0
                   ))}
                 </Box>
               </Grid>
