@@ -1032,7 +1032,11 @@ const LandingPage = () => {
               <Grid item xs={6} md={2}>
                 <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>COMPANY</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {['About AllFix', 'Careers', 'Press & Media', 'Investor Relations'].map(link => (<Typography key={link} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>))}
+                  {['About AllFix', 'Careers', 'Press & Media', 'Investor Relations'].map(link => (<Typography key={link} onClick={() => {
+                    if (link === 'About AllFix') {
+                      navigate('/about');
+                    }
+                  }} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>))}
                 </Box>
               </Grid>
 
