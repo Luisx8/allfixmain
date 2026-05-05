@@ -368,8 +368,10 @@ const PrivacyPolicy = () => {
                       onClick={() => {
                         if (link === 'Privacy Policy') {
                           navigate('/privacy');
+                          window.scrollTo(0, 0);
                         } else if (link === 'Terms of Service') {
                           navigate('/terms-of-use');
+                          window.scrollTo(0, 0);
                         }
                       }}
                       sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}

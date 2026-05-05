@@ -101,8 +101,7 @@ const TermsOfUse = () => {
           pb: { xs: 4, md: 4 }, 
           px: 3, 
           background: 'white', 
-          color: 'white',
-          overflow: 'hidden'
+          color: 'white'
         }}>
           {/* Background Pattern - Hidden */}
           <Box
@@ -125,9 +124,9 @@ const TermsOfUse = () => {
         </Box>
 
         {/* Terms of Use Content - White Section */}
-        <Box sx={{ pt: { xs: 0, md: 0 }, pb: { xs: 4, md: 20 }, bgcolor: 'white', width: '100%', mt: { xs: -8, md: -10 } }}>
+        <Box sx={{ pt: { xs: 4, md: 8 }, pb: { xs: 4, md: 20 }, bgcolor: 'white', width: '100%' }}>
           <Container maxWidth="md">
-            <Typography variant="h2" fontWeight="900" color="#10355f" sx={{ fontSize: { xs: '2.2rem', md: '3.5rem' }, lineHeight: 1.2, mb: 2, letterSpacing: '-0.02em', textAlign: 'center', mt: { xs: 6, md: 8 } }}>
+            <Typography variant="h2" fontWeight="900" color="#10355f" sx={{ fontSize: { xs: '2.2rem', md: '3.5rem' }, lineHeight: 1.2, mb: 2, letterSpacing: '-0.02em', textAlign: 'center' }}>
               Terms of Service
             </Typography>
             <Typography sx={{ color: '#555', fontSize: { xs: '1rem', md: '1.1rem' }, lineHeight: 1.6, maxWidth: '600px', mx: 'auto', mb: 6, textAlign: 'center' }}>
@@ -348,8 +347,10 @@ const TermsOfUse = () => {
                       onClick={() => {
                         if (link === 'Privacy Policy') {
                           navigate('/privacy');
+                          window.scrollTo(0, 0);
                         } else if (link === 'Terms of Service') {
                           navigate('/terms-of-use');
+                          window.scrollTo(0, 0);
                         }
                       }}
                       sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}

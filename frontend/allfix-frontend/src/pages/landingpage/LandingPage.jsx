@@ -571,7 +571,7 @@ const LandingPage = () => {
                   <Box id="services-scroll-row" sx={{ display: 'flex', gap: 2, minWidth: 0, overflowX: 'auto', scrollSnapType: 'x mandatory', px: 1, flex: 1, scrollBehavior: 'smooth', '&::-webkit-scrollbar': { display: 'none' } }}>
                     {services.map((service, index) => (
                       <Box key={index} sx={{ minWidth: '340px', maxWidth: '90vw', flex: '0 0 auto', scrollSnapAlign: 'start' }}>
-                        <ServiceCard service={service} onServiceClick={(svc) => console.log('Service clicked:', svc)} />
+                        <ServiceCard service={service} onServiceClick={(svc) => { const routes = { CoolFix: '/coolfix', SaniFix: '/sanifix', HomeFix: '/homefix', MoveFix: '/movefix', GreenFix: '/greenfix', HealthFix: '/healthfix', SpaceFix: '/spacefix', PetFix: '/petfix', TechFix: '/techfix' }; navigate(routes[svc.brand] || '/'); window.scrollTo(0, 0); }} />
                       </Box>
                     ))}
                   </Box>
@@ -592,7 +592,7 @@ const LandingPage = () => {
                 {services.map((service, index) => (
                   <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box sx={{ width: '100%', maxWidth: '420px', display: 'flex' }}>
-                      <ServiceCard service={service} onServiceClick={(svc) => console.log('Service clicked:', svc)} />
+                      <ServiceCard service={service} onServiceClick={(svc) => { const routes = { CoolFix: '/coolfix', SaniFix: '/sanifix', HomeFix: '/homefix', MoveFix: '/movefix', GreenFix: '/greenfix', HealthFix: '/healthfix', SpaceFix: '/spacefix', PetFix: '/petfix', TechFix: '/techfix' }; navigate(routes[svc.brand] || '/'); window.scrollTo(0, 0); }} />
                     </Box>
                   </Grid>
                 ))}
@@ -710,13 +710,14 @@ const LandingPage = () => {
                   </svg>
                 </Box>
                 <Box sx={{ flex: 1, minWidth: 0 }}>
-                  <Typography sx={{ color: 'white', fontWeight: 700, fontSize: { xs: '0.9rem', md: '1rem' }, mb: 0.2 }}>DICT & DTI Accredited Platform</Typography>
-                  <Typography sx={{ color: 'rgba(255,255,255,0.85)', fontSize: { xs: '0.8rem', md: '0.85rem' }, fontWeight: 400, lineHeight: 1.3 }}>AllFix.ph is officially registered with the Philippine Department of Trade & Industry and compliant with all local labor laws.</Typography>
+                  <Typography sx={{ color: 'white', fontWeight: 700, fontSize: { xs: '0.9rem', md: '1rem' }, mb: 0.2 }}>Trusted by Thousands of Filipino Homeowners</Typography>
+                  <Typography sx={{ color: 'rgba(255,255,255,0.85)', fontSize: { xs: '0.8rem', md: '0.85rem' }, fontWeight: 400, lineHeight: 1.3 }}>AllFix.ph provides professional, reliable property maintenance services across Metro Manila with certified technicians and 24/7 customer support.</Typography>
                 </Box>
                 <Box sx={{ ml: 2 }}>
-                  <Button variant="contained" sx={{ bgcolor: 'white', color: '#123865', fontWeight: 700, fontSize: '0.8rem', borderRadius: '14px', px: 2, py: 0.6, boxShadow: 'none', minWidth: 100, '&:hover': { bgcolor: '#eaf2fc', color: '#123865', boxShadow: 'none' } }}>VIEW CREDENTIALS</Button>
+                  <Button variant="contained" onClick={() => { navigate('/about'); window.scrollTo(0, 0); }} sx={{ bgcolor: 'white', color: '#123865', fontWeight: 700, fontSize: '0.8rem', borderRadius: '14px', px: 2, py: 0.6, boxShadow: 'none', minWidth: 100, '&:hover': { bgcolor: '#eaf2fc', color: '#123865', boxShadow: 'none' } }}>LEARN MORE</Button>
                 </Box>
               </Box>
+
             </Box>
           </Box>
         </Box>
@@ -1035,6 +1036,7 @@ const LandingPage = () => {
                   {['About AllFix', 'Careers', 'Press & Media', 'Investor Relations'].map(link => (<Typography key={link} onClick={() => {
                     if (link === 'About AllFix') {
                       navigate('/about');
+                      window.scrollTo(0, 0);
                     }
                   }} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>))}
                 </Box>

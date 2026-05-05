@@ -10,6 +10,15 @@ import LandingPage from './pages/landingpage/LandingPage'
 import PrivacyPage from './pages/footerlinks/PrivacyPage';
 import TermsOfUse from './pages/footerlinks/TermsOfUse';
 import AboutUsPage from './pages/footerlinks/AboutUsPage';
+import CoolFixPage from './pages/servicespage/CoolFixPage';
+import SaniFixPage from './pages/servicespage/SaniFixPage';
+import HomeFixPage from './pages/servicespage/HomeFixPage';
+import MoveFixPage from './pages/servicespage/MoveFixPage';
+import GreenFixPage from './pages/servicespage/GreenFixPage';
+import HealthFixPage from './pages/servicespage/HealthFixPage';
+import SpaceFixPage from './pages/servicespage/SpaceFixPage';
+import PetFixPage from './pages/servicespage/PetFixPage';
+import TechFixPage from './pages/servicespage/TechFixPage';
 
 // Auth Pages
 import CustomerLogin from './pages/landingpage/CustomerLogin'
@@ -42,6 +51,15 @@ function App() {
         <Route path="/about" element={<AboutUsPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms-of-use" element={<TermsOfUse />} />
+        <Route path="/coolfix" element={<CoolFixPage />} />
+        <Route path="/sanifix" element={<SaniFixPage />} />
+        <Route path="/homefix" element={<HomeFixPage />} />
+        <Route path="/movefix" element={<MoveFixPage />} />
+        <Route path="/greenfix" element={<GreenFixPage />} />
+        <Route path="/healthfix" element={<HealthFixPage />} />
+        <Route path="/spacefix" element={<SpaceFixPage />} />
+        <Route path="/petfix" element={<PetFixPage />} />
+        <Route path="/techfix" element={<TechFixPage />} />
 
         {/* Customer Auth Routes */}
         <Route path="/login" element={
