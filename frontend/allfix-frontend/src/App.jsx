@@ -10,6 +10,9 @@ import LandingPage from './pages/landingpage/LandingPage'
 import PrivacyPage from './pages/footerlinks/PrivacyPage';
 import TermsOfUse from './pages/footerlinks/TermsOfUse';
 import AboutUsPage from './pages/footerlinks/AboutUsPage';
+import CareersPage from './pages/footerlinks/CareersPage';
+import HelpCenterPage from './pages/footerlinks/HelpCenterPage';
+import ServiceGuaranteePage from './pages/footerlinks/ServiceGuaranteePage';
 import CoolFixPage from './pages/servicespage/CoolFixPage';
 import SaniFixPage from './pages/servicespage/SaniFixPage';
 import HomeFixPage from './pages/servicespage/HomeFixPage';
@@ -49,6 +52,9 @@ function App() {
           </LandingRedirect>
         } />
         <Route path="/about" element={<AboutUsPage />} />
+        <Route path="/careers" element={<CareersPage />} />
+        <Route path="/help-center" element={<HelpCenterPage />} />
+        <Route path="/service-guarantee" element={<ServiceGuaranteePage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms-of-use" element={<TermsOfUse />} />
         <Route path="/coolfix" element={<CoolFixPage />} />

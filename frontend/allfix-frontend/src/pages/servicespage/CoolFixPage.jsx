@@ -9,12 +9,11 @@ import {
   CssBaseline,
   Button,
   Grid,
+  IconButton
 } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AirIcon from '@mui/icons-material/Air';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import PhoneIcon from '@mui/icons-material/Phone';
 
 // --- FOOTER PILL DATA ---
 const footerPills = [
@@ -30,12 +29,12 @@ const footerPills = [
 ];
 
 const coolFixServices = [
-  { title: 'Routine AC Cleaning', description: 'Standard interior/exterior washing for Window, Split-type, and Inverter units.', tag: 'Most Popular', color: '#10355f', bg: 'linear-gradient(135deg, #10355f 0%, #1a4a7a 100%)', icon: 'M19.5 12h-15M17.5 16h-11M21.5 8h-15' },
-  { title: 'System Overhaul', description: 'Pull-down chemical cleaning for heavily soiled or poorly performing units.', tag: 'Deep Clean', color: '#10355f', bg: 'linear-gradient(135deg, #10355f 0%, #1a4a7a 100%)', icon: 'M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83' },
-  { title: 'Freon/Gas Recharge', description: 'Refrigerant check and topping up to ensure optimal cooling.', tag: 'Cooling', color: '#10355f', bg: 'linear-gradient(135deg, #10355f 0%, #1a4a7a 100%)', icon: 'M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 10 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2' },
-  { title: 'Installation & Dismantling', description: 'Safe mounting or removal of AC units for home or office upgrades.', tag: 'Setup', color: '#10355f', bg: 'linear-gradient(135deg, #10355f 0%, #1a4a7a 100%)', icon: 'M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 9.36l-7.1 7.1a1 1 0 01-1.42 0l-1.4-1.4a1 1 0 010-1.42l7.1-7.1a6 6 0 019.36-7.94l-3.77 3.77z' },
-  { title: 'Troubleshooting & Repair', description: 'Fixing leaks, replacing capacitors, thermostats, or resolving unusual noises.', tag: 'Emergency', color: '#10355f', bg: 'linear-gradient(135deg, #10355f 0%, #1a4a7a 100%)', icon: 'M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01' },
-  { title: 'Commercial Preventive Maintenance', description: 'Scheduled monthly or quarterly HVAC checkups for offices and clinics.', tag: 'Business', color: '#10355f', bg: 'linear-gradient(135deg, #10355f 0%, #1a4a7a 100%)', icon: 'M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z' },
+  { title: 'Routine AC Cleaning', description: 'Standard interior/exterior washing for Window, Split-type, and Inverter units.', tag: 'Most Popular', image: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&h=400&fit=crop' },
+  { title: 'System Overhaul', description: 'Pull-down chemical cleaning for heavily soiled or poorly performing units.', tag: 'Deep Clean', image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=400&fit=crop' },
+  { title: 'Freon/Gas Recharge', description: 'Refrigerant check and topping up to ensure optimal cooling.', tag: 'Cooling', image: 'https://images.unsplash.com/photo-1581092916550-e323bc2fb8c0?w=400&h=400&fit=crop' },
+  { title: 'Installation & Dismantling', description: 'Safe mounting or removal of AC units for home or office upgrades.', tag: 'Setup', image: 'https://images.unsplash.com/photo-1585702032915-c3400ca199e7?w=400&h=400&fit=crop' },
+  { title: 'Troubleshooting & Repair', description: 'Fixing leaks, replacing capacitors, thermostats, or resolving unusual noises.', tag: 'Emergency', image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=400&fit=crop' },
+  { title: 'Commercial Preventive Maintenance', description: 'Scheduled monthly or quarterly HVAC checkups for offices and clinics.', tag: 'Business', image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=400&fit=crop' },
 ];
 
 const CoolFixPage = () => {
@@ -54,16 +53,21 @@ const CoolFixPage = () => {
     <>
       <CssBaseline />
 
-      {/* Navbar */}
+      {/* Blended Navbar */}
       <AppBar
         position="fixed"
+        elevation={0}
         sx={{
           zIndex: 1100,
-          background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)',
-          backgroundImage: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-          backdropFilter: 'blur(20px)',
-          boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-          transition: 'all 0.3s ease',
+          background: isScrolled
+            ? 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)'
+            : 'transparent',
+          backgroundImage: isScrolled
+            ? 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
+            : 'none',
+          backdropFilter: isScrolled ? 'blur(20px)' : 'none',
+          boxShadow: isScrolled ? '0 4px 12px rgba(0, 0, 0, 0.15)' : 'none',
+          transition: 'all 0.3s ease-in-out',
         }}
       >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, md: 5 }, minHeight: '80px' }}>
@@ -77,7 +81,7 @@ const CoolFixPage = () => {
             </Box>
           </Box>
           <Box sx={{ mr: { xs: 0, md: 8, lg: 16 } }}>
-            <Button 
+            <Button
               onClick={() => { navigate('/'); window.scrollTo(0, 0); }}
               sx={{ color: 'white', fontWeight: 600, textTransform: 'none', fontSize: '0.95rem', '&:hover': { color: '#eaf2fc', backgroundColor: 'rgba(255, 255, 255, 0.1)' }, px: 2, py: 1, borderRadius: '8px', transition: 'all 0.3s ease' }}
             >
@@ -88,56 +92,95 @@ const CoolFixPage = () => {
       </AppBar>
 
       <Box sx={{ bgcolor: '#f0f4f8', minHeight: '100vh', width: '100%' }}>
-        
+
         {/* HERO SECTION */}
-        <Box sx={{ 
+        <Box sx={{
           position: 'relative',
-          minHeight: { xs: '30vh', md: '35vh' },
-          display: 'flex', 
-          alignItems: 'center', 
+          display: 'flex',
+          alignItems: 'center',
           justifyContent: 'center',
-          pt: { xs: 10, md: 8 },
-          pb: { xs: 4, md: 6 }, 
+          pt: { xs: 12, md: 12 },
+          pb: { xs: 3, md: 4 },
           background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)',
           backgroundImage: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
           overflow: 'hidden',
         }}>
           <Container maxWidth="md" sx={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
-            <Box sx={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center',
-              gap: 2,
-              mt: 4
-            }}>
-              <Box sx={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center',
-                bgcolor: 'rgba(255,255,255,0.1)', 
-                borderRadius: '16px', 
-                p: 1.5,
-              }}>
-                <AirIcon sx={{ fontSize: { xs: '2.5rem', md: '3.5rem' }, color: 'white' }} />
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 1 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'rgba(255,255,255,0.1)', borderRadius: '12px', p: 1 }}>
+                <AirIcon sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, color: 'white' }} />
               </Box>
-              
-              <Typography variant="h1" fontWeight="900" sx={{ fontSize: { xs: '2.5rem', md: '4rem' }, color: 'white', letterSpacing: '-0.02em' }}>
+              <Typography variant="h1" fontWeight="900" sx={{ fontSize: { xs: '2.2rem', md: '3.2rem' }, color: 'white', letterSpacing: '-0.02em', m: 0 }}>
                 Cool<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span>
               </Typography>
             </Box>
+            <Typography sx={{ fontSize: { xs: '0.95rem', md: '1.1rem' }, lineHeight: 1.4, maxWidth: '700px', mx: 'auto', color: 'rgba(255,255,255,0.8)' }}>
+              Air-Conditioning & HVAC Services | Professional • Fast • Reliable
+            </Typography>
           </Container>
         </Box>
 
         {/* Main Content */}
-        <Box sx={{ pt: { xs: 6, md: 8 }, pb: { xs: 4, md: 12 }, bgcolor: 'white', width: '100%' }}>
+        <Box sx={{ pt: { xs: 3, md: 4 }, pb: { xs: 4, md: 12 }, bgcolor: 'white', width: '100%' }}>
           <Container maxWidth="lg">
-            
-            {/* Our Story Section */}
+
+            {/* NAVIGATION PILLS */}
+            <Box sx={{ mb: { xs: 4, md: 6 }, width: '100%', overflow: 'hidden' }}>
+              <Box sx={{
+                display: 'flex',
+                flexDirection: 'row',
+                flexWrap: 'nowrap',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: { xs: 0.8, sm: 1, md: 1.5 },
+                overflowX: 'auto',
+                p: 2,
+                msOverflowStyle: 'none',
+                scrollbarWidth: 'none',
+                '&::-webkit-scrollbar': { display: 'none' },
+              }}>
+                {footerPills.map(pill => (
+                  <Box
+                    key={pill.name}
+                    onClick={() => { navigate(`/${pill.name.toLowerCase()}`); window.scrollTo(0, 0); }}
+                    sx={{
+                      flexShrink: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 0.8,
+                      px: { xs: 1.5, md: 2 },
+                      py: { xs: 0.6, md: 0.8 },
+                      bgcolor: pill.name === 'CoolFix' ? '#10355f' : '#ffffff',
+                      color: pill.name === 'CoolFix' ? 'white' : '#334155',
+                      border: '1px solid',
+                      borderColor: pill.name === 'CoolFix' ? '#10355f' : '#e2e8f0',
+                      borderRadius: '50px',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      boxShadow: pill.name === 'CoolFix' ? '0 8px 16px rgb(255, 255, 255)' : '0 2px 4px rgba(0,0,0,0.04)',
+                      '&:hover': {
+                        bgcolor: pill.name === 'CoolFix' ? '#10355f' : '#f8fafc',
+                        borderColor: pill.name === 'CoolFix' ? '#10355f' : '#cbd5e1',
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+                      }
+                    }}
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      {pill.icon}
+                    </svg>
+                    <Typography sx={{ fontSize: { xs: '0.75rem', md: '0.85rem' }, fontWeight: 600, whiteSpace: 'nowrap' }}>
+                      {pill.name}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+
+            {/* About Section */}
             <Box sx={{ mb: 10, display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: { xs: 4, md: 6 }, alignItems: 'center' }}>
-              
-              {/* Left - Image Widget */}
               <Box sx={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Box sx={{ 
+                <Box sx={{
                   position: 'relative',
                   width: '100%',
                   height: { xs: '250px', md: '320px' },
@@ -148,123 +191,75 @@ const CoolFixPage = () => {
                 }}>
                   <Box
                     component="img"
-                    src="/images/coolfix.jpg"  
+                    src="/images/coolfix.jpg"
                     alt="CoolFix"
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'center'
-                    }}
+                    sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
                   />
                 </Box>
               </Box>
-
-              {/* Right - Content */}
               <Box>
-                <Typography variant="h2" sx={{ 
-                  fontSize: { xs: '1.8rem', md: '2.2rem' }, 
-                  fontWeight: 900, 
-                  color: '#10355f', 
-                  mb: 2,
-                  lineHeight: 1.2
-                }}>
+                <Typography variant="h2" sx={{ fontSize: { xs: '1.8rem', md: '2.2rem' }, fontWeight: 900, color: '#10355f', mb: 2, lineHeight: 1.2 }}>
                   About Cool<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span>
                 </Typography>
-
                 <Typography sx={{ mb: 3, color: '#666', lineHeight: 1.8, fontSize: '1rem' }}>
                   CoolFix is AllFix.ph's specialized air-conditioning and HVAC service division. Since 2005, we've been Metro Manila's trusted partner for keeping homes and businesses cool, comfortable, and climate-controlled. From routine maintenance to emergency repairs, our certified technicians deliver professional service you can count on.
                 </Typography>
-
                 <Typography sx={{ mb: 4, color: '#666', lineHeight: 1.8, fontSize: '1rem' }}>
                   Keeping your air-con clean and well maintained is important for proper function as well as health benefits. Our CoolFix team can clean, do maintenance, and repair all types of air-conditioning units to keep them in top condition. Book now to stay Cool year round.
                 </Typography>
               </Box>
             </Box>
 
-            {/* SERVICES OFFERED - Enhanced */}
+            {/* SERVICES OFFERED */}
             <Box sx={{ mb: 10 }}>
-              {/* Section Header */}
-              <Box sx={{ mb: 6 }}>
-                  <Typography variant="h3" sx={{ fontSize: { xs: '1.8rem', md: '2.2rem' }, fontWeight: 900, color: '#10355f', lineHeight: 1.1 }}>
-                    Services Offered
-                  </Typography>
+              <Box sx={{ mb: 8, textAlign: 'center' }}>
+                <Typography variant="h3" sx={{ fontSize: { xs: '1.8rem', md: '2.2rem' }, fontWeight: 900, color: '#10355f', lineHeight: 1.1 }}>
+                  Services Offered
+                </Typography>
               </Box>
-
-              <Box sx={{ 
-                display: 'grid', 
-                gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }, 
-                gap: 3 
+              <Box sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+                gap: { xs: 4, md: 4 },
+                maxWidth: '1200px',
+                mx: 'auto'
               }}>
                 {coolFixServices.map((service, index) => (
-                  <Box key={index} sx={{ 
+                  <Box key={index} sx={{
                     display: 'flex',
                     flexDirection: 'column',
+                    bgcolor: '#f8fafc',
                     borderRadius: '20px',
                     overflow: 'hidden',
-                    border: '1.5px solid transparent',
-                    boxShadow: '0 2px 12px rgba(16,53,95,0.06)',
                     transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
                     cursor: 'pointer',
                     '&:hover': {
-                      boxShadow: `0 20px 40px rgba(16, 53, 95, 0.14)`,
-                      borderColor: service.color,
-                      transform: 'translateY(-6px)',
+                      transform: 'translateY(-8px)',
+                      boxShadow: '0 16px 32px rgba(16, 53, 95, 0.1)',
                     }
                   }}>
-                    {/* Card top colored band */}
-                    <Box sx={{ 
-                      background: service.bg,
-                      px: 3, pt: 3, pb: 2,
-                    }}>
-                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
-                        {/* Icon circle */}
-                        <Box sx={{ 
-                          width: 52, height: 52,
-                          borderRadius: '14px',
-                          bgcolor: 'rgba(255,255,255,0.15)',
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        }}>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d={service.icon} />
-                          </svg>
-                        </Box>
-                        {/* Tag - plain white text, no pill */}
-                        <Typography sx={{
-                          fontSize: '0.65rem',
-                          fontWeight: 800,
-                          letterSpacing: '0.1em',
-                          textTransform: 'uppercase',
-                          color: 'rgba(255,255,255,0.75)',
-                          mt: 0.5,
-                        }}>
-                          {service.tag}
-                        </Typography>
-                      </Box>
-                      <Typography sx={{ fontWeight: 800, color: 'white', fontSize: '1rem', lineHeight: 1.3 }}>
+                    <Box sx={{ width: '100%', height: '280px' }}>
+                      <Box component="img" src={service.image} alt={service.title} sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
+                    </Box>
+                    <Box sx={{ p: { xs: 3, md: 4 }, display: 'flex', flexDirection: 'column', flex: 1 }}>
+                      <Typography sx={{ fontWeight: 800, color: '#0d264a', fontSize: { xs: '1.3rem', md: '1.4rem' }, lineHeight: 1.3, mb: 0.5 }}>
                         {service.title}
                       </Typography>
-                    </Box>
-
-                    {/* Card body */}
-                    <Box sx={{ px: 3, py: 2.5, bgcolor: 'white', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                      <Typography sx={{ fontSize: '0.88rem', color: '#64748b', lineHeight: 1.65, mb: 2.5 }}>
+                      <Typography sx={{ fontSize: '1rem', fontWeight: 600, color: '#0d264a', mb: 2 }}>
+                        {service.tag}
+                      </Typography>
+                      <Box sx={{ width: '40px', height: '3px', bgcolor: '#0d264a', mb: 3 }} />
+                      <Typography sx={{ fontSize: '1rem', color: '#64748b', lineHeight: 1.7, flex: 1 }}>
                         {service.description}
                       </Typography>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <CheckCircleIcon sx={{ color: service.color, fontSize: 15 }} />
-                        <Typography sx={{ fontSize: '0.75rem', color: service.color, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                          Certified Technicians
-                        </Typography>
-                      </Box>
                     </Box>
                   </Box>
                 ))}
               </Box>
             </Box>
 
-            {/* BOOK NOW CTA SECTION */}
-            <Box sx={{ 
+            {/* CTA SECTION */}
+            <Box sx={{
               mb: 10,
               borderRadius: '24px',
               overflow: 'hidden',
@@ -272,77 +267,42 @@ const CoolFixPage = () => {
               background: 'linear-gradient(135deg, #10355f 0%, #0d264a 50%, #1a5276 100%)',
               boxShadow: '0 24px 64px rgba(16,53,95,0.25)',
             }}>
-              {/* Decorative blobs */}
               <Box sx={{ position: 'absolute', top: -60, right: -60, width: 240, height: 240, borderRadius: '50%', bgcolor: 'rgba(0,180,216,0.08)', pointerEvents: 'none' }} />
               <Box sx={{ position: 'absolute', bottom: -40, left: -40, width: 180, height: 180, borderRadius: '50%', bgcolor: 'rgba(96,165,250,0.07)', pointerEvents: 'none' }} />
-
               <Box sx={{ position: 'relative', zIndex: 1, p: { xs: 4, md: 6 }, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'center', justifyContent: 'space-between', gap: 4 }}>
-                {/* Left text */}
                 <Box sx={{ flex: 1 }}>
-                  <Typography variant="h3" sx={{ fontSize: { xs: '1.6rem', md: '2.2rem' }, fontWeight: 900, color: 'white', lineHeight: 1.15, mb: 1.5 }}>
-                    Ready to Stay Cool?
-                  </Typography>
-                  <Typography sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.97rem', lineHeight: 1.7, maxWidth: 460 }}>
-                    Book a CoolFix technician today. Same-day slots available for Metro Manila. Fast, clean, and professional service — guaranteed.
-                  </Typography>
+                  <Typography variant="h3" sx={{ fontSize: { xs: '1.6rem', md: '2.2rem' }, fontWeight: 900, color: 'white', lineHeight: 1.15, mb: 1.5 }}>Ready to Stay Cool?</Typography>
+                  <Typography sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.97rem', lineHeight: 1.7, maxWidth: 460 }}>Book a CoolFix technician today. Same-day slots available for Metro Manila. Fast, clean, and professional service — guaranteed.</Typography>
                 </Box>
-
-                {/* Right CTA */}
                 <Box sx={{ minWidth: { xs: '100%', md: 'auto' } }}>
-                  <Button
-                    variant="contained"
-                    size="large"
-                    startIcon={<CalendarMonthIcon />}
-                    onClick={() => { navigate('/signup'); window.scrollTo(0, 0); }}
-                    sx={{
-                      bgcolor: 'white',
-                      color: '#10355f',
-                      fontWeight: 800,
-                      fontSize: '1rem',
-                      textTransform: 'none',
-                      borderRadius: '14px',
-                      px: 4,
-                      py: 1.8,
-                      whiteSpace: 'nowrap',
-                      boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
-                      '&:hover': {
-                        bgcolor: 'rgba(255,255,255,0.9)',
-                        boxShadow: '0 12px 32px rgba(0,0,0,0.25)',
-                        transform: 'translateY(-2px)',
-                      },
-                      transition: 'all 0.25s ease',
-                    }}
-                  >
-                    Book Now
-                  </Button>
+                  <Button variant="contained" size="large" startIcon={<CalendarMonthIcon />} onClick={() => { navigate('/signup'); window.scrollTo(0, 0); }} sx={{ bgcolor: 'white', color: '#10355f', fontWeight: 800, fontSize: '1rem', textTransform: 'none', borderRadius: '14px', px: 4, py: 1.8, whiteSpace: 'nowrap', boxShadow: '0 8px 24px rgba(0,0,0,0.2)', '&:hover': { bgcolor: 'rgba(255,255,255,0.9)', transform: 'translateY(-2px)' }, transition: 'all 0.25s ease' }}>Book Now</Button>
                 </Box>
               </Box>
             </Box>
 
-            <Typography sx={{ mt: 6, pt: 4, borderTop: '1px solid #e5eaf2', color: '#999', fontSize: '0.85rem' }}>
-              Last Updated: May 5, 2026
-            </Typography>
-
+            <Typography sx={{ mt: 6, pt: 4, borderTop: '1px solid #e5eaf2', color: '#999', fontSize: '0.85rem' }}>Last Updated: May 5, 2026</Typography>
           </Container>
         </Box>
 
-        {/* Footer */}
+        {/* FOOTER */}
         <Box component="footer" sx={{ width: '100%', background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)', backgroundImage: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")', pt: { xs: 8, md: 10 }, pb: { xs: 4, md: 6 }, color: 'white' }}>
           <Container maxWidth="xl" sx={{ px: { xs: 3, md: 6 } }}>
-            <Grid container spacing={{ xs: 4, md: 10, lg: 12 }}>
-              <Grid item xs={12} md={4}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo(0,0); }}>
+            <Grid container spacing={{ xs: 4, md: 8, lg: 10 }} justifyContent="space-between">
+
+              {/* Col 1 - Logo & Info */}
+              <Grid item xs={12} md={5}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo(0, 0); }}>
                   <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix Logo" sx={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} />
                   <Typography variant="h5" fontWeight="900" color="white" sx={{ letterSpacing: '-0.02em', fontSize: '1.4rem' }}>
-                    All<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span><span style={{ color: 'rgb(255, 255, 255)' }}>.ph</span>
+                    All<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span><span style={{ color: 'rgb(255,255,255)' }}>.ph</span>
                   </Typography>
                 </Box>
-                <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: 1.6, mb: 4, maxWidth: '380px' }}>
+                <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', lineHeight: 1.6, mb: 4, maxWidth: '380px' }}>
                   The Philippines' most trusted property care platform. Connecting homes and offices with verified professionals since 2021.
                 </Typography>
                 <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1.5, mb: 4, width: '100%', maxWidth: '400px' }}>
                   {footerPills.map(pill => (
-                    <Box key={pill.name} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', px: 1, py: 0.8, cursor: 'pointer', transition: 'all 0.2s', backgroundColor: 'rgba(255,255,255,0.02)', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
+                    <Box key={pill.name} onClick={() => { navigate(`/${pill.name.toLowerCase()}`); window.scrollTo(0, 0); }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', px: 1, py: 0.8, cursor: 'pointer', transition: 'all 0.2s', backgroundColor: 'rgba(255,255,255,0.02)', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">{pill.icon}</svg>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: 'white', whiteSpace: 'nowrap', textAlign: 'center' }}>{pill.name}</Typography>
                     </Box>
@@ -350,49 +310,61 @@ const CoolFixPage = () => {
                 </Box>
               </Grid>
 
-              <Grid item xs={6} md={2}>
-                <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>COMPANY</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {['About AllFix', 'Careers', 'Press & Media', 'Investor Relations'].map(link => (
-                    <Typography key={link} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>
-                  ))}
+              {/* Col 2 - COMPANY */}
+              <Grid item xs={12} sm={4} md={2}>
+                <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>COMPANY</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+                  <Typography onClick={() => { navigate('/about'); window.scrollTo(0, 0); }} sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>About AllFix</Typography>
+                  <Typography onClick={() => { navigate('/careers'); window.scrollTo(0, 0); }} sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>Careers</Typography>
+                  <Typography component="a" href="https://www.fpdasia.net/" target="_blank" rel="noopener noreferrer" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', textDecoration: 'none', cursor: 'pointer', '&:hover': { color: 'white' } }}>FPD Asia</Typography>
                 </Box>
               </Grid>
 
-              <Grid item xs={6} md={2}>
-                <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SERVICES</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {['Air-con (CoolFix)', 'Plumbing (SaniFix)', 'Repairs (HomeFix)', 'IT Support (TechFix)', 'Moving (MoveFix)', 'Health (HealthFix)', 'Sustainability (GreenFix)', 'Pets (PetFix)'].map(link => (
-                    <Typography key={link} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>
-                  ))}
-                </Box>
-              </Grid>
-
-              <Grid item xs={6} md={2}>
-                <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SUPPORT</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {['Help Center', 'Book a Service', 'Track My Job', 'Partner With Us'].map(link => (
-                    <Typography key={link} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>
-                  ))}
-                </Box>
-              </Grid>
-
-              <Grid item xs={6} md={2}>
-                <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Service Guarantee'].map(link => (
+              {/* Col 3 - SUPPORT */}
+              <Grid item xs={12} sm={4} md={2}>
+                <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SUPPORT</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+                  {['Help Center', 'Book a Service', , 'Partner With Us'].map((link) => (
                     <Typography 
                       key={link} 
-                      onClick={() => {
-                        if (link === 'Privacy Policy') {
-                          navigate('/privacy');
-                          window.scrollTo(0, 0);
-                        } else if (link === 'Terms of Service') {
-                          navigate('/terms-of-use');
-                          window.scrollTo(0, 0);
+                      onClick={() => { 
+                        if (link === 'Partner With Us') { 
+                          navigate('/vendor-apply'); 
+                        } else if (link === 'Help Center') {
+                          navigate('/help-center');
+                        } else if (link === 'Book a Service') {
+                          navigate('/signup'); // Adjust this route if your booking flow is different
                         }
+                        // For 'Track My Job' add navigation here when ready
+                        window.scrollTo(0, 0); 
+                      }} 
+                      sx={{ 
+                        color: 'rgba(255,255,255,0.65)', 
+                        fontSize: '1.05rem', 
+                        cursor: 'pointer', 
+                        '&:hover': { color: 'white' } 
                       }}
-                      sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}
+                    >
+                      {link}
+                    </Typography>
+                  ))}
+                </Box>
+              </Grid>
+
+              {/* Col 4 - LEGAL */}
+              <Grid item xs={12} sm={4} md={2}>
+                <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+                  {['Privacy Policy', 'Terms of Service', 'Service Guarantee'].map(link => (
+                    <Typography
+                      key={link}
+                      onClick={() => {
+                        if (link === 'Privacy Policy') navigate('/privacy');
+                        else if (link === 'Terms of Service') navigate('/terms-of-use');
+                        else if (link === 'Service Guarantee') navigate('/service-guarantee');
+                        window.scrollTo(0, 0);
+                      }}
+                      sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}
                     >
                       {link}
                     </Typography>
@@ -401,14 +373,12 @@ const CoolFixPage = () => {
               </Grid>
             </Grid>
 
-            <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: { xs: 5, md: 2 } }} />
+            <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: 4 }} />
 
             <Grid container spacing={4} justifyContent="space-between" alignItems="center">
               <Grid item xs={12} md={4}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
-                  <Box sx={{ mt: 0.5, color: 'white' }}>
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                  </Box>
+                  <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></Box>
                   <Box>
                     <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: 'rgba(255,255,255,0.9)', mb: 0.3, letterSpacing: '0.05em' }}>CALL US</Typography>
                     <Typography sx={{ fontSize: '1.05rem', fontWeight: 700, color: 'white' }}>+63 920 9631 217 | +63 975 8336 289</Typography>
@@ -417,9 +387,7 @@ const CoolFixPage = () => {
               </Grid>
               <Grid item xs={12} md={4}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
-                  <Box sx={{ mt: 0.5, color: 'white' }}>
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                  </Box>
+                  <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></Box>
                   <Box>
                     <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: 'rgba(255,255,255,0.9)', mb: 0.3, letterSpacing: '0.05em' }}>EMAIL US</Typography>
                     <Typography sx={{ fontSize: '1.05rem', fontWeight: 700, color: 'white' }}>inquiry@allfix.ph</Typography>
@@ -428,23 +396,29 @@ const CoolFixPage = () => {
               </Grid>
               <Grid item xs={12} md={4}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
-                  <Box sx={{ mt: 0.5, color: 'white' }}>
-                    <LocationOnIcon sx={{ fontSize: 26 }} />
-                  </Box>
+                  <Box sx={{ mt: 0.5, color: 'white' }}><LocationOnIcon sx={{ fontSize: 26 }} /></Box>
                   <Box>
                     <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: 'rgba(255,255,255,0.9)', mb: 0.3, letterSpacing: '0.05em' }}>HEAD OFFICE</Typography>
-                    <Typography sx={{ fontSize: '1.05rem', fontWeight: 700, color: 'white', lineHeight: 1.4 }}>9824 Kamagong Street, San Antonio Village,<br/>Makati City 1203 Philippines</Typography>
+                    <Typography sx={{ fontSize: '1.05rem', fontWeight: 700, color: 'white', lineHeight: 1.4 }}>9824 Kamagong Street, Makati City 1203 Philippines</Typography>
                   </Box>
                 </Box>
               </Grid>
             </Grid>
 
             <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: 2 }} />
-
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: 'center', gap: 2, color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem' }}>
-              <Typography variant="caption" sx={{ fontSize: 'inherit' }}>
-                © 2026 AllFix Philippines Inc. All rights reserved. DTI Reg. No. 2021-00001.
-              </Typography>
+              <Typography variant="caption" sx={{ fontSize: 'inherit' }}>© 2026 AllFix Philippines Inc. All rights reserved.</Typography>
+              <Box sx={{ display: 'flex', gap: 1 }}>
+                <IconButton component="a" href="https://www.facebook.com/allfixph" target="_blank" rel="noopener noreferrer" size="small" sx={{ color: 'inherit', '&:hover': { color: 'white' } }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </IconButton>
+                <IconButton component="a" href="https://www.instagram.com/allfixph" target="_blank" rel="noopener noreferrer" size="small" sx={{ color: 'inherit', '&:hover': { color: 'white' } }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </IconButton>
+                <IconButton size="small" sx={{ color: 'inherit', '&:hover': { color: 'white' } }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                </IconButton>
+              </Box>
             </Box>
           </Container>
         </Box>

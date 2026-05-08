@@ -418,7 +418,7 @@ const LandingPage = () => {
 
             <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 0.5, mr: { lg: 4, md: 2 } }}>
               {navLinks.map((link) => (
-                <Button key={link.label} onClick={() => handleNavClick(link.href)} sx={{ px: 1.5, py: 0.5, borderRadius: 1, fontSize: '0.75rem', fontWeight: 600, textTransform: 'none', color: isScrolled ? '#10355f' : 'rgba(255,255,255,0.9)', '&:hover': { backgroundColor: isScrolled ? 'rgba(16, 53, 95, 0.1)' : 'rgba(255,255,255,0.1)', color: isScrolled ? '#10355f' : 'white' } }}>
+                <Button key={link.label} onClick={() => handleNavClick(link.href)} sx={{ px: 2, py: 1, borderRadius: 1, fontSize: '0.95rem', fontWeight: 600, textTransform: 'none', color: isScrolled ? '#10355f' : 'rgba(255,255,255,0.9)', '&:hover': { backgroundColor: isScrolled ? 'rgba(16, 53, 95, 0.1)' : 'rgba(255,255,255,0.1)', color: isScrolled ? '#10355f' : 'white' } }}>
                   {link.label}
                 </Button>
               ))}
@@ -433,7 +433,7 @@ const LandingPage = () => {
             <Box sx={{ bgcolor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(16, 53, 95, 0.5)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255,255,255,0.2)', display: { xs: 'block', md: 'none' } }}>
               <Box sx={{ px: 2, py: 2, display: 'flex', flexDirection: 'column', gap: 0.5 }}>
                 {navLinks.map((link) => (
-                  <Button key={link.label} onClick={() => handleNavClick(link.href)} fullWidth sx={{ justifyContent: 'flex-start', px: 2, py: 1.5, borderRadius: 1, fontSize: '0.875rem', fontWeight: 500, textTransform: 'none', color: isScrolled ? '#10355f' : 'white', '&:hover': { backgroundColor: isScrolled ? 'rgba(16, 53, 95, 0.1)' : 'rgba(255,255,255,0.2)' } }}>
+                  <Button key={link.label} onClick={() => handleNavClick(link.href)} fullWidth sx={{ justifyContent: 'flex-start', px: 2, py: 1, borderRadius: 1, fontSize: '0.95rem', fontWeight: 600, textTransform: 'none', color: isScrolled ? '#10355f' : 'white', '&:hover': { backgroundColor: isScrolled ? 'rgba(16, 53, 95, 0.1)' : 'rgba(255,255,255,0.2)' } }}>
                     {link.label}
                   </Button>
                 ))}
@@ -999,79 +999,87 @@ const LandingPage = () => {
         </Box>
 
 
-        {/* CUSTOM FOOTER */}
-        <Box component="footer" sx={{ width: '100vw', position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', bgcolor: '#0a1e3f', pt: { xs: 8, md: 10 }, pb: { xs: 4, md: 6 }, color: 'white' }}>
+        {/* FOOTER */}
+        <Box component="footer" sx={{ width: '100%', background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)', backgroundImage: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")', pt: { xs: 8, md: 10 }, pb: { xs: 4, md: 6 }, color: 'white' }}>
           <Container maxWidth="xl" sx={{ px: { xs: 3, md: 6 } }}>
-            <Grid container spacing={{ xs: 4, md: 10, lg: 12 }}>
-              <Grid item xs={12} md={4}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3 }}>
-                  
-                  <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix.ph Logo" sx={{ width: 40, height: 40, objectFit: 'contain' }} />
+            <Grid container spacing={{ xs: 4, md: 8, lg: 10 }} justifyContent="space-between">
 
-                  {/* ALLFIX TEXT */}
+              {/* Col 1 - Logo & Info */}
+              <Grid item xs={12} md={5}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo(0, 0); }}>
+                  <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix Logo" sx={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} />
                   <Typography variant="h5" fontWeight="900" color="white" sx={{ letterSpacing: '-0.02em', fontSize: '1.4rem' }}>
-                    All<span style={{ color: '#4ade80' }}>F</span><span style={{ color: '#facc15' }}>i</span><span style={{ color: '#ef4444' }}>x</span>.ph
+                    All<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span><span style={{ color: 'rgb(255,255,255)' }}>.ph</span>
                   </Typography>
-
                 </Box>
-                <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: 1.6, mb: 4, maxWidth: '380px' }}>The Philippines' most trusted property care platform. Connecting homes and offices with verified professionals since 2021.</Typography>
+                <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', lineHeight: 1.6, mb: 4, maxWidth: '380px' }}>
+                  The Philippines' most trusted property care platform. Connecting homes and offices with verified professionals since 2021.
+                </Typography>
                 <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1.5, mb: 4, width: '100%', maxWidth: '400px' }}>
                   {footerPills.map(pill => (
-                    <Box key={pill.name} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', px: 1, py: 0.8, cursor: 'pointer', transition: 'all 0.2s', backgroundColor: 'rgba(255,255,255,0.02)', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
+                    <Box key={pill.name} onClick={() => { navigate(`/${pill.name.toLowerCase()}`); window.scrollTo(0, 0); }} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1, border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', px: 1, py: 0.8, cursor: 'pointer', transition: 'all 0.2s', backgroundColor: 'rgba(255,255,255,0.02)', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor">{pill.icon}</svg>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: 'white', whiteSpace: 'nowrap', textAlign: 'center' }}>{pill.name}</Typography>
                     </Box>
                   ))}
                 </Box>
-                <Box sx={{ display: 'flex', gap: 1.5 }}>
-                  <IconButton sx={{ border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', color: 'rgba(255,255,255,0.7)', '&:hover': { color: 'white', bgcolor: 'rgba(255,255,255,0.1)' } }}><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></IconButton>
-                  <IconButton sx={{ border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', color: 'rgba(255,255,255,0.7)', '&:hover': { color: 'white', bgcolor: 'rgba(255,255,255,0.1)' } }}><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></IconButton>
-                  <IconButton sx={{ border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', color: 'rgba(255,255,255,0.7)', '&:hover': { color: 'white', bgcolor: 'rgba(255,255,255,0.1)' } }}><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg></IconButton>
+              </Grid>
+
+              {/* Col 2 - COMPANY */}
+              <Grid item xs={12} sm={4} md={2}>
+                <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>COMPANY</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+                  <Typography onClick={() => { navigate('/about'); window.scrollTo(0, 0); }} sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>About AllFix</Typography>
+                  <Typography onClick={() => { navigate('/careers'); window.scrollTo(0, 0); }} sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>Careers</Typography>
+                  <Typography component="a" href="https://www.fpdasia.net/" target="_blank" rel="noopener noreferrer" sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', textDecoration: 'none', cursor: 'pointer', '&:hover': { color: 'white' } }}>FPD Asia</Typography>
                 </Box>
               </Grid>
 
-              <Grid item xs={6} md={2}>
-                <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>COMPANY</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {['About AllFix', 'Careers', 'Press & Media', 'Investor Relations'].map(link => (<Typography key={link} onClick={() => {
-                    if (link === 'About AllFix') {
-                      navigate('/about');
-                      window.scrollTo(0, 0);
-                    }
-                  }} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>))}
-                </Box>
-              </Grid>
-
-              <Grid item xs={6} md={2}>
-                <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SERVICES</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {['Air-con (CoolFix)', 'Plumbing (SaniFix)', 'Repairs (HomeFix)', 'IT Support (TechFix)', 'Moving (MoveFix)', 'Health (HealthFix)', 'Sustainability (GreenFix)', 'Pets (PetFix)'].map(link => (<Typography key={link} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>))}
-                </Box>
-              </Grid>
-
-              <Grid item xs={6} md={2}>
-                <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SUPPORT</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {['Help Center', 'Book a Service', 'Track My Job', 'Partner With Us'].map(link => (<Typography key={link} onClick={() => { if (link === 'Partner With Us') { navigate('/vendor-apply'); window.scrollTo(0,0); } }} sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>{link}</Typography>))}
-                </Box>
-              </Grid>
-
-              <Grid item xs={6} md={2}>
-                <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'Service Guarantee'].map(link => (
+              {/* Col 3 - SUPPORT */}
+              <Grid item xs={12} sm={4} md={2}>
+                <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SUPPORT</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+                  {['Help Center', 'Book a Service', 'Partner With Us'].map((link) => (
                     <Typography 
-                      key={link}
+                      key={link} 
                       onClick={() => { 
-                        if (link === 'Privacy Policy') { 
-                          navigate('/privacy'); 
-                          window.scrollTo(0, 0); 
-                        } else if (link === 'Terms of Service') {
-                          navigate('/terms-of-use');
-                          window.scrollTo(0, 0);
+                        if (link === 'Partner With Us') { 
+                          navigate('/vendor-apply'); 
+                        } else if (link === 'Help Center') {
+                          navigate('/help-center');
+                        } else if (link === 'Book a Service') {
+                          navigate('/signup'); // Adjust this route if your booking flow is different
                         }
+                        // For 'Track My Job' add navigation here when ready
+                        window.scrollTo(0, 0); 
+                      }} 
+                      sx={{ 
+                        color: 'rgba(255,255,255,0.65)', 
+                        fontSize: '1.05rem', 
+                        cursor: 'pointer', 
+                        '&:hover': { color: 'white' } 
                       }}
-                      sx={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.9rem', cursor: 'pointer', '&:hover': { color: 'white' } }}
+                    >
+                      {link}
+                    </Typography>
+                  ))}
+                </Box>
+              </Grid>
+
+              {/* Col 4 - LEGAL */}
+              <Grid item xs={12} sm={4} md={2}>
+                <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+                  {['Privacy Policy', 'Terms of Service', 'Service Guarantee'].map(link => (
+                    <Typography
+                      key={link}
+                      onClick={() => {
+                        if (link === 'Privacy Policy') navigate('/privacy');
+                        else if (link === 'Terms of Service') navigate('/terms-of-use');
+                        else if (link === 'Service Guarantee') navigate('/service-guarantee');
+                        window.scrollTo(0, 0);
+                      }}
+                      sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}
                     >
                       {link}
                     </Typography>
@@ -1080,7 +1088,7 @@ const LandingPage = () => {
               </Grid>
             </Grid>
 
-            <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: { xs: 5, md: 2 } }} />
+            <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: 4 }} />
 
             <Grid container spacing={4} justifyContent="space-between" alignItems="center">
               <Grid item xs={12} md={4}>
@@ -1097,7 +1105,7 @@ const LandingPage = () => {
                   <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></Box>
                   <Box>
                     <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: 'rgba(255,255,255,0.9)', mb: 0.3, letterSpacing: '0.05em' }}>EMAIL US</Typography>
-                    <Typography sx={{ fontSize: '1.05rem', fontWeight: 700, color: 'white' }}> inquiry@allfix.ph</Typography>
+                    <Typography sx={{ fontSize: '1.05rem', fontWeight: 700, color: 'white' }}>inquiry@allfix.ph</Typography>
                   </Box>
                 </Box>
               </Grid>
@@ -1106,17 +1114,25 @@ const LandingPage = () => {
                   <Box sx={{ mt: 0.5, color: 'white' }}><LocationOnIcon sx={{ fontSize: 26 }} /></Box>
                   <Box>
                     <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: 'rgba(255,255,255,0.9)', mb: 0.3, letterSpacing: '0.05em' }}>HEAD OFFICE</Typography>
-                    <Typography sx={{ fontSize: '1.05rem', fontWeight: 700, color: 'white', lineHeight: 1.4 }}>9824 Kamagong Street, San Antonio Village,<br/>Makati City 1203 Philippines</Typography>
+                    <Typography sx={{ fontSize: '1.05rem', fontWeight: 700, color: 'white', lineHeight: 1.4 }}>9824 Kamagong Street, Makati City 1203 Philippines</Typography>
                   </Box>
                 </Box>
               </Grid>
             </Grid>
 
             <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: 2 }} />
-
             <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: 'center', gap: 2, color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem' }}>
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 1, md: 3 }, alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' } }}>
-                <Typography variant="caption" sx={{ fontSize: 'inherit' }}>© 2026 AllFix Philippines Inc. All rights reserved. DTI Reg. No. 2021-00001.</Typography>
+              <Typography variant="caption" sx={{ fontSize: 'inherit' }}>© 2026 AllFix Philippines Inc. All rights reserved.</Typography>
+              <Box sx={{ display: 'flex', gap: 1 }}>
+                <IconButton component="a" href="https://www.facebook.com/allfixph" target="_blank" rel="noopener noreferrer" size="small" sx={{ color: 'inherit', '&:hover': { color: 'white' } }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </IconButton>
+                <IconButton component="a" href="https://www.instagram.com/allfixph" target="_blank" rel="noopener noreferrer" size="small" sx={{ color: 'inherit', '&:hover': { color: 'white' } }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </IconButton>
+                <IconButton size="small" sx={{ color: 'inherit', '&:hover': { color: 'white' } }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+                </IconButton>
               </Box>
             </Box>
           </Container>
