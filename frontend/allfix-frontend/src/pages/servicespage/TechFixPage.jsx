@@ -14,6 +14,8 @@ import {
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import MemoryIcon from '@mui/icons-material/Memory';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 // --- FOOTER PILL DATA ---
 const footerPills = [
@@ -40,6 +42,7 @@ const techfixServices = [
 const TechFixPage = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,19 +62,24 @@ const TechFixPage = () => {
         elevation={0}
         sx={{
           zIndex: 1100,
-          background: isScrolled
+          background: (isScrolled || menuOpen)
             ? 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)'
             : 'transparent',
-          backgroundImage: isScrolled
+          backgroundImage: (isScrolled || menuOpen)
             ? 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")'
             : 'none',
-          backdropFilter: isScrolled ? 'blur(20px)' : 'none',
-          boxShadow: isScrolled ? '0 4px 12px rgba(0, 0, 0, 0.15)' : 'none',
+          backdropFilter: (isScrolled || menuOpen) ? 'blur(20px)' : 'none',
+          boxShadow: (isScrolled || menuOpen) ? '0 4px 12px rgba(0, 0, 0, 0.15)' : 'none',
           transition: 'all 0.3s ease-in-out',
         }}
       >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, md: 5 }, minHeight: '80px' }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, cursor: 'pointer', ml: { xs: 0, md: 8, lg: 16 } }} onClick={() => { navigate('/'); window.scrollTo(0, 0); }}>
+
+          {/* Logo Section */}
+          <Box
+            sx={{ display: 'flex', alignItems: 'center', gap: 1.5, cursor: 'pointer', ml: { xs: 0, md: 8, lg: 16 } }}
+            onClick={() => { navigate('/'); window.scrollTo(0, 0); }}
+          >
             <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix Logo" sx={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover' }} />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography variant="h5" fontWeight="bold" color="white" sx={{ lineHeight: 1, mb: 0.3, fontSize: { xs: '1.2rem', md: '1.4rem' } }}>
@@ -80,15 +88,74 @@ const TechFixPage = () => {
               <Typography variant="overline" color="rgba(255,255,255,0.7)" sx={{ lineHeight: 1, fontSize: { xs: '0.65rem', md: '0.65rem' }, letterSpacing: 0.5 }}>PROPERTY CARE EXPERTS</Typography>
             </Box>
           </Box>
-          <Box sx={{ mr: { xs: 0, md: 8, lg: 16 } }}>
+
+          {/* Right Side Controls */}
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mr: { xs: 0, md: 8, lg: 16 } }}>
+            {/* Desktop only */}
             <Button
               onClick={() => { navigate('/'); window.scrollTo(0, 0); }}
-              sx={{ color: 'white', fontWeight: 600, textTransform: 'none', fontSize: '0.95rem', '&:hover': { color: '#eaf2fc', backgroundColor: 'rgba(255, 255, 255, 0.1)' }, px: 2, py: 1, borderRadius: '8px', transition: 'all 0.3s ease' }}
+              sx={{ display: { xs: 'none', md: 'flex' }, color: 'white', fontWeight: 600, textTransform: 'none', fontSize: '0.95rem', '&:hover': { color: '#eaf2fc', backgroundColor: 'rgba(255, 255, 255, 0.1)' }, px: 2, py: 1, borderRadius: '8px', transition: 'all 0.3s ease' }}
             >
               Back to Home
             </Button>
+
+            {/* Mobile only */}
+            <IconButton
+              onClick={() => setMenuOpen(!menuOpen)}
+              sx={{ display: { xs: 'flex', md: 'none' }, color: 'white' }}
+            >
+              {menuOpen ? <CloseIcon /> : <MenuIcon />}
+            </IconButton>
           </Box>
         </Toolbar>
+
+        {/* Mobile Menu Dropdown (inside AppBar) */}
+        {menuOpen && (
+          <Box sx={{ display: { xs: 'block', md: 'none' }, borderTop: '1px solid rgba(255,255,255,0.1)', p: 2, pb: 3 }}>
+            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1.5, mb: 2 }}>
+              {footerPills.map(pill => (
+                <Box
+                  key={pill.name}
+                  onClick={() => {
+                    navigate(`/${pill.name.toLowerCase()}`);
+                    setMenuOpen(false);
+                    window.scrollTo(0, 0);
+                  }}
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 1,
+                    px: 1,
+                    py: 2,
+                    bgcolor: pill.name === 'TechFix' ? 'rgba(255,255,255,0.15)' : '#ffffff',
+                    color: pill.name === 'TechFix' ? 'white' : '#10355f',
+                    borderRadius: '12px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    boxShadow: pill.name === 'TechFix' ? 'none' : '0 4px 12px rgba(0,0,0,0.15)',
+                  }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    {pill.icon}
+                  </svg>
+                  <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, textAlign: 'center' }}>
+                    {pill.name}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+            <Box sx={{ pt: 1 }}>
+              <Button
+                onClick={() => { navigate('/'); setMenuOpen(false); window.scrollTo(0, 0); }}
+                fullWidth
+                sx={{ bgcolor: '#ffffff', color: '#10355f', fontWeight: 800, fontSize: '1rem', py: 1.2, borderRadius: '10px', textTransform: 'none' }}
+              >
+                Back to Home
+              </Button>
+            </Box>
+          </Box>
+        )}
       </AppBar>
 
       <Box sx={{ bgcolor: '#f0f4f8', minHeight: '100vh', width: '100%' }}>
@@ -124,10 +191,10 @@ const TechFixPage = () => {
         <Box sx={{ pt: { xs: 3, md: 4 }, pb: { xs: 4, md: 12 }, bgcolor: 'white', width: '100%' }}>
           <Container maxWidth="lg">
 
-            {/* NAVIGATION PILLS */}
-            <Box sx={{ mb: { xs: 4, md: 6 }, width: '100%', overflow: 'hidden' }}>
+            {/* NAVIGATION PILLS - Desktop Only */}
+            <Box sx={{ mb: { xs: 4, md: 6 }, width: '100%', overflow: 'visible' }}>
               <Box sx={{
-                display: 'flex',
+                display: { xs: 'none', md: 'flex' },
                 flexDirection: 'row',
                 flexWrap: 'nowrap',
                 justifyContent: 'center',
@@ -186,7 +253,7 @@ const TechFixPage = () => {
                   height: { xs: '250px', md: '320px' },
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  boxShadow: '0 16px 32px rgba(14, 165, 233, 0.15)',
+                  boxShadow: '0 16px 32px rgba(255, 255, 255, 0.15)',
                   border: '4px solid #e0f2fe'
                 }}>
                   <Box
@@ -212,44 +279,40 @@ const TechFixPage = () => {
 
             {/* SERVICES OFFERED */}
             <Box sx={{ mb: 10 }}>
-              <Box sx={{ mb: 8, textAlign: 'center' }}>
+              <Box sx={{ mb: { xs: 4, md: 8 }, textAlign: 'center' }}>
                 <Typography variant="h3" sx={{ fontSize: { xs: '1.8rem', md: '2.2rem' }, fontWeight: 900, color: '#10355f', lineHeight: 1.1 }}>
                   Services Offered
                 </Typography>
               </Box>
               <Box sx={{
                 display: 'grid',
-                gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
-                gap: { xs: 4, md: 4 },
+                gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' },
+                gap: { xs: 2, md: 4 },
                 maxWidth: '1200px',
-                mx: 'auto'
+                mx: 'auto',
+                px: { xs: 2, md: 0 }
               }}>
                 {techfixServices.map((service, index) => (
                   <Box key={index} sx={{
                     display: 'flex',
                     flexDirection: 'column',
                     bgcolor: '#f8fafc',
-                    borderRadius: '20px',
+                    borderRadius: { xs: '12px', md: '20px' },
                     overflow: 'hidden',
-                    transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-                    cursor: 'pointer',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 16px 32px rgba(14, 165, 233, 0.1)',
-                    }
+                    border: '1px solid #eaf2fc',
                   }}>
-                    <Box sx={{ width: '100%', height: '280px' }}>
+                    <Box sx={{ width: '100%', height: { xs: '120px', sm: '180px', md: '280px' } }}>
                       <Box component="img" src={service.image} alt={service.title} sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
                     </Box>
-                    <Box sx={{ p: { xs: 3, md: 4 }, display: 'flex', flexDirection: 'column', flex: 1 }}>
-                      <Typography sx={{ fontWeight: 800, color: '#0d264a', fontSize: { xs: '1.3rem', md: '1.4rem' }, lineHeight: 1.3, mb: 0.5 }}>
+                    <Box sx={{ p: { xs: 1.5, md: 4 }, display: 'flex', flexDirection: 'column', flex: 1 }}>
+                      <Typography sx={{ fontWeight: 800, color: '#0d264a', fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.4rem' }, lineHeight: 1.2, mb: 0.5 }}>
                         {service.title}
                       </Typography>
-                      <Typography sx={{ fontSize: '1rem', fontWeight: 600, color: '#0d264a', mb: 2 }}>
+                      <Typography sx={{ fontSize: { xs: '0.7rem', sm: '0.85rem', md: '1rem' }, fontWeight: 600, color: '#0d264a', mb: { xs: 1, md: 2 } }}>
                         {service.tag}
                       </Typography>
-                      <Box sx={{ width: '40px', height: '3px', bgcolor: '#0d264a', mb: 3 }} />
-                      <Typography sx={{ fontSize: '1rem', color: '#64748b', lineHeight: 1.7, flex: 1 }}>
+                      <Box sx={{ width: { xs: '20px', md: '40px' }, height: { xs: '2px', md: '3px' }, bgcolor: '#0d264a', mb: { xs: 1, md: 3 } }} />
+                      <Typography sx={{ fontSize: { xs: '0.7rem', sm: '0.85rem', md: '1rem' }, color: '#64748b', lineHeight: { xs: 1.4, md: 1.7 }, flex: 1 }}>
                         {service.description}
                       </Typography>
                     </Box>
@@ -261,21 +324,37 @@ const TechFixPage = () => {
             {/* CTA SECTION */}
             <Box sx={{
               mb: 10,
-              borderRadius: '24px',
+              borderRadius: '20px',
               overflow: 'hidden',
               position: 'relative',
               background: 'linear-gradient(135deg, #10355f 0%, #0d264a 50%, #1a5276 100%)',
-              boxShadow: '0 24px 64px rgba(16,53,95,0.25)',
+              boxShadow: '0 16px 40px rgba(16,53,95,0.2)',
             }}>
-              <Box sx={{ position: 'absolute', top: -60, right: -60, width: 240, height: 240, borderRadius: '50%', bgcolor: 'rgba(56, 189, 248, 0.08)', pointerEvents: 'none' }} />
-              <Box sx={{ position: 'absolute', bottom: -40, left: -40, width: 180, height: 180, borderRadius: '50%', bgcolor: 'rgba(2, 132, 199, 0.07)', pointerEvents: 'none' }} />
-              <Box sx={{ position: 'relative', zIndex: 1, p: { xs: 4, md: 6 }, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'center', justifyContent: 'space-between', gap: 4 }}>
+              <Box sx={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', bgcolor: 'rgba(56, 189, 248, 0.08)', pointerEvents: 'none' }} />
+              <Box sx={{ position: 'absolute', bottom: -40, left: -40, width: 150, height: 150, borderRadius: '50%', bgcolor: 'rgba(2, 132, 199, 0.07)', pointerEvents: 'none' }} />
+              <Box sx={{
+                position: 'relative',
+                zIndex: 1,
+                p: { xs: 3, md: 4 },
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                alignItems: { xs: 'flex-start', md: 'center' },
+                justifyContent: 'space-between',
+                gap: { xs: 2.5, md: 4 }
+              }}>
                 <Box sx={{ flex: 1 }}>
-                  <Typography variant="h3" sx={{ fontSize: { xs: '1.6rem', md: '2.2rem' }, fontWeight: 900, color: 'white', lineHeight: 1.15, mb: 1.5 }}>Ready for Tech Help?</Typography>
-                  <Typography sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.97rem', lineHeight: 1.7, maxWidth: 460 }}>Book a TechFix technician today. Let us handle your IT needs so you can stay focused.</Typography>
+                  <Typography variant="h3" sx={{ fontSize: { xs: '1.4rem', md: '1.8rem' }, fontWeight: 900, color: 'white', lineHeight: 1.2, mb: 1 }}>Ready for Tech Help?</Typography>
+                  <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: { xs: '0.85rem', md: '0.95rem' }, lineHeight: 1.6, maxWidth: 500 }}>Book a TechFix technician today. Let us handle your IT needs so you can stay focused.</Typography>
                 </Box>
-                <Box sx={{ minWidth: { xs: '100%', md: 'auto' } }}>
-                  <Button variant="contained" size="large" startIcon={<CalendarMonthIcon />} onClick={() => { navigate('/signup'); window.scrollTo(0, 0); }} sx={{ bgcolor: 'white', color: '#10355f', fontWeight: 800, fontSize: '1rem', textTransform: 'none', borderRadius: '14px', px: 4, py: 1.8, whiteSpace: 'nowrap', boxShadow: '0 8px 24px rgba(0,0,0,0.2)', '&:hover': { bgcolor: 'rgba(255,255,255,0.9)', transform: 'translateY(-2px)' }, transition: 'all 0.25s ease' }}>Book Now</Button>
+                <Box>
+                  <Button
+                    variant="contained"
+                    startIcon={<CalendarMonthIcon />}
+                    onClick={() => { navigate('/signup'); window.scrollTo(0, 0); }}
+                    sx={{ bgcolor: 'white', color: '#10355f', fontWeight: 800, fontSize: '0.9rem', textTransform: 'none', borderRadius: '12px', px: 3, py: 1.2, whiteSpace: 'nowrap', boxShadow: '0 8px 24px rgba(0,0,0,0.15)', '&:hover': { bgcolor: 'rgba(255,255,255,0.9)', transform: 'translateY(-2px)' }, transition: 'all 0.25s ease' }}
+                  >
+                    Book Now
+                  </Button>
                 </Box>
               </Box>
             </Box>
@@ -324,26 +403,16 @@ const TechFixPage = () => {
               <Grid item xs={12} sm={4} md={2}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SUPPORT</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
-                  {['Help Center', 'Book a Service',  'Partner With Us'].map((link) => (
-                    <Typography 
-                      key={link} 
-                      onClick={() => { 
-                        if (link === 'Partner With Us') { 
-                          navigate('/vendor-apply'); 
-                        } else if (link === 'Help Center') {
-                          navigate('/help-center');
-                        } else if (link === 'Book a Service') {
-                          navigate('/signup'); // Adjust this route if your booking flow is different
-                        }
-                        // For 'Track My Job' add navigation here when ready
-                        window.scrollTo(0, 0); 
-                      }} 
-                      sx={{ 
-                        color: 'rgba(255,255,255,0.65)', 
-                        fontSize: '1.05rem', 
-                        cursor: 'pointer', 
-                        '&:hover': { color: 'white' } 
+                  {['Help Center', 'Book a Service', 'Partner With Us'].map((link) => (
+                    <Typography
+                      key={link}
+                      onClick={() => {
+                        if (link === 'Partner With Us') { navigate('/vendor-apply'); }
+                        else if (link === 'Help Center') { navigate('/help-center'); }
+                        else if (link === 'Book a Service') { navigate('/signup'); }
+                        window.scrollTo(0, 0);
                       }}
+                      sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}
                     >
                       {link}
                     </Typography>

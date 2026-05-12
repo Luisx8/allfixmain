@@ -63,6 +63,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import DescriptionIcon from '@mui/icons-material/Description';
 import ShieldIcon from '@mui/icons-material/Shield';
+import PersonIcon from '@mui/icons-material/Person';
 
 // --- SPECIFIC SERVICE ICONS ---
 import AirIcon from '@mui/icons-material/Air';
@@ -195,6 +196,67 @@ const services = [
   },
 ];
 
+const NavigationPills = ({ services, activeServiceIdx, setActiveServiceIdx }) => {
+  return (
+    <Box
+      id="services-scroll-navbar"
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: 1.5,
+        width: '100%',
+        mt: 2,
+        mb: 1,
+        px: 1
+      }}
+    >
+      {services.map((svc, idx) => {
+        const ServiceIcon = svc.icon;
+        const isActive = activeServiceIdx === idx;
+
+        return (
+          <Box
+            key={svc.brand}
+            onClick={() => {
+              setActiveServiceIdx(idx);
+              // Scroll the horizontal container to the selected card
+              document.getElementById('services-scroll-row')?.scrollTo({
+                left: idx * (window.innerWidth - 60),
+                behavior: 'smooth'
+              });
+            }}
+            sx={{
+              minWidth: 0,
+              px: 1.2,
+              py: 1,
+              fontSize: '0.75rem',
+              fontWeight: 700,
+              borderRadius: '8px',
+              color: isActive ? '#fff' : '#23406e',
+              backgroundColor: isActive ? '#23406e' : 'rgba(35, 64, 110, 0.04)',
+              border: isActive ? '1px solid #23406e' : '1px solid rgba(35, 64, 110, 0.15)',
+              whiteSpace: 'nowrap',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 0.8,
+              '&:hover': {
+                bgcolor: isActive ? '#23406e' : 'rgba(35, 64, 110, 0.1)',
+                borderColor: isActive ? '#23406e' : 'rgba(35, 64, 110, 0.25)'
+              }
+            }}
+          >
+            <ServiceIcon sx={{ fontSize: '1rem', color: isActive ? '#fff' : '#23406e' }} />
+            <span>{svc.brand}</span>
+          </Box>
+        );
+      })}
+    </Box>
+  );
+};
+
 const ServiceCard = ({ service, onServiceClick }) => {
   const [hovered, setHovered] = useState(false);
   const Icon = service.icon;
@@ -220,68 +282,68 @@ const ServiceCard = ({ service, onServiceClick }) => {
       onClick={() => onServiceClick(service)}
     >
       {/* Image showcase */}
-        <div style={{ position: 'relative', height: '200px', overflow: 'hidden', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img
-            src={service.image}
-            alt={service.brand}
+      <div style={{ position: 'relative', height: '200px', overflow: 'hidden', backgroundColor: '#f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <img
+          src={service.image}
+          alt={service.brand}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center 10%',
+            opacity: hovered ? 0.3 : 1,
+            transition: 'opacity 0.5s ease',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+          }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: service.accent, opacity: hovered ? 0.6 : 0, transition: 'opacity 0.3s ease' }} />
+        {hovered && (
+          <div
             style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center 10%',
-              opacity: hovered ? 0.3 : 1,
-              transition: 'opacity 0.5s ease',
               position: 'absolute',
               top: 0,
               left: 0,
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 2,
+              pointerEvents: 'none',
+              transition: 'opacity 0.3s, transform 0.3s',
+              opacity: hovered ? 1 : 0,
+              transform: hovered ? 'scale(1)' : 'scale(0.8)',
             }}
-          />
-          <div style={{ position: 'absolute', inset: 0, background: service.accent, opacity: hovered ? 0.6 : 0, transition: 'opacity 0.3s ease' }} />
-          {hovered && (
+          >
             <div
               style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
+                width: '64px',
+                height: '64px',
+                borderRadius: '20px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                zIndex: 2,
-                pointerEvents: 'none',
-                transition: 'opacity 0.3s, transform 0.3s',
-                opacity: hovered ? 1 : 0,
-                transform: hovered ? 'scale(1)' : 'scale(0.8)',
+                backgroundColor: service.accent,
+                boxShadow: `0 0 20px ${service.accent}80, 0 0 40px ${service.accent}40, 0 8px 16px rgba(0,0,0,0.4)`,
               }}
             >
-              <div
-                style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: service.accent,
-                  boxShadow: `0 0 20px ${service.accent}80, 0 0 40px ${service.accent}40, 0 8px 16px rgba(0,0,0,0.4)`,
-                }}
-              >
-                <Icon style={{ width: '32px', height: '32px', color: '#fff' }} />
-              </div>
+              <Icon style={{ width: '32px', height: '32px', color: '#fff' }} />
             </div>
-          )}
-        </div>
+          </div>
+        )}
+      </div>
 
       {/* Header */}
       <div
         style={{
           position: 'relative',
-          padding: '32px 24px', 
+          padding: '32px 24px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          background: `linear-gradient(135deg, ${service.headerBg} 0%, ${service.headerBgLight} 100%)`, 
+          background: `linear-gradient(135deg, ${service.headerBg} 0%, ${service.headerBgLight} 100%)`,
         }}
       >
         <div style={{ fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.05em', textTransform: 'uppercase', padding: '6px 12px', borderRadius: '9999px', backgroundColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>
@@ -291,13 +353,13 @@ const ServiceCard = ({ service, onServiceClick }) => {
           <Icon style={{ width: '22px', height: '22px', color: '#fff' }} />
         </div>
       </div>
-      
+
       {/* Body */}
       <div style={{ padding: '12px 24px 20px 24px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
         <h3 style={{ fontWeight: 900, fontSize: '1.25rem', color: '#000', marginBottom: '2px' }}>{service.brand}</h3>
         <p style={{ fontSize: '0.85rem', fontWeight: 600, color: service.accent, marginBottom: '12px' }}>{service.tagline}</p>
         <p style={{ fontSize: '0.9rem', color: '#666', lineHeight: 1.5, marginBottom: '16px', flex: 1 }}>{service.description}</p>
-        
+
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 12px', marginBottom: '16px' }}>
           {service.services.map((tag) => (
             <div key={tag} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -343,12 +405,29 @@ const LandingPage = () => {
   const handleNext = () => setTestimonialIdx((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [activeServiceIdx, setActiveServiceIdx] = useState(0);
+  const [cyclingIconIdx, setCyclingIconIdx] = useState(0);
+  const [colorCycleIdx, setColorCycleIdx] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const iconInterval = setInterval(() => {
+      setCyclingIconIdx((prev) => (prev === services.length - 1 ? 0 : prev + 1));
+    }, 3000);
+    return () => clearInterval(iconInterval);
+  }, []);
+
+  useEffect(() => {
+    const colorInterval = setInterval(() => {
+      setColorCycleIdx((prev) => (prev === 2 ? 0 : prev + 1));
+    }, 1500);
+    return () => clearInterval(colorInterval);
   }, []);
 
   const navLinks = [
@@ -369,29 +448,29 @@ const LandingPage = () => {
     }
     const el = document.querySelector(href);
     if (el) {
-      const offsetTop = el.getBoundingClientRect().top + window.scrollY - 100;
+      const offsetTop = el.getBoundingClientRect().top + window.scrollY - 20;
       window.scrollTo({ top: offsetTop, behavior: 'smooth' });
     }
   };
 
   const footerPills = [
-    { name: 'CoolFix', icon: <path d="M19.5 12h-15M17.5 16h-11M21.5 8h-15" strokeWidth="2" strokeLinecap="round"/> },
-    { name: 'SaniFix', icon: <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> },
-    { name: 'HomeFix', icon: <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 9.36l-7.1 7.1a1 1 0 01-1.42 0l-1.4-1.4a1 1 0 010-1.42l7.1-7.1a6 6 0 019.36-7.94l-3.77 3.77z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> },
-    { name: 'MoveFix', icon: <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16zM3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> },
-    { name: 'GreenFix', icon: <path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10zM11 20v-6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> },
-    { name: 'HealthFix', icon: <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> },
-    { name: 'SpaceFix', icon: <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/> },
-    { name: 'PetFix', icon: <><circle cx="5.5" cy="8.5" r="1.5" strokeWidth="2"/><circle cx="10" cy="5" r="1.5" strokeWidth="2"/><circle cx="14" cy="5" r="1.5" strokeWidth="2"/><circle cx="18.5" cy="8.5" r="1.5" strokeWidth="2"/><path d="M12 18c-3 0-5-1.5-5-4 0-1.5 2-4 5-4s5 2.5 5 4c0 2.5-2 4-5 4z" strokeWidth="2"/></> },
-    { name: 'TechFix', icon: <><rect x="4" y="4" width="16" height="16" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></> },
+    { name: 'CoolFix', icon: <path d="M19.5 12h-15M17.5 16h-11M21.5 8h-15" strokeWidth="2" strokeLinecap="round" /> },
+    { name: 'SaniFix', icon: <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /> },
+    { name: 'HomeFix', icon: <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 9.36l-7.1 7.1a1 1 0 01-1.42 0l-1.4-1.4a1 1 0 010-1.42l7.1-7.1a6 6 0 019.36-7.94l-3.77 3.77z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /> },
+    { name: 'MoveFix', icon: <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16zM3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /> },
+    { name: 'GreenFix', icon: <path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10zM11 20v-6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /> },
+    { name: 'HealthFix', icon: <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /> },
+    { name: 'SpaceFix', icon: <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /> },
+    { name: 'PetFix', icon: <><circle cx="5.5" cy="8.5" r="1.5" strokeWidth="2" /><circle cx="10" cy="5" r="1.5" strokeWidth="2" /><circle cx="14" cy="5" r="1.5" strokeWidth="2" /><circle cx="18.5" cy="8.5" r="1.5" strokeWidth="2" /><path d="M12 18c-3 0-5-1.5-5-4 0-1.5 2-4 5-4s5 2.5 5 4c0 2.5-2 4-5 4z" strokeWidth="2" /></> },
+    { name: 'TechFix', icon: <><rect x="4" y="4" width="16" height="16" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></> },
   ];
 
   return (
     <>
       <CssBaseline />
       <Box sx={{ width: '100%', overflowX: 'hidden' }}>
-        
-        {/* Navbar */}
+
+        {/* ===================== NAVBAR ===================== */}
         <AppBar
           position="fixed"
           sx={{
@@ -403,12 +482,12 @@ const LandingPage = () => {
             borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.2)' : 'none',
           }}
         >
-          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, md: 5 }, minHeight: '64px' }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, ml: { xs: 0, md: 8, lg: 16 }, flex: { xs: '1 1 auto', md: 'none' } }}>
-              <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix.ph Logo" sx={{ width: { xs: 35, md: 45 }, height: { xs: 35, md: 45 }, objectFit: 'contain' }} />
+          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, sm: 4, md: 5 }, minHeight: '64px' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, ml: { xs: 0, lg: 8, xl: 16 }, flex: { xs: '1 1 auto', lg: 'none' } }}>
+              <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix.ph Logo" sx={{ width: { xs: 35, lg: 45 }, height: { xs: 35, lg: 45 }, objectFit: 'contain' }} />
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Typography variant="h5" fontWeight="bold" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, mb: 0.3, transition: 'color 0.3s ease', fontSize: { xs: '1.1rem', md: '1.3rem' } }}>
-                  AllFix.ph
+                <Typography variant="h5" fontWeight="bold" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, mb: 0.3, transition: 'color 0.3s ease', fontSize: { xs: '1.1rem', lg: '1.3rem' } }}>
+                  All<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span>.ph
                 </Typography>
                 <Typography variant="overline" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, fontSize: '0.6rem', letterSpacing: 0.5, transition: 'color 0.3s ease' }}>
                   PROPERTY CARE EXPERTS
@@ -416,7 +495,7 @@ const LandingPage = () => {
               </Box>
             </Box>
 
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 0.5, mr: { lg: 4, md: 2 } }}>
+            <Box sx={{ display: { xs: 'none', lg: 'flex' }, gap: 0.5, mr: { xl: 4, lg: 2 } }}>
               {navLinks.map((link) => (
                 <Button key={link.label} onClick={() => handleNavClick(link.href)} sx={{ px: 2, py: 1, borderRadius: 1, fontSize: '0.95rem', fontWeight: 600, textTransform: 'none', color: isScrolled ? '#10355f' : 'rgba(255,255,255,0.9)', '&:hover': { backgroundColor: isScrolled ? 'rgba(16, 53, 95, 0.1)' : 'rgba(255,255,255,0.1)', color: isScrolled ? '#10355f' : 'white' } }}>
                   {link.label}
@@ -424,13 +503,13 @@ const LandingPage = () => {
               ))}
             </Box>
 
-            <IconButton onClick={() => setMobileOpen(!mobileOpen)} sx={{ display: { xs: 'flex', md: 'none' }, color: isScrolled ? '#10355f' : 'white' }}>
+            <IconButton onClick={() => setMobileOpen(!mobileOpen)} sx={{ display: { xs: 'flex', lg: 'none' }, color: isScrolled ? '#10355f' : 'white' }}>
               {mobileOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
           </Toolbar>
 
           {mobileOpen && (
-            <Box sx={{ bgcolor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(16, 53, 95, 0.5)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255,255,255,0.2)', display: { xs: 'block', md: 'none' } }}>
+            <Box sx={{ bgcolor: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(16, 53, 95, 0.5)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(255,255,255,0.2)', display: { xs: 'block', lg: 'none' } }}>
               <Box sx={{ px: 2, py: 2, display: 'flex', flexDirection: 'column', gap: 0.5 }}>
                 {navLinks.map((link) => (
                   <Button key={link.label} onClick={() => handleNavClick(link.href)} fullWidth sx={{ justifyContent: 'flex-start', px: 2, py: 1, borderRadius: 1, fontSize: '0.95rem', fontWeight: 600, textTransform: 'none', color: isScrolled ? '#10355f' : 'white', '&:hover': { backgroundColor: isScrolled ? 'rgba(16, 53, 95, 0.1)' : 'rgba(255,255,255,0.2)' } }}>
@@ -442,84 +521,84 @@ const LandingPage = () => {
           )}
         </AppBar>
 
-        {/* HERO SECTION */}
-        <Box sx={{ position: 'relative', pt: { xs: 10, md: 16 }, pb: { xs: 6, md: 10 }, minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)' }}>
+        {/* ===================== HERO SECTION ===================== */}
+        <Box sx={{ position: 'relative', pt: { xs: 10, sm: 12, lg: 16 }, pb: { xs: 6, sm: 8, lg: 10 }, minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)' }}>
           <Box sx={{ position: 'absolute', inset: 0, opacity: 0.04, backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")", backgroundRepeat: 'repeat', pointerEvents: 'none', zIndex: 0 }} />
           <Box sx={{ position: 'absolute', top: 80, left: 40, width: 288, height: 288, background: 'radial-gradient(circle, rgba(96, 165, 250, 0.4) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(96px)', opacity: 0.4, pointerEvents: 'none', zIndex: 0 }} />
           <Box sx={{ position: 'absolute', bottom: 80, right: 40, width: 288, height: 288, background: 'radial-gradient(circle, rgba(37, 99, 235, 0.4) 0%, transparent 70%)', borderRadius: '50%', filter: 'blur(96px)', opacity: 0.4, pointerEvents: 'none', zIndex: 0 }} />
 
           <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 10 }}>
             <Grid container spacing={4} alignItems="center" justifyContent="space-between" sx={{ width: '100%' }}>
-              <Grid item xs={12} md={6} lg={7} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 3 }}>
-                <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1.5, backgroundColor: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)', borderRadius: '9999px', px: 3, py: 1.2, mb: 0.5, backdropFilter: 'blur(10px)', width: 'fit-content' }}>
-                  <Box sx={{ width: 8, height: 8, bgcolor: '#4ade80', borderRadius: '50%' }} />
-                  <Typography sx={{ fontSize: '0.85rem', fontWeight: 900, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'white' }}>
+              <Grid item xs={12} lg={7} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: { xs: 'center', lg: 'flex-start' }, gap: 3, textAlign: { xs: 'center', lg: 'left' } }}>
+                <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.8, backgroundColor: 'rgba(255, 255, 255, 0.1)', border: '1px solid rgba(255, 255, 255, 0.2)', borderRadius: '9999px', px: 2, py: 0.7, mb: 0.5, backdropFilter: 'blur(10px)', width: 'fit-content' }}>
+                  <Box sx={{ width: 6, height: 6, bgcolor: '#4ade80', borderRadius: '50%' }} />
+                  <Typography sx={{ fontSize: '0.7rem', fontWeight: 900, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'white' }}>
                     Manila's #1 Home Services Platform
                   </Typography>
                 </Box>
-                <Typography sx={{ fontSize: { xs: '2.5rem', sm: '3rem', md: '3.8rem', lg: '4.5rem' }, fontWeight: 900, color: 'white', mb: 1, lineHeight: 1.1 }}>
+                <Typography sx={{ fontSize: { xs: '2.5rem', sm: '3.2rem', lg: '3.8rem', xl: '4.5rem' }, fontWeight: 900, color: 'white', mb: 1, lineHeight: 1.1 }}>
                   Hassle-Free <br /> Property Care, <br /> Done Right.
                 </Typography>
-                <Typography sx={{ fontSize: { xs: '1rem', md: '1.2rem' }, color: 'rgba(191, 219, 254, 1)', mb: 4, lineHeight: 1.6, maxWidth: { xs: '90%', md: '580px' } }}>
+                <Typography sx={{ fontSize: { xs: '1rem', sm: '1.1rem', lg: '1.2rem' }, color: 'rgba(191, 219, 254, 1)', mb: 4, lineHeight: 1.6, maxWidth: { xs: '90%', sm: '100%', lg: '580px' } }}>
                   From aircon cleaning to plumbing, repairs to IT support — AllFix connects you with trusted, verified professionals across Metro Manila.
                 </Typography>
-                <Box sx={{ display: 'flex', flexDirection: 'row', gap: { xs: 3, md: 5 }, flexWrap: 'wrap' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <CheckCircleIcon sx={{ width: 28, height: 28, color: '#4ade80', flexShrink: 0 }} />
+                <Box sx={{ display: 'flex', flexDirection: 'row', gap: { xs: 1.5, sm: 3, lg: 5 }, flexWrap: 'wrap' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, lg: 2 } }}>
+                    <CheckCircleIcon sx={{ width: { xs: 20, sm: 28, lg: 36 }, height: { xs: 20, sm: 28, lg: 36 }, color: '#4ade80', flexShrink: 0 }} />
                     <Box sx={{ textAlign: 'left' }}>
-                      <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1.25rem' }}>5,000+</Typography>
-                      <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.95rem' }}>Verified Pros</Typography>
+                      <Typography sx={{ color: 'white', fontWeight: 900, fontSize: { xs: '0.85rem', sm: '1.2rem', lg: '1.5rem' } }}>5,000+</Typography>
+                      <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: { xs: '0.65rem', sm: '0.9rem', lg: '1.1rem' } }}>Verified Pros</Typography>
                     </Box>
                   </Box>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <StarIcon sx={{ width: 28, height: 28, color: '#facc15', flexShrink: 0, fill: '#facc15' }} />
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, lg: 2 } }}>
+                    <StarIcon sx={{ width: { xs: 20, sm: 28, lg: 36 }, height: { xs: 20, sm: 28, lg: 36 }, color: '#facc15', flexShrink: 0, fill: '#facc15' }} />
                     <Box sx={{ textAlign: 'left' }}>
-                      <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1.25rem' }}>4.9★</Typography>
-                      <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.95rem' }}>Average Rating</Typography>
+                      <Typography sx={{ color: 'white', fontWeight: 900, fontSize: { xs: '0.85rem', sm: '1.2rem', lg: '1.5rem' } }}>4.9★</Typography>
+                      <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: { xs: '0.65rem', sm: '0.9rem', lg: '1.1rem' } }}>Average Rating</Typography>
                     </Box>
                   </Box>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <ShieldIcon style={{ width: 28, height: 28, color: '#60a5fa', flexShrink: 0 }} />
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, lg: 2 } }}>
+                    <ShieldIcon sx={{ width: { xs: 20, sm: 28, lg: 36 }, height: { xs: 20, sm: 28, lg: 36 }, color: '#60a5fa', flexShrink: 0 }} />
                     <Box sx={{ textAlign: 'left' }}>
-                      <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1.25rem' }}>Insured &</Typography>
-                      <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: '0.95rem' }}>Accredited</Typography>
+                      <Typography sx={{ color: 'white', fontWeight: 900, fontSize: { xs: '0.85rem', sm: '1.2rem', lg: '1.5rem' } }}>Insured &</Typography>
+                      <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: { xs: '0.65rem', sm: '0.9rem', lg: '1.1rem' } }}>Accredited</Typography>
                     </Box>
                   </Box>
                 </Box>
               </Grid>
 
-              <Grid item xs={12} md={5} sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: { xs: 'center', md: 'flex-end' } }}>
-                <Box sx={{ bgcolor: 'white', borderRadius: '16px', p: { xs: 2.5, md: 3 }, boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2)', width: '100%', maxWidth: { xs: '98vw', sm: '480px', md: '480px' }, mx: { xs: 'auto', md: 0 }, ml: { md: 'auto' }, mt: { xs: 2, md: -4 } }}>
-                  <Typography sx={{ fontSize: { xs: '1.2rem', sm: '1.25rem' }, fontWeight: 900, color: '#10355f', mb: 0.5, lineHeight: 1.2, textAlign: 'center' }}>
+              <Grid item xs={12} lg={5} sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+                <Box sx={{ bgcolor: 'white', borderRadius: '16px', p: { xs: 2.5, sm: 4, lg: 3 }, boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2)', width: '100%', maxWidth: { xs: '98vw', sm: '600px', lg: '480px' }, mx: 'auto', mt: { xs: 2, lg: -4 } }}>
+                  <Typography sx={{ fontSize: { xs: '1.2rem', sm: '1.5rem', lg: '1.25rem' }, fontWeight: 900, color: '#10355f', mb: 0.5, lineHeight: 1.2, textAlign: 'center' }}>
                     Create Your Account
                   </Typography>
-                  <Typography sx={{ fontSize: '0.85rem', color: '#666', mb: 2, lineHeight: 1.3, textAlign: 'center' }}>
+                  <Typography sx={{ fontSize: { xs: '0.85rem', sm: '1rem', lg: '0.85rem' }, color: '#666', mb: 2, lineHeight: 1.3, textAlign: 'center' }}>
                     Fill in the details below to create your AllFix account.
                   </Typography>
-                  
+
                   {/* Firstname and Lastname */}
-                  <Grid container spacing={1.5} sx={{ mb: 1.5 }}>
-                    <Grid item xs={6}>
+                  <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 1.5, mb: 1.5 }}>
+                    <Box>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Firstname <span style={{ color: '#e74c3c' }}>*</span></Typography>
                       <TextField size="small" fullWidth placeholder="Enter your first name" sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
-                    </Grid>
-                    <Grid item xs={6}>
+                    </Box>
+                    <Box>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Lastname <span style={{ color: '#e74c3c' }}>*</span></Typography>
                       <TextField size="small" fullWidth placeholder="Enter your last name" sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
-                    </Grid>
-                  </Grid>
-                  
+                    </Box>
+                  </Box>
+
                   {/* Email */}
                   <Box sx={{ mb: 1.5 }}>
                     <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Email address</Typography>
                     <TextField size="small" fullWidth placeholder="name@example.com" InputProps={{ startAdornment: <Typography sx={{ mr: 1, color: '#999', fontSize: '1rem' }}>✉</Typography> }} sx={{ '& .MuiOutlinedInput-root': { borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
                   </Box>
-                  
-                  {/* City and Birthdate (Fixed Alignment) */}
+
+                  {/* City and Birthdate */}
                   <Grid container spacing={1.5} sx={{ mb: 2 }}>
                     <Grid item xs={6} sx={{ width: '100%' }}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>City <span style={{ color: '#e74c3c' }}>*</span></Typography>
-                      <TextField size="small" select fullWidth defaultValue="default" SelectProps={{ displayEmpty: true }} sx={{ width: '100%', '& .MuiFormControl-root': { width: '100%' }, '& .MuiOutlinedInput-root': { width: '100%', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }}>
+                      <TextField size="small" select fullWidth defaultValue="default" SelectProps={{ displayEmpty: true }} sx={{ width: '100%', '& .MuiOutlinedInput-root': { width: '100%', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }}>
                         <MenuItem value="default" disabled>Select city</MenuItem>
                         <MenuItem value="manila">Manila</MenuItem>
                         <MenuItem value="makati">Makati</MenuItem>
@@ -529,17 +608,17 @@ const LandingPage = () => {
                     </Grid>
                     <Grid item xs={6} sx={{ width: '100%' }}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 600, color: '#10355f', mb: 0.5 }}>Birthdate <span style={{ color: '#e74c3c' }}>*</span></Typography>
-                      <TextField size="small" fullWidth type="date" InputLabelProps={{ shrink: true }} sx={{ width: '100%', '& .MuiFormControl-root': { width: '100%' }, '& .MuiOutlinedInput-root': { width: '100%', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
+                      <TextField size="small" fullWidth type="date" InputLabelProps={{ shrink: true }} sx={{ width: '100%', '& .MuiOutlinedInput-root': { width: '100%', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#ddd' }, '&:hover fieldset': { borderColor: '#bbb' } } }} />
                     </Grid>
                   </Grid>
-                  
+
                   {/* Buttons */}
-                  <Button variant="contained" fullWidth sx={{ bgcolor: '#10355f', color: 'white', fontWeight: 900, fontSize: '0.9rem', py: 1, borderRadius: '50px', textTransform: 'none', mb: 1.5, mt: 1, boxShadow: '0 2px 8px rgba(16,53,95,0.10)', '&:hover': { bgcolor: '#0d264a' } }}>
+                  <Button variant="contained" fullWidth sx={{ bgcolor: '#10355f', color: 'white', fontWeight: 900, fontSize: '0.9rem', py: 1.2, borderRadius: '50px', textTransform: 'none', mb: 1.5, mt: 1, boxShadow: '0 2px 8px rgba(16,53,95,0.10)', '&:hover': { bgcolor: '#0d264a' } }}>
                     Create Account
                   </Button>
                   <Box sx={{ mt: 1.5, textAlign: 'center' }}>
                     <Typography sx={{ fontSize: '0.85rem', color: '#10355f', mb: 1, fontWeight: 700 }}>Already have an account?</Typography>
-                    <Button variant="contained" fullWidth sx={{ bgcolor: '#fff', color: '#10355f', border: '2px solid #10355f', borderRadius: '50px', fontWeight: 900, fontSize: '0.9rem', py: 0.8, mt: 0.5, mb: 0.5, boxShadow: '0 2px 8px rgba(16,53,95,0.10)', textTransform: 'none', '&:hover': { bgcolor: '#10355f', color: '#fff', borderColor: '#0d264a' } }} href="/login">
+                    <Button variant="contained" fullWidth sx={{ bgcolor: '#fff', color: '#10355f', border: '2px solid #10355f', borderRadius: '50px', fontWeight: 900, fontSize: '0.9rem', py: 1, mt: 0.5, mb: 0.5, boxShadow: '0 2px 8px rgba(16,53,95,0.10)', textTransform: 'none', '&:hover': { bgcolor: '#10355f', color: '#fff', borderColor: '#0d264a' } }} href="/login">
                       Login
                     </Button>
                   </Box>
@@ -549,286 +628,245 @@ const LandingPage = () => {
           </Container>
         </Box>
 
-        {/* Services Section */}
-        <Box id="services" sx={{ position: 'relative', zIndex: 10, bgcolor: '#ffffff', py: 4, px: { xs: 2, md: 5 }, minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+
+        {/* ===================== SERVICES SECTION ===================== */}
+        <Box id="services" sx={{ position: 'relative', zIndex: 10, bgcolor: '#ffffff', pt: { xs: 8, lg: 8 }, pb: { xs: 8, lg: 10 }, minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
           <Container maxWidth="xl">
             <Box sx={{ textAlign: 'center', mb: 3 }}>
               <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#eaf2fc', color: '#23406e', borderRadius: '999px', px: 3, py: 1, fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.08em', boxShadow: 1, textTransform: 'uppercase', mb: 2 }}>OUR SERVICES</Box>
-              <Typography sx={{ fontSize: { xs: '1.6rem', md: '2rem' }, fontWeight: 900, mb: 2, lineHeight: 1.2 }}>
+              <Typography sx={{ fontSize: { xs: '1.6rem', sm: '2.2rem', lg: '2rem' }, fontWeight: 900, mb: 2, lineHeight: 1.2 }}>
                 Nine Expert Brands, <span style={{ color: '#10355f' }}>One Trusted Platform</span>
               </Typography>
-              <Typography sx={{ color: '#666', fontSize: { xs: '0.85rem', md: '0.9rem' }, maxWidth: '600px', mx: 'auto', lineHeight: 1.6 }}>
+              <Typography sx={{ color: '#666', fontSize: { xs: '0.85rem', sm: '1rem', lg: '0.9rem' }, maxWidth: '600px', mx: 'auto', lineHeight: 1.6 }}>
                 Each AllFix brand specializes in a distinct service area, staffed by trained, background-checked professionals with industry certifications.
               </Typography>
             </Box>
 
-            <Box sx={{ width: '100%', mt: 2, overflowX: { xs: 'auto', md: 'visible' }, pb: { xs: 2, md: 0 } }}>
-              <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', width: '100%', flexDirection: 'column' }}>
-                <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
-                  <Button aria-label="Scroll left" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', mr: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: -340, behavior: 'smooth' }); }}>
-                    <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
-                  </Button>
-                  <Box id="services-scroll-row" sx={{ display: 'flex', gap: 2, minWidth: 0, overflowX: 'auto', scrollSnapType: 'x mandatory', px: 1, flex: 1, scrollBehavior: 'smooth', '&::-webkit-scrollbar': { display: 'none' } }}>
-                    {services.map((service, index) => (
-                      <Box key={index} sx={{ minWidth: '340px', maxWidth: '90vw', flex: '0 0 auto', scrollSnapAlign: 'start' }}>
-                        <ServiceCard service={service} onServiceClick={(svc) => { const routes = { CoolFix: '/coolfix', SaniFix: '/sanifix', HomeFix: '/homefix', MoveFix: '/movefix', GreenFix: '/greenfix', HealthFix: '/healthfix', SpaceFix: '/spacefix', PetFix: '/petfix', TechFix: '/techfix' }; navigate(routes[svc.brand] || '/'); window.scrollTo(0, 0); }} />
-                      </Box>
-                    ))}
-                  </Box>
-                  <Button aria-label="Scroll right" sx={{ minWidth: 0, px: 1, py: 3, borderRadius: '50%', bgcolor: '#f5f7fa', color: '#10355f', ml: 1, boxShadow: 1, '&:hover': { bgcolor: '#eaf2fc' } }} onClick={() => { document.getElementById('services-scroll-row')?.scrollBy({ left: 340, behavior: 'smooth' }); }}>
-                    <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-                  </Button>
-                </Box>
-                <Box id="services-scroll-navbar" sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, width: '100%', mt: 1, mb: 1, px: 1 }}>
-                  {services.map((svc, idx) => (
-                    <Button key={svc.brand} size="small" sx={{ minWidth: 0, px: 0.5, py: 0.8, fontSize: '0.75rem', fontWeight: 700, borderRadius: '10px', color: '#23406e', bgcolor: '#eaf2fc', whiteSpace: 'nowrap', boxShadow: 'none', border: '1.5px solid transparent', transition: 'all 0.2s', '&.active': { bgcolor: '#23406e', color: '#fff', borderColor: '#23406e' }, '&:hover': { bgcolor: '#dbeafe', color: '#23406e' } }} onClick={() => document.getElementById('services-scroll-row')?.scrollTo({ left: idx * 340, behavior: 'smooth' })}>
-                      {svc.brand}
-                    </Button>
+            <Box sx={{ width: '100%', mt: 2 }}>
+              {/* Mobile only: single card scroll (xs) */}
+              <Box sx={{ display: { xs: 'flex', sm: 'none' }, flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+                <Box id="services-scroll-row" sx={{ display: 'flex', gap: 0, minWidth: 0, overflowX: 'auto', scrollSnapType: 'x mandatory', px: 2.5, flex: 1, scrollBehavior: 'smooth', width: '100%', '&::-webkit-scrollbar': { display: 'none' } }}>
+                  {services.map((service, index) => (
+                    <Box key={index} sx={{ minWidth: 'calc(100vw - 48px)', maxWidth: 'calc(100vw - 48px)', flex: '0 0 auto', scrollSnapAlign: 'start', mx: 1 }}>
+                      <ServiceCard service={service} onServiceClick={(svc) => { const routes = { CoolFix: '/coolfix', SaniFix: '/sanifix', HomeFix: '/homefix', MoveFix: '/movefix', GreenFix: '/greenfix', HealthFix: '/healthfix', SpaceFix: '/spacefix', PetFix: '/petfix', TechFix: '/techfix' }; navigate(routes[svc.brand] || '/'); window.scrollTo(0, 0); }} />
+                    </Box>
                   ))}
                 </Box>
+                {/* Integrated NavigationPills here */}
+                <NavigationPills
+                  services={services}
+                  activeServiceIdx={activeServiceIdx}
+                  setActiveServiceIdx={setActiveServiceIdx}
+                />
               </Box>
 
-              <Grid container spacing={3} sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center', mt: { md: 2 } }}>
+              {/* Tablet (sm–md): 2-column grid | Desktop (lg+): 3-column grid */}
+              <Grid container spacing={3} sx={{ display: { xs: 'none', sm: 'flex' }, justifyContent: 'center', mt: 2 }}>
                 {services.map((service, index) => (
-                  <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Grid item sm={6} lg={4} key={index} sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box sx={{ width: '100%', maxWidth: '420px', display: 'flex' }}>
                       <ServiceCard service={service} onServiceClick={(svc) => { const routes = { CoolFix: '/coolfix', SaniFix: '/sanifix', HomeFix: '/homefix', MoveFix: '/movefix', GreenFix: '/greenfix', HealthFix: '/healthfix', SpaceFix: '/spacefix', PetFix: '/petfix', TechFix: '/techfix' }; navigate(routes[svc.brand] || '/'); window.scrollTo(0, 0); }} />
                     </Box>
                   </Grid>
                 ))}
               </Grid>
-
             </Box>
           </Container>
         </Box>
-
-        {/* How It Works Section */}
-        <Box id="how-it-works" sx={{ position: 'relative', zIndex: 10, bgcolor: '#eef4fd', py: { xs: 6, md: 16 }, px: { xs: 2, md: 10 }, minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        {/* ===================== HOW IT WORKS ===================== */}
+        <Box id="how-it-works" sx={{ position: 'relative', zIndex: 10, bgcolor: '#f8fafc', pt: { xs: 6, lg: 8 }, pb: { xs: 8, lg: 4 }, px: { xs: 2, sm: 4, lg: 6 }, minHeight: { lg: '100vh' }, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <Container maxWidth="lg">
-            <Box sx={{ textAlign: 'center', mb: 5 }}>
-              <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: 'white', color: '#10355f', borderRadius: '9999px', px: 3, py: 1, fontSize: '0.8rem', fontWeight: 900, letterSpacing: '0.05em', textTransform: 'uppercase', mb: 2, boxShadow: '0 2px 8px rgba(16,53,95,0.07)' }}>Simple Process</Box>
-              <Typography sx={{ fontSize: { xs: '1.75rem', md: '2rem' }, fontWeight: 900, mb: 2, lineHeight: 1.2, color: 'black' }}>Fixed in <span style={{ color: '#10355f' }}>3 Easy Steps</span></Typography>
-              <Typography sx={{ color: '#42526e', fontSize: { xs: '0.85rem', md: '0.9rem' }, maxWidth: '600px', mx: 'auto', lineHeight: 1.6, mb: 4 }}>We designed the booking process to be as frictionless as possible so you can get back to what matters.</Typography>
-            </Box>
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'flex-start', justifyContent: 'center', gap: { xs: 6, md: 2 }, position: 'relative', mb: 4 }}>
-              <Box sx={{ display: { xs: 'none', md: 'block' }, position: 'absolute', top: 40, left: '12%', width: '76%', height: 0, borderTop: '2px solid #c7d2fe', zIndex: 1 }} />
-              
-              <Box sx={{ flex: 1, zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Box sx={{ position: 'relative', mb: 2 }}>
-                  <Box sx={{ width: 70, height: 70, borderRadius: '50%', bgcolor: 'white', boxShadow: '0 2px 12px rgba(16,53,95,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32, color: '#10355f' }}><CheckCircleIcon sx={{ fontSize: 32 }} /></Box>
-                  <Box sx={{ position: 'absolute', top: 0, right: -10, bgcolor: '#10355f', color: 'white', width: 24, height: 24, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.85rem', border: '3px solid #eef4fd' }}>1</Box>
-                </Box>
-                <Typography sx={{ fontWeight: 900, fontSize: '1.1rem', mb: 1, color: '#10355f' }}>Choose a Service</Typography>
-                <Typography sx={{ color: '#42526e', fontSize: '0.85rem', mb: 0, textAlign: 'center', maxWidth: 280 }}>Select the type of work you need from our 9 specialized brands. Browse by category or search directly.</Typography>
+            <Box sx={{ textAlign: 'center', mb: { xs: 4, lg: 1.5 } }}>
+              <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#eaf2fc', color: '#23406e', borderRadius: '999px', px: 3, py: 1, fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.08em', boxShadow: 1, textTransform: 'uppercase', mb: 1.5 }}>
+                SIMPLE PROCESS
               </Box>
-
-              <Box sx={{ flex: 1, zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Box sx={{ position: 'relative', mb: 2 }}>
-                  <Box sx={{ width: 70, height: 70, borderRadius: '50%', bgcolor: 'white', boxShadow: '0 2px 12px rgba(16,53,95,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32, color: '#10355f' }}><DescriptionIcon sx={{ fontSize: 32 }} /></Box>
-                  <Box sx={{ position: 'absolute', top: 0, right: -10, bgcolor: '#10355f', color: 'white', width: 24, height: 24, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.85rem', border: '3px solid #eef4fd' }}>2</Box>
-                </Box>
-                <Typography sx={{ fontWeight: 900, fontSize: '1.1rem', mb: 1, color: '#10355f' }}>Book a Service</Typography>
-                <Typography sx={{ color: '#42526e', fontSize: '0.85rem', mb: 0, textAlign: 'center', maxWidth: 280 }}>Schedule your service instantly with just a few clicks. Fast, easy, and convenient.</Typography>
-              </Box>
-
-              <Box sx={{ flex: 1, zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Box sx={{ position: 'relative', mb: 2 }}>
-                  <Box sx={{ width: 70, height: 70, borderRadius: '50%', bgcolor: 'white', boxShadow: '0 2px 12px rgba(16,53,95,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32, color: '#10355f' }}><CheckCircleIcon sx={{ fontSize: 32 }} /></Box>
-                  <Box sx={{ position: 'absolute', top: 0, right: -10, bgcolor: '#10355f', color: 'white', width: 24, height: 24, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '0.85rem', border: '3px solid #eef4fd' }}>3</Box>
-                </Box>
-                <Typography sx={{ fontWeight: 900, fontSize: '1.1rem', mb: 1, color: '#10355f' }}>Sit Back, It's Done</Typography>
-                <Typography sx={{ color: '#42526e', fontSize: '0.85rem', mb: 0, textAlign: 'center', maxWidth: 280 }}>A background-checked AllFix pro arrives on schedule, completes the job, and you pay only when satisfied.</Typography>
-              </Box>
-            </Box>
-            <Box sx={{ textAlign: 'center', mt: 4 }}>
-              <Button variant="contained" sx={{ bgcolor: '#10355f', color: 'white', fontWeight: 900, fontSize: '0.95rem', px: 3, py: 1, borderRadius: '12px', textTransform: 'none', boxShadow: '0 4px 16px rgba(16,53,95,0.10)', '&:hover': { bgcolor: '#0d264a' } }} href="#services" endIcon={<ArrowForwardIcon />}>
-                Start Booking Now
-              </Button>
-            </Box>
-          </Container>
-        </Box>
-
-        {/* Why AllFix */}
-        <Box id="why-allfix" sx={{ width: '100vw', position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', bgcolor: '#fff', pt: { xs: 6, md: 8 }, pb: 0, px: 0, minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-          <Box sx={{ width: '100%', maxWidth: 1400, mx: 'auto', px: { xs: 2, md: 6 } }}>
-            <Box>
-              <Box sx={{ display: 'flex', justifyContent: 'center', mb: 3 }}>
-                <Box sx={{ bgcolor: '#eaf2fc', color: '#23406e', fontWeight: 700, fontSize: '0.9rem', px: 3, py: 1, borderRadius: '999px', letterSpacing: '0.08em', boxShadow: 1 }}>WHY ALLFIX</Box>
-              </Box>
-              <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.75rem', md: '2rem' }, textAlign: 'center', mb: 2, color: '#111', lineHeight: 1.1 }}>
-                The Safest Choice for <span style={{ color: '#23406e' }}>Your Home & Office</span>
+              <Typography sx={{ fontSize: { xs: '1.8rem', sm: '2.4rem' }, fontWeight: 900, mb: 1, lineHeight: 1.2, color: '#10355f' }}>
+                Fixed in <span style={{ color: '#10355f' }}>3 Easy Steps</span>
               </Typography>
-              <Typography sx={{ color: '#42526e', textAlign: 'center', fontSize: { xs: '0.85rem', md: '0.9rem' }, mb: 5, maxWidth: '600px', mx: 'auto', lineHeight: 1.6, fontWeight: 500 }}>
-                We set the standard for professional service delivery in the Philippines — built on trust, safety, and genuine expertise.
+              <Typography sx={{ color: '#64748b', fontSize: '0.9rem', maxWidth: '600px', mx: 'auto', lineHeight: 1.5 }}>
+                We designed the booking process to be as frictionless as possible so you can get back to what matters.
               </Typography>
+            </Box>
 
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', mb: 4 }}>
-                <Box sx={{ display: 'flex', flex: 1, minWidth: 290, maxWidth: 1000, bgcolor: '#fff', borderRadius: 3, boxShadow: '0 4px 14px rgba(16,53,95,0.10)', overflow: 'hidden', mx: 'auto' }}>
-                  <Box sx={{ flex: 1, p: { xs: 1.5, md: 2 }, textAlign: 'center', borderRight: { xs: 'none', md: '1px solid #e5eaf2' } }}>
-                    <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.2rem', md: '1.4rem' }, color: '#23406e', mb: 0.4, letterSpacing: '-0.03em' }}>50K+</Typography>
-                    <Typography sx={{ color: '#42526e', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.05em' }}>JOBS COMPLETED</Typography>
-                  </Box>
-                  <Box sx={{ flex: 1, p: { xs: 1.5, md: 2 }, textAlign: 'center', borderRight: { xs: 'none', md: '1px solid #e5eaf2' } }}>
-                    <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.2rem', md: '1.4rem' }, color: '#23406e', mb: 0.4, letterSpacing: '-0.03em' }}>5,200+</Typography>
-                    <Typography sx={{ color: '#42526e', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.05em' }}>VERIFIED PROS</Typography>
-                  </Box>
-                  <Box sx={{ flex: 1, p: { xs: 1.5, md: 2 }, textAlign: 'center', borderRight: { xs: 'none', md: '1px solid #e5eaf2' } }}>
-                    <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.2rem', md: '1.4rem' }, color: '#23406e', mb: 0.4, letterSpacing: '-0.03em' }}>4.9★</Typography>
-                    <Typography sx={{ color: '#42526e', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.05em' }}>AVERAGE RATING</Typography>
-                  </Box>
-                  <Box sx={{ flex: 1, p: { xs: 1.5, md: 2 }, textAlign: 'center' }}>
-                    <Typography sx={{ fontWeight: 900, fontSize: { xs: '1.2rem', md: '1.4rem' }, color: '#23406e', mb: 0.4, letterSpacing: '-0.03em' }}>98%</Typography>
-                    <Typography sx={{ color: '#42526e', fontWeight: 700, fontSize: '0.8rem', letterSpacing: '0.05em' }}>CLIENT SATISFACTION</Typography>
-                  </Box>
-                </Box>
-              </Box>
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: { xs: 1.5, sm: 2 } }}>
 
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: { xs: 2, md: 2 }, justifyContent: 'center', maxWidth: 1000, mx: 'auto' }}>
-                {[
-                  { t: 'Verified & Background-Checked', d: 'Every professional undergoes NBI clearance, skills assessment, and identity verification before joining the AllFix network.' },
-                  { t: 'Insured for Your Protection', d: 'All AllFix jobs carry third-party liability insurance. If anything goes wrong, you\'re fully covered — no questions asked.' },
-                  { t: 'On-Time Guarantee', d: 'Our pros respect your schedule. If they\'re late by more than 15 minutes, you get a service discount — automatically.' },
-                  { t: 'Transparent, Fixed Pricing', d: 'No surprise charges. Receive a detailed quote upfront. You only pay what was agreed — with GCash, card, or cash options.' },
-                  { t: 'Satisfaction Warranty', d: 'Not happy with the work? We\'ll send another pro to fix it at no extra cost. Your satisfaction is our commitment.' },
-                  { t: '24/7 Customer Support', d: 'Our Manila-based support team is available around the clock via chat, call, or email to resolve any concern instantly.' }
-                ].map((item, idx) => (
-                  <Box key={idx} sx={{ flex: '1 1 280px', minWidth: 260, maxWidth: 320, minHeight: { xs: 100, md: 110 }, bgcolor: '#fff', borderRadius: 2, p: 2, mb: { xs: 1.5, md: 1.5 }, boxShadow: '0 1px 6px rgba(16,53,95,0.07)', display: 'flex', gap: 1.5, alignItems: 'flex-start', border: '1px solid #e5eaf2' }}>
-                    <CheckCircleIcon sx={{ color: '#b6d2f7', fontSize: 22, mt: 0.2 }} />
+              {/* STEP 1 */}
+              <Box sx={{ bgcolor: '#10355f', borderRadius: '24px', p: { xs: 3, sm: 4, lg: 2.5 }, color: 'white', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 10px 30px rgba(1, 117, 80, 0.15)' }}>
+                <Box sx={{ bgcolor: 'white', color: '#10355f', px: 1.5, py: 0.3, borderRadius: '999px', fontSize: '0.7rem', fontWeight: 800, width: 'fit-content', mb: 1.5 }}>Step 1</Box>
+                <Typography sx={{ fontSize: { xs: '1.3rem', sm: '1.6rem', lg: '1.5rem' }, fontWeight: 900, mb: 1, lineHeight: 1.2 }}>Choose a Service</Typography>
+                <Typography sx={{ fontSize: '0.85rem', opacity: 0.9, lineHeight: 1.5, mb: 2, maxWidth: '90%' }}>
+                  Select the type of work you need from our 9 specialized brands. Browse by category or search directly.
+                </Typography>
+                <Box sx={{ mt: 'auto', bgcolor: 'rgba(255,255,255,0.1)', borderRadius: '16px', p: 2, border: '1px solid rgba(255,255,255,0.2)', animation: 'float1 4s ease-in-out infinite', '@keyframes float1': { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } } }}>
+                  <Box sx={{ display: 'flex', gap: 1.5, alignItems: 'center', position: 'relative' }}>
+                    <Box sx={{ width: 40, height: 40, borderRadius: '10px', bgcolor: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+                      <Box sx={{ position: 'absolute', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', animation: 'swipeIcon 0.6s ease-in-out', '@keyframes swipeIcon': { '0%': { transform: 'translateX(100%)', opacity: 0 }, '50%': { opacity: 1 }, '100%': { transform: 'translateX(0)', opacity: 1 } }, key: cyclingIconIdx }}>
+                        {React.createElement(services[cyclingIconIdx].icon, { sx: { color: '#10355f', fontSize: '1.2rem' } })}
+                      </Box>
+                    </Box>
                     <Box>
-                      <Typography fontWeight={700} color="#23406e" fontSize="0.9rem">{item.t}</Typography>
-                      <Typography color="#42526e" fontSize="0.8rem">{item.d}</Typography>
+                      <Box sx={{ height: 10, width: 100, bgcolor: 'rgba(255,255,255,0.9)', borderRadius: 2, mb: 1 }} />
+                      <Box sx={{ height: 6, bgcolor: 'rgba(255,255,255,0.5)', borderRadius: 2, animation: 'loadingBar 2s ease-in-out infinite', '@keyframes loadingBar': { '0%, 100%': { width: '50px' }, '50%': { width: '90px' } } }} />
                     </Box>
                   </Box>
-                ))}
-              </Box>
-
-              <Box sx={{ mt: 3, mb: { xs: 6, md: 8 }, width: '100%', bgcolor: '#123865', borderRadius: '20px', display: 'flex', alignItems: 'center', px: { xs: 2, md: 4 }, py: { xs: 2, md: 2.5 }, boxShadow: '0 2px 12px rgba(16,53,95,0.10)', gap: 2, minHeight: 90, maxHeight: 120 }}>
-                <Box sx={{ width: 40, height: 40, borderRadius: '50%', bgcolor: 'rgba(255,255,255,0.10)', display: 'flex', alignItems: 'center', justifyContent: 'center', mr: 1 }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="10" stroke="#fff" strokeWidth="2" fill="none" />
-                    <path d="M12 16.5L8.5 18.5L9.25 14.5L6.5 12L10.25 11.5L12 8L13.75 11.5L17.5 12L14.75 14.5L15.5 18.5L12 16.5Z" stroke="#fff" strokeWidth="1.5" strokeLinejoin="round" fill="none"/>
-                  </svg>
-                </Box>
-                <Box sx={{ flex: 1, minWidth: 0 }}>
-                  <Typography sx={{ color: 'white', fontWeight: 700, fontSize: { xs: '0.9rem', md: '1rem' }, mb: 0.2 }}>Trusted by Thousands of Filipino Homeowners</Typography>
-                  <Typography sx={{ color: 'rgba(255,255,255,0.85)', fontSize: { xs: '0.8rem', md: '0.85rem' }, fontWeight: 400, lineHeight: 1.3 }}>AllFix.ph provides professional, reliable property maintenance services across Metro Manila with certified technicians and 24/7 customer support.</Typography>
-                </Box>
-                <Box sx={{ ml: 2 }}>
-                  <Button variant="contained" onClick={() => { navigate('/about'); window.scrollTo(0, 0); }} sx={{ bgcolor: 'white', color: '#123865', fontWeight: 700, fontSize: '0.8rem', borderRadius: '14px', px: 2, py: 0.6, boxShadow: 'none', minWidth: 100, '&:hover': { bgcolor: '#eaf2fc', color: '#123865', boxShadow: 'none' } }}>LEARN MORE</Button>
                 </Box>
               </Box>
 
+              {/* STEP 2 */}
+              <Box sx={{ bgcolor: '#10355f', borderRadius: '24px', p: { xs: 3, sm: 4, lg: 2.5 }, color: '#ffffff', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', boxShadow: '0 10px 30px rgba(252, 188, 38, 0.15)' }}>
+                <Box sx={{ bgcolor: 'white', color: '#10355f', px: 1.5, py: 0.3, borderRadius: '999px', fontSize: '0.7rem', fontWeight: 800, width: 'fit-content', mb: 1.5 }}>Step 2</Box>
+                <Typography sx={{ fontSize: { xs: '1.3rem', sm: '1.6rem', lg: '1.5rem' }, fontWeight: 900, mb: 1, lineHeight: 1.2 }}>Book a Service</Typography>
+                <Typography sx={{ fontSize: '0.85rem', opacity: 0.85, lineHeight: 1.5, mb: 2, maxWidth: '90%' }}>
+                  Schedule your service instantly with just a few clicks. Fast, easy, and convenient booking tailored to your calendar.
+                </Typography>
+                <Box sx={{ mt: 'auto', bgcolor: 'rgba(255, 255, 255, 0.23)', borderRadius: '16px', p: 2, border: '1px solid rgba(255, 255, 255, 0.33)', animation: 'float2 5s ease-in-out infinite', '@keyframes float2': { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } } }}>
+                  <Typography sx={{ fontSize: '0.75rem', fontWeight: 800, mb: 1.5, color: '#fcfcfc' }}>Select Date</Typography>
+                  <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                    {[{ label: 'Mon', color: '#0e933f', idx: 0 }, { label: 'Tue', color: '#facc15', idx: 1 }, { label: 'Wed', color: '#ef4444', idx: 2 }].map((item) => {
+                      const isActive = colorCycleIdx === item.idx;
+                      return (
+                        <Box key={item.label} sx={{ bgcolor: isActive ? item.color : 'white', color: isActive ? (item.color === '#facc15' ? '#ffffff' : 'white') : '#10355f', px: 1.5, py: 1, borderRadius: '8px', fontSize: '0.75rem', fontWeight: 700, boxShadow: isActive ? `0 4px 12px ${item.color}40` : 'none', transition: 'all 0.5s ease' }}>
+                          {item.label}
+                        </Box>
+                      );
+                    })}
+                  </Box>
+                </Box>
+              </Box>
+
+              {/* STEP 3 — spans 2 cols on sm+ */}
+              <Box sx={{ gridColumn: { xs: 'span 1', sm: 'span 2' }, bgcolor: '#10355f', borderRadius: '24px', p: { xs: 3, sm: 5, lg: 2.5 }, color: 'white', position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: { xs: 3, md: 2 }, alignItems: 'center', boxShadow: '0 10px 30px rgba(216, 36, 43, 0.15)' }}>
+                <Box sx={{ flex: 1, width: '100%' }}>
+                  <Box sx={{ bgcolor: 'white', color: '#10355f', px: 1.5, py: 0.3, borderRadius: '999px', fontSize: '0.7rem', fontWeight: 800, width: 'fit-content', mb: 1.5 }}>Step 3</Box>
+                  <Typography sx={{ fontSize: { xs: '1.4rem', sm: '1.8rem' }, fontWeight: 900, mb: 1, lineHeight: 1.2 }}>Sit Back, It's Done</Typography>
+                  <Typography sx={{ fontSize: '0.85rem', opacity: 0.9, lineHeight: 1.5, mb: 2, maxWidth: '95%' }}>
+                    A background-checked AllFix pro arrives on schedule, completes the job, and you pay only when satisfied.
+                  </Typography>
+                  <Box onClick={() => { navigate('/signup'); window.scrollTo(0, 0); }} sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, color: 'white', fontWeight: 900, fontSize: '0.9rem', cursor: 'pointer', transition: 'all 0.3s ease', '&:hover': { gap: 1.5, opacity: 0.8 } }}>
+                    Start Booking
+                    <ArrowForwardIcon sx={{ fontSize: '1.1rem', transition: 'transform 0.3s ease' }} />
+                  </Box>
+                </Box>
+                <Box sx={{ flex: 1, width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  <Box sx={{ width: '100%', maxWidth: '300px', bgcolor: 'rgba(255,255,255,0.1)', borderRadius: '16px', p: 2, border: '1px solid rgba(255,255,255,0.2)', position: 'relative', animation: 'float3 4.5s ease-in-out infinite', '@keyframes float3': { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-8px)' } } }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
+                      <Box sx={{ width: 40, height: 40, borderRadius: '50%', bgcolor: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <PersonIcon sx={{ color: 'white', fontSize: '1.2rem' }} />
+                      </Box>
+                      <Box>
+                        <Box sx={{ height: 10, width: 100, bgcolor: 'rgba(255,255,255,0.9)', borderRadius: 2, mb: 1 }} />
+                        <Box sx={{ height: 6, width: 60, bgcolor: 'rgba(255,255,255,0.5)', borderRadius: 2 }} />
+                      </Box>
+                    </Box>
+                    <Box sx={{ height: 40, width: '100%', bgcolor: 'rgba(255,255,255,0.15)', borderRadius: '12px' }} />
+                    <Box sx={{ position: 'absolute', bottom: -15, right: -15, bgcolor: 'white', color: '#10355f', px: 2, py: 1, borderRadius: '12px', display: 'flex', alignItems: 'center', gap: 1, boxShadow: '0 8px 20px rgba(0,0,0,0.2)', animation: 'floatPop 3s ease-in-out infinite', '@keyframes floatPop': { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(4px)' } } }}>
+                      <CheckCircleIcon sx={{ fontSize: 20, color: '#10355f' }} />
+                      <Box>
+                        <Typography sx={{ fontSize: '0.75rem', fontWeight: 900, lineHeight: 1 }}>Job Complete</Typography>
+                        <Typography sx={{ fontSize: '0.65rem', fontWeight: 600, color: '#666', mt: 0.5 }}>5-Star Rated</Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
+              </Box>
             </Box>
-          </Box>
+          </Container>
         </Box>
 
-        {/* CUSTOM METRO MANILA TOPOLOGY MAP SECTION (All-Blue & White Theme) */}
-        <Box 
-          id="service-area" 
-          sx={{ 
-            minHeight: '100vh', 
-            display: 'flex', 
-            flexDirection: 'column', 
-            justifyContent: 'center', 
-            bgcolor: '#f0f4f8', 
-            py: { xs: 8, md: 10 },
-            position: 'relative',
-            overflow: 'hidden'
-          }}
-        >
+        {/* ===================== WHY ALLFIX ===================== */}
+        <Box id="why-allfix" sx={{ width: '100vw', position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', bgcolor: '#fff', pt: { xs: 8, lg: 12 }, pb: { xs: 8, lg: 10 }, minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', overflow: 'hidden' }}>
+          <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 5, lg: 6 } }}>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, gap: { xs: 6, lg: 8, xl: 10 }, alignItems: 'center' }}>
+
+              {/* Mobile pill — xs through md */}
+              <Box sx={{ display: { xs: 'inline-flex', lg: 'none' }, alignItems: 'center', backgroundColor: '#f0f4f8', color: '#10355f', borderRadius: '999px', px: 3, py: 1, fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.08em', boxShadow: 1, textTransform: 'uppercase', alignSelf: 'flex-start', mb: -3, zIndex: 5 }}>
+                <Box sx={{ width: 6, height: 6, bgcolor: '#10355f', borderRadius: '50%', mr: 1.5 }} />
+                Why Choose Us?
+              </Box>
+
+              {/* LEFT: Image */}
+              <Box sx={{ width: { xs: '90%', sm: '100%', lg: '42%' }, position: 'relative', ml: { xs: 3, lg: 4 } }}>
+                <Box sx={{ position: 'relative', width: '100%', height: { xs: 320, sm: 480, lg: 440, xl: 480 }, borderRadius: { xs: '80px 24px 24px 0px', lg: '100px 32px 32px 0px' }, backgroundColor: '#eaf2fc', overflow: 'hidden', display: 'flex', justifyContent: 'flex-end', boxShadow: '0 20px 40px rgba(16,53,95,0.08)' }}>
+                  <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80" alt="AllFix Professional at Work" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </Box>
+                <Box sx={{ position: 'absolute', bottom: { xs: -20, lg: -30 }, left: { xs: -20, lg: -30 }, width: { xs: 60, lg: 85 }, height: { xs: 60, lg: 85 }, zIndex: 2 }}>
+                  <Box sx={{ position: 'absolute', top: '35%', left: 0, width: '100%', height: '30%', backgroundColor: '#10355f', borderRadius: '6px' }} />
+                  <Box sx={{ position: 'absolute', top: 0, left: '35%', width: '30%', height: '100%', backgroundColor: '#10355f', borderRadius: '6px' }} />
+                </Box>
+              </Box>
+
+              {/* RIGHT: Content */}
+              <Box sx={{ width: { xs: '100%', lg: '55%' } }}>
+                {/* Desktop pill — lg+ only */}
+                <Box sx={{ display: { xs: 'none', lg: 'inline-flex' }, alignItems: 'center', backgroundColor: '#f0f4f8', color: '#10355f', borderRadius: '999px', px: 3, py: 1, fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.08em', boxShadow: 1, textTransform: 'uppercase', mb: 3 }}>
+                  <Box sx={{ width: 6, height: 6, bgcolor: '#10355f', borderRadius: '50%', mr: 1.5 }} />
+                  Why Choose Us?
+                </Box>
+                <Typography sx={{ fontWeight: 900, fontSize: { xs: '2rem', sm: '2.8rem', xl: '2.8rem' }, color: '#000', lineHeight: 1.15, mb: 1 }}>
+                  Hassle-Free Property Care
+                </Typography>
+                <Box sx={{ display: 'inline-block', bgcolor: '#eef4fd', color: '#10355f', px: 2, py: 0.5, borderRadius: '12px', mb: 3 }}>
+                  <Typography sx={{ fontWeight: 900, fontSize: { xs: '2rem', sm: '2.8rem', xl: '2.8rem' }, lineHeight: 1.15 }}>Guaranteed</Typography>
+                </Box>
+                <Typography sx={{ color: '#42526e', fontSize: { xs: '0.9rem', sm: '1.05rem', lg: '1rem' }, mb: 5, lineHeight: 1.6, maxWidth: '95%' }}>
+                  AllFix is the Philippines' most trusted property care platform, connecting you with verified professionals for all your home and office needs. Our vetted technicians provide high-quality services, from aircon cleaning to full home renovations, ensuring comfort and safety.
+                </Typography>
+                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: { xs: 4, sm: 5, lg: 3 }, mt: 2 }}>
+                  {[
+                    { title: 'On-Time Guaranteed', desc: 'A service discount automatically if late by over 15 mins.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10355f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> },
+                    { title: 'Verified Professionals', desc: 'Background-checked and vetted before joining the network. All clearances checked.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10355f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg> },
+                    { title: 'Transparent Pricing', desc: 'Detailed fixed quotes with no hidden charges. Pay only what was agreed.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10355f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> },
+                    { title: 'Insured Protection', desc: 'Third-party liability insurance coverage included with every job. Peace of mind.', icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10355f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> },
+                  ].map((item, idx) => (
+                    <Box key={idx} sx={{ display: 'flex', gap: 2.5, alignItems: 'flex-start' }}>
+                      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, pt: 0.5 }}>
+                        {item.icon}
+                        <Box sx={{ width: '100%', height: '2px', bgcolor: '#10355f', mt: 1 }} />
+                      </Box>
+                      <Box>
+                        <Typography sx={{ fontWeight: 800, color: '#000', fontSize: '1.05rem', mb: 0.5 }}>{item.title}</Typography>
+                        <Typography sx={{ color: '#666', fontSize: '0.85rem', lineHeight: 1.5, pr: 1 }}>{item.desc}</Typography>
+                      </Box>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            </Box>
+          </Container>
+        </Box>
+
+        {/* ===================== MAP SECTION ===================== */}
+        <Box id="service-area" sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', bgcolor: '#f0f4f8', py: { xs: 8, lg: 10 }, position: 'relative', overflow: 'hidden' }}>
           <Container maxWidth="lg" sx={{ textAlign: 'center', position: 'relative', zIndex: 2 }}>
-            <Typography variant="h2" fontWeight="900" color="#10355f" mb={1} sx={{ fontSize: { xs: '2rem', md: '2.8rem' } }}>
+            <Typography variant="h2" fontWeight="900" color="#10355f" mb={1} sx={{ fontSize: { xs: '2rem', sm: '2.5rem', lg: '2.8rem' } }}>
               Available in Metro Manila!
             </Typography>
             <Typography color="#666" sx={{ fontSize: '1.1rem', mb: 2 }}>
               Enjoy fast, reliable home services with AllFix wherever you are in the Metro.
             </Typography>
-
-            {/* Custom Map Container */}
-            <Box 
-              sx={{ 
-                position: 'relative', 
-                width: '100%', 
-                maxWidth: { xs: '100%', sm: '550px', md: '650px' }, 
-                mx: 'auto', 
-                mt: 4,
-                aspectRatio: '5/7', 
-              }}
-            >
-              {/* Layer 1: SVG Polygons Base - Unified Blue Map */}
+            <Box sx={{ position: 'relative', width: '100%', maxWidth: { xs: '100%', sm: '550px', lg: '650px' }, mx: 'auto', mt: 4, aspectRatio: '5/7' }}>
               <Box sx={{ position: 'absolute', inset: 0, zIndex: 1 }}>
                 <svg viewBox="0 0 500 700" style={{ width: '100%', height: '100%', filter: 'drop-shadow(0px 10px 20px rgba(16, 53, 95, 0.15))' }}>
                   {mapCities.map((city, idx) => (
-                    <polygon 
-                      key={idx}
-                      points={city.points} 
-                      fill="#10355f" // The unified primary blue brand color
-                      stroke="#ffffff" 
-                      strokeWidth="2.5" 
-                      strokeLinejoin="round" 
-                      style={{ transition: 'all 0.3s ease', cursor: 'pointer' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.fill = '#10355f'; // Darkens to navy on hover
-                        e.currentTarget.style.transform = 'scale(1.01)';
-                        e.currentTarget.style.transformOrigin = `${city.lx}px ${city.ly}px`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.fill = '#10355f';
-                        e.currentTarget.style.transform = 'scale(1)';
-                      }}
-                    />
+                    <polygon key={idx} points={city.points} fill="#10355f" stroke="#ffffff" strokeWidth="2.5" strokeLinejoin="round" style={{ transition: 'all 0.3s ease', cursor: 'pointer' }} onMouseEnter={(e) => { e.currentTarget.style.fill = '#10355f'; e.currentTarget.style.transform = 'scale(1.01)'; e.currentTarget.style.transformOrigin = `${city.lx}px ${city.ly}px`; }} onMouseLeave={(e) => { e.currentTarget.style.fill = '#10355f'; e.currentTarget.style.transform = 'scale(1)'; }} />
                   ))}
                 </svg>
               </Box>
-
-              {/* Layer 2: Interactive HTML Location Pins (Clean White Style) */}
               <Box sx={{ position: 'absolute', inset: 0, zIndex: 2 }}>
                 {mapCities.map((loc, idx) => (
-                  <Box 
-                    key={idx} 
-                    sx={{ 
-                      position: 'absolute', 
-                      top: `${(loc.ly / 700) * 100}%`, 
-                      left: `${(loc.lx / 500) * 100}%`, 
-                      transform: 'translate(-50%, -50%)', 
-                      display: 'flex', 
-                      flexDirection: 'column', 
-                      alignItems: 'center',
-                      cursor: 'pointer',
-                      transition: 'transform 0.2s',
-                      '&:hover': { transform: 'translate(-50%, -55%) scale(1.1)', zIndex: 10 }
-                    }}
-                  >
-                    {/* Outer Transparent White Glow Ring */}
-                    <Box sx={{ width: { xs: 44, md: 54 }, height: { xs: 44, md: 54 }, borderRadius: '50%', bgcolor: 'rgba(255, 255, 255, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
-                      {/* Inner Solid White Circle + Blue Icon */}
-                      <Box sx={{ width: { xs: 32, md: 40 }, height: { xs: 32, md: 40 }, borderRadius: '50%', bgcolor: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10355f', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)' }}>
-                        <LocationOnIcon sx={{ fontSize: { xs: '1rem', md: '1.25rem' } }} />
+                  <Box key={idx} sx={{ position: 'absolute', top: `${(loc.ly / 700) * 100}%`, left: `${(loc.lx / 500) * 100}%`, transform: 'translate(-50%, -50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: 'pointer', transition: 'transform 0.2s', '&:hover': { transform: 'translate(-50%, -55%) scale(1.1)', zIndex: 10 } }}>
+                    <Box sx={{ width: { xs: 28, sm: 40, lg: 54 }, height: { xs: 28, sm: 40, lg: 54 }, borderRadius: '50%', bgcolor: 'rgba(255, 255, 255, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                      <Box sx={{ width: { xs: 20, sm: 28, lg: 40 }, height: { xs: 20, sm: 28, lg: 40 }, borderRadius: '50%', bgcolor: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10355f', boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)' }}>
+                        <LocationOnIcon sx={{ fontSize: { xs: '0.7rem', sm: '1rem', lg: '1.25rem' } }} />
                       </Box>
                     </Box>
-                    
-                    {/* Clean White Text Pill underneath the Pin */}
-                    <Typography 
-                      fontWeight="900" 
-                      color="#10355f" 
-                      sx={{ 
-                        fontSize: { xs: '0.7rem', md: '0.8rem' },
-                        mt: 0.5,
-                        bgcolor: '#ffffff',
-                        px: 1.2,
-                        py: 0.3,
-                        borderRadius: '999px',
-                        boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
-                        whiteSpace: 'nowrap'
-                      }}
-                    >
+                    <Typography fontWeight="900" color="#10355f" sx={{ fontSize: { xs: '0.55rem', sm: '0.65rem', lg: '0.8rem' }, mt: 0.5, bgcolor: '#ffffff', px: { xs: 0.6, sm: 1.0, lg: 1.2 }, py: { xs: 0.1, sm: 0.2, lg: 0.3 }, borderRadius: '999px', boxShadow: '0 2px 6px rgba(0,0,0,0.15)', whiteSpace: 'nowrap' }}>
                       {loc.id}
                     </Typography>
                   </Box>
                 ))}
               </Box>
             </Box>
-
             <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, bgcolor: '#e2e8f0', color: '#1e293b', px: 2.5, py: 0.8, borderRadius: '999px', fontSize: '0.85rem', fontWeight: 600, mt: 6 }}>
               <Box sx={{ width: 8, height: 8, bgcolor: '#10b981', borderRadius: '50%' }} />
               More areas coming soon!
@@ -836,28 +874,31 @@ const LandingPage = () => {
           </Container>
         </Box>
 
-        {/* Testimonials */}
-        <Box id="testimonials" sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: '#0d264a', pt: { xs: 8, md: 10 }, pb: { xs: 8, md: 10 }, mt: 0, mb: 0, px: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', overflow: 'hidden' }}>
+        {/* ===================== TESTIMONIALS ===================== */}
+        <Box id="testimonials" sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: '#0d264a', pt: { xs: 8, lg: 10 }, pb: { xs: 8, lg: 10 }, mt: 0, mb: 0, px: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', overflow: 'hidden' }}>
           <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 10 }}>
             <Box sx={{ textAlign: 'center', mb: 6 }}>
               <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#23406e', color: 'white', borderRadius: '999px', px: 2.5, py: 0.8, fontSize: '0.9rem', fontWeight: 700, letterSpacing: '0.08em', boxShadow: 1, textTransform: 'uppercase', mb: 1.5 }}>CLIENT STORIES</Box>
-              <Typography sx={{ fontSize: { xs: '1.75rem', md: '2rem' }, fontWeight: 900, color: 'white', mb: 1, lineHeight: 1.2 }}>Trusted by Thousands of Filipino Homeowners</Typography>
-              <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: { xs: '0.85rem', md: '0.9rem' }, maxWidth: '600px', mx: 'auto', lineHeight: 1.6 }}>Real reviews from verified clients across Metro Manila. We let our work do the talking.</Typography>
+              <Typography sx={{ fontSize: { xs: '1.75rem', sm: '2.2rem', lg: '2rem' }, fontWeight: 900, color: 'white', mb: 1, lineHeight: 1.2 }}>Trusted by Thousands of Filipino Homeowners</Typography>
+              <Typography sx={{ color: 'rgba(191, 219, 254, 1)', fontSize: { xs: '0.85rem', sm: '1rem', lg: '0.9rem' }, maxWidth: '600px', mx: 'auto', lineHeight: 1.6 }}>Real reviews from verified clients across Metro Manila. We let our work do the talking.</Typography>
             </Box>
 
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', mb: 4 }}>
-              <Box sx={{ bgcolor: 'white', borderRadius: 3, boxShadow: '0 8px 32px rgba(16,53,95,0.18)', p: { xs: 2.5, md: 4 }, width: { xs: '90vw', md: '700px' }, maxWidth: '700px', minWidth: { xs: '90vw', md: '700px' }, minHeight: { xs: 240, md: 180 }, height: { xs: 'auto', md: '180px' }, display: 'flex', flexDirection: 'column', justifyContent: 'center', mb: 1.5, position: 'relative', transition: 'none' }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
-                  <Box sx={{ width: 48, height: 48, borderRadius: '50%', background: testimonials[testimonialIdx].avatarBg, color: testimonials[testimonialIdx].avatarText, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '1.1rem' }}>{testimonials[testimonialIdx].initials}</Box>
-                  <Box sx={{ textAlign: 'left' }}>
-                    <Typography sx={{ fontWeight: 900, color: '#10355f', fontSize: '1rem', mb: 0 }}>{testimonials[testimonialIdx].name}</Typography>
-                    <Typography sx={{ color: '#42526e', fontSize: '0.85rem', fontWeight: 400 }}>{testimonials[testimonialIdx].role}</Typography>
+              <Box sx={{ bgcolor: 'white', borderRadius: 3, boxShadow: '0 8px 32px rgba(16,53,95,0.18)', p: { xs: 2.5, sm: 4, lg: 3 }, width: { xs: '90vw', sm: '540px', lg: '500px' }, maxWidth: '500px', height: { xs: '280px', sm: '220px' }, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', mb: 1.5, position: 'relative' }}>
+                <Box sx={{ display: 'flex', alignItems: { xs: 'flex-start', sm: 'center' }, gap: 1.5, mb: 1 }}>
+                  <Box sx={{ width: 48, height: 48, borderRadius: '50%', background: testimonials[testimonialIdx].avatarBg, color: testimonials[testimonialIdx].avatarText, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '1.1rem', flexShrink: 0 }}>{testimonials[testimonialIdx].initials}</Box>
+                  <Box sx={{ textAlign: 'left', flex: 1, display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, gap: 1 }}>
+                    <Box>
+                      <Typography sx={{ fontWeight: 900, color: '#10355f', fontSize: '1rem', mb: 0 }}>{testimonials[testimonialIdx].name}</Typography>
+                      <Typography sx={{ color: '#42526e', fontSize: '0.85rem', fontWeight: 400 }}>{testimonials[testimonialIdx].role}</Typography>
+                    </Box>
+                    <Box sx={{ bgcolor: testimonials[testimonialIdx].highlightColor, color: testimonials[testimonialIdx].highlightText, borderRadius: '999px', px: 1.5, py: 0.4, fontWeight: 700, fontSize: '0.85rem', textAlign: 'center' }}>{testimonials[testimonialIdx].highlight}</Box>
                   </Box>
-                  <Box sx={{ flex: 1 }} />
-                  <Box sx={{ bgcolor: testimonials[testimonialIdx].highlightColor, color: testimonials[testimonialIdx].highlightText, borderRadius: '999px', px: 1.5, py: 0.4, fontWeight: 700, fontSize: '0.85rem', ml: 1.5 }}>{testimonials[testimonialIdx].highlight}</Box>
-                  <svg width="24" height="24" viewBox="0 0 32 32" fill="none" style={{ position: 'absolute', top: 16, right: 20 }} xmlns="http://www.w3.org/2000/svg"><text x="0" y="24" fontSize="32" fill="#eaf2fc">“</text></svg>
+                  <Box sx={{ display: { xs: 'none', lg: 'block' }, position: 'absolute', top: 16, right: 20 }}>
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="0" y="24" fontSize="32" fill="#eaf2fc">"</text></svg>
+                  </Box>
                 </Box>
-                <Typography sx={{ color: '#222', fontSize: '1rem', fontWeight: 500, mt: 1.5, mb: 1, lineHeight: 1.6 }}>{testimonials[testimonialIdx].text}</Typography>
+                <Typography sx={{ color: '#222', fontSize: '1rem', fontWeight: 500, mt: 1.5, mb: 1, lineHeight: 1.6, textAlign: 'left' }}>{testimonials[testimonialIdx].text}</Typography>
               </Box>
 
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mt: 1 }}>
@@ -867,7 +908,8 @@ const LandingPage = () => {
               </Box>
             </Box>
 
-            <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, justifyContent: 'center', alignItems: 'center', mt: 3, width: '100%', maxWidth: '1000px', mx: 'auto' }}>
+            {/* Mini testimonial cards — desktop only (lg+) */}
+            <Box sx={{ display: { xs: 'none', lg: 'flex' }, flexDirection: 'row', gap: 2, justifyContent: 'center', alignItems: 'center', mt: 3, width: '100%', maxWidth: '1000px', mx: 'auto' }}>
               {testimonials.map((t, idx) => (
                 <Box key={t.initials} sx={{ bgcolor: 'rgba(255,255,255,0.10)', borderRadius: 2, p: 1.5, minWidth: 200, maxWidth: 240, color: 'white', fontWeight: 700, boxShadow: '0 2px 8px rgba(16,53,95,0.10)', border: testimonialIdx === idx ? '2px solid #eaf2fc' : '2px solid transparent', display: 'flex', flexDirection: 'column', gap: 0.8, opacity: testimonialIdx === idx ? 1 : 0.7, transition: 'border 0.2s, opacity 0.2s' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -881,51 +923,34 @@ const LandingPage = () => {
           </Container>
         </Box>
 
-       {/* NEW CONTACT SECTION */}
-        <Box id="contact-us" sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: '#f8fafc', py: { xs: 8, md: 0 }, minHeight: { md: '100vh' }, display: 'flex', alignItems: 'center', borderTop: '1px solid #e2e8f0', overflow: 'hidden' }}>
-          
-          {/* Subtle Decorative Background */}
+        {/* ===================== CONTACT SECTION ===================== */}
+        <Box id="contact-us" sx={{ position: 'relative', left: '50%', right: '50%', ml: '-50vw', mr: '-50vw', width: '100vw', bgcolor: '#f8fafc', py: { xs: 8, sm: 10, lg: 0 }, minHeight: { lg: '100vh' }, display: 'flex', alignItems: 'center', borderTop: '1px solid #e2e8f0', overflow: 'hidden' }}>
           <Box sx={{ position: 'absolute', top: 0, right: 0, width: '45%', height: '100%', background: 'linear-gradient(135deg, rgba(46,91,168,0.04) 0%, rgba(16,53,95,0.06) 100%)', borderBottomLeftRadius: '100%', zIndex: 0 }} />
-
           <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-            
-            {/* 
-              By using standard Flexbox here instead of Grid, we FORCE it to stay side-by-side 
-              on desktop (md: 'row') and prevent it from ever dropping below the text.
-            */}
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: 'center', justifyContent: 'space-between', gap: { xs: 6, md: 4, lg: 8 }, width: '100%' }}>
-              
-              {/* Left Side: Text & Info (Locked to 45% width on desktop) */}
-              <Box sx={{ width: { xs: '100%', md: '45%' } }}>
-                <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#eaf2fc', color: '#23406e', borderRadius: '8px', px: 1.5, py: 0.5, fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', mb: 2 }}>
-                  Reach Out
-                </Box>
-                
-                <Typography sx={{ fontSize: { xs: '2rem', md: '2.5rem', lg: '3.2rem' }, fontWeight: 900, color: '#10355f', mb: 2, lineHeight: 1.1, letterSpacing: '-0.02em' }}>
-                  Let's get in <br/><span style={{ color: '#2e5ba8' }}>touch.</span>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, alignItems: 'center', justifyContent: { xs: 'center', lg: 'space-between' }, gap: { xs: 4, sm: 5, lg: 4, xl: 8 }, width: '100%', maxWidth: { xs: '100%', sm: '650px', lg: '100%' }, mx: 'auto' }}>
+
+              {/* Left: Info */}
+              <Box sx={{ width: { xs: '100%', lg: '45%' }, maxWidth: { xs: '100%', sm: '600px', lg: '100%' }, mx: { xs: 'auto', lg: 0 } }}>
+                <Box sx={{ display: 'inline-flex', alignItems: 'center', backgroundColor: '#eaf2fc', color: '#23406e', borderRadius: '8px', px: 1.5, py: 0.5, fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', mb: 2 }}>Reach Out</Box>
+                <Typography sx={{ fontSize: { xs: '2rem', sm: '2.8rem', lg: '2.5rem', xl: '3.2rem' }, fontWeight: 900, color: '#10355f', mb: 2, lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+                  Let's get in <br /><span style={{ color: '#2e5ba8' }}>touch.</span>
                 </Typography>
-                
-                <Typography sx={{ color: '#64748b', fontSize: '0.9rem', mb: 4, lineHeight: 1.6 }}>
+                <Typography sx={{ color: '#64748b', fontSize: { xs: '0.9rem', sm: '1.05rem', lg: '0.9rem' }, mb: 4, lineHeight: 1.6 }}>
                   Whether you need help booking a pro, have questions about our services, or want to partner with AllFix, our team is ready to assist you.
                 </Typography>
-                
-                {/* Contact Cards */}
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-                  {/* Email Card */}
-                  <Box sx={{ bgcolor: 'white', p: 1.5, borderRadius: 3, display: 'flex', alignItems: 'center', gap: 2, boxShadow: '0 4px 12px rgba(16,53,95,0.04)', border: '1px solid #e2e8f0', width: '100%', maxWidth: '340px' }}>
+                  <Box sx={{ bgcolor: 'white', p: 1.5, borderRadius: 3, display: 'flex', alignItems: 'center', gap: 2, boxShadow: '0 4px 12px rgba(16,53,95,0.04)', border: '1px solid #e2e8f0', width: '100%', maxWidth: { xs: '100%', sm: '420px', lg: '340px' } }}>
                     <Box sx={{ width: 40, height: 40, borderRadius: '10px', bgcolor: '#eaf2fc', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2e5ba8', flexShrink: 0 }}>
-                      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                     </Box>
                     <Box sx={{ overflow: 'hidden' }}>
                       <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, color: '#64748b', letterSpacing: '0.05em' }}>EMAIL US</Typography>
                       <Typography sx={{ fontSize: '0.95rem', fontWeight: 800, color: '#10355f', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>inquiry@allfix.ph</Typography>
                     </Box>
                   </Box>
-
-                  {/* Phone Card */}
-                  <Box sx={{ bgcolor: 'white', p: 1.5, borderRadius: 3, display: 'flex', alignItems: 'center', gap: 2, boxShadow: '0 4px 12px rgba(16,53,95,0.04)', border: '1px solid #e2e8f0', width: '100%', maxWidth: '340px' }}>
+                  <Box sx={{ bgcolor: 'white', p: 1.5, borderRadius: 3, display: 'flex', alignItems: 'center', gap: 2, boxShadow: '0 4px 12px rgba(16,53,95,0.04)', border: '1px solid #e2e8f0', width: '100%', maxWidth: { xs: '100%', sm: '420px', lg: '340px' } }}>
                     <Box sx={{ width: 40, height: 40, borderRadius: '10px', bgcolor: '#eaf2fc', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2e5ba8', flexShrink: 0 }}>
-                      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                     </Box>
                     <Box>
                       <Typography sx={{ fontSize: '0.7rem', fontWeight: 700, color: '#64748b', letterSpacing: '0.05em' }}>CALL US</Typography>
@@ -935,77 +960,41 @@ const LandingPage = () => {
                 </Box>
               </Box>
 
-              {/* Right Side: Form Card (Locked to 50% width on desktop) */}
-              <Box sx={{ width: { xs: '100%', md: '50%' } }}>
-                <Box sx={{ bgcolor: '#ffffff', borderRadius: '20px', p: { xs: 3, md: 4 }, boxShadow: '0 20px 40px rgba(16,53,95,0.08)', border: '1px solid #eaf2fc' }}>
-                  <Typography sx={{ fontSize: { xs: '1.2rem', md: '1.4rem' }, fontWeight: 900, color: '#10355f', mb: 0.5, letterSpacing: '-0.01em' }}>
-                    Send a direct message
-                  </Typography>
-                  <Typography sx={{ fontSize: '0.85rem', color: '#64748b', mb: 3 }}>
-                    Fill out the form below and our support team will respond shortly.
-                  </Typography>
-
+              {/* Right: Form */}
+              <Box sx={{ width: { xs: '100%', lg: '50%' }, maxWidth: { xs: '100%', sm: '600px', lg: '100%' }, mx: { xs: 'auto', lg: 0 } }}>
+                <Box sx={{ bgcolor: '#ffffff', borderRadius: '20px', p: { xs: 3, sm: 5, lg: 4 }, boxShadow: '0 20px 40px rgba(16,53,95,0.08)', border: '1px solid #eaf2fc' }}>
+                  <Typography sx={{ fontSize: { xs: '1.2rem', sm: '1.5rem', lg: '1.4rem' }, fontWeight: 900, color: '#10355f', mb: 0.5, letterSpacing: '-0.01em' }}>Send a direct message</Typography>
+                  <Typography sx={{ fontSize: '0.85rem', color: '#64748b', mb: 3 }}>Fill out the form below and our support team will respond shortly.</Typography>
                   <Grid container spacing={2.5}>
-                    
-                    {/* Full Name (Left Half) */}
-                    <Grid item xs={12} sm={6} sx={{ width: '48%' }}>
+                    <Grid item xs={12} sm={6} sx={{ width: '100%' }}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: '#10355f', mb: 0.8 }}>Full Name</Typography>
-                      <TextField size="small" fullWidth placeholder="e.g. Juan Dela Cruz" sx={{ width: '100%', '& .MuiFormControl-root': { width: '100%' }, '& .MuiOutlinedInput-root': { width: '100%', bgcolor: '#f8fafc', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#e2e8f0' }, '&:hover fieldset': { borderColor: '#cbd5e1' }, '&.Mui-focused fieldset': { borderColor: '#2e5ba8', borderWidth: '2px' } } }} />
+                      <TextField size="small" fullWidth placeholder="e.g. Juan Dela Cruz" sx={{ width: '100%', '& .MuiOutlinedInput-root': { width: '100%', bgcolor: '#f8fafc', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#e2e8f0' }, '&:hover fieldset': { borderColor: '#cbd5e1' }, '&.Mui-focused fieldset': { borderColor: '#2e5ba8', borderWidth: '2px' } } }} />
                     </Grid>
-                    
-                    {/* Email Address (Right Half) */}
-                    <Grid item xs={12} sm={6} sx={{ width: '48%' }}>
+                    <Grid item xs={12} sm={6} sx={{ width: '100%' }}>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: '#10355f', mb: 0.8 }}>Email Address</Typography>
-                      <TextField size="small" fullWidth placeholder="juan@email.com" sx={{ width: '100%', '& .MuiFormControl-root': { width: '100%' }, '& .MuiOutlinedInput-root': { width: '100%', bgcolor: '#f8fafc', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#e2e8f0' }, '&:hover fieldset': { borderColor: '#cbd5e1' }, '&.Mui-focused fieldset': { borderColor: '#2e5ba8', borderWidth: '2px' } } }} />
+                      <TextField size="small" fullWidth placeholder="juan@email.com" sx={{ width: '100%', '& .MuiOutlinedInput-root': { width: '100%', bgcolor: '#f8fafc', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#e2e8f0' }, '&:hover fieldset': { borderColor: '#cbd5e1' }, '&.Mui-focused fieldset': { borderColor: '#2e5ba8', borderWidth: '2px' } } }} />
                     </Grid>
-                    
-      
-                    {/* ROW 2: Message Box (Full Width) */}
-                  <Grid item xs={12} sx={{ width: '100%' }}>
-                    <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: '#10355f', mb: 0.8 }}>
-                      How can we help?
-                    </Typography>
-                    <TextField 
-                      fullWidth 
-                      multiline 
-                      rows={4} 
-                      placeholder="Tell us about your concern..." 
-                      sx={{ 
-                        width: '100%', /* <-- FORCES outer wrapper to 100% */
-                        '& .MuiFormControl-root': { width: '100%' }, /* <-- FORCES inner control to 100% */
-                        '& .MuiOutlinedInput-root': { 
-                          width: '100%', /* <-- FORCES the actual visible box to 100% */
-                          bgcolor: '#f8fafc', 
-                          borderRadius: '8px', 
-                          fontSize: '0.85rem', 
-                          '& fieldset': { borderColor: '#e2e8f0' }, 
-                          '&:hover fieldset': { borderColor: '#cbd5e1' }, 
-                          '&.Mui-focused fieldset': { borderColor: '#2e5ba8', borderWidth: '2px' } 
-                        } 
-                      }} 
-                    />
+                    <Grid item xs={12} sx={{ width: '100%' }}>
+                      <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: '#10355f', mb: 0.8 }}>How can we help?</Typography>
+                      <TextField fullWidth multiline rows={4} placeholder="Tell us about your concern..." sx={{ width: '100%', '& .MuiOutlinedInput-root': { width: '100%', bgcolor: '#f8fafc', borderRadius: '8px', fontSize: '0.85rem', '& fieldset': { borderColor: '#e2e8f0' }, '&:hover fieldset': { borderColor: '#cbd5e1' }, '&.Mui-focused fieldset': { borderColor: '#2e5ba8', borderWidth: '2px' } } }} />
+                    </Grid>
                   </Grid>
-
-                  </Grid>
-
-                  <Button fullWidth variant="contained" endIcon={<ArrowForwardIcon sx={{ ml: 0.5, fontSize: '1.1rem' }} />} sx={{ mt: 3.5, py: 1.2, bgcolor: '#10355f', color: 'white', borderRadius: '8px', fontWeight: 800, fontSize: '0.9rem', textTransform: 'none', boxShadow: '0 4px 12px rgba(16,53,95,0.2)', transition: 'all 0.2s ease', '&:hover': { bgcolor: '#0d264a', transform: 'translateY(-2px)', boxShadow: '0 6px 16px rgba(16,53,95,0.3)' } }}>
+                  <Button fullWidth variant="contained" endIcon={<ArrowForwardIcon sx={{ ml: 0.5, fontSize: '1.1rem' }} />} sx={{ mt: 3.5, py: 1.5, bgcolor: '#10355f', color: 'white', borderRadius: '8px', fontWeight: 800, fontSize: '0.9rem', textTransform: 'none', boxShadow: '0 4px 12px rgba(16,53,95,0.2)', transition: 'all 0.2s ease', '&:hover': { bgcolor: '#0d264a', transform: 'translateY(-2px)', boxShadow: '0 6px 16px rgba(16,53,95,0.3)' } }}>
                     Submit Message
                   </Button>
                 </Box>
               </Box>
-
             </Box>
           </Container>
         </Box>
 
+        {/* ===================== FOOTER ===================== */}
+        <Box component="footer" sx={{ width: '100%', background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)', pt: { xs: 8, lg: 10 }, pb: { xs: 4, lg: 6 }, color: 'white' }}>
+          <Container maxWidth="xl" sx={{ px: { xs: 3, sm: 5, lg: 6 } }}>
+            <Grid container spacing={{ xs: 4, sm: 6, lg: 8, xl: 10 }} justifyContent="space-between">
 
-        {/* FOOTER */}
-        <Box component="footer" sx={{ width: '100%', background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)', backgroundImage: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")', pt: { xs: 8, md: 10 }, pb: { xs: 4, md: 6 }, color: 'white' }}>
-          <Container maxWidth="xl" sx={{ px: { xs: 3, md: 6 } }}>
-            <Grid container spacing={{ xs: 4, md: 8, lg: 10 }} justifyContent="space-between">
-
-              {/* Col 1 - Logo & Info */}
-              <Grid item xs={12} md={5}>
+              {/* Col 1 - Logo */}
+              <Grid item xs={12} lg={5}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo(0, 0); }}>
                   <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix Logo" sx={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} />
                   <Typography variant="h5" fontWeight="900" color="white" sx={{ letterSpacing: '-0.02em', fontSize: '1.4rem' }}>
@@ -1026,7 +1015,7 @@ const LandingPage = () => {
               </Grid>
 
               {/* Col 2 - COMPANY */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid item xs={12} sm={4} lg={2}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>COMPANY</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   <Typography onClick={() => { navigate('/about'); window.scrollTo(0, 0); }} sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>About AllFix</Typography>
@@ -1036,30 +1025,11 @@ const LandingPage = () => {
               </Grid>
 
               {/* Col 3 - SUPPORT */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid item xs={12} sm={4} lg={2}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SUPPORT</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   {['Help Center', 'Book a Service', 'Partner With Us'].map((link) => (
-                    <Typography 
-                      key={link} 
-                      onClick={() => { 
-                        if (link === 'Partner With Us') { 
-                          navigate('/vendor-apply'); 
-                        } else if (link === 'Help Center') {
-                          navigate('/help-center');
-                        } else if (link === 'Book a Service') {
-                          navigate('/signup'); // Adjust this route if your booking flow is different
-                        }
-                        // For 'Track My Job' add navigation here when ready
-                        window.scrollTo(0, 0); 
-                      }} 
-                      sx={{ 
-                        color: 'rgba(255,255,255,0.65)', 
-                        fontSize: '1.05rem', 
-                        cursor: 'pointer', 
-                        '&:hover': { color: 'white' } 
-                      }}
-                    >
+                    <Typography key={link} onClick={() => { if (link === 'Partner With Us') { navigate('/vendor-apply'); } else if (link === 'Help Center') { navigate('/help-center'); } else if (link === 'Book a Service') { navigate('/signup'); } window.scrollTo(0, 0); }} sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>
                       {link}
                     </Typography>
                   ))}
@@ -1067,20 +1037,11 @@ const LandingPage = () => {
               </Grid>
 
               {/* Col 4 - LEGAL */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid item xs={12} sm={4} lg={2}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   {['Privacy Policy', 'Terms of Service', 'Service Guarantee'].map(link => (
-                    <Typography
-                      key={link}
-                      onClick={() => {
-                        if (link === 'Privacy Policy') navigate('/privacy');
-                        else if (link === 'Terms of Service') navigate('/terms-of-use');
-                        else if (link === 'Service Guarantee') navigate('/service-guarantee');
-                        window.scrollTo(0, 0);
-                      }}
-                      sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}
-                    >
+                    <Typography key={link} onClick={() => { if (link === 'Privacy Policy') navigate('/privacy'); else if (link === 'Terms of Service') navigate('/terms-of-use'); else if (link === 'Service Guarantee') navigate('/service-guarantee'); window.scrollTo(0, 0); }} sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>
                       {link}
                     </Typography>
                   ))}
@@ -1090,8 +1051,9 @@ const LandingPage = () => {
 
             <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: 4 }} />
 
+            {/* Contact row — stacks on xs–md, side-by-side at lg+ */}
             <Grid container spacing={4} justifyContent="space-between" alignItems="center">
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} lg={4}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></Box>
                   <Box>
@@ -1100,7 +1062,7 @@ const LandingPage = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} lg={4}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></Box>
                   <Box>
@@ -1109,7 +1071,7 @@ const LandingPage = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} lg={4}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><LocationOnIcon sx={{ fontSize: 26 }} /></Box>
                   <Box>
@@ -1121,7 +1083,7 @@ const LandingPage = () => {
             </Grid>
 
             <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: 2 }} />
-            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: 'center', gap: 2, color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem' }}>
+            <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, justifyContent: 'space-between', alignItems: 'center', gap: 2, color: 'rgba(255,255,255,0.5)', fontSize: '0.85rem' }}>
               <Typography variant="caption" sx={{ fontSize: 'inherit' }}>© 2026 AllFix Philippines Inc. All rights reserved.</Typography>
               <Box sx={{ display: 'flex', gap: 1 }}>
                 <IconButton component="a" href="https://www.facebook.com/allfixph" target="_blank" rel="noopener noreferrer" size="small" sx={{ color: 'inherit', '&:hover': { color: 'white' } }}>
@@ -1137,6 +1099,7 @@ const LandingPage = () => {
             </Box>
           </Container>
         </Box>
+
       </Box>
     </>
   );

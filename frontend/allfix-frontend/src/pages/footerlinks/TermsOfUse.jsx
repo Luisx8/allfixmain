@@ -212,11 +212,6 @@ const TermsOfUse = () => {
                 </Typography>
               </Box>
             </Section>
-
-            <Typography sx={{ mt: 6, pt: 4, borderTop: '1px solid #e5eaf2', color: '#999', fontSize: '0.85rem' }}>
-              Last Updated: May 4, 2026
-            </Typography>
-
           </Container>
         </Box>
 
