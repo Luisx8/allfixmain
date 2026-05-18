@@ -10,8 +10,14 @@ import {
   Button,
   Grid,
   IconButton,
+  Card,
+  CardContent,
 } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import StarIcon from '@mui/icons-material/Star';
+import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import GroupsIcon from '@mui/icons-material/Groups';
 
 // --- FOOTER PILL DATA ---
 const footerPills = [
@@ -26,7 +32,30 @@ const footerPills = [
   { name: 'TechFix', icon: <><rect x="4" y="4" width="16" height="16" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></> },
 ];
 
-const PrivacyPolicy = () => {
+const coreValues = [
+  {
+    icon: <StarIcon sx={{ fontSize: 40, color: '#2E5BA8' }} />,
+    title: 'Excellence',
+    description: 'We deliver exceptional quality in every service, ensuring customer satisfaction with certified professionals and verified expertise.',
+  },
+  {
+    icon: <GroupsIcon sx={{ fontSize: 40, color: '#2E5BA8' }} />,
+    title: 'Integrity',
+    description: 'We operate with transparency and honesty, building trust through reliable service delivery and genuine customer relationships.',
+  },
+  {
+    icon: <LightbulbIcon sx={{ fontSize: 40, color: '#2E5BA8' }} />,
+    title: 'Innovation',
+    description: 'We embrace technology and modern solutions to make property care accessible, efficient, and hassle-free for every Filipino.',
+  },
+  {
+    icon: <AssignmentIcon sx={{ fontSize: 40, color: '#2E5BA8' }} />,
+    title: 'Accountability',
+    description: 'We stand behind our work with service guarantees and are committed to making things right every single time.',
+  },
+];
+
+const AboutUsPage = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -59,11 +88,24 @@ const PrivacyPolicy = () => {
       >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, md: 5 }, minHeight: '80px' }}>
           {/* Left Side: Logo */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, cursor: 'pointer', ml: { xs: 0, md: 8, lg: 16 } }} onClick={() => { navigate('/'); window.scrollTo(0, 0); }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, cursor: 'pointer', ml: { xs: 0, md: 8, lg: 16 } }} onClick={() => { navigate('/'); window.scrollTo(0, 0); }}>  
             <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix Logo" sx={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover' }} />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <Typography variant="h5" fontWeight="bold" color={isScrolled ? '#10355f' : 'white'} sx={{ lineHeight: 1, mb: 0.3, transition: 'color 0.3s ease', fontSize: { xs: '1.2rem', md: '1.4rem' } }}>AllFix.ph</Typography>
-              <Typography variant="overline" color={isScrolled ? '#10355f' : 'rgba(255,255,255,0.7)'} sx={{ lineHeight: 1, fontSize: { xs: '0.65rem', md: '0.65rem' }, transition: 'color 0.3s ease', letterSpacing: 0.5 }}>PROPERTY CARE EXPERTS</Typography>
+              <Typography 
+                variant="h5" 
+                fontWeight="bold" 
+                color={isScrolled ? '#10355f' : 'white'} 
+                sx={{ lineHeight: 1, mb: 0.3, transition: 'color 0.3s ease', fontSize: { xs: '1.2rem', md: '1.4rem' } }}
+              >
+                AllFix.ph
+              </Typography>
+              <Typography 
+                variant="overline" 
+                color={isScrolled ? '#2E5BA8' : 'rgba(255,255,255,0.7)'} 
+                sx={{ lineHeight: 1, fontSize: { xs: '0.65rem', md: '0.65rem' }, transition: 'color 0.3s ease', letterSpacing: 0.5 }}
+              >
+                PROPERTY CARE EXPERTS
+              </Typography>
             </Box>
           </Box>
 
@@ -76,7 +118,10 @@ const PrivacyPolicy = () => {
                 fontWeight: 600, 
                 textTransform: 'none', 
                 fontSize: '0.95rem',
-                '&:hover': { color: isScrolled ? '#10355f' : '#eaf2fc', backgroundColor: isScrolled ? 'rgba(16, 53, 95, 0.1)' : 'rgba(255, 255, 255, 0.1)' },
+                '&:hover': { 
+                  color: isScrolled ? '#2E5BA8' : '#eaf2fc', 
+                  backgroundColor: isScrolled ? 'rgba(46, 91, 168, 0.08)' : 'rgba(255, 255, 255, 0.1)' 
+                },
                 px: 2,
                 py: 1,
                 borderRadius: '8px',
@@ -91,7 +136,7 @@ const PrivacyPolicy = () => {
 
       <Box sx={{ bgcolor: 'grey.100', minHeight: '100vh', width: '100%' }}>
         
-        {/* Hero Section - 50vh */}
+        {/* Hero Section */}
         <Box sx={{ 
           position: 'relative',
           minHeight: '50vh',
@@ -99,150 +144,199 @@ const PrivacyPolicy = () => {
           alignItems: 'center', 
           justifyContent: 'center',
           pt: { xs: 12, md: 10 }, 
-          pb: { xs: 4, md: 4 }, 
+          pb: { xs: 4, md: 8 }, 
           px: 3, 
-          background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)', 
+          background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)',
           color: 'white',
           overflow: 'hidden'
         }}>
-          {/* Background Pattern */}
-          <Box
-            sx={{
-              position: 'absolute',
-              inset: 0,
-              opacity: 0.04,
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-              backgroundRepeat: 'repeat',
-              pointerEvents: 'none',
-              zIndex: 0,
-            }}
-          />
-
-          {/* Gradient Blobs */}
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 40,
-              left: 40,
-              width: 200,
-              height: 200,
-              background: 'radial-gradient(circle, rgba(96, 165, 250, 0.4) 0%, transparent 70%)',
-              borderRadius: '50%',
-              filter: 'blur(96px)',
-              opacity: 0.4,
-              pointerEvents: 'none',
-              zIndex: 0,
-            }}
-          />
-          <Box
-            sx={{
-              position: 'absolute',
-              bottom: 40,
-              right: 40,
-              width: 200,
-              height: 200,
-              background: 'radial-gradient(circle, rgba(37, 99, 235, 0.4) 0%, transparent 70%)',
-              borderRadius: '50%',
-              filter: 'blur(96px)',
-              opacity: 0.4,
-              pointerEvents: 'none',
-              zIndex: 0,
-            }}
-          />
-
-          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <Box
-              component="img"
-              src="/dpo-certificate.jpg"
-              alt="DPO/DPS Certificate"
-              sx={{
-                maxWidth: { xs: '200px', sm: '280px', md: '350px' },
-                maxHeight: '400px',
-                objectFit: 'contain',
-              }}
-            />
+          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
+            <Typography variant="h1" fontWeight="900" sx={{ fontSize: { xs: '2.5rem', md: '4rem' }, lineHeight: 1.2, mb: 3, letterSpacing: '-0.02em' }}>
+              About AllFix.ph
+            </Typography>
+            <Typography sx={{ fontSize: { xs: '1rem', md: '1.2rem' }, lineHeight: 1.6, maxWidth: '700px', mx: 'auto', color: 'rgba(255,255,255,0.9)' }}>
+              The Philippines' most trusted property care platform, connecting homes and offices with verified professionals since 2021.
+            </Typography>
           </Container>
         </Box>
 
-        {/* Privacy Policy Content - White Section */}
-        <Box sx={{ py: { xs: 8, md: 12 }, bgcolor: 'white', width: '100%' }}>
+        {/* About Content - White Section */}
+        <Box sx={{ pt: { xs: 6, md: 8 }, pb: { xs: 4, md: 12 }, bgcolor: 'white', width: '100%' }}>
           <Container maxWidth="md">
-            <Typography variant="h2" fontWeight="900" color="#10355f" sx={{ fontSize: { xs: '2.2rem', md: '3.5rem' }, lineHeight: 1.2, mb: 2, letterSpacing: '-0.02em', textAlign: 'center' }}>
-              Privacy & Policy
-            </Typography>
-            <Typography sx={{ color: '#555', fontSize: { xs: '1rem', md: '1.1rem' }, lineHeight: 1.6, maxWidth: '600px', mx: 'auto', mb: 6, textAlign: 'center' }}>
-              We're committed to protecting your privacy and being transparent about how we collect and use your data.
-            </Typography>
             
-            <Section title="1. Introduction">
-              <Typography sx={{ mb: 2 }}>
-                AllFix Philippines Inc. ("we", "us", "our", or "Company") operates the AllFix.ph website and mobile application (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.
+            {/* Our Story Section */}
+            <Box sx={{ mb: 6 }}>
+              <Typography variant="h3" fontWeight="800" color="#10355f" sx={{ mb: 3, fontSize: '1.8rem' }}>
+                Our Story
               </Typography>
-            </Section>
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: { xs: 4, md: 6 }, alignItems: 'stretch' }}>
+                <Box sx={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Box sx={{ 
+                    position: 'relative',
+                    width: '100%',
+                    height: '100%',
+                    minHeight: { xs: '300px', md: '400px' },
+                    borderRadius: '16px',
+                    overflow: 'hidden',
+                    boxShadow: '0 16px 32px rgba(46, 91, 168, 0.15)',
+                    border: '4px solid #eaf2fc'
+                  }}>
+                    <Box
+                      component="img"
+                      src="/images/coolfix.jpg"
+                      alt="AllFix story"
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: 'center'
+                      }}
+                    />
+                  </Box>
+                </Box>
 
-            <Section title="2. Information Collection and Use">
-              <Typography sx={{ fontWeight: 700, mb: 1 }}>We collect several different types of information for various purposes:</Typography>
-              <Box sx={{ ml: 2, mb: 2 }}>
-                <Typography sx={{ mb: 1 }}><strong>Personal Data:</strong> Email address, name, contact number, business information, and payment details.</Typography>
-                <Typography sx={{ mb: 1 }}><strong>Device Information:</strong> Browser type, IP address, and operating system.</Typography>
-                <Typography sx={{ mb: 1 }}><strong>Usage Data:</strong> Pages visited, time spent, and interactions with our Service.</Typography>
-                <Typography><strong>Location Data:</strong> Approximate location based on IP address (with your consent).</Typography>
+                <Box>
+                  <Typography sx={{ mb: 2, color: '#555', lineHeight: 1.8 }}>
+                    AllFix.ph was born from a simple observation: Filipinos deserve access to reliable, professional property care services without the stress and uncertainty. What started as a vision to solve this problem has grown into the Philippines' most trusted platform for home and office maintenance.
+                  </Typography>
+                  <Typography sx={{ mb: 2, color: '#555', lineHeight: 1.8 }}>
+                    Today, AllFix.ph connects thousands of property owners and managers with verified, skilled professionals across all major services—from air-conditioning to IT support, plumbing to sustainability solutions. We've built a community of experts dedicated to making property care simple, affordable, and accessible to every Filipino.
+                  </Typography>
+                </Box>
               </Box>
-            </Section>
+            </Box>
 
-            <Section title="3. Use of Data">
-              <Typography sx={{ mb: 2 }}>
-                AllFix uses the collected data for various purposes including:
-              </Typography>
-              <Box sx={{ ml: 2, mb: 2 }}>
-                <Typography sx={{ mb: 1 }}>• To provide and maintain our Service</Typography>
-                <Typography sx={{ mb: 1 }}>• To notify you about changes to our Service</Typography>
-                <Typography sx={{ mb: 1 }}>• To allow you to participate in interactive features of our Service</Typography>
-                <Typography sx={{ mb: 1 }}>• To provide customer support</Typography>
-                <Typography sx={{ mb: 1 }}>• To gather analysis or valuable information so that we can improve our Service</Typography>
-                <Typography sx={{ mb: 1 }}>• To monitor the usage of our Service</Typography>
-                <Typography sx={{ mb: 1 }}>• To detect, prevent and address technical and security issues</Typography>
-              </Box>
-            </Section>
-
-            <Section title="4. Security of Data">
-              <Typography sx={{ mb: 2 }}>
-                The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.
-              </Typography>
-            </Section>
-
-            <Section title="5. Changes to This Privacy Policy">
-              <Typography sx={{ mb: 2 }}>
-                We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date at the top of this Privacy Policy.
-              </Typography>
-              <Typography sx={{ mb: 2 }}>
-                You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
-              </Typography>
-            </Section>
-
-            <Section title="6. Contact Us">
-              <Typography sx={{ mb: 1 }}>
-                If you have any questions about this Privacy Policy, please contact us at:
-              </Typography>
-              <Box sx={{ ml: 2, mt: 2 }}>
-                <Typography sx={{ mb: 1 }}>Email: inquiry@allfix.ph</Typography>
-                <Typography sx={{ mb: 1 }}>Phone: +63 920 9631 217 | +63 975 8336 289</Typography>
-                <Typography>
-                  Address: 9824 Kamagong Street, San Antonio Village,<br/>Makati City 1203 Philippines
+            {/* Mission Section */}
+            <Section title="Our Mission">
+              <Box sx={{ 
+                p: 3, 
+                bgcolor: '#f0f7ff', 
+                borderLeft: '4px solid #2E5BA8', 
+                borderRadius: '8px',
+                mb: 4
+              }}>
+                <Typography sx={{ fontSize: '1.1rem', color: '#10355f', fontWeight: 600, lineHeight: 1.8 }}>
+                  To empower every Filipino home and business by providing access to trusted, professional property care services that enhance quality of life and operational efficiency.
                 </Typography>
               </Box>
             </Section>
+
+            {/* Vision Section */}
+            <Section title="Our Vision">
+              <Box sx={{ 
+                p: 3, 
+                bgcolor: '#f0f7ff', 
+                borderLeft: '4px solid #2E5BA8', 
+                borderRadius: '8px',
+                mb: 4
+              }}>
+                <Typography sx={{ fontSize: '1.1rem', color: '#10355f', fontWeight: 600, lineHeight: 1.8 }}>
+                  To be the Philippines' most trusted and accessible platform for property care, setting industry standards for quality, reliability, and customer satisfaction.
+                </Typography>
+              </Box>
+            </Section>
+
+            {/* Core Values Section */}
+            <Box sx={{ mb: 8, width: '100%' }}>
+              <Typography variant="h2" fontWeight="900" color="#10355f" sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, lineHeight: 1.2, mb: 6, letterSpacing: '-0.02em', textAlign: 'center' }}>
+                Our Core Values
+              </Typography>
+              
+              <Box sx={{ 
+                display: 'grid', 
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(4, 1fr)' }, 
+                gap: 3, 
+                width: '100%' 
+              }}>
+                {coreValues.map((value, index) => (
+                  <Card key={index} sx={{ 
+                    height: '100%',
+                    minHeight: '320px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                    border: '1px solid rgba(46, 91, 168, 0.1)',
+                    transition: 'all 0.3s ease',
+                    overflow: 'visible',
+                    '&:hover': {
+                      boxShadow: '0 8px 24px rgba(46, 91, 168, 0.15)',
+                      transform: 'translateY(-4px)',
+                    }
+                  }}>
+                    <CardContent sx={{ 
+                      textAlign: 'center', 
+                      pt: 3, 
+                      pb: 3, 
+                      px: 2,
+                      display: 'flex', 
+                      flexDirection: 'column', 
+                      height: '100%',
+                      overflow: 'visible'
+                    }}>
+                      <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', flexShrink: 0 }}>
+                        {value.icon}
+                      </Box>
+                      <Typography variant="h5" fontWeight="800" color="#10355f" sx={{ mb: 2, wordWrap: 'break-word', overflow: 'visible' }}>
+                        {value.title}
+                      </Typography>
+                      <Typography sx={{ color: '#666', lineHeight: 1.7, fontSize: '0.95rem', flex: 1 }}>
+                        {value.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                ))}
+              </Box>
+            </Box>
+
+            {/* NEW STYLED SECTION: Why Choose AllFix */}
+            {/* Blue Gradient Background & Flexbox Vertical Stacking */}
+            <Box sx={{ 
+              mb: 6, 
+              p: { xs: 3, md: 5 }, 
+              borderRadius: '16px',
+              background: 'linear-gradient(135deg, #10355f 0%, #1a3f70 100%)',
+              boxShadow: '0 8px 32px rgba(16, 53, 95, 0.2)'
+            }}>
+              <Typography variant="h3" fontWeight="800" color="white" sx={{ mb: 4, fontSize: '1.8rem' }}>
+                Why Choose AllFix
+              </Typography>
+              
+              {/* Flex Column guarantees it stacks like 1, 2, 3, 4, 5 vertically */}
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
+                {[
+                  'Verified & background-checked professionals across all services',
+                  'Easy online booking with transparent pricing',
+                  'Real-time job tracking and customer support',
+                  'Service guarantee on all bookings',
+                  'Eco-friendly and sustainable solutions available',
+                  'Trusted by thousands of Filipino families and businesses since 2021',
+                ].map((item, index) => (
+                  <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                    <Box sx={{ 
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      width: 28, height: 28, borderRadius: '50%', 
+                      bgcolor: 'rgba(255,255,255,0.15)', 
+                      flexShrink: 0 
+                    }}>
+                      <Typography sx={{ color: 'white', fontSize: '0.85rem', fontWeight: 'bold' }}>✓</Typography>
+                    </Box>
+                    <Typography sx={{ color: 'white', fontSize: '1.05rem', lineHeight: 1.6, fontWeight: 500 }}>
+                      {item}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
           </Container>
         </Box>
 
-        {/* FOOTER */}
+          {/* FOOTER */}
         <Box component="footer" sx={{ width: '100%', background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)', backgroundImage: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")', pt: { xs: 8, md: 10 }, pb: { xs: 4, md: 6 }, color: 'white' }}>
           <Container maxWidth="xl" sx={{ px: { xs: 3, md: 6 } }}>
             <Grid container spacing={{ xs: 4, md: 8, lg: 10 }} justifyContent="space-between">
 
               {/* Col 1 - Logo & Info */}
-              <Grid item xs={12} md={5}>
+              <Grid size={{ xs: 12, md: 5 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo(0, 0); }}>
                   <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix Logo" sx={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} />
                   <Typography variant="h5" fontWeight="900" color="white" sx={{ letterSpacing: '-0.02em', fontSize: '1.4rem' }}>
@@ -263,7 +357,7 @@ const PrivacyPolicy = () => {
               </Grid>
 
               {/* Col 2 - COMPANY */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>COMPANY</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   <Typography onClick={() => { navigate('/about'); window.scrollTo(0, 0); }} sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>About AllFix</Typography>
@@ -273,10 +367,10 @@ const PrivacyPolicy = () => {
               </Grid>
 
               {/* Col 3 - SUPPORT */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SUPPORT</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
-                  {['Help Center', 'Book a Service', 'Partner With Us'].map((link) => (
+                  {['Help Center', 'Book a Service', , 'Partner With Us'].map((link) => (
                     <Typography 
                       key={link} 
                       onClick={() => { 
@@ -304,7 +398,7 @@ const PrivacyPolicy = () => {
               </Grid>
 
               {/* Col 4 - LEGAL */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   {['Privacy Policy', 'Terms of Service', 'Service Guarantee'].map(link => (
@@ -328,7 +422,7 @@ const PrivacyPolicy = () => {
             <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: 4 }} />
 
             <Grid container spacing={4} justifyContent="space-between" alignItems="center">
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></Box>
                   <Box>
@@ -337,7 +431,7 @@ const PrivacyPolicy = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></Box>
                   <Box>
@@ -346,7 +440,7 @@ const PrivacyPolicy = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><LocationOnIcon sx={{ fontSize: 26 }} /></Box>
                   <Box>
@@ -375,21 +469,25 @@ const PrivacyPolicy = () => {
           </Container>
         </Box>
 
-        </Box>
+      </Box>
     </>
   );
 };
 
 // Section Component for cleaner organization
-const Section = ({ title, children }) => (
-  <Box sx={{ mb: 4 }}>
-    <Typography variant="h5" fontWeight="800" color="#10355f" sx={{ mb: 2, fontSize: '1.3rem' }}>
-      {title}
-    </Typography>
-    <Box sx={{ color: '#555', lineHeight: 1.8 }}>
+const Section = ({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) => {
+  return (
+    <>
+      <h2>{title}</h2>
       {children}
-    </Box>
-  </Box>
-);
+    </>
+  );
+};
 
-export default PrivacyPolicy;
+export default AboutUsPage;

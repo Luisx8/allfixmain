@@ -62,7 +62,6 @@ const CoolFixPage = () => {
         elevation={0}
         sx={{
           zIndex: 1100,
-          // CHANGED: Added `|| menuOpen` so the navbar forces the gradient background when the menu is open!
           background: (isScrolled || menuOpen)
             ? 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)'
             : 'transparent',
@@ -89,28 +88,27 @@ const CoolFixPage = () => {
 
           {/* Right Side Controls */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mr: { xs: 0, md: 8, lg: 16 } }}>
-            {/* Desktop-only Back to Home Button */}
+            {/* Desktop-only Back to Home Button - Changed md to lg */}
             <Button
               onClick={() => { navigate('/'); window.scrollTo(0, 0); }}
-              sx={{ display: { xs: 'none', md: 'flex' }, color: 'white', fontWeight: 600, textTransform: 'none', fontSize: '0.95rem', '&:hover': { color: '#eaf2fc', backgroundColor: 'rgba(255, 255, 255, 0.1)' }, px: 2, py: 1, borderRadius: '8px', transition: 'all 0.3s ease' }}
+              sx={{ display: { xs: 'none', lg: 'flex' }, color: 'white', fontWeight: 600, textTransform: 'none', fontSize: '0.95rem', '&:hover': { color: '#eaf2fc', backgroundColor: 'rgba(255, 255, 255, 0.1)' }, px: 2, py: 1, borderRadius: '8px', transition: 'all 0.3s ease' }}
             >
               Back to Home
             </Button>
             
-            {/* Mobile-only Hamburger Menu Icon */}
+            {/* Mobile/Tablet Hamburger Menu Icon - Changed md to lg */}
             <IconButton 
               onClick={() => setMenuOpen(!menuOpen)} 
-              sx={{ display: { xs: 'flex', md: 'none' }, color: 'white' }}
+              sx={{ display: { xs: 'flex', lg: 'none' }, color: 'white' }}
             >
               {menuOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
           </Box>
         </Toolbar>
 
-        {/* Mobile Menu Dropdown Area (Appears below Toolbar when open) */}
+        {/* Mobile/Tablet Menu Dropdown Area - Changed md to lg */}
         {menuOpen && (
-          /* CHANGED: Removed bgcolor here so it perfectly inherits the AppBar's gradient */
-          <Box sx={{ display: { xs: 'block', md: 'none' }, borderTop: '1px solid rgba(255,255,255,0.1)', p: 2, pb: 3 }}>
+          <Box sx={{ display: { xs: 'block', lg: 'none' }, borderTop: '1px solid rgba(255,255,255,0.1)', p: 2, pb: 3 }}>
             <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1.5, mb: 2 }}>
               {footerPills.map(pill => (
                 <Box
@@ -127,7 +125,6 @@ const CoolFixPage = () => {
                     gap: 1,
                     px: 1,
                     py: 2,
-                    // Active item gets a faded blue, others get solid white just like the image
                     bgcolor: pill.name === 'CoolFix' ? 'rgba(255,255,255,0.15)' : '#ffffff',
                     color: pill.name === 'CoolFix' ? 'white' : '#10355f',
                     borderRadius: '12px',
@@ -200,10 +197,10 @@ const CoolFixPage = () => {
         <Box sx={{ pt: { xs: 3, md: 4 }, pb: { xs: 4, md: 12 }, bgcolor: 'white', width: '100%' }}>
           <Container maxWidth="lg">
 
-            {/* NAVIGATION PILLS - Desktop Only */}
+            {/* NAVIGATION PILLS - Desktop Only - Changed md to lg to prevent duplicate navs on tablets */}
             <Box sx={{ mb: { xs: 4, md: 6 }, width: '100%', overflow: 'visible' }}>
               <Box sx={{
-                display: { xs: 'none', md: 'flex' },
+                display: { xs: 'none', lg: 'flex' },
                 flexDirection: 'row',
                 flexWrap: 'nowrap',
                 justifyContent: 'center',
@@ -309,8 +306,7 @@ const CoolFixPage = () => {
                     bgcolor: '#f8fafc',
                     borderRadius: { xs: '12px', md: '20px' }, 
                     overflow: 'hidden',
-                    border: '1px solid #eaf2fc', // Added a clean border instead of a hover shadow
-                    // Hover effects and pointer cursor have been removed so it remains a static widget
+                    border: '1px solid #eaf2fc',
                   }}>
                     {/* Shorter image height on mobile to fit the 2-column view better */}
                     <Box sx={{ width: '100%', height: { xs: '120px', sm: '180px', md: '280px' } }}>
@@ -352,12 +348,12 @@ const CoolFixPage = () => {
               <Box sx={{ 
                 position: 'relative', 
                 zIndex: 1, 
-                p: { xs: 3, md: 4 }, // Reduced padding
+                p: { xs: 3, md: 4 },
                 display: 'flex', 
                 flexDirection: { xs: 'column', md: 'row' }, 
-                alignItems: { xs: 'flex-start', md: 'center' }, // Aligns left on mobile instead of stretching
+                alignItems: { xs: 'flex-start', md: 'center' },
                 justifyContent: 'space-between', 
-                gap: { xs: 2.5, md: 4 } // Reduced gap between text and button
+                gap: { xs: 2.5, md: 4 }
               }}>
                 <Box sx={{ flex: 1 }}>
                   <Typography variant="h3" sx={{ fontSize: { xs: '1.4rem', md: '1.8rem' }, fontWeight: 900, color: 'white', lineHeight: 1.2, mb: 1 }}>
@@ -377,11 +373,11 @@ const CoolFixPage = () => {
                       bgcolor: 'white', 
                       color: '#10355f', 
                       fontWeight: 800, 
-                      fontSize: '0.9rem', // Smaller font
+                      fontSize: '0.9rem',
                       textTransform: 'none', 
                       borderRadius: '12px', 
-                      px: 3, // Smaller padding
-                      py: 1.2, // Smaller padding
+                      px: 3,
+                      py: 1.2,
                       whiteSpace: 'nowrap', 
                       boxShadow: '0 8px 24px rgba(0,0,0,0.15)', 
                       '&:hover': { bgcolor: 'rgba(255,255,255,0.9)', transform: 'translateY(-2px)' }, 
@@ -402,7 +398,7 @@ const CoolFixPage = () => {
             <Grid container spacing={{ xs: 4, md: 8, lg: 10 }} justifyContent="space-between">
 
               {/* Col 1 - Logo & Info */}
-              <Grid item xs={12} md={5}>
+              <Grid size={{ xs: 12, md: 5 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo(0, 0); }}>
                   <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix Logo" sx={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} />
                   <Typography variant="h5" fontWeight="900" color="white" sx={{ letterSpacing: '-0.02em', fontSize: '1.4rem' }}>
@@ -423,7 +419,7 @@ const CoolFixPage = () => {
               </Grid>
 
               {/* Col 2 - COMPANY */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>COMPANY</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   <Typography onClick={() => { navigate('/about'); window.scrollTo(0, 0); }} sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>About AllFix</Typography>
@@ -433,7 +429,7 @@ const CoolFixPage = () => {
               </Grid>
 
               {/* Col 3 - SUPPORT */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SUPPORT</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   {['Help Center', 'Book a Service', 'Partner With Us'].map((link) => (
@@ -454,7 +450,7 @@ const CoolFixPage = () => {
               </Grid>
 
               {/* Col 4 - LEGAL */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   {['Privacy Policy', 'Terms of Service', 'Service Guarantee'].map(link => (
@@ -478,7 +474,7 @@ const CoolFixPage = () => {
             <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: 4 }} />
 
             <Grid container spacing={4} justifyContent="space-between" alignItems="center">
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></Box>
                   <Box>
@@ -487,7 +483,7 @@ const CoolFixPage = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></Box>
                   <Box>
@@ -496,7 +492,7 @@ const CoolFixPage = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><LocationOnIcon sx={{ fontSize: 26 }} /></Box>
                   <Box>

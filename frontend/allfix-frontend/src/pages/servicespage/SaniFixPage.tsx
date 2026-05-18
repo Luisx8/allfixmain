@@ -12,7 +12,7 @@ import {
   IconButton
 } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import MemoryIcon from '@mui/icons-material/Memory';
+import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -30,16 +30,16 @@ const footerPills = [
   { name: 'TechFix', icon: <><rect x="4" y="4" width="16" height="16" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></> },
 ];
 
-const techfixServices = [
-  { title: 'Hardware Setup & Upgrades', description: 'Custom PC building, hardware installations, and upgrading RAM/SSDs for better performance.', tag: 'Hardware', image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&h=400&fit=crop' },
-  { title: 'Network & Wi-Fi Solutions', description: 'Local area network (LAN) configuration, eliminating dead zones, and setting up mesh Wi-Fi systems.', tag: 'Networking', image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=400&fit=crop' },
-  { title: 'Printer & Peripherals', description: 'Printer troubleshooting, wireless printing setup, and scanner configuration.', tag: 'Peripherals', image: 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?w=400&h=400&fit=crop' },
-  { title: 'Smart Home Setup', description: 'Installing and configuring smart locks, Wi-Fi CCTV cameras, and voice assistants.', tag: 'Smart Home', image: 'https://images.unsplash.com/photo-1558002038-1055907df827?w=400&h=400&fit=crop' },
-  { title: 'Data Recovery & Security', description: 'Removing malware/viruses and helping clients back up important files to the cloud or external drives.', tag: 'Security', image: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=400&h=400&fit=crop' },
-  { title: 'IT Support Services', description: 'Various IT and gadget support services for homes and offices.', tag: 'Support', image: 'https://images.unsplash.com/photo-1563770660941-20978e870e26?w=400&h=400&fit=crop' },
+const sanifixServices = [
+  { title: 'Laundry Pick-Up & Delivery', description: 'Convenient by-the-kilo service where riders pick up dirty laundry and return it freshly washed and neatly folded.', tag: 'Laundry', image: 'https://images.unsplash.com/photo-1545173168-9f1947eebb7f?w=400&h=400&fit=crop' },
+  { title: 'Dry Cleaning & Pressing', description: 'Professional care for delicate fabrics, suits, gowns, and corporate wear to keep them crisp and pristine.', tag: 'Delicates', image: 'https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=400&h=400&fit=crop' },
+  { title: 'Heavy Duty Linen Cleaning', description: 'Deep washing for bulky items like thick comforters, heavy curtains, rugs, and sofa covers.', tag: 'Bulky Items', image: 'https://images.unsplash.com/photo-1563207153-f404dc546d1b?w=400&h=400&fit=crop' },
+  { title: 'Move-In / Move-Out Cleaning', description: 'Scrubbing empty spaces top-to-bottom before new tenants arrive.', tag: 'Deep Clean', image: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=400&fit=crop' },
+  { title: 'Upholstery & Mattress Shampooing', description: 'Deep extraction cleaning for sofas, carpets, office chairs, and beds to remove stains and dust mites.', tag: 'Upholstery', image: 'https://images.unsplash.com/photo-1628177142898-93e46e4659b6?w=400&h=400&fit=crop' },
+  { title: 'Misting & Fogging', description: 'Hospital-grade antibacterial and antiviral disinfection for homes and offices.', tag: 'Sanitization', image: 'https://images.unsplash.com/photo-1584820927498-cafe2c1c6999?w=400&h=400&fit=crop' },
 ];
 
-const TechFixPage = () => {
+const SaniFixPage = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,6 +62,7 @@ const TechFixPage = () => {
         elevation={0}
         sx={{
           zIndex: 1100,
+          // Matches HomeFix: gradient triggers on scroll OR when menu is open
           background: (isScrolled || menuOpen)
             ? 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)'
             : 'transparent',
@@ -91,27 +92,27 @@ const TechFixPage = () => {
 
           {/* Right Side Controls */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mr: { xs: 0, md: 8, lg: 16 } }}>
-            {/* Desktop only */}
+            {/* Desktop-only Back to Home Button - Changed md to lg */}
             <Button
               onClick={() => { navigate('/'); window.scrollTo(0, 0); }}
-              sx={{ display: { xs: 'none', md: 'flex' }, color: 'white', fontWeight: 600, textTransform: 'none', fontSize: '0.95rem', '&:hover': { color: '#eaf2fc', backgroundColor: 'rgba(255, 255, 255, 0.1)' }, px: 2, py: 1, borderRadius: '8px', transition: 'all 0.3s ease' }}
+              sx={{ display: { xs: 'none', lg: 'flex' }, color: 'white', fontWeight: 600, textTransform: 'none', fontSize: '0.95rem', '&:hover': { color: '#eaf2fc', backgroundColor: 'rgba(255, 255, 255, 0.1)' }, px: 2, py: 1, borderRadius: '8px', transition: 'all 0.3s ease' }}
             >
               Back to Home
             </Button>
 
-            {/* Mobile only */}
+            {/* Mobile/Tablet Hamburger Menu Icon - Changed md to lg */}
             <IconButton
               onClick={() => setMenuOpen(!menuOpen)}
-              sx={{ display: { xs: 'flex', md: 'none' }, color: 'white' }}
+              sx={{ display: { xs: 'flex', lg: 'none' }, color: 'white' }}
             >
               {menuOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
           </Box>
         </Toolbar>
 
-        {/* Mobile Menu Dropdown (inside AppBar) */}
+        {/* Mobile/Tablet Menu Dropdown Area - Changed md to lg */}
         {menuOpen && (
-          <Box sx={{ display: { xs: 'block', md: 'none' }, borderTop: '1px solid rgba(255,255,255,0.1)', p: 2, pb: 3 }}>
+          <Box sx={{ display: { xs: 'block', lg: 'none' }, borderTop: '1px solid rgba(255,255,255,0.1)', p: 2, pb: 3 }}>
             <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1.5, mb: 2 }}>
               {footerPills.map(pill => (
                 <Box
@@ -128,12 +129,12 @@ const TechFixPage = () => {
                     gap: 1,
                     px: 1,
                     py: 2,
-                    bgcolor: pill.name === 'TechFix' ? 'rgba(255,255,255,0.15)' : '#ffffff',
-                    color: pill.name === 'TechFix' ? 'white' : '#10355f',
+                    bgcolor: pill.name === 'SaniFix' ? 'rgba(255,255,255,0.15)' : '#ffffff',
+                    color: pill.name === 'SaniFix' ? 'white' : '#10355f',
                     borderRadius: '12px',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                    boxShadow: pill.name === 'TechFix' ? 'none' : '0 4px 12px rgba(0,0,0,0.15)',
+                    boxShadow: pill.name === 'SaniFix' ? 'none' : '0 4px 12px rgba(0,0,0,0.15)',
                   }}
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -145,11 +146,20 @@ const TechFixPage = () => {
                 </Box>
               ))}
             </Box>
+
             <Box sx={{ pt: 1 }}>
               <Button
                 onClick={() => { navigate('/'); setMenuOpen(false); window.scrollTo(0, 0); }}
                 fullWidth
-                sx={{ bgcolor: '#ffffff', color: '#10355f', fontWeight: 800, fontSize: '1rem', py: 1.2, borderRadius: '10px', textTransform: 'none' }}
+                sx={{
+                  bgcolor: '#ffffff',
+                  color: '#10355f',
+                  fontWeight: 800,
+                  fontSize: '1rem',
+                  py: 1.2,
+                  borderRadius: '10px',
+                  textTransform: 'none',
+                }}
               >
                 Back to Home
               </Button>
@@ -175,14 +185,14 @@ const TechFixPage = () => {
           <Container maxWidth="md" sx={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 1 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'rgba(255,255,255,0.1)', borderRadius: '12px', p: 1 }}>
-                <MemoryIcon sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, color: '#ffffff' }} />
+                <WaterDropIcon sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, color: '#ffffff' }} />
               </Box>
               <Typography variant="h1" fontWeight="900" sx={{ fontSize: { xs: '2.2rem', md: '3.2rem' }, color: 'white', letterSpacing: '-0.02em', m: 0 }}>
-                Tech<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span>
+                Sani<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span>
               </Typography>
             </Box>
             <Typography sx={{ fontSize: { xs: '0.95rem', md: '1.1rem' }, lineHeight: 1.4, maxWidth: '700px', mx: 'auto', color: 'rgba(255,255,255,0.8)' }}>
-              IT & Gadget Support Services | Reliable • Fast • Expert
+              Deep Cleaning & Sanitization Services | Professional • Eco-Friendly • Thorough
             </Typography>
           </Container>
         </Box>
@@ -191,10 +201,10 @@ const TechFixPage = () => {
         <Box sx={{ pt: { xs: 3, md: 4 }, pb: { xs: 4, md: 12 }, bgcolor: 'white', width: '100%' }}>
           <Container maxWidth="lg">
 
-            {/* NAVIGATION PILLS - Desktop Only */}
+            {/* NAVIGATION PILLS - Desktop Only - Changed md to lg to prevent duplicate navs on tablets */}
             <Box sx={{ mb: { xs: 4, md: 6 }, width: '100%', overflow: 'visible' }}>
               <Box sx={{
-                display: { xs: 'none', md: 'flex' },
+                display: { xs: 'none', lg: 'flex' },
                 flexDirection: 'row',
                 flexWrap: 'nowrap',
                 justifyContent: 'center',
@@ -217,17 +227,17 @@ const TechFixPage = () => {
                       gap: 0.8,
                       px: { xs: 1.5, md: 2 },
                       py: { xs: 0.6, md: 0.8 },
-                      bgcolor: pill.name === 'TechFix' ? '#10355f' : '#ffffff',
-                      color: pill.name === 'TechFix' ? 'white' : '#334155',
+                      bgcolor: pill.name === 'SaniFix' ? '#10355f' : '#ffffff',
+                      color: pill.name === 'SaniFix' ? 'white' : '#334155',
                       border: '1px solid',
-                      borderColor: pill.name === 'TechFix' ? '#10355f' : '#e2e8f0',
+                      borderColor: pill.name === 'SaniFix' ? '#10355f' : '#e2e8f0',
                       borderRadius: '50px',
                       cursor: 'pointer',
                       transition: 'all 0.3s ease',
-                      boxShadow: pill.name === 'TechFix' ? '0 8px 16px rgb(255, 255, 255)' : '0 2px 4px rgba(0,0,0,0.04)',
+                      boxShadow: pill.name === 'SaniFix' ? '0 8px 16px rgb(255, 255, 255)' : '0 2px 4px rgba(0,0,0,0.04)',
                       '&:hover': {
-                        bgcolor: pill.name === 'TechFix' ? '#10355f' : '#f8fafc',
-                        borderColor: pill.name === 'TechFix' ? '#10355f' : '#cbd5e1',
+                        bgcolor: pill.name === 'SaniFix' ? '#10355f' : '#f8fafc',
+                        borderColor: pill.name === 'SaniFix' ? '#10355f' : '#cbd5e1',
                         transform: 'translateY(-2px)',
                         boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
                       }
@@ -253,26 +263,26 @@ const TechFixPage = () => {
                   height: { xs: '250px', md: '320px' },
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  boxShadow: '0 16px 32px rgba(255, 255, 255, 0.15)',
+                  boxShadow: '0 16px 32px rgba(2, 132, 199, 0.15)',
                   border: '4px solid #e0f2fe'
                 }}>
                   <Box
                     component="img"
-                    src="/images/techfix.jpg"
-                    alt="TechFix"
+                    src="/images/sanifix.jpg"
+                    alt="SaniFix"
                     sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
                   />
                 </Box>
               </Box>
               <Box>
                 <Typography variant="h2" sx={{ fontSize: { xs: '1.8rem', md: '2.2rem' }, fontWeight: 900, color: '#10355f', mb: 2, lineHeight: 1.2 }}>
-                  About Tech<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span>
+                  About Sani<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span>
                 </Typography>
                 <Typography sx={{ mb: 3, color: '#666', lineHeight: 1.8, fontSize: '1rem' }}>
-                  TechFix is AllFix.ph's comprehensive IT and gadget support division. We provide on-demand technical support for computers, smart devices, and WiFi connectivity issues across Metro Manila. Our expert technicians help both residential and commercial customers stay digitally productive.
+                  SaniFix is AllFix.ph's professional deep cleaning and sanitization division. We provide comprehensive cleaning solutions for residential and commercial properties across Metro Manila. From routine laundry services to specialized hospital-grade sanitization, our trained team ensures your spaces are impeccably clean.
                 </Typography>
                 <Typography sx={{ mb: 4, color: '#666', lineHeight: 1.8, fontSize: '1rem' }}>
-                  From PC setup and troubleshooting to smart home installation and device repair, we ensure your technology works smoothly so you can focus on what matters.
+                  With expertise in eco-friendly cleaning practices and advanced sanitization techniques, we guarantee thorough results without compromising health, fabric integrity, or environmental safety.
                 </Typography>
               </Box>
             </Box>
@@ -292,7 +302,7 @@ const TechFixPage = () => {
                 mx: 'auto',
                 px: { xs: 2, md: 0 }
               }}>
-                {techfixServices.map((service, index) => (
+                {sanifixServices.map((service, index) => (
                   <Box key={index} sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -301,9 +311,12 @@ const TechFixPage = () => {
                     overflow: 'hidden',
                     border: '1px solid #eaf2fc',
                   }}>
+                    {/* Shorter image height on mobile to fit the 2-column view better */}
                     <Box sx={{ width: '100%', height: { xs: '120px', sm: '180px', md: '280px' } }}>
                       <Box component="img" src={service.image} alt={service.title} sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
                     </Box>
+
+                    {/* Adjusted padding and typography sizes for mobile */}
                     <Box sx={{ p: { xs: 1.5, md: 4 }, display: 'flex', flexDirection: 'column', flex: 1 }}>
                       <Typography sx={{ fontWeight: 800, color: '#0d264a', fontSize: { xs: '0.9rem', sm: '1.1rem', md: '1.4rem' }, lineHeight: 1.2, mb: 0.5 }}>
                         {service.title}
@@ -311,7 +324,9 @@ const TechFixPage = () => {
                       <Typography sx={{ fontSize: { xs: '0.7rem', sm: '0.85rem', md: '1rem' }, fontWeight: 600, color: '#0d264a', mb: { xs: 1, md: 2 } }}>
                         {service.tag}
                       </Typography>
+
                       <Box sx={{ width: { xs: '20px', md: '40px' }, height: { xs: '2px', md: '3px' }, bgcolor: '#0d264a', mb: { xs: 1, md: 3 } }} />
+
                       <Typography sx={{ fontSize: { xs: '0.7rem', sm: '0.85rem', md: '1rem' }, color: '#64748b', lineHeight: { xs: 1.4, md: 1.7 }, flex: 1 }}>
                         {service.description}
                       </Typography>
@@ -332,6 +347,7 @@ const TechFixPage = () => {
             }}>
               <Box sx={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', bgcolor: 'rgba(56, 189, 248, 0.08)', pointerEvents: 'none' }} />
               <Box sx={{ position: 'absolute', bottom: -40, left: -40, width: 150, height: 150, borderRadius: '50%', bgcolor: 'rgba(2, 132, 199, 0.07)', pointerEvents: 'none' }} />
+
               <Box sx={{
                 position: 'relative',
                 zIndex: 1,
@@ -343,33 +359,49 @@ const TechFixPage = () => {
                 gap: { xs: 2.5, md: 4 }
               }}>
                 <Box sx={{ flex: 1 }}>
-                  <Typography variant="h3" sx={{ fontSize: { xs: '1.4rem', md: '1.8rem' }, fontWeight: 900, color: 'white', lineHeight: 1.2, mb: 1 }}>Ready for Tech Help?</Typography>
-                  <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: { xs: '0.85rem', md: '0.95rem' }, lineHeight: 1.6, maxWidth: 500 }}>Book a TechFix technician today. Let us handle your IT needs so you can stay focused.</Typography>
+                  <Typography variant="h3" sx={{ fontSize: { xs: '1.4rem', md: '1.8rem' }, fontWeight: 900, color: 'white', lineHeight: 1.2, mb: 1 }}>
+                    Ready to Clean Up?
+                  </Typography>
+                  <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: { xs: '0.85rem', md: '0.95rem' }, lineHeight: 1.6, maxWidth: 500 }}>
+                    Book a SaniFix professional today. Enjoy fresh laundry and a sparkling clean environment. Impeccable service — guaranteed.
+                  </Typography>
                 </Box>
+
                 <Box>
                   <Button
                     variant="contained"
                     startIcon={<CalendarMonthIcon />}
                     onClick={() => { navigate('/signup'); window.scrollTo(0, 0); }}
-                    sx={{ bgcolor: 'white', color: '#10355f', fontWeight: 800, fontSize: '0.9rem', textTransform: 'none', borderRadius: '12px', px: 3, py: 1.2, whiteSpace: 'nowrap', boxShadow: '0 8px 24px rgba(0,0,0,0.15)', '&:hover': { bgcolor: 'rgba(255,255,255,0.9)', transform: 'translateY(-2px)' }, transition: 'all 0.25s ease' }}
+                    sx={{
+                      bgcolor: 'white',
+                      color: '#10355f',
+                      fontWeight: 800,
+                      fontSize: '0.9rem',
+                      textTransform: 'none',
+                      borderRadius: '12px',
+                      px: 3,
+                      py: 1.2,
+                      whiteSpace: 'nowrap',
+                      boxShadow: '0 8px 24px rgba(0,0,0,0.15)',
+                      '&:hover': { bgcolor: 'rgba(255,255,255,0.9)', transform: 'translateY(-2px)' },
+                      transition: 'all 0.25s ease'
+                    }}
                   >
                     Book Now
                   </Button>
                 </Box>
               </Box>
             </Box>
-
-            <Typography sx={{ mt: 6, pt: 4, borderTop: '1px solid #e5eaf2', color: '#999', fontSize: '0.85rem' }}>Last Updated: May 5, 2026</Typography>
           </Container>
         </Box>
 
-        {/* FOOTER */}
+         {/* FOOTER */}
         <Box component="footer" sx={{ width: '100%', background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)', backgroundImage: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")', pt: { xs: 8, md: 10 }, pb: { xs: 4, md: 6 }, color: 'white' }}>
           <Container maxWidth="xl" sx={{ px: { xs: 3, md: 6 } }}>
             <Grid container spacing={{ xs: 4, md: 8, lg: 10 }} justifyContent="space-between">
 
               {/* Col 1 - Logo & Info */}
-              <Grid item xs={12} md={5}>
+              <Grid size={{ xs: 12, md: 5 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo(0, 0); }}>
                   <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix Logo" sx={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} />
                   <Typography variant="h5" fontWeight="900" color="white" sx={{ letterSpacing: '-0.02em', fontSize: '1.4rem' }}>
@@ -390,7 +422,7 @@ const TechFixPage = () => {
               </Grid>
 
               {/* Col 2 - COMPANY */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>COMPANY</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   <Typography onClick={() => { navigate('/about'); window.scrollTo(0, 0); }} sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>About AllFix</Typography>
@@ -400,7 +432,7 @@ const TechFixPage = () => {
               </Grid>
 
               {/* Col 3 - SUPPORT */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SUPPORT</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   {['Help Center', 'Book a Service', 'Partner With Us'].map((link) => (
@@ -421,7 +453,7 @@ const TechFixPage = () => {
               </Grid>
 
               {/* Col 4 - LEGAL */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   {['Privacy Policy', 'Terms of Service', 'Service Guarantee'].map(link => (
@@ -445,7 +477,7 @@ const TechFixPage = () => {
             <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: 4 }} />
 
             <Grid container spacing={4} justifyContent="space-between" alignItems="center">
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></Box>
                   <Box>
@@ -454,7 +486,7 @@ const TechFixPage = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></Box>
                   <Box>
@@ -463,7 +495,7 @@ const TechFixPage = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><LocationOnIcon sx={{ fontSize: 26 }} /></Box>
                   <Box>
@@ -491,9 +523,9 @@ const TechFixPage = () => {
             </Box>
           </Container>
         </Box>
+
       </Box>
     </>
   );
 };
-
-export default TechFixPage;
+export default SaniFixPage;

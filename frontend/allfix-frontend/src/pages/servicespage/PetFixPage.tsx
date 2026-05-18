@@ -12,7 +12,7 @@ import {
   IconButton
 } from '@mui/material';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import SpaIcon from '@mui/icons-material/Spa';
+import PetsIcon from '@mui/icons-material/Pets';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -30,16 +30,16 @@ const footerPills = [
   { name: 'TechFix', icon: <><rect x="4" y="4" width="16" height="16" rx="2" ry="2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></> },
 ];
 
-const greenfixServices = [
-  { title: 'Solar Panel Maintenance', description: 'Professional cleaning of solar arrays to ensure maximum energy absorption.', tag: 'Energy', image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&h=400&fit=crop' },
-  { title: 'Waste Segregation Setup', description: 'Designing and installing proper recycling and waste sorting stations for households or condos.', tag: 'Recycling', image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=400&h=400&fit=crop' },
-  { title: 'Composting Solutions', description: 'Setting up odorless Bokashi or worm-composting bins for kitchen scraps.', tag: 'Organic', image: 'https://images.unsplash.com/photo-1574944200424-d2e85a6a2468?w=400&h=400&fit=crop' },
-  { title: 'Energy Audits', description: 'Inspecting homes to suggest LED retrofitting, smart plugs, and insulation improvements to lower electricity bills.', tag: 'Efficiency', image: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=400&h=400&fit=crop' },
-  { title: 'Rainwater Harvesting Setup', description: 'Installing simple collection barrels for garden irrigation or outdoor washing.', tag: 'Conservation', image: 'https://images.unsplash.com/photo-1520699697851-3dc68aa3a474?w=400&h=400&fit=crop' },
-  { title: 'Eco Solutions', description: 'Various sustainability and environmental protection services.', tag: 'Consulting', image: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=400&fit=crop' },
+const petfixServices = [
+  { title: 'Mobile Pet Grooming', description: 'Bathing, nail trimming, and haircuts for dogs and cats done right outside the client\'s home.', tag: 'Grooming', image: 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=400&h=400&fit=crop' },
+  { title: 'Aquarium Maintenance', description: 'Water parameter testing, glass cleaning, filter changes, and specialized care for saltwater setups, including reef fish and anemone health.', tag: 'Aquatics', image: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=400&h=400&fit=crop' },
+  { title: 'Pet Sitting & Dog Walking', description: 'Reliable drop-in visits or scheduled walks for busy owners.', tag: 'Care', image: 'https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?w=400&h=400&fit=crop' },
+  { title: 'Enclosure Deep Cleaning', description: 'Sanitizing litter boxes, birdcages, or reptile terrariums.', tag: 'Sanitation', image: 'https://images.unsplash.com/photo-1593488661644-2f22b7a42b10?w=400&h=400&fit=crop' },
+  { title: 'Pet-Proofing', description: 'Installing safety gates, securing loose wires, and removing toxic indoor plants.', tag: 'Safety', image: 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=400&fit=crop' },
+  { title: 'Pet Care Services', description: 'Various pet care and wellness services for your beloved pets.', tag: 'Wellness', image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=400&h=400&fit=crop' },
 ];
 
-const GreenFixPage = () => {
+const PetFixPage = () => {
   const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,7 +62,6 @@ const GreenFixPage = () => {
         elevation={0}
         sx={{
           zIndex: 1100,
-          // CHANGED: Added `|| menuOpen` so the navbar forces the gradient background when the menu is open
           background: (isScrolled || menuOpen)
             ? 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)'
             : 'transparent',
@@ -75,7 +74,7 @@ const GreenFixPage = () => {
         }}
       >
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', px: { xs: 2, md: 5 }, minHeight: '80px' }}>
-
+          
           {/* Logo Section */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, cursor: 'pointer', ml: { xs: 0, md: 8, lg: 16 } }} onClick={() => { navigate('/'); window.scrollTo(0, 0); }}>
             <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix Logo" sx={{ width: 44, height: 44, borderRadius: '50%', objectFit: 'cover' }} />
@@ -89,28 +88,27 @@ const GreenFixPage = () => {
 
           {/* Right Side Controls */}
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mr: { xs: 0, md: 8, lg: 16 } }}>
-            {/* Desktop-only Back to Home Button */}
+            {/* Desktop-only Back to Home Button - Changed md to lg */}
             <Button
               onClick={() => { navigate('/'); window.scrollTo(0, 0); }}
-              sx={{ display: { xs: 'none', md: 'flex' }, color: 'white', fontWeight: 600, textTransform: 'none', fontSize: '0.95rem', '&:hover': { color: '#eaf2fc', backgroundColor: 'rgba(255, 255, 255, 0.1)' }, px: 2, py: 1, borderRadius: '8px', transition: 'all 0.3s ease' }}
+              sx={{ display: { xs: 'none', lg: 'flex' }, color: 'white', fontWeight: 600, textTransform: 'none', fontSize: '0.95rem', '&:hover': { color: '#eaf2fc', backgroundColor: 'rgba(255, 255, 255, 0.1)' }, px: 2, py: 1, borderRadius: '8px', transition: 'all 0.3s ease' }}
             >
               Back to Home
             </Button>
 
-            {/* Mobile-only Hamburger Menu Icon */}
+            {/* Mobile/Tablet Hamburger Menu Icon - Changed md to lg */}
             <IconButton
               onClick={() => setMenuOpen(!menuOpen)}
-              sx={{ display: { xs: 'flex', md: 'none' }, color: 'white' }}
+              sx={{ display: { xs: 'flex', lg: 'none' }, color: 'white' }}
             >
               {menuOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
           </Box>
         </Toolbar>
 
-        {/* Mobile Menu Dropdown Area (Appears below Toolbar when open) */}
+        {/* Mobile/Tablet Menu Dropdown Area - Changed md to lg */}
         {menuOpen && (
-          // Removed bgcolor here so it perfectly inherits the AppBar's gradient
-          <Box sx={{ display: { xs: 'block', md: 'none' }, borderTop: '1px solid rgba(255,255,255,0.1)', p: 2, pb: 3 }}>
+          <Box sx={{ display: { xs: 'block', lg: 'none' }, borderTop: '1px solid rgba(255,255,255,0.1)', p: 2, pb: 3 }}>
             <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1.5, mb: 2 }}>
               {footerPills.map(pill => (
                 <Box
@@ -127,13 +125,12 @@ const GreenFixPage = () => {
                     gap: 1,
                     px: 1,
                     py: 2,
-                    // Active item gets a faded blue, others get solid white
-                    bgcolor: pill.name === 'GreenFix' ? 'rgba(255,255,255,0.15)' : '#ffffff',
-                    color: pill.name === 'GreenFix' ? 'white' : '#10355f',
+                    bgcolor: pill.name === 'PetFix' ? 'rgba(255,255,255,0.15)' : '#ffffff',
+                    color: pill.name === 'PetFix' ? 'white' : '#10355f',
                     borderRadius: '12px',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                    boxShadow: pill.name === 'GreenFix' ? 'none' : '0 4px 12px rgba(0,0,0,0.15)',
+                    boxShadow: pill.name === 'PetFix' ? 'none' : '0 4px 12px rgba(0,0,0,0.15)',
                   }}
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -184,14 +181,14 @@ const GreenFixPage = () => {
           <Container maxWidth="md" sx={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, mb: 1 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'rgba(255,255,255,0.1)', borderRadius: '12px', p: 1 }}>
-                <SpaIcon sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, color: '#ffffff' }} />
+                <PetsIcon sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, color: '#ffffff' }} />
               </Box>
               <Typography variant="h1" fontWeight="900" sx={{ fontSize: { xs: '2.2rem', md: '3.2rem' }, color: 'white', letterSpacing: '-0.02em', m: 0 }}>
-                Green<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span>
+                Pet<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span>
               </Typography>
             </Box>
             <Typography sx={{ fontSize: { xs: '0.95rem', md: '1.1rem' }, lineHeight: 1.4, maxWidth: '700px', mx: 'auto', color: 'rgba(255,255,255,0.8)' }}>
-              Sustainability & Eco Solutions | Professional • Green • Preventive
+              Pet Care & Grooming Services | Loving • Professional • Trustworthy
             </Typography>
           </Container>
         </Box>
@@ -200,10 +197,10 @@ const GreenFixPage = () => {
         <Box sx={{ pt: { xs: 3, md: 4 }, pb: { xs: 4, md: 12 }, bgcolor: 'white', width: '100%' }}>
           <Container maxWidth="lg">
 
-            {/* NAVIGATION PILLS - Desktop Only */}
+            {/* NAVIGATION PILLS - Desktop Only - Changed md to lg to prevent duplicate navs on tablets */}
             <Box sx={{ mb: { xs: 4, md: 6 }, width: '100%', overflow: 'visible' }}>
               <Box sx={{
-                display: { xs: 'none', md: 'flex' },
+                display: { xs: 'none', lg: 'flex' },
                 flexDirection: 'row',
                 flexWrap: 'nowrap',
                 justifyContent: 'center',
@@ -226,17 +223,17 @@ const GreenFixPage = () => {
                       gap: 0.8,
                       px: { xs: 1.5, md: 2 },
                       py: { xs: 0.6, md: 0.8 },
-                      bgcolor: pill.name === 'GreenFix' ? '#10355f' : '#ffffff',
-                      color: pill.name === 'GreenFix' ? 'white' : '#334155',
+                      bgcolor: pill.name === 'PetFix' ? '#10355f' : '#ffffff',
+                      color: pill.name === 'PetFix' ? 'white' : '#334155',
                       border: '1px solid',
-                      borderColor: pill.name === 'GreenFix' ? '#10355f' : '#e2e8f0',
+                      borderColor: pill.name === 'PetFix' ? '#10355f' : '#e2e8f0',
                       borderRadius: '50px',
                       cursor: 'pointer',
                       transition: 'all 0.3s ease',
-                      boxShadow: pill.name === 'GreenFix' ? '0 8px 16px rgb(255, 255, 255)' : '0 2px 4px rgba(0,0,0,0.04)',
+                      boxShadow: pill.name === 'PetFix' ? '0 8px 16px rgb(255, 255, 255)' : '0 2px 4px rgba(0,0,0,0.04)',
                       '&:hover': {
-                        bgcolor: pill.name === 'GreenFix' ? '#10355f' : '#f8fafc',
-                        borderColor: pill.name === 'GreenFix' ? '#10355f' : '#cbd5e1',
+                        bgcolor: pill.name === 'PetFix' ? '#10355f' : '#f8fafc',
+                        borderColor: pill.name === 'PetFix' ? '#10355f' : '#cbd5e1',
                         transform: 'translateY(-2px)',
                         boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
                       }
@@ -262,26 +259,26 @@ const GreenFixPage = () => {
                   height: { xs: '250px', md: '320px' },
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  boxShadow: '0 16px 32px rgba(46, 168, 91, 0.15)',
-                  border: '4px solid #eafceb'
+                  boxShadow: '0 16px 32px rgba(216, 67, 21, 0.15)',
+                  border: '4px solid #fbe9e7'
                 }}>
                   <Box
                     component="img"
-                    src="/images/greenfix.jpg"
-                    alt="GreenFix"
+                    src="/images/petfix.jpg"
+                    alt="PetFix"
                     sx={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
                   />
                 </Box>
               </Box>
               <Box>
                 <Typography variant="h2" sx={{ fontSize: { xs: '1.8rem', md: '2.2rem' }, fontWeight: 900, color: '#10355f', mb: 2, lineHeight: 1.2 }}>
-                  About Green<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span>
+                  About Pet<span style={{ color: '#017550' }}>F</span><span style={{ color: '#fcbc26' }}>i</span><span style={{ color: '#d8242b' }}>x</span>
                 </Typography>
                 <Typography sx={{ mb: 3, color: '#666', lineHeight: 1.8, fontSize: '1rem' }}>
-                  GreenFix is AllFix.ph's commitment to environmental sustainability and eco-friendly services. We provide comprehensive solutions for waste management, recycling, and sustainable practices for homes and businesses across Metro Manila.
+                  PetFix is AllFix.ph's dedicated pet care and grooming division. We provide comprehensive pet grooming, boarding, and wellness services for dog, cat, and aquatics owners across Metro Manila. Your pets are treated with love, care, and professional expertise.
                 </Typography>
                 <Typography sx={{ mb: 4, color: '#666', lineHeight: 1.8, fontSize: '1rem' }}>
-                  With expertise in waste reduction, energy efficiency, and eco-friendly operations, we help you minimize your environmental footprint while maintaining comfort and functionality. Book now to start your sustainability journey.
+                  From professional grooming and deep cleaning enclosures to specialized aquarium maintenance, we ensure your furry or finned family members receive the best care and attention they deserve.
                 </Typography>
               </Box>
             </Box>
@@ -302,7 +299,7 @@ const GreenFixPage = () => {
                 mx: 'auto',
                 px: { xs: 2, md: 0 }
               }}>
-                {greenfixServices.map((service, index) => (
+                {petfixServices.map((service, index) => (
                   <Box key={index} sx={{
                     display: 'flex',
                     flexDirection: 'column',
@@ -345,8 +342,8 @@ const GreenFixPage = () => {
               background: 'linear-gradient(135deg, #10355f 0%, #0d264a 50%, #1a5276 100%)',
               boxShadow: '0 16px 40px rgba(16,53,95,0.2)',
             }}>
-              <Box sx={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', bgcolor: 'rgba(74, 222, 128, 0.08)', pointerEvents: 'none' }} />
-              <Box sx={{ position: 'absolute', bottom: -40, left: -40, width: 150, height: 150, borderRadius: '50%', bgcolor: 'rgba(34, 197, 94, 0.07)', pointerEvents: 'none' }} />
+              <Box sx={{ position: 'absolute', top: -60, right: -60, width: 200, height: 200, borderRadius: '50%', bgcolor: 'rgba(255, 112, 67, 0.08)', pointerEvents: 'none' }} />
+              <Box sx={{ position: 'absolute', bottom: -40, left: -40, width: 150, height: 150, borderRadius: '50%', bgcolor: 'rgba(216, 67, 21, 0.07)', pointerEvents: 'none' }} />
 
               <Box sx={{
                 position: 'relative',
@@ -360,10 +357,10 @@ const GreenFixPage = () => {
               }}>
                 <Box sx={{ flex: 1 }}>
                   <Typography variant="h3" sx={{ fontSize: { xs: '1.4rem', md: '1.8rem' }, fontWeight: 900, color: 'white', lineHeight: 1.2, mb: 1 }}>
-                    Ready to Go Green?
+                    Ready to Pamper Your Pet?
                   </Typography>
                   <Typography sx={{ color: 'rgba(255,255,255,0.7)', fontSize: { xs: '0.85rem', md: '0.95rem' }, lineHeight: 1.6, maxWidth: 500 }}>
-                    Book a GreenFix consultant today. Transform your space into an eco-friendly environment. Fast, clean, and sustainable — guaranteed.
+                    Book a PetFix specialist today. Give your furry, scaly, or finned friends the best care possible. Professional and loving service — guaranteed.
                   </Typography>
                 </Box>
 
@@ -392,16 +389,17 @@ const GreenFixPage = () => {
                 </Box>
               </Box>
             </Box>
+
           </Container>
         </Box>
 
-        {/* FOOTER */}
+         {/* FOOTER */}
         <Box component="footer" sx={{ width: '100%', background: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%)', backgroundImage: 'linear-gradient(135deg, #10355f 0%, #0d264a 55%, #1a3f70 100%), url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.04\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")', pt: { xs: 8, md: 10 }, pb: { xs: 4, md: 6 }, color: 'white' }}>
           <Container maxWidth="xl" sx={{ px: { xs: 3, md: 6 } }}>
             <Grid container spacing={{ xs: 4, md: 8, lg: 10 }} justifyContent="space-between">
 
               {/* Col 1 - Logo & Info */}
-              <Grid item xs={12} md={5}>
+              <Grid size={{ xs: 12, md: 5 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 3, cursor: 'pointer' }} onClick={() => { navigate('/'); window.scrollTo(0, 0); }}>
                   <Box component="img" src="/ALLFIXLOGO.png" alt="AllFix Logo" sx={{ width: 32, height: 32, borderRadius: '50%', objectFit: 'cover' }} />
                   <Typography variant="h5" fontWeight="900" color="white" sx={{ letterSpacing: '-0.02em', fontSize: '1.4rem' }}>
@@ -422,7 +420,7 @@ const GreenFixPage = () => {
               </Grid>
 
               {/* Col 2 - COMPANY */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>COMPANY</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   <Typography onClick={() => { navigate('/about'); window.scrollTo(0, 0); }} sx={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.05rem', cursor: 'pointer', '&:hover': { color: 'white' } }}>About AllFix</Typography>
@@ -432,7 +430,7 @@ const GreenFixPage = () => {
               </Grid>
 
               {/* Col 3 - SUPPORT */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>SUPPORT</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   {['Help Center', 'Book a Service', 'Partner With Us'].map((link) => (
@@ -453,7 +451,7 @@ const GreenFixPage = () => {
               </Grid>
 
               {/* Col 4 - LEGAL */}
-              <Grid item xs={12} sm={4} md={2}>
+              <Grid size={{ xs: 12, sm: 4, md: 2 }}>
                 <Typography sx={{ fontSize: '0.9rem', fontWeight: 800, letterSpacing: '0.1em', mb: 3, color: 'white' }}>LEGAL</Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
                   {['Privacy Policy', 'Terms of Service', 'Service Guarantee'].map(link => (
@@ -477,7 +475,7 @@ const GreenFixPage = () => {
             <Box sx={{ width: '100%', height: '1px', bgcolor: 'rgba(255,255,255,0.1)', my: 4 }} />
 
             <Grid container spacing={4} justifyContent="space-between" alignItems="center">
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></Box>
                   <Box>
@@ -486,7 +484,7 @@ const GreenFixPage = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></Box>
                   <Box>
@@ -495,7 +493,7 @@ const GreenFixPage = () => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={12} md={4}>
+              <Grid size={{ xs: 12, md: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
                   <Box sx={{ mt: 0.5, color: 'white' }}><LocationOnIcon sx={{ fontSize: 26 }} /></Box>
                   <Box>
@@ -529,4 +527,4 @@ const GreenFixPage = () => {
   );
 };
 
-export default GreenFixPage;
+export default PetFixPage;
