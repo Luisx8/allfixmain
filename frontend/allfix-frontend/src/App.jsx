@@ -31,6 +31,7 @@ import VendorLogin from './pages/landingpage/VendorLogin'
 import VendorApplication from './pages/landingpage/VendorApplication'
 import VendorApplicationSubmitted from './pages/landingpage/VendorApplicationSubmitted'
 import PersonnelLogin from './pages/landingpage/PersonnelLogin'
+import PersonnelLandingPage from './pages/landingpage/PersonnelLandingPage'
 import AdminLogin from './pages/landingpage/AdminLogin'
 import ForgotPassword from './pages/landingpage/ForgotPassword'
 
@@ -85,6 +86,9 @@ function App() {
         } />
         <Route path="/vendor-apply" element={<VendorApplication />} />
         <Route path="/vendor-application-submitted" element={<VendorApplicationSubmitted />} />
+
+        {/* Personnel Register */}
+        <Route path="/personnel-register" element={<PersonnelLandingPage />} />
 
         {/* Staff Auth Routes */}
         <Route path="/personnel-login" element={

@@ -171,28 +171,16 @@ const AboutUsPage = () => {
               </Typography>
               <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: { xs: 4, md: 6 }, alignItems: 'stretch' }}>
                 <Box sx={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Box sx={{ 
-                    position: 'relative',
-                    width: '100%',
-                    height: '100%',
-                    minHeight: { xs: '300px', md: '400px' },
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    boxShadow: '0 16px 32px rgba(46, 91, 168, 0.15)',
-                    border: '4px solid #eaf2fc'
-                  }}>
-                    <Box
-                      component="img"
-                      src="/images/coolfix.jpg"
-                      alt="AllFix story"
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        objectPosition: 'center'
-                      }}
-                    />
-                  </Box>
+                  <Box
+                    component="img"
+                    src="/ALLFIXLOGO.png"
+                    alt="AllFix Logo"
+                    sx={{
+                      maxWidth: { xs: '250px', md: '350px' },
+                      height: 'auto',
+                      objectFit: 'contain'
+                    }}
+                  />
                 </Box>
 
                 <Box>
